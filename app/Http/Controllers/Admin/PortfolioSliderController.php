@@ -3,34 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Portfolio\CreatePortfolioSliderRequest;
-use App\Repositories\PortfolioCategoryRepository;
+use App\Http\Requests\PortfolioSlider\CreatePortfolioSliderRequest;
 use App\Repositories\PortfolioRepository;
 use App\Repositories\PortfolioSliderRepository;
 use App\Services\Media\MediaFileService;
-use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class PortfolioSliderController extends Controller
 {
     private $portfolioRepository;
-    private $portfolioCategoryRepository;
     private $portfolioSliderRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository,
-                                PortfolioCategoryRepository $portfolioCategoryRepository,
-                                PortfolioSliderRepository $portfolioSliderRepository)
+    public function __construct(PortfolioRepository $portfolioRepository, PortfolioSliderRepository $portfolioSliderRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
-        $this->portfolioCategoryRepository = $portfolioCategoryRepository;
         $this->portfolioSliderRepository = $portfolioSliderRepository;
     }
 
     public function index($id)
     {
         $portfolio = $this->portfolioRepository->findById($id);
-        $portfolioCategory = $this->portfolioCategoryRepository->paginate();
-        return view('admin.portfolio.slider.management', compact('portfolio', 'portfolioCategory'));
+        return view('admin.portfolio.slider.management', compact('portfolio'));
     }
 
     public function store(CreatePortfolioSliderRequest $request)
@@ -38,7 +32,7 @@ class PortfolioSliderController extends Controller
         try {
             DB::transaction(function () use ($request) {
                 $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->portfolioRepository->store_slider($request);
+                $this->portfolioSliderRepository->store($request);
             });
             DB::commit();
             newFeedback();

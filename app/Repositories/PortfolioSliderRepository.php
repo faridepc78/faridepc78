@@ -12,7 +12,7 @@ class PortfolioSliderRepository
         return PortfolioSlider::query()->findOrFail($id);
     }
 
-    public function store_slider($values)
+    public function store($values)
     {
         return PortfolioSlider::create([
             'portfolio_id' => $values->portfolio_id,

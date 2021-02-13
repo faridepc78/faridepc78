@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expertise;
+use App\Models\Portfolio;
+use App\Repositories\ExpertiseRepository;
+use App\Repositories\PortfolioExpertiseRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -25,4 +29,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
 }

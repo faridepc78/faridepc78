@@ -1,5 +1,5 @@
 @section('title')
-    <title>پنل مدیریت فرید شیشه بری | نمونه کار ها</title>
+    <title>پنل مدیریت فرید شیشه بری | دسته بندی پست ها</title>
 @endsection
 
 @include('admin.layout.header')
@@ -15,8 +15,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('portfolio.index')}}">لیست نمونه کار
-                                ها</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post_category.index')}}">لیست دسته بندی پست ها</a></li>
                     </ol>
                 </div>
 
@@ -31,7 +30,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">لیست نمونه کار ها</h3>
+                            <h3 class="card-title">لیست دسته بندی پست ها</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -52,33 +51,27 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>نام</th>
-                                    <th>دسته بندی</th>
+                                    <th>اسلاگ</th>
                                     <th>تصویر</th>
-                                    <th>جزئیات</th>
-                                    <td>اسلایدر</td>
-                                    <th>تخصص ها</th>
                                     <th>ویرایش</th>
                                     <th>حذف</th>
                                 </tr>
 
-                                @if(count($portfolio))
+                                @if(count($postCategory))
 
-                                    @foreach($portfolio as $key=>$item)
+                                    @foreach($postCategory as $key=>$value)
 
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->category->name}}</td>
-                                            <td><img class="img-size-64" src="{{$item->image->thumb}}"></td>
-                                            <td><a href="{{route('portfolio.show',$item->id)}}" target="_blank"><i class="fa fa-info-circle text-dark"></i></a></td>
-                                            <td><a href="{{route('portfolio.slider.index',$item->id)}}" target="_blank"><i class="fa fa-image text-warning"></i></a></td>
-                                            <td><a href="{{route('portfolio.expertise.index',$item->id)}}" target="_blank"><i class="fa fa-database text-success"></i></a></td>
-                                            <td><a href="{{route('portfolio.edit',$item->id)}}"><i
+                                            <td>{{$value->name}}</td>
+                                            <td>{{$value->slug}}</td>
+                                            <td><img class="img-size-64" src="{{$value->image->thumb}}" alt="تصویر دسته بندی پست"></td>
+                                            <td><a href="{{route('post_category.edit',$value->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
-                                            <td><a href="{{ route('portfolio.destroy', $item->id) }}"
-                                                   onclick="destroyPortfolio(event, {{ $item->id }})"><i
+                                            <td><a href="{{ route('post_category.destroy', $value->id) }}"
+                                                   onclick="destroyPostCategory(event, {{ $value->id }})"><i
                                                         class="fa fa-remove text-danger"></i></a>
-                                                <form action="{{ route('portfolio.destroy', $item->id) }}" method="post" id="destroy-portfolio-{{ $item->id }}">
+                                                <form action="{{ route('post_category.destroy', $value->id) }}" method="post" id="destroy-PostCategory-{{ $value->id }}">
                                                     @csrf
                                                     @method('delete')
                                                 </form>
@@ -100,7 +93,7 @@
                         </div>
 
                         <div class="pagination mt-3">
-                            {!! $portfolio->links() !!}
+                            {!! $postCategory->links() !!}
                         </div>
 
                     </div>
@@ -119,7 +112,7 @@
 @include('admin.layout.footer')
 
 <script type="text/javascript">
-    function destroyPortfolio(event, id) {
+    function destroyPostCategory(event, id) {
         event.preventDefault();
         Swal.fire({
             title: 'آیا از حذف اطمینان دارید ؟',
@@ -131,7 +124,7 @@
             cancelButtonText: 'خیر'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById(`destroy-portfolio-${id}`).submit()
+                document.getElementById(`destroy-PostCategory-${id}`).submit()
             }
         })
     }

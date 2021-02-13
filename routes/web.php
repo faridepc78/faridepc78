@@ -14,6 +14,16 @@ Route::get('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSl
 Route::post('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSliderController@store')->name('portfolio.slider.store');
 Route::delete('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
 
+Route::get('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@index')->name('portfolio.expertise.index');
+Route::post('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@store')->name('portfolio.expertise.store');
+Route::delete('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
+
+Route::resource('admin/post_category', 'App\Http\Controllers\Admin\PostCategoryController');
+
+Route::resource('admin/post', 'App\Http\Controllers\Admin\PostController');
+
+Route::get('test', 'App\Http\Controllers\HomeController@test');
+
 /*Route::resource('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController', [
     'names' => [
         'index' => 'portfolio.slider.index',

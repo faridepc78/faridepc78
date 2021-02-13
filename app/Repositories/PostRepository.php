@@ -2,16 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Models\Expertise;
+use App\Models\Post;
 use Illuminate\Support\Str;
 
-class ExpertiseRepository
+class PostRepository
 {
     public function store($values)
     {
-        return Expertise::create([
+        return Post::create([
             'name' => $values->name,
             'slug' => Str::slug($values->slug),
+            'post_category_id' => $values->post_category_id,
             'image_id' => $values->image_id,
             'text' => $values->text
         ]);
@@ -19,26 +20,22 @@ class ExpertiseRepository
 
     public function paginate()
     {
-        return Expertise::query()->orderBy('id', 'desc')->paginate();
+        return Post::query()->orderBy('id', 'desc')->paginate();
     }
 
     public function findById($id)
     {
-        return Expertise::query()->findOrFail($id);
+        return Post::query()->findOrFail($id);
     }
 
     public function update($values, $id)
     {
-        return Expertise::query()->where('id', $id)->update([
+        return Post::query()->where('id', $id)->update([
             'name' => $values->name,
             'slug' => Str::slug($values->slug),
+            'post_category_id' => $values->post_category_id,
             'image_id' => $values->image_id,
             'text' => $values->text
         ]);
-    }
-
-    public function all()
-    {
-        return Expertise::all();
     }
 }

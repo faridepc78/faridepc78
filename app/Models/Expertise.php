@@ -10,10 +10,20 @@ class Expertise extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $table='expertise';
+    protected $table = 'expertise';
 
     public function image()
     {
-        return $this->belongsTo(Media::class,'image_id');
+        return $this->belongsTo(Media::class, 'image_id');
+    }
+
+    public function portfolio_expertise()
+    {
+        return $this->hasOne(PortfolioExpertise::class,'expertise_id');
+    }
+
+    public function portfolio()
+    {
+        return $this->belongsToMany(Portfolio::class, 'portfolio_expertise', 'expertise_id', 'portfolio_id');
     }
 }

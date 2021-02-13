@@ -21,15 +21,11 @@ class PortfolioController extends Controller
 {
     private $portfolioRepository;
     private $portfolioCategoryRepository;
-    private $portfolioSliderRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository,
-                                PortfolioCategoryRepository $portfolioCategoryRepository,
-                                PortfolioSliderRepository $portfolioSliderRepository)
+    public function __construct(PortfolioRepository $portfolioRepository, PortfolioCategoryRepository $portfolioCategoryRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
-        $this->portfolioSliderRepository = $portfolioSliderRepository;
     }
 
     public function index()

@@ -120,6 +120,64 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item has-treeview">
+
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-amazon"></i>
+                            <p>
+                                دسته بندی پست ها
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('post_category.index') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>لیست دسته بندی پست ها</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('post_category.create') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>ایجاد دسته بندی پست ها</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-paper-plane"></i>
+                            <p>
+                                پست ها
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('post.index') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>لیست پست ها</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('post.create') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>ایجاد پست ها</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                 </ul>
             </nav>
 

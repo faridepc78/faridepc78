@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="" />
+    <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/plugins/bootstrap-select/css/bootstrap-select.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/plugins/bootstrap-select/js/bootstrap-select.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/expertise/management.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post_category/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post_category/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post_category/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Portfolio/CreatePortfolioSliderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/PortfolioSlider/CreatePortfolioSliderRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Expertise.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Expertise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Portfolio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Portfolio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/ExpertiseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ExpertiseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/PortfolioRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PortfolioRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/PortfolioSliderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PortfolioSliderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/az.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/bg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/cs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/da.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/et.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/eu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/fa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/fi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/gl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/he.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/hi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/hr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/hu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/is.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/lt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/lv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/mk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/nb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/nl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/pt-BR.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/ro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/sk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/sr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/sv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/th.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/uk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/vi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/zh-CN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/i18n/zh-TW.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.full.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.full.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/plugins/select2/select2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio_category/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio_category/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +85,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -135,6 +213,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1ndWGhhwsPlJebXx4dKTjtl3qk8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -143,19 +222,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Repositories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/post" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\faridepc78\app\Repositories" />
-      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Portfolio" />
+      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\post" />
+      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin" />
       <recent name="C:\xampp\htdocs\faridepc78\public\admin\plugins" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\portfolio_category" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\layout" />
+      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\PortfolioExpertise" />
+      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\portfolio\expertise" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\PortfolioSlider" />
       <recent name="C:\xampp\htdocs\faridepc78\resources\views\site\blog" />
     </key>
   </component>
@@ -177,11 +257,24 @@
       <workItem from="1612984273022" duration="10366000" />
       <workItem from="1613019319957" duration="48564000" />
       <workItem from="1613116840251" duration="24819000" />
-      <workItem from="1613142875236" duration="17373000" />
+      <workItem from="1613142875236" duration="17782000" />
+      <workItem from="1613206566575" duration="43718000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

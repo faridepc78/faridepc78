@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Portfolio;
-use App\Models\PortfolioSlider;
 use Illuminate\Support\Str;
 
 class PortfolioRepository
@@ -45,14 +44,6 @@ class PortfolioRepository
             'customer' => $values->customer,
             'start_date' => $values->start_date,
             'end_date' => $values->end_date
-        ]);
-    }
-
-    public function store_slider($values)
-    {
-        return PortfolioSlider::create([
-            'portfolio_id' => $values->portfolio_id,
-            'image_id' => $values->image_id
         ]);
     }
 }
