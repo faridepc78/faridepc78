@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateSettingRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'rule' => 'required',
+            'full_name' => 'required|max:255',
+            'bio' => 'required|max:255',
+            'trust'=>'required',
+            'trust_reason1'=>'required',
+            'trust_reason2'=>'required',
+            'trust_reason3'=>'required',
+            'trust_reason4'=>'required',
+            'footer_text'=>'required',
+            'image'=>'mimes:jpg,png,jpeg|max:1024',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'rule' => 'قوانین و مقررات سایت',
+            'full_name' => 'نام و نام خانوادگی مدیر سایت',
+            'bio'=>'بیو مدیر سایت',
+            'trust'=>'اعتماد مدیر سایت',
+            'trust_reason1'=>'دلیل 1 اعتماد مدیر سایت',
+            'trust_reason2'=>'دلیل 2 اعتماد مدیر سایت',
+            'trust_reason3'=>'دلیل 3 اعتماد مدیر سایت',
+            'trust_reason4'=>'دلیل 4 اعتماد مدیر سایت',
+            'footer_text'=>'متن فوتر سایت',
+            'logo'=>'لوگو سایت'
+        ];
+    }
+}

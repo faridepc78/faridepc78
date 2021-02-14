@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+/*START ADMIN*/
+
 Route::get('admin/dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('dashboard');
 
 Route::resource('admin/expertise', 'App\Http\Controllers\Admin\ExpertiseController');
@@ -10,17 +13,36 @@ Route::resource('admin/portfolio_category', 'App\Http\Controllers\Admin\Portfoli
 
 Route::resource('admin/portfolio', 'App\Http\Controllers\Admin\PortfolioController');
 
-Route::get('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSliderController@index')->name('portfolio.slider.index');
-Route::post('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSliderController@store')->name('portfolio.slider.store');
-Route::delete('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
+Route::get('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@index')->name('portfolio.slider.index');
+Route::post('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@store')->name('portfolio.slider.store');
+Route::delete('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
 
-Route::get('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@index')->name('portfolio.expertise.index');
-Route::post('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@store')->name('portfolio.expertise.store');
-Route::delete('admin/portfolio/expertise/{id}','App\Http\Controllers\Admin\PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
+Route::get('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@index')->name('portfolio.expertise.index');
+Route::post('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@store')->name('portfolio.expertise.store');
+Route::delete('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
 
 Route::resource('admin/post_category', 'App\Http\Controllers\Admin\PostCategoryController');
 
 Route::resource('admin/post', 'App\Http\Controllers\Admin\PostController');
+
+Route::resource('admin/setting', 'App\Http\Controllers\Admin\SettingController');
+
+Route::resource('admin/work', 'App\Http\Controllers\Admin\WorkController');
+
+Route::resource('admin/social', 'App\Http\Controllers\Admin\SocialController');
+
+Route::resource('admin/contactInfo', 'App\Http\Controllers\Admin\ContactInfoController');
+
+Route::resource('admin/resume', 'App\Http\Controllers\Admin\ResumeController');
+
+/*END ADMIN*/
+
+/*START SITE*/
+
+Route::get('/', 'App\Http\Controllers\Site\IndexController@index')->name('dashboard');
+
+/*END SITE*/
+
 
 Route::get('test', 'App\Http\Controllers\HomeController@test');
 
@@ -40,9 +62,9 @@ Route::delete('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\Portfoli
     return view('admin.dashboard.index');
 });*/
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('site.index.index');
-});
+});*/
 
 Route::get('/about', function () {
     return view('site.about.index');

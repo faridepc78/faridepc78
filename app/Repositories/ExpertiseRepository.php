@@ -41,4 +41,9 @@ class ExpertiseRepository
     {
         return Expertise::all();
     }
+
+    public function get20()
+    {
+        return Expertise::query()->take(20);
+    }
 }
