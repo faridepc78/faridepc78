@@ -131,10 +131,6 @@
 
                         </div>
 
-                        <div class="pagination mt-3">
-                            {!! $work->links() !!}
-                        </div>
-
                     </div>
 
                 </div>

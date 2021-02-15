@@ -213,7 +213,7 @@
 </div>
 
 @section('js')
-    <script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script>
 @endsection
 
 @include('admin.layout.footer')

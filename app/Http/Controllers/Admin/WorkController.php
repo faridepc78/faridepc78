@@ -22,7 +22,7 @@ class WorkController extends Controller
 
     public function index()
     {
-        $work = $this->workRepository->paginate();
+        $work = $this->workRepository->get();
         return view('admin.work.index', compact('work'));
     }
 

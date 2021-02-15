@@ -12,71 +12,33 @@
                 میره
             </div>
             <div class="items clearfix">
-                <div class="item col-xs-12 col-sm-4 col-md-3">
-                    <div class="i-content">
-                        <div class="i-header">
-                            <img src="site/img/works/thumb/71.jpg" alt="اپلیکیشن لومیناتی" class="img-fluid">
-                        </div>
-                        <div class="ic-content">
-                            <div class="ic-title">
-                                <a href="works/71-اپلیکیشن-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html">اپلیکیشن
-                                    لومیناتی</a>
+
+                @if(count($portfolio))
+
+                    @foreach($portfolio as $value)
+
+                        <div class="item col-xs-12 col-sm-4 col-md-3">
+                            <div class="i-content">
+                                <div class="i-header">
+                                    <img src="{{$value->image->thumb}}" alt="{{$value->name}}" class="img-fluid">
+                                </div>
+                                <div class="ic-content">
+                                    <div class="ic-title">
+                                        <a href="{{$value->path()}}">{{$value->name}}</a>
+                                    </div>
+                                    <div class="ic-description">{{$value->headline}}</div>
+                                    <a href="{{$value->path()}}"
+                                       class="show-more">مشاهده کامل</a>
+                                </div>
                             </div>
-                            <div class="ic-description">اپلیکیشن سرمایه گذاری ارز دیجیتال</div>
-                            <a href="works/71-اپلیکیشن-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html"
-                               class="show-more">مشاهده کامل</a>
                         </div>
-                    </div>
-                </div>
-                <div class="item col-xs-12 col-sm-4 col-md-3">
-                    <div class="i-content">
-                        <div class="i-header">
-                            <img src="site/img/works/thumb/69.jpg" alt="وب سایت لومیناتی" class="img-fluid">
-                        </div>
-                        <div class="ic-content">
-                            <div class="ic-title">
-                                <a href="works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html">وب سایت
-                                    لومیناتی</a>
-                            </div>
-                            <div class="ic-description">وب سایت سرمایه گذاری ارز دیجیتال</div>
-                            <a href="works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html"
-                               class="show-more">مشاهده کامل</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item col-xs-12 col-sm-4 col-md-3">
-                    <div class="i-content">
-                        <div class="i-header">
-                            <img src="site/img/works/thumb/52.jpg" alt="درگاه پرداخت صرافی" class="img-fluid">
-                        </div>
-                        <div class="ic-content">
-                            <div class="ic-title">
-                                <a href="works/52-درگاه-پرداخت-صرافی.html">درگاه پرداخت صرافی</a>
-                            </div>
-                            <div class="ic-description">پرداخت ارزی و ریالی</div>
-                            <a href="works/52-درگاه-پرداخت-صرافی.html" class="show-more">مشاهده کامل</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item col-xs-12 col-sm-4 col-md-3">
-                    <div class="i-content">
-                        <div class="i-header">
-                            <img src="site/img/works/thumb/50.jpg" alt="سایت معرفی و اطلاع رسانی کاندیداها"
-                                 class="img-fluid">
-                        </div>
-                        <div class="ic-content">
-                            <div class="ic-title">
-                                <a href="works/50-سایت-معرفی-و-اطلاع-رسانی-کاندیداها-سماک.html">سایت معرفی و
-                                    اطلاع رسانی کاندیداها</a>
-                            </div>
-                            <div class="ic-description">سماک</div>
-                            <a href="works/50-سایت-معرفی-و-اطلاع-رسانی-کاندیداها-سماک.html" class="show-more">مشاهده
-                                کامل</a>
-                        </div>
-                    </div>
-                </div>
+
+                    @endforeach
+
+                @endif
+
             </div>
-            <a href="works/" class="show-more-items">
+            <a href="{{route('works')}}" class="show-more-items">
                 نمونه کارهای بیشتر <i class="fi fi-left-arrow"></i>
             </a>
         </div>

@@ -33,4 +33,9 @@ class SocialRepository
             'link' => $values->link
         ]);
     }
+
+    public function all()
+    {
+        return Social::query()->orderBy('id', 'desc')->get();
+    }
 }

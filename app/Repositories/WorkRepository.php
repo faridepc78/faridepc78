@@ -15,9 +15,9 @@ class WorkRepository
         ]);
     }
 
-    public function paginate()
+    public function get()
     {
-        return Work::query()->orderBy('id', 'desc')->paginate();
+        return Work::query()->orderBy('id','desc')->get();
     }
 
     public function findById($id)

@@ -84,9 +84,8 @@
 
                                 <div class="form-group">
                                     <label for="text">توضیحات تخصص</label>
-                                    <textarea class="form-control @error('text') is-invalid @enderror" id="text"
-                                              name="text" rows="5"
-                                              style="resize: vertical"
+                                    <textarea class="form-control ckeditor @error('text') is-invalid @enderror" id="text"
+                                              name="text"
                                               placeholder="لطفا توضیحات تخصص را وارد کنید" autocomplete="text"
                                               autofocus required>{{ old('text',$expertise->text) }}</textarea>
 
@@ -111,5 +110,9 @@
         </div>
     </section>
 </div>
+
+@section('js')
+    <script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script>
+@endsection
 
 @include('admin.layout.footer')

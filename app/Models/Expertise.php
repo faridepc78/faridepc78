@@ -19,11 +19,16 @@ class Expertise extends Model
 
     public function portfolio_expertise()
     {
-        return $this->hasOne(PortfolioExpertise::class,'expertise_id');
+        return $this->hasOne(PortfolioExpertise::class, 'expertise_id');
     }
 
     public function portfolio()
     {
         return $this->belongsToMany(Portfolio::class, 'portfolio_expertise', 'expertise_id', 'portfolio_id');
+    }
+
+    public function path()
+    {
+        return route('singleExpertise', $this->id . '-' . $this->slug);
     }
 }

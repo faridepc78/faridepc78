@@ -44,4 +44,9 @@ class Portfolio extends Model
     {
         return $this->belongsToMany(Expertise::class,'portfolio_expertise','portfolio_id','expertise_id');
     }
+
+    public function path()
+    {
+        return route('singleWork', $this->id . '-' . $this->slug);
+    }
 }

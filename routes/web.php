@@ -39,12 +39,27 @@ Route::resource('admin/resume', 'App\Http\Controllers\Admin\ResumeController');
 
 /*START SITE*/
 
-Route::get('/', 'App\Http\Controllers\Site\IndexController@index')->name('dashboard');
+Route::get('/', 'App\Http\Controllers\Site\IndexController@index')->name('index');
+
+Route::get('/terms', 'App\Http\Controllers\Site\PageController@terms')->name('terms');
+
+Route::get('/about-me', 'App\Http\Controllers\Site\PageController@about')->name('about-me');
+
+Route::get('/contact-me', 'App\Http\Controllers\Site\ContactController@index')->name('contact-me');
+
+Route::get('/expertise', 'App\Http\Controllers\Site\ExpertiseController@index')->name('expertise');
+Route::get('/expertise/{slug}', 'App\Http\Controllers\Site\ExpertiseController@show')->name('singleExpertise');
+
+Route::get('/works', 'App\Http\Controllers\Site\PortfolioController@index')->name('works');
+Route::get('/work/{slug}', 'App\Http\Controllers\Site\PortfolioController@show')->name('singleWork');
+
+Route::get('/blog', 'App\Http\Controllers\Site\PostController@index')->name('blog');
+Route::get('/blog/{slug}', 'App\Http\Controllers\Site\PostController@show')->name('singlePost');
 
 /*END SITE*/
 
 
-Route::get('test', 'App\Http\Controllers\HomeController@test');
+/*Route::get('test', 'App\Http\Controllers\HomeController@test');*/
 
 /*Route::resource('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController', [
     'names' => [
@@ -66,7 +81,7 @@ Route::delete('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\Portfoli
     return view('site.index.index');
 });*/
 
-Route::get('/about', function () {
+/*Route::get('/about', function () {
     return view('site.about.index');
 });
 
@@ -92,15 +107,15 @@ Route::get('/portfolio/work/{id}', function () {
 
 Route::get('/payment', function () {
     return view('site.payment.index');
-});
+});*/
 
-Route::get('/expertise', function () {
+/*Route::get('/expertise', function () {
     return view('site.expertise.index');
 });
 
 Route::get('/expertise/post/{id}', function () {
     return view('site.expertise.post.index');
-});
+});*/
 
 //Auth::routes();
 

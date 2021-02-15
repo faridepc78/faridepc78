@@ -23,6 +23,11 @@ class PostRepository
         return Post::query()->orderBy('id', 'desc')->paginate();
     }
 
+    public function get3()
+    {
+        return Post::query()->orderBy('id','desc')->limit(3)->get();
+    }
+
     public function findById($id)
     {
         return Post::query()->findOrFail($id);

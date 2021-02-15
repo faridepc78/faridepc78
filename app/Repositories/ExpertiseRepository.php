@@ -44,6 +44,6 @@ class ExpertiseRepository
 
     public function get20()
     {
-        return Expertise::query()->take(20);
+        return Expertise::query()->orderBy('id','desc')->limit(20)->get();
     }
 }

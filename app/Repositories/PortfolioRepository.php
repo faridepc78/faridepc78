@@ -27,6 +27,16 @@ class PortfolioRepository
         return Portfolio::query()->orderBy('id', 'desc')->paginate();
     }
 
+    public function get4()
+    {
+        return Portfolio::query()->orderBy('id', 'desc')->limit(4)->get();
+    }
+
+    public function all()
+    {
+        return Portfolio::query()->orderBy('id', 'desc')->get();
+    }
+
     public function findById($id)
     {
         return Portfolio::query()->findOrFail($id);

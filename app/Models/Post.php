@@ -21,4 +21,9 @@ class Post extends Model
     {
         return $this->belongsTo(Media::class, 'image_id');
     }
+
+    public function path()
+    {
+        return route('singlePost', $this->id . '-' . $this->slug);
+    }
 }
