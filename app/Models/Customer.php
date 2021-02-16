@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Resume extends Model
+class Customer extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-    protected $table = 'resume';
-    protected $fillable = ['id', 'name', 'customer', 'year', 'created_at', 'updated_at'];
+    protected $table = 'customer';
+    protected $fillable = ['id', 'name', 'from', 'text', 'created_at', 'updated_at'];
 }

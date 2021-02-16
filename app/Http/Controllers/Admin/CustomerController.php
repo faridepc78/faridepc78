@@ -3,37 +3,38 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Social\CreateSocialRequest;
-use App\Http\Requests\Social\UpdateSocialRequest;
-use App\Repositories\SocialRepository;
+use App\Http\Requests\Customer\CreateCustomerRequest;
+use App\Http\Requests\Customer\UpdateCustomerRequest;
+use App\Repositories\CustomerRepository;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class SocialController extends Controller
+class CustomerController extends Controller
 {
-    private $socialRepository;
+    private $customerRepository;
 
-    public function __construct(SocialRepository $socialRepository)
+    public function __construct(CustomerRepository $customerRepository)
     {
-        $this->socialRepository = $socialRepository;
+        $this->customerRepository = $customerRepository;
     }
 
     public function index()
     {
-        $social = $this->socialRepository->paginate();
-        return view('admin.social.index', compact('social'));
+        $customer = $this->customerRepository->paginate();
+        return view('admin.customer.index',compact('customer'));
     }
 
     public function create()
     {
-        return view('admin.social.create');
+        return view('admin.customer.create');
     }
 
-    public function store(CreateSocialRequest $request)
+    public function store(CreateCustomerRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
-                $this->socialRepository->store($request);
+                $this->customerRepository->store($request);
             });
             DB::commit();
             newFeedback();
@@ -46,15 +47,15 @@ class SocialController extends Controller
 
     public function edit($id)
     {
-        $social = $this->socialRepository->findById($id);
-        return view('admin.social.edit', compact('social'));
+        $customer = $this->customerRepository->findById($id);
+        return view('admin.customer.edit', compact('customer'));
     }
 
-    public function update(UpdateSocialRequest $request, $id)
+    public function update(UpdateCustomerRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
-                $this->socialRepository->update($request, $id);
+                $this->customerRepository->update($request, $id);
             });
             DB::commit();
             newFeedback();
@@ -69,8 +70,8 @@ class SocialController extends Controller
     {
         try {
             DB::transaction(function () use ($id) {
-                $social = $this->socialRepository->findById($id);
-                $social->delete();
+                $customer = $this->customerRepository->findById($id);
+                $customer->delete();
             });
             DB::commit();
             newFeedback();

@@ -111,47 +111,4 @@ class PortfolioController extends Controller
         }
         return back();
     }
-
-    /*public function show_slider($id)
-    {
-        $portfolio = $this->portfolioRepository->findById($id);
-        $portfolioCategory = $this->portfolioCategoryRepository->paginate();
-        return view('admin.portfolio.slider.management', compact('portfolio', 'portfolioCategory'));
-    }*/
-
-    /*public function store_slider(CreatePortfolioSliderRequest $request)
-    {
-        try {
-            DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->portfolioRepository->store_slider($request);
-            });
-            DB::commit();
-            newFeedback();
-        } catch (Exception $exception) {
-            dd($exception);
-            DB::rollBack();
-            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
-        }
-        return back();
-    }*/
-
-    /*public function destroy_slider($id)
-    {
-        try {
-            DB::transaction(function () use ($id) {
-                $portfolioSlider = $this->portfolioSliderRepository->findById($id);
-                if ($portfolioSlider->image) {
-                    $portfolioSlider->image->delete();
-                }
-                $portfolioSlider->delete();
-            });
-            DB::commit();
-            newFeedback();
-        } catch (Exception $exception) {
-            DB::rollBack();
-            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
-        }
-        return back();
-    }*/
 }

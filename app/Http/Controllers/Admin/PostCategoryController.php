@@ -46,11 +46,6 @@ class PostCategoryController extends Controller
         return back();
     }
 
-    public function show($id)
-    {
-
-    }
-
     public function edit($id)
     {
         $postCategory = $this->postCategoryRepository->findById($id);

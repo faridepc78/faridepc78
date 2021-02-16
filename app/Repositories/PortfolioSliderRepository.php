@@ -19,4 +19,9 @@ class PortfolioSliderRepository
             'image_id' => $values->image_id
         ]);
     }
+
+    public function findByPortfolioId($portfolio_id)
+    {
+        return PortfolioSlider::query()->where('portfolio_id', $portfolio_id)->orderBy('id', 'desc')->get();
+    }
 }

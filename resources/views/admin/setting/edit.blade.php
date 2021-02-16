@@ -166,6 +166,36 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="about1">درباره من 1</label>
+                                    <textarea class="form-control ckeditor @error('about1') is-invalid @enderror"
+                                              id="about1"
+                                              name="about1"
+                                              autocomplete="about1"
+                                              autofocus required>{{ old('about1',$setting->about1) }}</textarea>
+
+                                    @error('about1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="about2">درباره من 2</label>
+                                    <textarea class="form-control ckeditor @error('about2') is-invalid @enderror"
+                                              id="about2"
+                                              name="about2"
+                                              autocomplete="about2"
+                                              autofocus required>{{ old('about2',$setting->about2) }}</textarea>
+
+                                    @error('about2')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>about2
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="footer_text">متن فوتر سایت</label>
                                     <textarea class="form-control @error('footer_text') is-invalid @enderror"
                                               rows="5"
@@ -177,20 +207,6 @@
                                               autofocus required>{{ old('footer_text',$setting->footer_text) }}</textarea>
 
                                     @error('footer_text')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">لوگو سایت</label>
-                                    <img class="img-size-64" src="{{$setting->image->thumb}}">
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           value="{{ old('image') }}" autofocus
-                                           id="image" name="image">
-
-                                    @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

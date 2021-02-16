@@ -5,35 +5,40 @@ use Illuminate\Support\Facades\Route;
 
 /*START ADMIN*/
 
-Route::get('admin/dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('dashboard');
+Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::resource('admin/expertise', 'App\Http\Controllers\Admin\ExpertiseController');
+    Route::resource('expertise', 'ExpertiseController')->except(['show']);
 
-Route::resource('admin/portfolio_category', 'App\Http\Controllers\Admin\PortfolioCategoryController');
+    Route::resource('portfolio_category', 'PortfolioCategoryController')->except(['show']);
 
-Route::resource('admin/portfolio', 'App\Http\Controllers\Admin\PortfolioController');
+    Route::resource('portfolio', 'PortfolioController');
 
-Route::get('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@index')->name('portfolio.slider.index');
-Route::post('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@store')->name('portfolio.slider.store');
-Route::delete('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
+    Route::get('portfolio/{id}/slider', 'PortfolioSliderController@index')->name('portfolio.slider.index');
+    Route::post('portfolio/{id}/slider', 'PortfolioSliderController@store')->name('portfolio.slider.store');
+    Route::delete('portfolio/{id}/slider', 'PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
 
-Route::get('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@index')->name('portfolio.expertise.index');
-Route::post('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@store')->name('portfolio.expertise.store');
-Route::delete('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
+    Route::get('portfolio/{id}/expertise', 'PortfolioExpertiseController@index')->name('portfolio.expertise.index');
+    Route::post('portfolio/{id}/expertise', 'PortfolioExpertiseController@store')->name('portfolio.expertise.store');
+    Route::delete('portfolio/{id}/expertise', 'PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
 
-Route::resource('admin/post_category', 'App\Http\Controllers\Admin\PostCategoryController');
+    Route::resource('post_category', 'PostCategoryController')->except(['show']);
 
-Route::resource('admin/post', 'App\Http\Controllers\Admin\PostController');
+    Route::resource('post', 'PostController');
 
-Route::resource('admin/setting', 'App\Http\Controllers\Admin\SettingController');
+    Route::resource('setting', 'SettingController')->except(['show', 'destroy']);
 
-Route::resource('admin/work', 'App\Http\Controllers\Admin\WorkController');
+    Route::resource('work', 'WorkController')->except(['show']);
 
-Route::resource('admin/social', 'App\Http\Controllers\Admin\SocialController');
+    Route::resource('customer', 'CustomerController')->except(['show']);
 
-Route::resource('admin/contactInfo', 'App\Http\Controllers\Admin\ContactInfoController');
+    Route::resource('social', 'SocialController')->except(['show']);
 
-Route::resource('admin/resume', 'App\Http\Controllers\Admin\ResumeController');
+    Route::resource('contactInfo', 'ContactInfoController')->except(['show']);
+
+    Route::resource('resume', 'ResumeController')->except(['show']);
+});
+
 
 /*END ADMIN*/
 
@@ -45,16 +50,17 @@ Route::get('/terms', 'App\Http\Controllers\Site\PageController@terms')->name('te
 
 Route::get('/about-me', 'App\Http\Controllers\Site\PageController@about')->name('about-me');
 
-Route::get('/contact-me', 'App\Http\Controllers\Site\ContactController@index')->name('contact-me');
+/*Route::get('/contact-me', 'App\Http\Controllers\Site\ContactController@index')->name('contact-me');*/
 
 Route::get('/expertise', 'App\Http\Controllers\Site\ExpertiseController@index')->name('expertise');
 Route::get('/expertise/{slug}', 'App\Http\Controllers\Site\ExpertiseController@show')->name('singleExpertise');
 
 Route::get('/works', 'App\Http\Controllers\Site\PortfolioController@index')->name('works');
+Route::get('/works/{slug}', 'App\Http\Controllers\Site\PortfolioController@filter')->name('filterWorks');
 Route::get('/work/{slug}', 'App\Http\Controllers\Site\PortfolioController@show')->name('singleWork');
 
-Route::get('/blog', 'App\Http\Controllers\Site\PostController@index')->name('blog');
-Route::get('/blog/{slug}', 'App\Http\Controllers\Site\PostController@show')->name('singlePost');
+/*Route::get('/blog', 'App\Http\Controllers\Site\PostController@index')->name('blog');
+Route::get('/blog/{slug}', 'App\Http\Controllers\Site\PostController@show')->name('singlePost');*/
 
 /*END SITE*/
 

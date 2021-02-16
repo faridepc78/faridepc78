@@ -46,11 +46,6 @@ class ResumeController extends Controller
         return back();
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $resume = $this->resumeRepository->findById($id);

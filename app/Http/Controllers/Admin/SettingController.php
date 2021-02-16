@@ -38,7 +38,6 @@ class SettingController extends Controller
         if (!empty($setting)) return redirect()->route('setting.edit',$setting->id);
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
                 $this->settingRepository->store($request);
             });
             DB::commit();
@@ -62,14 +61,6 @@ class SettingController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $setting = $this->settingRepository->findById($id);
-                if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                    if ($setting->image) {
-                        $setting->image->delete();
-                    }
-                } else {
-                    $request->request->add(['image_id' => $setting->image_id]);
-                }
                 $this->settingRepository->update($request, $id);
             });
             DB::commit();

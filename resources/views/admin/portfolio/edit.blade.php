@@ -114,8 +114,7 @@
                                     <label for="image">تصویر تخصص</label>
                                     <img class="img-size-64" src="{{$portfolio->image->thumb}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           value="{{ old('image') }}" autofocus
-                                           id="image" name="image">
+                                          autofocus id="image" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">

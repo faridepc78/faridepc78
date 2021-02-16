@@ -11,6 +11,7 @@ class PostCategory extends Model
 
     protected $guarded = [];
     protected $table = 'post_category';
+    protected $fillable = ['id', 'name', 'slug', 'created_at', 'updated_at'];
 
     public function image()
     {

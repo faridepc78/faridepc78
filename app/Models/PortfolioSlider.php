@@ -11,6 +11,7 @@ class PortfolioSlider extends Model
 
     protected $guarded = [];
     protected $table = 'portfolio_slider';
+    protected $fillable = ['id', 'portfolio_id', 'image_id', 'created_at', 'updated_at'];
 
     public function portfolio()
     {

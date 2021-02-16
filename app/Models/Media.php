@@ -10,6 +10,10 @@ class Media extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    protected $table = 'media';
+    protected $fillable = ['id', 'files', 'type', 'filename', 'created_at', 'updated_at'];
+
     protected $casts = [
         'files' => 'json'
     ];

@@ -1,5 +1,5 @@
 @section('title')
-    <title>پنل مدیریت فرید شیشه بری | دسته بندی پست ها</title>
+    <title>پنل مدیریت فرید شیشه بری | مشتریان</title>
 @endsection
 
 @include('admin.layout.header')
@@ -15,11 +15,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('post_category.index')}}">لیست دسته بندی پست ها</a>
-                        </li>
-                        <li class="breadcrumb-item"><a class="my-active"
-                                                       href="{{route('post_category.edit',$postCategory->id)}}">ویرایش
-                                دسته بندی پست ها ({{$postCategory->name}})</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('customer.index')}}">لیست مشتریان</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('customer.edit',$customer->id)}}">ویرایش مشتری ({{$customer->name}})</a></li>
                     </ol>
                 </div>
 
@@ -35,11 +32,10 @@
                     <div class="card card-success">
 
                         <div class="card-header">
-                            <h3 class="card-title">ویرایش دسته بندی پست ({{$postCategory->name}})</h3>
+                            <h3 class="card-title">ویرایش مشتری ({{$customer->name}})</h3>
                         </div>
 
-                        <form action="{{route('post_category.update',$postCategory->id)}}" method="post"
-                              enctype="multipart/form-data">
+                        <form action="{{route('customer.update',$customer->id)}}" method="post">
 
                             @csrf
                             @method('patch')
@@ -47,11 +43,11 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">نام دسته بندی پست</label>
+                                    <label for="name">نام راه ارتباطی</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                           value="{{ old('name',$postCategory->name) }}" id="name" name="name"
-                                           placeholder="لطفا نام دسته بندی پست را وارد کنید" autocomplete="name"
-                                           autofocus required>
+                                           value="{{ old('name',$customer->name) }}" id="name" name="name"
+                                           placeholder="لطفا نام راه ارتباطی را وارد کنید" autocomplete="name" autofocus
+                                           required>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -61,13 +57,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="slug">اسلاگ دسته بندی پست</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
-                                           value="{{ old('slug',$postCategory->slug) }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ دسته بندی پست را وارد کنید" autocomplete="slug"
-                                           autofocus required>
+                                    <label for="from">سمت مشتری</label>
+                                    <input type="text" class="form-control @error('from') is-invalid @enderror"
+                                           value="{{ old('from',$customer->from) }}" id="from" name="from"
+                                           placeholder="لطفا سمت مشتری را وارد کنید" autocomplete="from" autofocus
+                                           required>
 
-                                    @error('slug')
+                                    @error('from')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -75,12 +71,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">تصویر دسته بندی پست</label>
-                                    <img class="img-size-64" src="{{$postCategory->image->thumb}}">
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           autofocus id="image" name="image">
+                                    <label for="text">نظر مشتری</label>
+                                    <textarea style="resize: vertical" rows="5" type="text" class="form-control @error('text') is-invalid @enderror"
+                                              id="text" name="text"
+                                              placeholder="لطفا نظر مشتری را وارد کنید" autocomplete="text" autofocus
+                                              required>{{ old('text',$customer->text) }}</textarea>
 
-                                    @error('image')
+                                    @error('text')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

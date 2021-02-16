@@ -25,10 +25,9 @@ class PortfolioExpertiseController extends Controller
 
     public function index($id)
     {
-        //dd('ok');
         $portfolio = $this->portfolioRepository->findById($id);
         $expertise = $this->expertiseRepository->all();
-        $portfolioExpertise = $this->portfolioExpertiseRepository->allToArray();
+        $portfolioExpertise = $this->portfolioExpertiseRepository->all();
         return view('admin.portfolio.expertise.management', compact('portfolio', 'expertise', 'portfolioExpertise'));
     }
 

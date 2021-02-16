@@ -1,5 +1,5 @@
 @section('title')
-    <title>پنل مدیریت فرید شیشه بری | دسته بندی پست ها</title>
+    <title>پنل مدیریت فرید شیشه بری | مشتریان</title>
 @endsection
 
 @include('admin.layout.header')
@@ -15,10 +15,9 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('post_category.index')}}">لیست دسته بندی پست ها</a>
-                        </li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post_category.create')}}">ایجاد
-                                دسته بندی پست ها</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('customer.index')}}">لیست مشتریان</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('customer.create')}}">ایجاد
+                                مشتریان</a></li>
                     </ol>
                 </div>
 
@@ -34,21 +33,21 @@
                     <div class="card card-primary">
 
                         <div class="card-header">
-                            <h3 class="card-title">ایجاد دسته بندی پست ها</h3>
+                            <h3 class="card-title">ایجاد مشتریان</h3>
                         </div>
 
-                        <form action="{{route('post_category.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('customer.store')}}" method="post">
 
                             @csrf
 
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">نام دسته بندی نمونه کار</label>
+                                    <label for="name">نام مشتری</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام دسته بندی نمونه کار را وارد کنید" autocomplete="name"
-                                           autofocus required>
+                                           placeholder="لطفا نام مشتری را وارد کنید" autocomplete="name" autofocus
+                                           required>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,13 +57,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="slug">اسلاگ دسته بندی نمونه کار</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
-                                           value="{{ old('slug') }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ دسته بندی نمونه کار را وارد کنید" autocomplete="slug"
-                                           autofocus required>
+                                    <label for="from">سمت مشتری</label>
+                                    <input type="text" class="form-control @error('from') is-invalid @enderror"
+                                           value="{{ old('from') }}" id="from" name="from"
+                                           placeholder="لطفا سمت مشتری را وارد کنید" autocomplete="from" autofocus
+                                           required>
 
-                                    @error('slug')
+                                    @error('from')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -72,11 +71,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">تصویر دسته بندی پست</label>
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           autofocus id="image" name="image" required>
+                                    <label for="text">نظر مشتری</label>
+                                    <textarea style="resize: vertical" rows="5" type="text" class="form-control @error('text') is-invalid @enderror"
+                                           id="text" name="text"
+                                           placeholder="لطفا نظر مشتری را وارد کنید" autocomplete="text" autofocus
+                                              required>{{ old('text') }}</textarea>
 
-                                    @error('image')
+                                    @error('text')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

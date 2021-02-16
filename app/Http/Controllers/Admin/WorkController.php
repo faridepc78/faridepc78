@@ -47,11 +47,6 @@ class WorkController extends Controller
         return back();
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $work = $this->workRepository->findById($id);

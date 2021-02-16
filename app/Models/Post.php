@@ -11,6 +11,17 @@ class Post extends Model
 
     protected $guarded = [];
     protected $table = 'post';
+    protected $fillable = [
+        'id',
+        'name',
+        'slug',
+        'post_category_id',
+        'image_id',
+        'text',
+        'view',
+        'created_at',
+        'updated_at'
+    ];
 
     public function category()
     {

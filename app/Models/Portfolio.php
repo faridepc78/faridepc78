@@ -12,6 +12,7 @@ class Portfolio extends Model
     protected $guarded = [];
     protected $table = 'portfolio';
     protected $fillable = [
+        'id',
         'name',
         'headline',
         'slug',

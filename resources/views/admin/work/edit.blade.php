@@ -59,10 +59,7 @@
                                 <div class="form-group">
                                     <label for="text">توضیحات کار</label>
                                     <textarea class="form-control ckeditor @error('text') is-invalid @enderror"
-                                              id="text"
-                                              name="text" rows="5"
-                                              style="resize: vertical"
-                                              placeholder="لطفا توضیحات کار را وارد کنید" autocomplete="text"
+                                              id="text" name="text" autocomplete="text"
                                               autofocus required>{{ old('text',$work->text) }}</textarea>
 
                                     @error('text')
@@ -76,8 +73,7 @@
                                     <label for="image">تصویر کار</label>
                                     <img class="img-size-64" src="{{$work->image->thumb}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           value="{{ old('image') }}" autofocus
-                                           id="image" name="image">
+                                           autofocus id="image" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">

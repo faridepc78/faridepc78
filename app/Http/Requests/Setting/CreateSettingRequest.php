@@ -22,8 +22,9 @@ class CreateSettingRequest extends FormRequest
             'trust_reason2'=>'required',
             'trust_reason3'=>'required',
             'trust_reason4'=>'required',
-            'footer_text'=>'required',
-            'image'=>'required|mimes:jpg,png,jpeg|max:1024',
+            'about1' => 'required',
+            'about2' => 'required',
+            'footer_text'=>'required'
         ];
     }
 
@@ -38,8 +39,9 @@ class CreateSettingRequest extends FormRequest
             'trust_reason2'=>'دلیل 2 اعتماد مدیر سایت',
             'trust_reason3'=>'دلیل 3 اعتماد مدیر سایت',
             'trust_reason4'=>'دلیل 4 اعتماد مدیر سایت',
-            'footer_text'=>'متن فوتر سایت',
-            'image'=>'لوگو سایت'
+            'about1' => 'درباره من 1',
+            'about2' => 'درباره من 2',
+            'footer_text'=>'متن فوتر سایت'
         ];
     }
 }

@@ -94,8 +94,7 @@
                                 <div class="form-group">
                                     <label for="image">تصویر پست</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           value="{{ old('image') }}" autofocus
-                                           id="image" name="image" required>
+                                        autofocus id="image" name="image" required>
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -108,9 +107,7 @@
                                     <label for="text">توضیحات پست</label>
                                     <textarea class="form-control ckeditor @error('text') is-invalid @enderror"
                                               id="text"
-                                              name="text" rows="5"
-                                              style="resize: vertical"
-                                              placeholder="لطفا توضیحات پست را وارد کنید" autocomplete="text"
+                                              name="text" autocomplete="text"
                                               autofocus required>{{ old('text') }}</textarea>
 
                                     @error('text')

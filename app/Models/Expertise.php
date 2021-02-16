@@ -11,6 +11,7 @@ class Expertise extends Model
 
     protected $guarded = [];
     protected $table = 'expertise';
+    protected $fillable = ['id', 'name', 'slug', 'image_id', 'text', 'created_at', 'updated_at'];
 
     public function image()
     {

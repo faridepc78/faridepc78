@@ -7,6 +7,7 @@ use App\Http\Requests\PortfolioCategory\CreatePortfolioCategoryRequest;
 use App\Http\Requests\PortfolioCategory\UpdatePortfolioCategoryRequest;
 use App\Repositories\PortfolioCategoryRepository;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class PortfolioCategoryController extends Controller
 {
@@ -31,17 +32,16 @@ class PortfolioCategoryController extends Controller
     public function store(CreatePortfolioCategoryRequest $request)
     {
         try {
-            $this->portfolioCategoryRepository->store($request);
+            DB::transaction(function () use ($request) {
+                $this->portfolioCategoryRepository->store($request);
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
-    }
-
-    public function show($id)
-    {
-
     }
 
     public function edit($id)
@@ -53,9 +53,13 @@ class PortfolioCategoryController extends Controller
     public function update(UpdatePortfolioCategoryRequest $request, $id)
     {
         try {
-            $this->portfolioCategoryRepository->update($request, $id);
+            DB::transaction(function () use ($request, $id) {
+                $this->portfolioCategoryRepository->update($request, $id);
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -64,10 +68,14 @@ class PortfolioCategoryController extends Controller
     public function destroy($id)
     {
         try {
-            $portfolio_category = $this->portfolioCategoryRepository->findById($id);
-            $portfolio_category->delete();
+            DB::transaction(function () use ($id){
+                $portfolio_category = $this->portfolioCategoryRepository->findById($id);
+                $portfolio_category->delete();
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

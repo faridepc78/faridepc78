@@ -8,6 +8,7 @@ use App\Http\Requests\Expertise\UpdateExpertiseRequest;
 use App\Repositories\ExpertiseRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class ExpertiseController extends Controller
 {
@@ -32,18 +33,17 @@ class ExpertiseController extends Controller
     public function store(CreateExpertiseRequest $request)
     {
         try {
-            $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-            $this->expertiseRepository->store($request);
+            DB::transaction(function () use ($request){
+                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                $this->expertiseRepository->store($request);
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
-    }
-
-    public function show($id)
-    {
-
     }
 
     public function edit($id)
@@ -55,18 +55,22 @@ class ExpertiseController extends Controller
     public function update(UpdateExpertiseRequest $request, $id)
     {
         try {
-            $expertise = $this->expertiseRepository->findById($id);
-            if ($request->hasFile('image')) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                if ($expertise->image) {
-                    $expertise->image->delete();
+            DB::transaction(function () use ($request,$id){
+                $expertise = $this->expertiseRepository->findById($id);
+                if ($request->hasFile('image')) {
+                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    if ($expertise->image) {
+                        $expertise->image->delete();
+                    }
+                } else {
+                    $request->request->add(['image_id' => $expertise->image_id]);
                 }
-            } else {
-                $request->request->add(['image_id' => $expertise->image_id]);
-            }
-            $this->expertiseRepository->update($request, $id);
+                $this->expertiseRepository->update($request, $id);
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -75,13 +79,17 @@ class ExpertiseController extends Controller
     public function destroy($id)
     {
         try {
-            $expertise = $this->expertiseRepository->findById($id);
-            if ($expertise->image) {
-                $expertise->image->delete();
-            }
-            $expertise->delete();
+            DB::transaction(function () use ($id){
+                $expertise = $this->expertiseRepository->findById($id);
+                if ($expertise->image) {
+                    $expertise->image->delete();
+                }
+                $expertise->delete();
+            });
+            DB::commit();
             newFeedback();
         } catch (Exception $exception) {
+            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

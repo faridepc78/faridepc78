@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Expertise;
 use App\Models\PortfolioExpertise;
 
 class PortfolioExpertiseRepository
@@ -23,8 +24,16 @@ class PortfolioExpertiseRepository
         return PortfolioExpertise::query()->findOrFail($id);
     }
 
-    public function allToArray()
+    public function all()
     {
         return PortfolioExpertise::query()->get('expertise_id');
+    }
+
+    public function findByPortfolioId()
+    {
+        return Expertise::query()->
+        join('portfolio_expertise', 'expertise.id', '=', 'portfolio_expertise.expertise_id')
+            ->select('expertise.*')
+            ->get();
     }
 }

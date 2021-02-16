@@ -2,10 +2,6 @@
     <title>پنل مدیریت فرید شیشه بری | نمونه کار ها</title>
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="{{asset('admin/plugins/persianDatepicker/css/persianDatepicker-default.css')}}">
-@endsection
-
 @include('admin.layout.header')
 
 @include('admin.layout.sidebar')
@@ -145,7 +141,6 @@
 </div>
 
 @section('js')
-    <script src="{{asset('admin/plugins/persianDatepicker/js/persianDatepicker.min.js')}}"></script>
     <script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script>
 @endsection
 

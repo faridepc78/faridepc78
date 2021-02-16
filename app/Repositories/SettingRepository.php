@@ -17,8 +17,9 @@ class SettingRepository
             'trust_reason2' => $values->trust_reason2,
             'trust_reason3' => $values->trust_reason3,
             'trust_reason4' => $values->trust_reason4,
-            'footer_text' => $values->footer_text,
-            'image_id' => $values->image_id
+            'about1' => $values->about1,
+            'about2' => $values->about2,
+            'footer_text' => $values->footer_text
         ]);
     }
 
@@ -33,8 +34,9 @@ class SettingRepository
             'trust_reason2' => $values->trust_reason2,
             'trust_reason3' => $values->trust_reason3,
             'trust_reason4' => $values->trust_reason4,
-            'footer_text' => $values->footer_text,
-            'image_id' => $values->image_id
+            'about1' => $values->about1,
+            'about2' => $values->about2,
+            'footer_text' => $values->footer_text
         ]);
     }
 

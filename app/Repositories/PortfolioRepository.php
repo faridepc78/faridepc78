@@ -56,4 +56,9 @@ class PortfolioRepository
             'end_date' => $values->end_date
         ]);
     }
+
+    public function findByCategoryId($portfolio_category_id)
+    {
+        return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->orderBy('id', 'desc')->paginate();
+    }
 }

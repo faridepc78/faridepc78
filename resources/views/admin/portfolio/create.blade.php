@@ -113,8 +113,7 @@
                                 <div class="form-group">
                                     <label for="image">تصویر تخصص</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           value="{{ old('image') }}" autofocus
-                                           id="image" name="image" required>
+                                         autofocus id="image" name="image" required>
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">

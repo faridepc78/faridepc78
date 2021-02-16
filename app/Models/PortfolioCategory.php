@@ -11,4 +11,10 @@ class PortfolioCategory extends Model
 
     protected $guarded = [];
     protected $table='portfolio_category';
+    protected $fillable = ['id', 'name', 'slug', 'created_at', 'updated_at'];
+
+    public function path()
+    {
+        return route('filterWorks', $this->id . '-' . $this->slug);
+    }
 }

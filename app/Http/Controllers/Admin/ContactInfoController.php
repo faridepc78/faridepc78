@@ -47,11 +47,6 @@ class ContactInfoController extends Controller
         return back();
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $contactInfo = $this->contactInfoRepository->findById($id);
