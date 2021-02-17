@@ -5,7 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 /*START ADMIN*/
 
-Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'], function () {
+Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Panel'], function () {
+
+    Route::get('',function (){
+        return redirect()->route('dashboard');
+    });
+
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::resource('expertise', 'ExpertiseController')->except(['show']);
@@ -39,90 +44,41 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'],
     Route::resource('resume', 'ResumeController')->except(['show']);
 });
 
-
 /*END ADMIN*/
+
+/*START AUTH*/
+
+Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'App\Http\Controllers\Auth'], function () {
+// login
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login')->name('login');
+
+// logout
+    Route::any('/logout', 'LoginController@logout')->name('logout');
+});
+
+/*END AUTH*/
 
 /*START SITE*/
 
-Route::get('/', 'App\Http\Controllers\Site\IndexController@index')->name('index');
+Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], function () {
+    Route::get('', 'IndexController@index')->name('index');
 
-Route::get('/terms', 'App\Http\Controllers\Site\PageController@terms')->name('terms');
+    Route::get('terms', 'PageController@terms')->name('terms');
 
-Route::get('/about-me', 'App\Http\Controllers\Site\PageController@about')->name('about-me');
+    Route::get('about-me', 'PageController@about')->name('about-me');
 
-/*Route::get('/contact-me', 'App\Http\Controllers\Site\ContactController@index')->name('contact-me');*/
+    Route::get('contact-me', 'ContactController@index')->name('contact-me');
 
-Route::get('/expertise', 'App\Http\Controllers\Site\ExpertiseController@index')->name('expertise');
-Route::get('/expertise/{slug}', 'App\Http\Controllers\Site\ExpertiseController@show')->name('singleExpertise');
+    Route::get('expertise', 'ExpertiseController@index')->name('expertise');
+    Route::get('expertise/{slug}', 'ExpertiseController@show')->name('singleExpertise');
 
-Route::get('/works', 'App\Http\Controllers\Site\PortfolioController@index')->name('works');
-Route::get('/works/{slug}', 'App\Http\Controllers\Site\PortfolioController@filter')->name('filterWorks');
-Route::get('/work/{slug}', 'App\Http\Controllers\Site\PortfolioController@show')->name('singleWork');
+    Route::get('works', 'PortfolioController@index')->name('works');
+    Route::get('works/{slug}', 'PortfolioController@filter')->name('filterWorks');
+    Route::get('work/{slug}', 'PortfolioController@show')->name('singleWork');
 
-/*Route::get('/blog', 'App\Http\Controllers\Site\PostController@index')->name('blog');
-Route::get('/blog/{slug}', 'App\Http\Controllers\Site\PostController@show')->name('singlePost');*/
+    Route::get('blog', 'PostController@index')->name('blog');
+    Route::get('blog/{slug}', 'PostController@show')->name('singlePost');
+});
 
 /*END SITE*/
-
-
-/*Route::get('test', 'App\Http\Controllers\HomeController@test');*/
-
-/*Route::resource('admin/portfolio/slider/{id}', 'App\Http\Controllers\Admin\PortfolioSliderController', [
-    'names' => [
-        'index' => 'portfolio.slider.index',
-        'store' => 'portfolio.slider.store',
-        'destroy' => 'portfolio.slider.destroy'
-    ]
-])->except('create', 'show', 'edit', 'update');*/
-/*Route::resource('admin/portfolio/expertise/{id}', 'App\Http\Controllers\Admin\PortfolioExpertiseController');*/
-/*Route::get('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioController@show_slider')->name('portfolio.show_slider');
-Route::post('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioController@store_slider')->name('portfolio.store_slider');
-Route::delete('admin/portfolio/slider/{id}','App\Http\Controllers\Admin\PortfolioController@destroy_slider')->name('portfolio.destroy_slider');*/
-
-/*Route::get('/admin/dashboard',function (){
-    return view('admin.dashboard.index');
-});*/
-
-/*Route::get('/', function () {
-    return view('site.index.index');
-});*/
-
-/*Route::get('/about', function () {
-    return view('site.about.index');
-});
-
-Route::get('/contact', function () {
-    return view('site.contact.index');
-});
-
-Route::get('/blog', function () {
-    return view('site.blog.index');
-});
-
-Route::get('/blog/post/{id}', function () {
-    return view('site.blog.post.index');
-});
-
-Route::get('/portfolio', function () {
-    return view('site.portfolio.index');
-});
-
-Route::get('/portfolio/work/{id}', function () {
-    return view('site.portfolio.work.index');
-});
-
-Route::get('/payment', function () {
-    return view('site.payment.index');
-});*/
-
-/*Route::get('/expertise', function () {
-    return view('site.expertise.index');
-});
-
-Route::get('/expertise/post/{id}', function () {
-    return view('site.expertise.post.index');
-});*/
-
-//Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

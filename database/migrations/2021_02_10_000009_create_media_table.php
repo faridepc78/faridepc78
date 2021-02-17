@@ -16,7 +16,7 @@ class CreateMediaTable extends Migration
         Schema::create('media', function (Blueprint $table) {
             $table->id();
             $table->json('files');
-            $table->enum('type', ['image', 'video', 'audio', 'zip', 'doc', 'pdf']);
+            $table->enum('type', \App\Models\Media::$types);
             $table->string('filename', 255);
             $table->timestamps();
         });

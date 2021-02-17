@@ -15,6 +15,6 @@ class Work extends Model
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'image_id')->withDefault();
     }
 }

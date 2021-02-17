@@ -14,6 +14,9 @@ class Media extends Model
     protected $table = 'media';
     protected $fillable = ['id', 'files', 'type', 'filename', 'created_at', 'updated_at'];
 
+    const IMAGE = 'image';
+    static $types = [self::IMAGE];
+
     protected $casts = [
         'files' => 'json'
     ];

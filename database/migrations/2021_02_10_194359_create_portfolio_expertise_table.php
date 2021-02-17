@@ -15,14 +15,21 @@ class CreatePortfolioExpertiseTable extends Migration
     {
         Schema::create('portfolio_expertise', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('portfolio_id')->nullable();
             $table->unsignedBigInteger('expertise_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('portfolio_id')
+                ->references('id')
+                ->on('expertise')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
 
             $table->foreign('expertise_id')
                 ->references('id')
                 ->on('expertise')
                 ->onUpdate('CASCADE')
-                ->onDelete('SET NULL');
+                ->onDelete('CASCADE');
         });
     }
 

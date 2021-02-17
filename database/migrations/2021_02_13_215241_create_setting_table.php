@@ -24,14 +24,10 @@ class CreateSettingTable extends Migration
             $table->text('trust_reason3');
             $table->text('trust_reason4');
             $table->text('footer_text');
+            $table->longText('about1');
+            $table->longText('about2');
             $table->unsignedBigInteger('logo')->nullable();
             $table->timestamps();
-
-            $table->foreign('logo')
-                ->references('id')
-                ->on('media')
-                ->onUpdate('CASCADE')
-                ->onDelete('SET NULL');
         });
     }
 

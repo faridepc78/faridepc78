@@ -80,6 +80,8 @@ class MediaFileService
         foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
             if ($media->type == $type) {
                 return $service['handler']::thumb($media);
+            }else{
+                return '/site/img/customer_comment/no_pic.png';
             }
         }
     }
