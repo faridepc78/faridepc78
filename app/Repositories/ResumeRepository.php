@@ -17,7 +17,7 @@ class ResumeRepository
 
     public function paginate()
     {
-        return Resume::query()->orderBy('id', 'desc')->paginate();
+        return Resume::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

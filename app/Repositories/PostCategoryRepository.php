@@ -18,7 +18,7 @@ class PostCategoryRepository
 
     public function paginate()
     {
-        return PostCategory::query()->orderBy('id', 'desc')->paginate();
+        return PostCategory::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

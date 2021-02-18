@@ -81,7 +81,7 @@ class MediaFileService
             if ($media->type == $type) {
                 return $service['handler']::thumb($media);
             }else{
-                return '/site/img/customer_comment/no_pic.png';
+                return '/site_assets/img/customer_comment/no_pic.png';
             }
         }
     }

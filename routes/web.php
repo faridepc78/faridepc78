@@ -5,13 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 /*START ADMIN*/
 
-Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Panel'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
-    Route::get('',function (){
+    Route::get('/',function (){
         return redirect()->route('dashboard');
     });
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::get('profile', 'ProfileController@index')->name('profile');
+    Route::patch('profile/{id}', 'ProfileController@update')->name('profile.update');
 
     Route::resource('expertise', 'ExpertiseController')->except(['show']);
 

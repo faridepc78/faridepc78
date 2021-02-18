@@ -17,7 +17,7 @@ class SocialRepository
 
     public function paginate()
     {
-        return Social::query()->orderBy('id', 'desc')->paginate();
+        return Social::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

@@ -19,7 +19,7 @@ class ExpertiseRepository
 
     public function paginate()
     {
-        return Expertise::query()->orderBy('id', 'desc')->paginate();
+        return Expertise::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

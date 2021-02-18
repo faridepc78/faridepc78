@@ -45,8 +45,8 @@ class SettingRepository
         return Setting::query()->findOrFail($id);
     }
 
-    public function firstOrFail()
+    public function first()
     {
-        return Setting::query()->firstOrFail();
+        return Setting::query()->first();
     }
 }

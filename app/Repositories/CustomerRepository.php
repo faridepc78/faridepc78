@@ -17,7 +17,7 @@ class CustomerRepository
 
     public function paginate()
     {
-        return Customer::query()->orderBy('id', 'desc')->paginate();
+        return Customer::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

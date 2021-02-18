@@ -17,7 +17,7 @@ class PortfolioCategoryRepository
 
     public function paginate()
     {
-        return PortfolioCategory::query()->orderBy('id', 'desc')->paginate();
+        return PortfolioCategory::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

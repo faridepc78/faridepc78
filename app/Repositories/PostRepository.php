@@ -20,7 +20,7 @@ class PostRepository
 
     public function paginate()
     {
-        return Post::query()->orderBy('id', 'desc')->paginate();
+        return Post::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function get3()

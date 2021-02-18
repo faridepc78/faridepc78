@@ -15,11 +15,11 @@ class PortfolioExpertise extends Model
 
     public function portfolio()
     {
-        return $this->belongsTo(Portfolio::class, 'portfolio_id');
+        return $this->belongsTo(Portfolio::class, 'portfolio_id')->withDefault();
     }
 
     public function expertise()
     {
-        return $this->belongsTo(Expertise::class, 'expertise_id');
+        return $this->belongsTo(Expertise::class, 'expertise_id')->withDefault();
     }
 }

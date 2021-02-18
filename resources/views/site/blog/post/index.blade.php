@@ -327,7 +327,7 @@
                                         </div>
                                     </div>
                                     <div class="answer">
-                                        <div class="item" data-type="Panel" data-id="387" id="comment387">
+                                        <div class="item" data-type="Admin" data-id="387" id="comment387">
                                             <div class="avatar-area">
                                                 <img
                                                     src="https://www.gravatar.com/avatar/b7355e3e90006072eb0de5a5d51e838c?d=mm"
@@ -403,7 +403,7 @@
                                         </div>
                                     </div>
                                     <div class="answer">
-                                        <div class="item" data-type="Panel" data-id="380" id="comment380">
+                                        <div class="item" data-type="Admin" data-id="380" id="comment380">
                                             <div class="avatar-area">
                                                 <img
                                                     src="https://www.gravatar.com/avatar/b7355e3e90006072eb0de5a5d51e838c?d=mm"
@@ -479,7 +479,7 @@
                                         </div>
                                     </div>
                                     <div class="answer">
-                                        <div class="item" data-type="Panel" data-id="376" id="comment376">
+                                        <div class="item" data-type="Admin" data-id="376" id="comment376">
                                             <div class="avatar-area">
                                                 <img
                                                     src="https://www.gravatar.com/avatar/b7355e3e90006072eb0de5a5d51e838c?d=mm"

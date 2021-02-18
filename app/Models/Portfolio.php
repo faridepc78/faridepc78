@@ -28,12 +28,12 @@ class Portfolio extends Model
 
     public function category()
     {
-        return $this->belongsTo(PortfolioCategory::class, 'portfolio_category_id');
+        return $this->belongsTo(PortfolioCategory::class, 'portfolio_category_id')->withDefault();
     }
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'image_id')->withDefault();
     }
 
     public function slider()

@@ -19,7 +19,7 @@ class ContactInfoRepository
 
     public function paginate()
     {
-        return ContactInfo::query()->orderBy('id', 'desc')->paginate();
+        return ContactInfo::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function findById($id)

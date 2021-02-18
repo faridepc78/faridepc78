@@ -25,12 +25,12 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(PostCategory::class, 'post_category_id');
+        return $this->belongsTo(PostCategory::class, 'post_category_id')->withDefault();
     }
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'image_id')->withDefault();
     }
 
     public function path()

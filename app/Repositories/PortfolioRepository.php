@@ -24,7 +24,7 @@ class PortfolioRepository
 
     public function paginate()
     {
-        return Portfolio::query()->orderBy('id', 'desc')->paginate();
+        return Portfolio::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function get4()

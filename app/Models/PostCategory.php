@@ -11,10 +11,10 @@ class PostCategory extends Model
 
     protected $guarded = [];
     protected $table = 'post_category';
-    protected $fillable = ['id', 'name', 'slug', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'name', 'slug', 'image_id', 'created_at', 'updated_at'];
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'image_id')->withDefault();
     }
 }
