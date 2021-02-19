@@ -7,11 +7,18 @@ use Illuminate\Support\Str;
 
 class ExpertiseRepository
 {
+    private $faSlugify;
+
+    /*public function __construct(FaSlugify $faSlugify)
+    {
+$this->faSlugify=$faSlugify;
+    }*/
+
     public function store($values)
     {
         return Expertise::create([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'image_id' => $values->image_id,
             'text' => $values->text
         ]);
@@ -31,7 +38,7 @@ class ExpertiseRepository
     {
         return Expertise::query()->where('id', $id)->update([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'image_id' => $values->image_id,
             'text' => $values->text
         ]);
@@ -44,6 +51,6 @@ class ExpertiseRepository
 
     public function get20()
     {
-        return Expertise::query()->orderBy('id','desc')->limit(20)->get();
+        return Expertise::query()->orderBy('id', 'desc')->limit(20)->get();
     }
 }

@@ -11,5 +11,5 @@ class Social extends Model
 
     protected $guarded = [];
     protected $table = 'social';
-    protected $fillable = ['id', 'name', 'icon', 'link', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'name', 'icon', 'link', 'color', 'created_at', 'updated_at'];
 }

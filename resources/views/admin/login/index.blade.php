@@ -4,20 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>پنل مدیریت | صفحه ورود</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/adminlte.min.css')}}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{asset('admin_assets/plugins/iCheck/square/blue.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/bootstrap-rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/custom-style.css')}}">
 </head>
@@ -39,7 +29,7 @@
                 <div class="input-group mb-3">
                     <input id="email" type="email" placeholder="ایمیل را وارد کنید"
                            class="form-control @error('email') is-invalid @enderror" name="email"
-                           value="{{ old('email') }}" autocomplete="email" autofocus required>
+                           value="{{ old('email') }}" autocomplete="email" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fa fa-user"></span>
@@ -55,7 +45,7 @@
                 <div class="input-group mb-3">
                     <input id="password" type="password" placeholder="رمز عبور را وارد کنید"
                            class="form-control @error('password') is-invalid @enderror" name="password"
-                           autocomplete="current-password" required>
+                           autocomplete="current-password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fa fa-lock"></span>
@@ -67,6 +57,18 @@
                         </span>
                     @enderror
                 </div>
+
+                <div class="input-group mb-3">
+                    {!! app('captcha')->display(); !!}
+                    @if ($errors->has('g-recaptcha-response'))
+                        <span class="help-block" role="alert">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="clearfix"></div>
+                <br>
 
                 <div class="row">
                     <div class="col-8">
@@ -99,15 +101,6 @@
 </div>
 <script type="text/javascript" src="{{asset('admin_assets/plugins/jquery/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin_assets/plugins/iCheck/icheck.min.js')}}"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        })
-    })
-</script>
+<script src="https://www.google.com/recaptcha/api.js?explicit&hl=fa" async defer></script>
 </body>
 </html>

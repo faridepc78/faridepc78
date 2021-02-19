@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Social;
 
 use Illuminate\Foundation\Http\FormRequest;
+use LVR\Colour\Hex;
 
 class CreateSocialRequest extends FormRequest
 {
@@ -16,7 +17,8 @@ class CreateSocialRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'icon' => 'required|max:255',
-            'link'=>'required|max:255|url'
+            'link'=>'required|max:255|url',
+            'color'=>['required', new Hex]
         ];
     }
 
@@ -25,7 +27,8 @@ class CreateSocialRequest extends FormRequest
         return [
             'name' => 'نام شبکه اجتماعی',
             'icon' => 'آیکون شبکه اجتماعی',
-            'link' => 'لینک شبکه اجتماعی'
+            'link' => 'لینک شبکه اجتماعی',
+            'color'=>'رنگ آیکون شبکه اجتماعی'
         ];
     }
 }

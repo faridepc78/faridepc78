@@ -11,7 +11,7 @@ class PostCategoryRepository
     {
         return PostCategory::create([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'image_id' => $values->image_id
         ]);
     }
@@ -30,7 +30,7 @@ class PostCategoryRepository
     {
         return PostCategory::query()->where('id', $id)->update([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'image_id' => $values->image_id
         ]);
     }

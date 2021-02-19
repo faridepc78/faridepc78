@@ -29,11 +29,12 @@ class PortfolioExpertiseRepository
         return PortfolioExpertise::query()->get('expertise_id');
     }
 
-    public function findByPortfolioId()
+    public function findByPortfolioId($id)
     {
         return Expertise::query()->
         join('portfolio_expertise', 'expertise.id', '=', 'portfolio_expertise.expertise_id')
             ->select('expertise.*')
+            ->where('portfolio_id',$id)
             ->get();
     }
 }

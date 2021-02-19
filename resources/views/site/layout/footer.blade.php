@@ -10,39 +10,41 @@
                     <a href="#top">بازگشت به بالا</a>
                 </li>
                 <li>
-                    <a href="blog/">بلاگ</a>
+                    <a href="{{route('posts')}}">بلاگ</a>
                 </li>
                 <li>
-                    <a href="pages/terms-قوانین-و-مقررات.html">قوانین و مقررات</a>
+                    <a href="{{route('terms')}}">قوانین و مقررات</a>
                 </li>
                 <li>
-                    <a href="pages/contact-اطلاعات-تماس-برنامه-نویس-سایت-و-موبایل.html">تماس با من</a>
+                    <a href="{{route('contact-me')}}">تماس با من</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-3 social-networks">
             <ul>
-                <li data-color="#0077b5">
-                    <a href="https://facebook.com/abp.bahrami"><i class="fi fi-lg fi-facebook-2"></i></a>
-                </li>
-                <li data-color="#1da1f2">
-                    <a href="https://twitter.com/ABP_Bahrami"><i class="fi fi-lg fi-twitter-2"></i></a>
-                </li>
-                <li data-color="#0077b5">
-                    <a href="https://www.linkedin.com/in/abp1236"><i class="fi fi-lg fi-linkedin"></i></a>
-                </li>
-                <li data-color="#0088cc">
-                    <a href="https://t.me/ABP1236"><i class="fi fi-lg fi-telegram"></i></a>
-                </li>
-                <li data-color="#E1306C">
-                    <a href="https://www.instagram.com/amin.bahrami.official/"><i class="fi fi-lg fi-instagram"></i></a>
-                </li>
+
+                @if(count($social))
+
+                    @foreach($social as $value)
+
+                        <li data-color="{{$value->color}}">
+                            <a href="{{$value->link}}"><i class="fi fi-lg {{$value->icon}}" title="{{$value->name}}"></i></a>
+                        </li>
+
+                    @endforeach
+
+                @endif
+
             </ul>
         </div>
     </div>
 </footer>
 
 </div>
+
+<script type="text/javascript" src='{{ asset('site_assets/js/jquery-3.2.0.min.js') }}'></script>
+<script type="text/javascript" src='{{ asset('site_assets/js/bootstrap.min.js') }}'></script>
+<script type="text/javascript" src='{{ asset('site_assets/js/public.js') }}'></script>
 
 @yield('load_js')
 

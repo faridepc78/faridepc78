@@ -17,4 +17,14 @@ class PostCategory extends Model
     {
         return $this->belongsTo(Media::class, 'image_id')->withDefault();
     }
+
+    public function path()
+    {
+        return route('filterPosts', $this->id . '-' . $this->slug);
+    }
+
+    public function countPostByCategoryId($id)
+    {
+        return Post::query()->where('post_category_id', $id)->count();
+    }
 }

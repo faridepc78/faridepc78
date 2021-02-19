@@ -1,71 +1,9 @@
 @section('title')
-    <title>فرید شیشه بری | نمونه کارها</title>
+    <title>فرید شیشه بری | نمونه کار ({{$portfolio->name}})</title>
 @endsection
 
 @section('load_css')
-    <link rel='stylesheet' href='{{ asset('site/css/bootstrap.min.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/fonticon.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/fa.min.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/owl.carousel.min.css') }}'>
-@endsection
-
-@section('right-menu')
-    <ul class="clearfix">
-        <li class="active">
-            <a href="{{route('index')}}">صفحه اصلی</a>
-        </li>
-        <li>
-            <a href="{{route('about-me')}}">درباره من</a>
-        </li>
-        <li>
-            <a href="{{route('contact-me')}}">تماس با من</a>
-        </li>
-        <li>
-            <a href="{{route('blog')}}">بلاگ</a>
-        </li>
-    </ul>
-@endsection
-
-@section('left-menu')
-    <div class="menu left-menu">
-        <ul class="clearfix">
-            <li>
-                <a href="{{route('works')}}">نمونه کارها</a>
-            </li>
-            <li>
-                <a href="#">پرداخت آنلاین</a>
-            </li>
-            <li>
-                <a href="{{route('terms')}}">قوانین و مقررات</a>
-            </li>
-        </ul>
-    </div>
-@endsection
-
-@section('responsive-menu')
-
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{route('index')}}">صفحه اصلی</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"
-               href="{{route('about-me')}}">درباره من</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('contact-me')}}">تماس با من</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('blog')}}">بلاگ</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('works')}}">نمونه کارها</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">پرداخت آنلاین</a>
-        </li>
-    </ul>
-
+    <link rel='stylesheet' href='{{ asset('site_assets/css/owl.carousel.min.css') }}'>
 @endsection
 
 @section('data_page')
@@ -82,9 +20,9 @@
                     </h1>
                     <div class="breadcrumbs">
                         <ul class="clearfix">
-                            <li><a href="{{route('index')}}">صفحه نخست</a></li>
-                            <li><a href="{{route('works')}}">نمونه کارهای من طی 12 سال تجربه ای که دارم</a></li>
-                            <li><a href="{{$portfolio->path()}}">{{$portfolio->name}}</a>
+                            <li><a href="{{route('index')}}">صفحه اصلی</a></li>
+                            <li><a href="{{route('works')}}">نمونه کارها</a></li>
+                            <li><a href="javascript:void(0)">{{$portfolio->name}}</a>
                             </li>
                         </ul>
                     </div>
@@ -185,7 +123,7 @@
                                             <div class="details-area">
                                                 <h3 class="d-title"><a href="{{$value->path()}}">{{$value->name}}</a></h3>
                                                 <div class="d-description">
-                                                    {{Str::limit($value->text)}}
+                                                    {!! Str::limit($value->text) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -204,22 +142,22 @@
                     <h3 class="title">می‌تونی این پروژه رو با دوستات به اشتراک بذاری</h3>
                     <ul class="items">
                         <li data-color="#0077b5"><a
-                                href="https://www.facebook.com/sharer.php?u=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html"
+                                href="https://www.facebook.com/sharer.php?u={{$portfolio->path()}}"
                                 target="_blank"><i class="fi fi-lg fi-facebook-2"></i></a></li>
                         <li data-color="#1da1f2"><a
-                                href="https://twitter.com/intent/tweet?url=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html&text=وب سایت لومیناتی"
+                                href="https://twitter.com/intent/tweet?url={{$portfolio->path()}}"
                                 target="_blank"><i class="fi fi-lg fi-twitter-2"></i></a></li>
                         <li data-color="#ea2b2b"><a
-                                href="https://plus.google.com/share?url=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html"
+                                href="https://plus.google.com/share?url={{$portfolio->path()}}"
                                 target="_blank"><i class="fi fi-lg fi-gplus"></i></a></li>
                         <li data-color="#0077b5"><a
-                                href="https://www.linkedin.com/shareArticle?url=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html&title=وب سایت لومیناتی"
+                                href="https://www.linkedin.com/shareArticle?url={{$portfolio->path()}}&title=وب سایت لومیناتی"
                                 target="_blank"><i class="fi fi-lg fi-linkedin"></i></a></li>
                         <li data-color="#0088cc"><a
-                                href="https://telegram.me/share/url?url=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html&text=وب سایت لومیناتی"
+                                href="https://telegram.me/share/url?url={{$portfolio->path()}}&text=وب سایت لومیناتی"
                                 target="_blank"><i class="fi fi-lg fi-telegram"></i></a></li>
                         <li data-color="#E1306C"><a
-                                href="https://instagram.com/?url=https://aminbahrami.ir/works/69-وب-سایت-لومیناتی-سایت-سرمایه-گذاری-ارز-دیجیتال.html&text=وب سایت لومیناتی"
+                                href="https://instagram.com/?url={{$portfolio->path()}}&text=وب سایت لومیناتی"
                                 target="_blank"><i class="fi fi-lg fi-instagram"></i></a></li>
                     </ul>
                 </div>
@@ -227,11 +165,8 @@
         </div>
 
         @section('load_js')
-            <script src='{{ asset('site/js/jquery-3.2.0.min.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/bootstrap.min.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/public.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/pages/show_work.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/owl.carousel.min.js') }}' type="text/javascript"></script>
+            <script src='{{ asset('site_assets/js/pages/show_work.js') }}' type="text/javascript"></script>
+            <script src='{{ asset('site_assets/js/owl.carousel.min.js') }}' type="text/javascript"></script>
 @endsection
 
 @include('site.layout.footer')

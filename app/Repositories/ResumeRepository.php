@@ -33,4 +33,9 @@ class ResumeRepository
             'year' => $values->year
         ]);
     }
+
+    public function all()
+    {
+        return Resume::query()->orderBy('id', 'asc')->get();
+    }
 }

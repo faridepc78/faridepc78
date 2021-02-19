@@ -28,6 +28,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required',
+            'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
+        ]);
+    }
+
     public function showLoginForm()
     {
         return view('admin.login.index');

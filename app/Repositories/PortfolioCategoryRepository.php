@@ -11,7 +11,7 @@ class PortfolioCategoryRepository
     {
         return PortfolioCategory::create([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug)
+            'slug' => str_slug_persian($values->slug),
         ]);
     }
 
@@ -29,7 +29,7 @@ class PortfolioCategoryRepository
     {
         return PortfolioCategory::query()->where('id', $id)->update([
             'name' => $values->name,
-            'slug' => Str::slug($values->slug)
+            'slug' => str_slug_persian($values->slug),
         ]);
     }
 

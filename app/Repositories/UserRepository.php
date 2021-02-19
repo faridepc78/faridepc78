@@ -12,7 +12,7 @@ class UserRepository
             'full_name' => $values->full_name,
             'email' => $values->email,
             'image_id' => $values->image_id,
-            'password' => \Hash::make($values->password)
+            'password' => bcrypt(($values->password))
         ]);
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
-    Route::get('/',function (){
+    Route::get('/', function () {
         return redirect()->route('dashboard');
     });
 
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'App\Http\Controllers\Auth'], function () {
 // login
     Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login')->name('login');
+    Route::post('login', 'LoginController@login')->name('login')->middleware('throttle:5,1');
 
 // logout
     Route::any('/logout', 'LoginController@logout')->name('logout');
@@ -80,8 +80,9 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('works/{slug}', 'PortfolioController@filter')->name('filterWorks');
     Route::get('work/{slug}', 'PortfolioController@show')->name('singleWork');
 
-    Route::get('blog', 'PostController@index')->name('blog');
-    Route::get('blog/{slug}', 'PostController@show')->name('singlePost');
+    Route::get('posts', 'PostController@index')->name('posts');
+    Route::get('posts/{slug}', 'PostController@filter')->name('filterPosts');
+    Route::get('post/{slug}', 'PostController@show')->name('singlePost');
 });
 
 /*END SITE*/

@@ -12,7 +12,7 @@ class PortfolioRepository
         return Portfolio::create([
             'name' => $values->name,
             'headline' => $values->headline,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'portfolio_category_id' => $values->portfolio_category_id,
             'image_id' => $values->image_id,
             'text' => $values->text,
@@ -25,6 +25,11 @@ class PortfolioRepository
     public function paginate()
     {
         return Portfolio::query()->orderBy('id', 'desc')->paginate(10);
+    }
+
+    public function get12()
+    {
+        return Portfolio::query()->orderBy('id', 'desc')->paginate(12);
     }
 
     public function get4()
@@ -47,7 +52,7 @@ class PortfolioRepository
         return Portfolio::query()->where('id', $id)->update([
             'name' => $values->name,
             'headline' => $values->headline,
-            'slug' => Str::slug($values->slug),
+            'slug' => str_slug_persian($values->slug),
             'portfolio_category_id' => $values->portfolio_category_id,
             'image_id' => $values->image_id,
             'text' => $values->text,
@@ -59,6 +64,6 @@ class PortfolioRepository
 
     public function findByCategoryId($portfolio_category_id)
     {
-        return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->orderBy('id', 'desc')->paginate();
+        return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->orderBy('id', 'desc')->paginate(12);
     }
 }

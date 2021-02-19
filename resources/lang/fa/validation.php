@@ -177,5 +177,6 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
+        'g-recaptcha-response'=>'ریکپچا'
     ],
 ];

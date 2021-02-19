@@ -21,7 +21,7 @@ class ImageFileService extends DefaultFileService implements FileServiceContract
 
     private static function resize($img, $dir, $filename, $extension)
     {
-        $img = Image::make($img);
+        //$img = Image::make($img);
         $imgs['original'] =  $filename . '.' . $extension;
         /*foreach (self::$sizes as $size) {
             $imgs[$size] = $filename . '_'. $size. '.' . $extension;

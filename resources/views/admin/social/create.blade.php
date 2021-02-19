@@ -46,7 +46,8 @@
                                     <label for="name">نام شبکه اجتماعی</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام شبکه اجتماعی را وارد کنید" autocomplete="name" autofocus
+                                           placeholder="لطفا نام شبکه اجتماعی را وارد کنید" autocomplete="name"
+                                           autofocus
                                            required>
 
                                     @error('name')
@@ -60,7 +61,8 @@
                                     <label for="icon">آیکون شبکه اجتماعی</label>
                                     <input type="text" class="form-control @error('icon') is-invalid @enderror"
                                            value="{{ old('icon') }}" id="icon" name="icon"
-                                           placeholder="لطفا آیکون شبکه اجتماعی را وارد کنید" autocomplete="icon" autofocus
+                                           placeholder="لطفا آیکون شبکه اجتماعی را وارد کنید" autocomplete="icon"
+                                           autofocus
                                            required>
 
                                     @error('icon')
@@ -74,10 +76,26 @@
                                     <label for="link">لینک شبکه اجتماعی</label>
                                     <input type="text" class="form-control @error('link') is-invalid @enderror"
                                            value="{{ old('link') }}" id="link" name="link"
-                                           placeholder="لطفا لینک شبکه اجتماعی را وارد کنید" autocomplete="link" autofocus
+                                           placeholder="لطفا لینک شبکه اجتماعی را وارد کنید" autocomplete="link"
+                                           autofocus
                                            required>
 
                                     @error('link')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="color">رنگ آیکون شبکه اجتماعی</label>
+                                    <input data-jscolor="{}" type="text" class="form-control @error('color') is-invalid @enderror"
+                                           value="{{ old('color') }}" id="color" name="color"
+                                           placeholder="لطفا رنگ آیکون شبکه اجتماعی را وارد کنید" autocomplete="color"
+                                           autofocus
+                                           required>
+
+                                    @error('color')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -98,5 +116,9 @@
         </div>
     </section>
 </div>
+
+@section('js')
+<script type="text/javascript" src="{{asset('admin_assets/plugins/jscolor/jscolor.js')}}"></script>
+@endsection
 
 @include('admin.layout.footer')

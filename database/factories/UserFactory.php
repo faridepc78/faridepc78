@@ -15,7 +15,7 @@ class UserFactory extends Factory
             'full_name' => 'فرید شیشه بری',
             'email' => 'faridnewepc78@gmail.com',
             'image_id' => null,
-            'password' => \Hash::make('1234f01234'), // password
+            'password' => bcrypt('1234f01234')
         ];
     }
 }

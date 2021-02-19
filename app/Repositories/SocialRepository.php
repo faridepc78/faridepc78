@@ -11,7 +11,8 @@ class SocialRepository
         return Social::create([
             'name' => $values->name,
             'icon' => $values->icon,
-            'link' => $values->link
+            'link' => $values->link,
+            'color'=>$values->color
         ]);
     }
 
@@ -30,7 +31,8 @@ class SocialRepository
         return Social::query()->where('id', $id)->update([
             'name' => $values->name,
             'icon' => $values->icon,
-            'link' => $values->link
+            'link' => $values->link,
+            'color'=>$values->color
         ]);
     }
 

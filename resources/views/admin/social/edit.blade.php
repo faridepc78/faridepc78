@@ -84,6 +84,21 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="color">رنگ آیکون شبکه اجتماعی</label>
+                                    <input data-jscolor="{}" type="text" class="form-control @error('color') is-invalid @enderror"
+                                           value="{{ old('color',$social->color) }}" id="color" name="color"
+                                           placeholder="لطفا رنگ آیکون شبکه اجتماعی را وارد کنید" autocomplete="color"
+                                           autofocus
+                                           required>
+
+                                    @error('color')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
@@ -98,5 +113,9 @@
         </div>
     </section>
 </div>
+
+@section('js')
+    <script type="text/javascript" src="{{asset('admin_assets/plugins/jscolor/jscolor.js')}}"></script>
+@endsection
 
 @include('admin.layout.footer')

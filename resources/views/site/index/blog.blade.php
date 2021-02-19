@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="items clearfix">
                 <div class="section-header col-md-3">
-                    <h3 class="title">وبلاگ</h3>
+                    <h3 class="title">بلاگ</h3>
                     <div class="description">معمولاً در مورد مطالبی که برام جالب بوده و یا تخصصی و یا حتی آموزشی
                         هست توی بلاگم مطلب می‌نویسم؛ شاید به درد کسی بخوره.
                     </div>
