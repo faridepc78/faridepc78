@@ -83,6 +83,9 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('posts', 'PostController@index')->name('posts');
     Route::get('posts/{slug}', 'PostController@filter')->name('filterPosts');
     Route::get('post/{slug}', 'PostController@show')->name('singlePost');
+    Route::post('post/like/{id}', 'PostController@like')->name('likePost')->middleware('throttle:5,1');
+    Route::post('post/dislike/{id}', 'PostController@dislike')->name('dislikePost')->middleware('throttle:5,1');
+    Route::post('post/comment/{id}', 'PostController@comment')->name('commentPost')->middleware('throttle:5,1');
 });
 
 /*END SITE*/

@@ -11,11 +11,7 @@ $(document).ready(function () {
         var data = getSerializeData("Comment", "SendComment", "#frmSendComment");
         loading(".loading", true);
         $.ajax({
-            url: AJAX_URL,
-            type: 'POST',
-            data: data,
-            dataType: 'json',
-            success: function (result) {
+            url: AJAX_URL, type: 'POST', data: data, dataType: 'json', success: function (result) {
                 loading(".loading", false);
                 if (result.RefreshCaptcha !== undefined) {
                     reloadRecaptcha();
@@ -45,49 +41,42 @@ $(document).ready(function () {
         $("body,html").stop().animate({scrollTop: $("#sendComment").offset().top}, 500, 'swing');
     });
 
-    $(".d-likes .d-content").on("click", function () {
-        var parent = $(this).parent();
-        var id = parent.attr("data-id");
-        var count = Number(parent.attr("data-like-count"));
-        var color = parent.find('#like_icon');
-        var url = parent.attr("data-link");
-        var base_url = window.location.origin;
-        var like_url = base_url + '/post/like/' + id;
-        var dislike_url = base_url + '/post/dislike/' + id;
 
+
+
+
+    $(".d-likes .d-content").on("click", function () {
+        var $parent = $(this).parent();
+        var $id = $parent.attr("data-id");
+        var $count = Number($parent.attr("data-like-count"));
+        $parent.addClass("active");
+        $parent.find(".value").html(String($count + 1));
+        setTimeout(function () {
+            $parent.removeClass("active");
+        }, 500);
+        var data = getSerializeData("Blog", "Like");
+        data.TextId = $id;
         $.ajax({
-            url: url,
-            type: 'POST',
-            data: {_token: $('meta[name="csrf-token"]').attr('content')},
-            dataType: 'json',
-            success: function (result) {
-                if (result.status !== undefined) {
-                    if (result.status === 'like') {
-                        swal({title: 'پیام', text: 'پست لایک شد', type: 'success'});
-                        parent.attr("data-link", dislike_url);
-                        color.css('color', 'red');
-                        parent.attr("data-like-count", count + 1);
-                        parent.find(".value").html(String(count + 1));
-                    }
-                    if (result.status === 'dislike') {
-                        swal({title: 'پیام', text: 'پست دیسلایک شد', type: "error"});
-                        parent.attr("data-link", like_url);
-                        color.css('color', '#9E9E9E');
-                        parent.attr("data-like-count", count - 1);
-                        parent.find(".value").html(String(count - 1));
+            url: AJAX_URL, type: 'POST', data: data, dataType: 'json', success: function (result) {
+                if (result.status) {
+                    if (result.RepeatLike !== undefined) {
+                        $parent.find(".value").html(String($count));
+                    } else {
+                        $parent.attr("data-like-count", $count + 1);
                     }
                 } else {
-                    swal({title: 'خطا', text: result.message, type: 'error'});
-                }
-            }, error: function (xhr, status, error) {
-                if(error==='Too Many Requests'){
-                    swal({title: 'پیام', text: 'لطفا بعدا امتحان کنید', type: 'info'});
-                }else {
-                    swal({title: 'خطا', text: 'خطایی رخ داده است', type: 'error'});
+                    swal({title: alertUnsuccessful, text: result.text, type: "error"});
                 }
             }
         });
     });
+
+
+
+
+
+
+
 
     $(".d-comments .d-content").on("click", function () {
         if ($(".comments-area").html() !== undefined) {

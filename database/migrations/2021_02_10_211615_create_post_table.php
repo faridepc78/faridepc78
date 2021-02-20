@@ -20,7 +20,6 @@ class CreatePostTable extends Migration
             $table->unsignedBigInteger('post_category_id')->nullable();
             $table->unsignedBigInteger('image_id')->unsigned()->nullable();
             $table->longText('text');
-            $table->bigInteger('view')->unsigned()->default('0');
             $table->timestamps();
 
             $table->foreign('post_category_id')

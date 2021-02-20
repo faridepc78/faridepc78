@@ -48,10 +48,11 @@
                                     <span class="value">8</span>
                                 </div>
                             </div>
-                            <div class="d-likes" data-id="18" data-like-count="8">
+                            <div class="d-likes" data-id="{{$post->id}}" data-like-count="{{$post->like()}}" data-link="{{$post->isLikePostByIp() ? route('dislikePost',$post->id) : route('likePost',$post->id)}}">
                                 <div class="d-content">
-                                    <i class="fi fi-heart fi-lg"></i>
-                                    <span class="value">8</span>
+                                    <i id="like_icon" class="fi fi-heart fi-lg"
+                                       style="color: {{$post->isLikePostByIp($post->id) ? 'red' : '#9E9E9E'}}"></i>
+                                    <span class="value">{{number_format($post->like())}}</span>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +80,7 @@
 
         @section('load_js')
             <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/js/pages/show_blog.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/js/pages/show_blog.js?v='.uniqid()) }}'></script>
 @endsection
 
 @include('site.layout.footer')

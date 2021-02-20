@@ -18,7 +18,6 @@ class Post extends Model
         'post_category_id',
         'image_id',
         'text',
-        'view',
         'created_at',
         'updated_at'
     ];
@@ -36,5 +35,25 @@ class Post extends Model
     public function path()
     {
         return route('singlePost', $this->id . '-' . $this->slug);
+    }
+
+    public function view()
+    {
+        return $this->hasMany(PostView::class)->count();
+    }
+
+    public function like()
+    {
+        return $this->hasMany(PostLike::class)->count();
+    }
+
+    public function countComment()
+    {
+        return $this->hasMany(PostComment::class)->count();
+    }
+
+    public function isLikePostByIp()
+    {
+        return PostLike::query()->where('post_id', $this->id)->where('ip', request()->ip())->exists();
     }
 }

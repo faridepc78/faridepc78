@@ -36,7 +36,7 @@
                                 <div class="item-footer">
                                     <div class="if-item">
                                         <i class="fi fi-eye-1 fi-lg"></i>
-                                        {{number_format($value->view)}}
+                                        {{ number_format($value->view()) }}
                                     </div>
                                     <div class="if-item">
                                         <i class="fi fi-comments-1 fi-lg"></i>

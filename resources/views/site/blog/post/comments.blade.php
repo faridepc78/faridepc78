@@ -1,6 +1,7 @@
 <div class="comments-area" id="comments">
     <div class="comments">
-        <div class="comments-title">نظرات دیگران (8)</div>
+        <div class="comments-title">نظرات دیگران ({{number_format($post->countComment())}})</div>
+
         <div class="comments-items">
             <div class="item" data-type="User" data-id="403" id="comment403">
                 <div class="avatar-area">
@@ -279,16 +280,23 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <div class="send-comment" id="sendComment"
-         data-article-url="blog/18-رمز-یکبار-مصرف-بانک-ها-امنیت-ندارند-و-روش-هک-کارت-بانکی.html">
+         data-article-url="{{$post->path()}}">
+
         <div class="title">تو هم اگر حرفی داری بزن</div>
+
         <div class="description">ایمیلت منتشر نمیشه، فقط برای داشتن اطلاعات بیشتره</div>
+
         <form class="form clearfix" id="frmSendComment"
               data-with-captcha="6LdLCbgUAAAAAKFHWTJ06RNvnvRyCxttRh7b5bnl">
+
             <input type="hidden" name="token">
             <input type="hidden" name="textId" value="18">
             <input type="hidden" name="commentId" value="0">
+
             <div class="col-md-12 answer-to-comment">
                 <div class="answer-field-area">
                     <div class="af-title">پاسخ به</div>
@@ -307,20 +315,24 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-6 input-item">
                 <input type="text" class="form-control input input-icon" placeholder="اسمتو بگو*"
                        name="full_name">
                 <div class="icon"><i class="fi fi-user"></i></div>
             </div>
+
             <div class="col-sm-6 input-item">
                 <input type="text" class="form-control input input-icon" placeholder="آدرس ایمیل*"
                        name="email">
                 <div class="icon"><i class="fi fi-email"></i></div>
             </div>
+
             <div class="col-md-12 input-item">
                             <textarea class="form-control input textarea" placeholder="پیام شما...*"
                                       name="message"></textarea>
             </div>
+
             <div class="col-md-6 input-item send-button-area">
                 <div class="loading">
                     <div class="bounce1"></div>
@@ -329,6 +341,7 @@
                 </div>
                 <button type="submit" class="send-button">ارسال</button>
             </div>
+
         </form>
     </div>
 </div>
