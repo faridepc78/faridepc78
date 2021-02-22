@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Post;
+use App\Models\PostComment;
 use App\Models\PostLike;
 use App\Models\PostView;
 use Illuminate\Support\Str;
@@ -56,7 +57,7 @@ class PostRepository
         return Post::query()->where('post_category_id', $post_category_id)->orderBy('id', 'desc')->paginate(12);
     }
 
-    public function isRegisterIpForPostView($post_id)
+    public function isRegisterIpForPostView($post_id): bool
     {
         return PostView::query()->
         where('post_id', $post_id)->
@@ -64,7 +65,7 @@ class PostRepository
         exists();
     }
 
-    public function isRegisterIpForPostLike($post_id)
+    public function isRegisterIpForPostLike($post_id): bool
     {
         return PostLike::query()->
         where('post_id', $post_id)->
@@ -85,5 +86,45 @@ class PostRepository
     public function destroyPostLike($post_id)
     {
         return PostLike::query()->where('post_id', $post_id)->where('ip', request()->ip())->delete();
+    }
+
+    public function storePostComment($values, $post_id)
+    {
+        return PostComment::create([
+            'post_id' => $post_id,
+            'parent_id' => null,
+            'user_name' => $values->user_name,
+            'user_email' => $values->user_email,
+            'user_ip' => request()->ip(),
+            'text' => $values->text,
+            'status' => PostComment::INACTIVE_STATUS,
+            'users' => PostComment::COMMON_USER
+        ]);
+    }
+
+    public function replyPostComment($values, $post_id)
+    {
+        return PostComment::create([
+            'post_id' => $post_id,
+            'parent_id' => $values->post_comment_id,
+            'user_name' => $values->user_name,
+            'user_email' => $values->user_email,
+            'user_ip' => request()->ip(),
+            'text' => $values->text,
+            'status' => PostComment::INACTIVE_STATUS,
+            'users' => PostComment::COMMON_USER
+        ]);
+    }
+
+    public function getParentComment($post_id)
+    {
+        $whereData = [
+            ['post_id', '=', $post_id],
+            ['status', '=', 'active']
+        ];
+        return PostComment::query()
+            ->whereNull('parent_id')
+            ->with('childrenComments')
+            ->where($whereData)->paginate(10);
     }
 }

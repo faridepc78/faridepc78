@@ -68,8 +68,8 @@
                     <li class="{{ request()->routeIs('works') ? 'active' : '' }}">
                         <a href="{{route('works')}}">نمونه کارها</a>
                     </li>
-                    <li class="">
-                        <a href="#">پرداخت آنلاین</a>
+                    <li class="{{ request()->routeIs('payment') ? 'active' : '' }}">
+                        <a href="{{route('payment')}}">پرداخت آنلاین</a>
                     </li>
                     <li class="{{ request()->routeIs('terms') ? 'active' : '' }}">
                         <a href="{{route('terms')}}">قوانین و مقررات</a>
@@ -119,8 +119,8 @@
                         <li class="nav-item {{ request()->routeIs('works') ? 'active' : '' }}">
                             <a class="nav-link" href="{{route('works')}}">نمونه کارها</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">پرداخت آنلاین</a>
+                        <li class="nav-item {{ request()->routeIs('payment') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{route('payment')}}">پرداخت آنلاین</a>
                         </li>
                         <li class="nav-item {{ request()->routeIs('terms') ? 'active' : '' }}">
                             <a class="nav-link" href="{{route('terms')}}">قوانین و مقررات</a>

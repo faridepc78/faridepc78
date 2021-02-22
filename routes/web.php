@@ -72,6 +72,9 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('about-me', 'PageController@about')->name('about-me');
 
     Route::get('contact-me', 'ContactController@index')->name('contact-me');
+    Route::post('contact/store', 'ContactController@store')->name('contact.store')->middleware('throttle:1,5');
+
+    Route::get('payment', 'PaymentController@index')->name('payment');
 
     Route::get('expertise', 'ExpertiseController@index')->name('expertise');
     Route::get('expertise/{slug}', 'ExpertiseController@show')->name('singleExpertise');
@@ -85,7 +88,8 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('post/{slug}', 'PostController@show')->name('singlePost');
     Route::post('post/like/{id}', 'PostController@like')->name('likePost')->middleware('throttle:5,1');
     Route::post('post/dislike/{id}', 'PostController@dislike')->name('dislikePost')->middleware('throttle:5,1');
-    Route::post('post/comment/{id}', 'PostController@comment')->name('commentPost')->middleware('throttle:5,1');
+    Route::post('post/storeComment/{id}', 'PostController@storeComment')->name('storeCommentPost')->middleware('throttle:5,1');
+    Route::post('post/replyComment/{id}', 'PostController@replyComment')->name('replyCommentPost')->middleware('throttle:5,1');
 });
 
 /*END SITE*/

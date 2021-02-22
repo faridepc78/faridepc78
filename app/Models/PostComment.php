@@ -11,7 +11,7 @@ class PostComment extends Model
 
     protected $guarded = [];
     protected $table = 'post_comment';
-    protected $fillable = ['id', 'post_id', 'user_name', 'user_email', 'user_ip', 'text', 'status', 'users', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'post_id', 'parent_id', 'user_name', 'user_email', 'user_ip', 'text', 'status', 'users', 'created_at', 'updated_at'];
 
     const ACTIVE_STATUS = 'active';
     const INACTIVE_STATUS = 'inactive';
@@ -24,5 +24,21 @@ class PostComment extends Model
     public function post()
     {
         return $this->belongsTo(Post::class, 'post_id')->withDefault();
+    }
+
+    public function getGravatarAttribute()
+    {
+        $hash = md5(strtolower(trim($this->attributes['user_email'])));
+        return "http://www.gravatar.com/avatar/$hash?d=mm";
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id');
+    }
+
+    public function childrenComments()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id')->with('comments');
     }
 }

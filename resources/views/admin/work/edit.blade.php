@@ -58,7 +58,7 @@
 
                                 <div class="form-group">
                                     <label for="text">توضیحات کار</label>
-                                    <textarea class="form-control ckeditor @error('text') is-invalid @enderror"
+                                    <textarea style="resize: vertical" rows="5" class="form-control ckeditor @error('text') is-invalid @enderror"
                                               id="text" name="text" autocomplete="text"
                                               autofocus required>{{ old('text',$work->text) }}</textarea>
 

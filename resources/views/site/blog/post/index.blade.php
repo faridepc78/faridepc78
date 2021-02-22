@@ -4,6 +4,9 @@
 
 @section('load_css')
     <link rel='stylesheet' href='{{ asset('site_assets/css/sweetalert.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/plugins/validation/css/validate.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/plugins/toast/css/toast.min.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/css/pagination.css') }}'>
 @endsection
 
 @section('data_page')
@@ -79,7 +82,12 @@
         </div>
 
         @section('load_js')
+            <script src="https://www.google.com/recaptcha/api.js?explicit&hl=fa" async defer></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast.min.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast-options.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/pages/show_blog.js?v='.uniqid()) }}'></script>
 @endsection
 

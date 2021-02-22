@@ -18,7 +18,7 @@ class CreatePostCommentTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('user_name');
-            $table->string('user_email')->unique();
+            $table->string('user_email');
             $table->string('user_ip');
             $table->longText('text');
             $table->enum('status', \App\Models\PostComment::$statuses);

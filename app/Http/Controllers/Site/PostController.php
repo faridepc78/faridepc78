@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Site;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Site\Post\CreatePostCommentRequest;
+use App\Http\Requests\Site\Post\CreateReplyPostCommentRequest;
+use App\Models\PostComment;
 use App\Repositories\PostCategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\SettingRepository;
@@ -63,8 +66,9 @@ class PostController extends Controller
         $post = $this->postRepository->findById($post_id);
         $setting = $this->settingRepository->first();
         $social = $this->socialRepository->all();
+        $comments = $this->postRepository->getParentComment($post_id);
         return view('site.blog.post.index',
-            compact('post', 'setting', 'social'));
+            compact('post', 'setting', 'social', 'comments'));
     }
 
     public function like($id)
@@ -103,9 +107,24 @@ class PostController extends Controller
         }
     }
 
-    public function comment($id)
+    public function storeComment(CreatePostCommentRequest $request, $post_id)
     {
-        dd($id);
+        try {
+            $this->postRepository->storePostComment($request, $post_id);
+            return AjaxResponses::SuccessResponse();
+        } catch (Exception $exception) {
+            return AjaxResponses::FailedResponse();
+        }
+    }
+
+    public function replyComment(CreateReplyPostCommentRequest $request, $post_id)
+    {
+        try {
+            $this->postRepository->replyPostComment($request, $post_id);
+            return AjaxResponses::SuccessResponse();
+        } catch (Exception $exception) {
+            return AjaxResponses::FailedResponse();
+        }
     }
 
     public function extractId($slug)

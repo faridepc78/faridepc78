@@ -40,6 +40,7 @@
                                     <th>ردیف</th>
                                     <th>نام</th>
                                     <th>آیکون</th>
+                                    <th>رنگ آیکون</th>
                                     <th>لینک</th>
                                     <th>ویرایش</th>
                                     <th>حذف</th>
@@ -53,6 +54,7 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->icon}}</td>
+                                            <td style="background-color: {{$item->color}}"></td>
                                             <td>{{$item->link}}</td>
                                             <td><a href="{{route('social.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>

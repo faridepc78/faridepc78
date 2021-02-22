@@ -2,22 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Responses/AjaxResponses.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Contact/CreateContactRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Post/CreateReplyPostCommentRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/site/blog/post/child-comments.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/ContactController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PostComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PostComment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/ContactInfoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ContactInfoRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_211615_create_post_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_211615_create_post_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site_assets/css/fonticon.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/css/fonticon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Responses/AjaxResponses.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Responses/AjaxResponses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_20_202924_create_post_comment_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_20_202924_create_post_comment_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/js/pages/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/pages/contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/js/pages/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/pages/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/site_assets/js/pages/show_blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/pages/show_blog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site_assets/js/pages/show_work.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/pages/show_work.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/js/pages/test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/site_assets/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site_assets/js/sweetalert.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/js/sweetalert.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/social/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/social/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/work/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/work/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/blog/post/comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/post/comments.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/blog/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/post/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/contact/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/contact/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/payment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/payment/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,23 +178,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Site/Contact" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Site\Contact" />
+      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Site\Post" />
+      <recent name="C:\xampp\htdocs\faridepc78\app\Models" />
       <recent name="C:\xampp\htdocs\faridepc78\app" />
       <recent name="C:\xampp\htdocs\faridepc78\app\Repositories" />
-      <recent name="C:\xampp\htdocs\faridepc78\public\admin_assets\plugins" />
-      <recent name="C:\xampp\htdocs\faridepc78\database\seeders" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\faridepc78\resources\views\site\blog" />
       <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Panel" />
       <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\PortfolioSlider" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\site\blog" />
     </key>
   </component>
   <component name="RunManager">
@@ -227,6 +237,11 @@
       <workItem from="1613798895368" duration="7872000" />
       <workItem from="1613812391340" duration="8036000" />
       <workItem from="1613824798254" duration="17580000" />
+      <workItem from="1613881333322" duration="1238000" />
+      <workItem from="1613897021843" duration="9665000" />
+      <workItem from="1613911231523" duration="18661000" />
+      <workItem from="1613968991667" duration="21697000" />
+      <workItem from="1613996918716" duration="21757000" />
     </task>
     <servers />
   </component>

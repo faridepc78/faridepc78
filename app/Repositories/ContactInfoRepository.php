@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Contact;
 use App\Models\ContactInfo;
 
 class ContactInfoRepository
@@ -22,6 +23,11 @@ class ContactInfoRepository
         return ContactInfo::query()->orderBy('id', 'desc')->paginate(10);
     }
 
+    public function all()
+    {
+        return ContactInfo::all();
+    }
+
     public function findById($id)
     {
         return ContactInfo::query()->findOrFail($id);
@@ -35,6 +41,19 @@ class ContactInfoRepository
             'link' => $values->link,
             'text' => $values->text,
             'image_id' => $values->image_id
+        ]);
+    }
+
+    public function storeContact($values)
+    {
+        return Contact::create([
+            'user_name' => $values->user_name,
+            'user_email' => $values->user_email,
+            'user_mobile' => $values->user_mobile,
+            'user_ip' => request()->ip(),
+            'know' => $values->know,
+            'text' => $values->text,
+            'status' => Contact::UNREAD_STATUS
         ]);
     }
 }

@@ -1,12 +1,11 @@
 @section('title')
-    <title>فرید شیشه بری | تماس با من</title>
+    <title>فرید شیشه بری | پرداخت آنلاین</title>
 @endsection
 
 @section('load_css')
-    <link rel='stylesheet' href='{{ asset('site/css/bootstrap.min.v5b9944e4.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/fonticon.v5fa83fde.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/fa.min.v5db2b596.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site/css/sweetalert.v58dbc1d2.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/css/sweetalert.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/plugins/validation/css/validate.css') }}'>
+    <link rel='stylesheet' href='{{ asset('site_assets/plugins/toast/css/toast.min.css') }}'>
 @endsection
 
 @section('data_page')
@@ -19,12 +18,12 @@
             <div class="cover">
                 <div class="wrapper">
                     <h1 class="title">
-                        <a href="pages/payment-پرداخت-اینترنتی-هزینه-پروژه-ها-و-کارها.html">پرداخت اینترنتی</a>
+                        <a href="{{route('payment')}}">پرداخت آنلاین</a>
                     </h1>
                     <div class="breadcrumbs">
                         <ul class="clearfix">
-                            <li><a href="https://aminbahrami.ir/">صفحه نخست</a></li>
-                            <li><a href="pages/payment-پرداخت-اینترنتی-هزینه-پروژه-ها-و-کارها.html">پرداخت اینترنتی</a>
+                            <li><a href="{{route('index')}}">صفحه اصلی</a></li>
+                            <li><a href="javascript:void(0)">پرداخت آنلاین</a>
                             </li>
                         </ul>
                     </div>
@@ -154,30 +153,14 @@
         </div>
 
         @section('load_js')
-            <script src='{{ asset('site/js/jquery-3.2.0.min.v58ceb168.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/bootstrap.min.v5b56b10a.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/public.v5d7a0f0c.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/sweetalert.min.v57492be8.js') }}' type="text/javascript"></script>
-            <script src='{{ asset('site/js/pages/payment.v5f25b383.js') }}' type="text/javascript"></script>
-            <script src='https://www.google.com/recaptcha/api.js?render=6LdLCbgUAAAAAKFHWTJ06RNvnvRyCxttRh7b5bnl'
-                    type="text/javascript"></script>
-            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104848250-1"
-                    type="text/javascript"></script>
-            <script type="52d9c41e70e3399e341699f4-text/javascript">
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-104848250-1');
-
-
-
-
-
-
-            </script>
-            <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
-                    data-cf-settings="52d9c41e70e3399e341699f4-|49" defer=""></script>
+            <script src="https://www.google.com/recaptcha/api.js?explicit&hl=fa" async defer></script>
+            <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
+            <script type="text/javascript"
+                    src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast.min.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast-options.js') }}'></script>
+            <script type="text/javascript" src='{{ asset('site_assets/js/pages/payment.js?v='.uniqid()) }}'></script>
 @endsection
 
 @include('site.layout.footer')
