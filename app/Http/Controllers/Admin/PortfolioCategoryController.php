@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\PortfolioCategory\CreatePortfolioCategoryRequest;
 use App\Http\Requests\Admin\PortfolioCategory\UpdatePortfolioCategoryRequest;
 use App\Repositories\PortfolioCategoryRepository;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class PortfolioCategoryController extends Controller
 {
@@ -32,13 +31,9 @@ class PortfolioCategoryController extends Controller
     public function store(CreatePortfolioCategoryRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
-                $this->portfolioCategoryRepository->store($request);
-            });
-            DB::commit();
+            $this->portfolioCategoryRepository->store($request);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -53,13 +48,9 @@ class PortfolioCategoryController extends Controller
     public function update(UpdatePortfolioCategoryRequest $request, $id)
     {
         try {
-            DB::transaction(function () use ($request, $id) {
-                $this->portfolioCategoryRepository->update($request, $id);
-            });
-            DB::commit();
+            $this->portfolioCategoryRepository->update($request, $id);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -68,14 +59,10 @@ class PortfolioCategoryController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id){
-                $portfolio_category = $this->portfolioCategoryRepository->findById($id);
-                $portfolio_category->delete();
-            });
-            DB::commit();
+            $portfolio_category = $this->portfolioCategoryRepository->findById($id);
+            $portfolio_category->delete();
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

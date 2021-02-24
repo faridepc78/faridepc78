@@ -1,5 +1,5 @@
 @section('title')
-    <title>پنل مدیریت فرید شیشه بری | پست ها</title>
+    <title>پنل مدیریت فرید شیشه بری | پروفایل</title>
 @endsection
 
 @include('admin.layout.header')

@@ -14,8 +14,8 @@ class UpdatePostCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:post_category,slug,'.request()->route('post_category'),
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:post_category,slug,'.request()->route('post_category'),
             'image' => 'mimes:jpg,png,jpeg|max:1024'
         ];
     }

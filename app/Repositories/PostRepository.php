@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\PostComment;
 use App\Models\PostLike;
 use App\Models\PostView;
-use Illuminate\Support\Str;
 
 class PostRepository
 {
@@ -16,8 +15,15 @@ class PostRepository
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
             'post_category_id' => $values->post_category_id,
-            'image_id' => $values->image_id,
+            'image_id' => null,
             'text' => $values->text
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return Post::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 
@@ -41,13 +47,13 @@ class PostRepository
         return Post::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values, $image_id, $id)
     {
         return Post::query()->where('id', $id)->update([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
             'post_category_id' => $values->post_category_id,
-            'image_id' => $values->image_id,
+            'image_id' => $image_id,
             'text' => $values->text
         ]);
     }
@@ -126,5 +132,15 @@ class PostRepository
             ->whereNull('parent_id')
             ->with('childrenComments')
             ->where($whereData)->paginate(10);
+    }
+
+    public function search($keyword)
+    {
+        return Post::query()
+            ->whereHas('category', function ($query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%');
+            })->orWhere('name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('slug', 'LIKE', '%' . $keyword . '%')
+            ->orderBy('id', 'desc')->paginate(10);
     }
 }

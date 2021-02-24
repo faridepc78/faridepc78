@@ -15,9 +15,10 @@ class CreatePortfolioExpertiseRequest extends FormRequest
     public function rules()
     {
         return [
-            'portfolio_id'=>'required|exists:portfolio,id',
+            'portfolio_id'=>'required|numeric|exists:portfolio,id',
             'expertise_id' => [
                 'required',
+                'numeric',
                 'array',
                 'min:1',
                 'exists:expertise,id',

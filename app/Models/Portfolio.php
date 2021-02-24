@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
     protected $table = 'portfolio';
     protected $fillable = [
@@ -38,7 +36,7 @@ class Portfolio extends Model
 
     public function slider()
     {
-        return $this->hasMany(PortfolioSlider::class);
+        return $this->hasMany(PortfolioSlider::class,'portfolio_id','id');
     }
 
     public function expertise()

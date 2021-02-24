@@ -14,7 +14,7 @@ class CreatePortfolioSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'portfolio_id'=>'required|exists:portfolio,id',
+            'portfolio_id'=>'required|numeric|exists:portfolio,id',
             'image' => 'required|mimes:jpg,png,jpeg|max:1024'
         ];
     }

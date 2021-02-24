@@ -1,19 +1,82 @@
-var $confirmed=0;function changeSign()
-{var selector=$(".selectors .item.active");var sign=selector.attr('data-sign');var id=selector.attr('data-id');$("[data-name='showCurrencySign']").html(sign);$("#frmPayment [name='currencyTypeId']").val(id);}
-$(function()
-{$(".selectors .item").on("click",function()
-{if($confirmed=='1')
-{return;}
-$(this).siblings(".item").removeClass("active");$(this).addClass("active");changeSign();});setTimeout(function(){$(".selectors .item.active").trigger("click");},100);$("#frmPayment").on("submit",function(e)
-{e.preventDefault();var $confirmed=$(this).attr("data-confirm");if($confirmed==='0')
-{$(this).find("input").prop("readonly",true);$(this).find(".btn-payment").html($(this).find(".btn-payment").attr("data-button-confirm-title"));$(".btn-back").fadeIn();$confirmed=1;$(this).attr("data-confirm",1);}
-else
-{var data=getSerializeData("Payment","Payment","#frmPayment");loading(".loading",true);$.ajax({url:AJAX_URL,type:'POST',data:data,dataType:'json',success:function(result)
-{loading(".loading",false);if(result.RefreshCaptcha!==undefined)
-{reloadRecaptcha();}
-if(result.status)
-{swal({title:alertSuccessful,text:result.text,type:'success'});document.location.href=result.paymentUrl;}
-else
-{swal({title:alertUnsuccessful,text:result.text,type:'error'});}},error:function(a,b,c)
-{loading(".loading",false);}});}});$(".btn-back").on("click",function()
-{$confirmed=0;var selector=$("#frmPayment");selector.attr("data-confirm",0);selector.find(".btn-payment").html(selector.find(".btn-payment").attr("data-button-title"));selector.find("input").prop("readonly",false);$(this).fadeOut();});});
+$(function () {
+
+
+    $("#frmPayment").validate({
+
+        rules: {
+
+            user_name: {
+                required: true,
+                normalizer: function (value) {
+                    return $.trim(value);
+                }
+            },
+
+            user_mobile: {
+                required: true,
+                checkMobile: true,
+                normalizer: function (value) {
+                    return $.trim(value);
+                },
+            },
+
+            user_email: {
+                required: true,
+                checkEmail: true,
+                normalizer: function (value) {
+                    return $.trim(value);
+                },
+            },
+
+            title: {
+                required: true,
+                normalizer: function (value) {
+                    return $.trim(value);
+                },
+            },
+
+            price: {
+                required: true,
+                number: true,
+                maxlength: 9,
+                normalizer: function (value) {
+                    return $.trim(value);
+                },
+            }
+
+        },
+
+        messages: {
+
+            user_name: {
+                required: "لطفا نام و نام خانوادگی خود را وارد کنید"
+            },
+
+            user_mobile: {
+                required: "لطفا تلفن همراه خود را وارد کنید",
+                checkMobile: "لطفا تلفن همراه خود را صحیح وارد کنید"
+            },
+
+            user_email: {
+                required: "لطفا ایمیل خود را وارد کنید",
+                checkEmail: "لطفا ایمیل خود را صحیح وارد کنید"
+            },
+
+            title: {
+                required: "لطفا عنوان پرداخت خود را وارد کنید"
+            },
+
+            price: {
+                required: "لطفا مبلغ پرداخت را وارد کنید",
+                number: "لطفا مبلغ پرداخت را صحیح وارد کنید",
+                maxlength: "حداکثر رقم مبلغ پرداختی 9 رقم است"
+            }
+
+        }, submitHandler: function (form) {
+            if (reCAPTCHAValidation() == true) {
+                form.submit();
+            }
+        }
+
+    });
+});

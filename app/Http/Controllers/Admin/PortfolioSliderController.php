@@ -37,7 +37,6 @@ class PortfolioSliderController extends Controller
             DB::commit();
             newFeedback();
         } catch (Exception $exception) {
-            dd($exception);
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }

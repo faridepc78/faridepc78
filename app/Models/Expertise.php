@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Expertise extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
     protected $table = 'expertise';
     protected $fillable = ['id', 'name', 'slug', 'image_id', 'text', 'created_at', 'updated_at'];

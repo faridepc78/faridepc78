@@ -8,7 +8,6 @@ use App\Repositories\ExpertiseRepository;
 use App\Repositories\PortfolioExpertiseRepository;
 use App\Repositories\PortfolioRepository;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class PortfolioExpertiseController extends Controller
 {
@@ -34,15 +33,11 @@ class PortfolioExpertiseController extends Controller
     public function store(CreatePortfolioExpertiseRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
-                $portfolio_id = $request->input('portfolio_id');
-                $values = $request->input('expertise_id');
-                $this->portfolioExpertiseRepository->store($portfolio_id, $values);
-            });
-            DB::commit();
+            $portfolio_id = $request->input('portfolio_id');
+            $values = $request->input('expertise_id');
+            $this->portfolioExpertiseRepository->store($portfolio_id, $values);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -51,15 +46,10 @@ class PortfolioExpertiseController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id) {
-                $portfolioExpertise = $this->portfolioExpertiseRepository->findById($id);
-                $portfolioExpertise->delete();
-            });
-            DB::commit();
+            $portfolioExpertise = $this->portfolioExpertiseRepository->findById($id);
+            $portfolioExpertise->delete();
             newFeedback();
         } catch (Exception $exception) {
-            //dd($exception);
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

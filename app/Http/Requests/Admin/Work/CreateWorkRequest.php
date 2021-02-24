@@ -14,8 +14,8 @@ class CreateWorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
-            'text' => 'required',
+            'title' => 'required|string|max:255',
+            'text' => 'required|string',
             'image' => 'required|mimes:jpg,png,jpeg|max:1024'
         ];
     }

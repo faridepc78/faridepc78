@@ -45,6 +45,9 @@
 <script type="text/javascript" src='{{ asset('site_assets/js/jquery-3.2.0.min.js') }}'></script>
 <script type="text/javascript" src='{{ asset('site_assets/js/bootstrap.min.js') }}'></script>
 <script type="text/javascript" src='{{ asset('site_assets/js/public.js') }}'></script>
+<script type="text/javascript" src="{{asset('site_assets/plugins/toast/js/toast.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('site_assets/plugins/toast/js/toast-options.js')}}"></script>
+<script>@include('site.layout.feedbacks')</script>
 
 @yield('load_js')
 

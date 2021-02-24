@@ -11,7 +11,14 @@ class WorkRepository
         return Work::create([
             'title' => $values->title,
             'text' => $values->text,
-            'image_id' => $values->image_id,
+            'image_id' => null
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return Work::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 
@@ -25,12 +32,12 @@ class WorkRepository
         return Work::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values,$image_id, $id)
     {
         return Work::query()->where('id', $id)->update([
             'title' => $values->title,
             'text' => $values->text,
-            'image_id' => $values->image_id
+            'image_id' => $image_id
         ]);
     }
 }

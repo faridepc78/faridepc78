@@ -5,7 +5,6 @@
 @section('load_css')
     <link rel='stylesheet' href='{{ asset('site_assets/css/sweetalert.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/plugins/validation/css/validate.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site_assets/plugins/toast/css/toast.min.css') }}'>
 @endsection
 
 @section('data_page')
@@ -34,105 +33,119 @@
         <div class="page-content payment" data-page="payment">
             <div class="wrapper">
                 <div class="p-content clearfix">
-                    <div class="col-sm-6 text-area">
-                        <h2 class="title"><a href="pages/payment-پرداخت-اینترنتی-هزینه-پروژه-ها-و-کارها.html">پرداخت
-                                اینترنتی</a></h2>
-                        <div class="text"><p>
-                                در مورد پروژه‌هایی که می‌گیرم، معمولاً به این صورت کار می‌کنم که 40 درصد هزینه رو قبل از
-                                شروع کار می‌گیرم. 30 درصد رو بعد از اتمام کار و نشون دادن به مشتری و رضایتش از کار
-                                می‌گیرم و 30 درصد باقیمانده رو موقع تحویل پروژه.
-                            </p>
-                            <p>
-                                معمولاً پرداخت‌ها از طریق درگاه‌های بانکیم و فرم روبرو صورت می‌گیره.
-                            </p>
-                            <p>
-                                هزینه پروژه برای مشتریان خارج از کشور رو در حال حاضر بصورت دلار آمریکا می‌گیرم. البته
-                                اجبار نیست. ولی خب فعلاً اینطوری با مشتریان خارج از کشور دارم کار می‌کنم.
-                            </p>
-                            <p>
-                                در مورد هزینه‌ای که با مشتری توافق می‌کنم، با توجه به کیفیت کار و تجربه خودم مشخص
-                                می‌کنم. پس اگر کار بی‌کیفیت یا کم کیفیت بخواید، من شرمنده اخلاق ورزشیتون هستم و نمی‌تونم
-                                پروژه شما رو قبول کنم. :-)
-                            </p></div>
-                    </div>
-                    <div class="col-sm-6 form-area">
+
+                    <div class="col-sm-12 form-area">
                         <div class="form-content">
-                            <div class="selectors">
-                                <div class="item" data-id="30" data-sign="$">
-                                    <div class="i-radio">
-                                        <i class="radio-checked fi fi-lg fi-radio-checked"></i>
-                                        <i class="radio-empty fi fi-lg fi-radio-empty"></i>
-                                    </div>
-                                    <div class="i-details">
-                                        <div class="d-title">دلار آمریکا</div>
-                                        <div class="d-description">مشتریان خارج از کشور که توافق کردیم بصورت ارزی هزینه
-                                            رو بدن، از این قسمت می‌تونن استفاده کنند.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item active" data-id="29" data-sign="تومان">
-                                    <div class="i-radio">
-                                        <i class="radio-checked fi fi-lg fi-radio-checked"></i>
-                                        <i class="radio-empty fi fi-lg fi-radio-empty"></i>
-                                    </div>
-                                    <div class="i-details">
-                                        <div class="d-title">تومان <small>(از ریال خوشم نمیاد، همون تومان بهتره)</small>
-                                        </div>
-                                        <div class="d-description">مشتریان داخل کشور که بصورت تومانی می‌خوان هزینه رو
-                                            بدن، از این قسمت استفاده کنند. حواستون باشه که مبلغ به تومانه‌هاا، یهو فکر
-                                            نکنید ریاله 10 برابر پول پرداخت کنید :-)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form id="frmPayment" class="form clearfix" data-confirm="0"
-                                  data-with-captcha="6LdLCbgUAAAAAKFHWTJ06RNvnvRyCxttRh7b5bnl">
-                                <input type="hidden" name="token">
-                                <input type="hidden" name="currencyTypeId" value="0">
+
+                            <form id="frmPayment" class="form clearfix" method="post"
+                                  action="{{route('payment.request')}}">
+
+                                @csrf
+
                                 <div class="col-md-6 input">
-                                    <label>نام و نام خانوادگی</label>
+                                    <label for="user_name">نام و نام خانوادگی</label>
                                     <div class="input-area">
-                                        <input type="text" class="form-control" name="fullName">
+                                        <input onkeyup="this.value=removeSpaces(this.value);" type="text"
+                                               class="form-control @error('user_name') is-invalid @enderror"
+                                               value="{{ old('user_name') }}" id="user_name" name="user_name"
+                                               autocomplete="user_name" autofocus/>
                                         <span class="icon">
-<i class="fi fi-lg fi-user"></i>
-</span>
+                                            <i class="fi fi-lg fi-user"></i>
+                                        </span>
                                     </div>
+                                    @error('user_name')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-6 input">
-                                    <label>شماره تماس</label>
+                                    <label for="user_mobile">تلفن همراه</label>
                                     <div class="input-area">
-                                        <input type="text" class="form-control" name="phone">
+                                        <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value);"
+                                               type="text"
+                                               class="form-control @error('user_mobile') is-invalid @enderror"
+                                               value="{{ old('user_mobile') }}" id="user_mobile" name="user_mobile"
+                                               autocomplete="user_mobile" autofocus/>
                                         <span class="icon">
-<i class="fi fi-lg fi-phone"></i>
-</span>
+                                            <i class="fi fi-lg fi-phone"></i>
+                                        </span>
                                     </div>
+                                    @error('user_mobile')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-6 input">
-                                    <label>آدرس ایمیل</label>
+                                    <label for="user_email">ایمیل</label>
                                     <div class="input-area">
-                                        <input type="text" class="form-control" name="email">
+                                        <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value);"
+                                               type="text"
+                                               class="form-control @error('user_email') is-invalid @enderror"
+                                               value="{{ old('user_email') }}" id="user_email" name="user_email"
+                                               autocomplete="user_email" autofocus/>
                                         <span class="icon">
-<i class="fi fi-lg fi-email"></i>
-</span>
+                                            <i class="fi fi-lg fi-email"></i>
+                                        </span>
                                     </div>
+                                    @error('user_email')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-6 input">
-                                    <label>عنوان پرداخت</label>
+                                    <label for="title">عنوان پرداخت</label>
                                     <div class="input-area">
-                                        <input type="text" class="form-control" name="paymentTitle">
+                                        <input onkeyup="this.value=removeSpaces(this.value);" type="text"
+                                               class="form-control @error('title') is-invalid @enderror"
+                                               value="{{ old('title') }}" id="title" name="title"
+                                               autocomplete="title" autofocus/>
                                         <span class="icon">
-<i class="fi fi-lg fi-invoice"></i>
-</span>
+                                            <i class="fi fi-lg fi-invoice"></i>
+                                        </span>
                                     </div>
+                                    @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
+
+                                <div class="col-md-6 input">
+                                    <label for="price">مبلغ پرداختی</label>
+                                    <div class="input-area">
+                                        <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value);"
+                                               type="text"
+                                               class="form-control @error('price') is-invalid @enderror"
+                                               value="{{ old('price') }}" id="price"
+                                               name="price" autocomplete="price" autofocus maxlength="9"/>
+                                        <span class="icon">
+                                            <i class="fi fi-lg fi-keyboard"></i>
+                                        </span>
+                                    </div>
+                                    @error('price')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-md-12 input">
-                                    <label>مبلغ پرداختی</label>
-                                    <div class="input-area">
-                                        <input type="text" class="form-control" name="amount" maxlength="9">
-                                        <span class="icon" data-name="showCurrencySign"></span>
-                                    </div>
+                                    {!! app('captcha')->display(); !!}
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="help-block" role="alert">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
+
                                 <div class="col-md-12 input submit-area">
+
                                     <div class="center-block">
                                         <div class="loading">
                                             <div class="bounce1"></div>
@@ -140,11 +153,9 @@
                                             <div class="bounce3"></div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn-back">برگشت</button>
-                                    <button type="submit" class="btn-payment" data-button-title="پرداخت"
-                                            data-button-confirm-title="تأیید و پرداخت">پرداخت
-                                    </button>
+                                    <button style="cursor: pointer" type="submit" class="btn-payment">پرداخت</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -158,8 +169,6 @@
             <script type="text/javascript"
                     src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast.min.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast-options.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/pages/payment.js?v='.uniqid()) }}'></script>
 @endsection
 

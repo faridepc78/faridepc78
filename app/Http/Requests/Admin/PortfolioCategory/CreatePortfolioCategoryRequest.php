@@ -14,8 +14,8 @@ class CreatePortfolioCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:portfolio_category,slug'
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:portfolio_category,slug'
         ];
     }
 

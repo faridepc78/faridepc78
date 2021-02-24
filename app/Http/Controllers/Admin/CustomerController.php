@@ -32,13 +32,9 @@ class CustomerController extends Controller
     public function store(CreateCustomerRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
-                $this->customerRepository->store($request);
-            });
-            DB::commit();
+            $this->customerRepository->store($request);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -53,13 +49,9 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, $id)
     {
         try {
-            DB::transaction(function () use ($request, $id) {
-                $this->customerRepository->update($request, $id);
-            });
-            DB::commit();
+            $this->customerRepository->update($request, $id);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -68,14 +60,10 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id) {
-                $customer = $this->customerRepository->findById($id);
-                $customer->delete();
-            });
-            DB::commit();
+            $customer = $this->customerRepository->findById($id);
+            $customer->delete();
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

@@ -75,6 +75,9 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::post('contact/store', 'ContactController@store')->name('contact.store')->middleware('throttle:1,5');
 
     Route::get('payment', 'PaymentController@index')->name('payment');
+    Route::get('payment/result/{order_number}', 'PaymentController@result')->name('payment.result');
+    Route::post('payment/request', 'PaymentController@request')->name('payment.request');
+    Route::get('payment/verify', 'PaymentController@verify')->name('payment.verify');
 
     Route::get('expertise', 'ExpertiseController@index')->name('expertise');
     Route::get('expertise/{slug}', 'ExpertiseController@show')->name('singleExpertise');
@@ -84,6 +87,7 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('work/{slug}', 'PortfolioController@show')->name('singleWork');
 
     Route::get('posts', 'PostController@index')->name('posts');
+    Route::get('posts/search', 'PostController@search')->name('posts.search');
     Route::get('posts/{slug}', 'PostController@filter')->name('filterPosts');
     Route::get('post/{slug}', 'PostController@show')->name('singlePost');
     Route::post('post/like/{id}', 'PostController@like')->name('likePost')->middleware('throttle:5,1');

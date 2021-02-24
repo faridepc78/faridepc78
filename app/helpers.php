@@ -7,7 +7,15 @@ function newFeedback($title = 'موفقیت', $body = 'عملیات با موف�
     session()->flash('feedbacks', $session);
 }
 
-function client_ip()
+function make_token($count): string
 {
-    return $_SERVER['REMOTE_ADDR'] . '-' . md5($_SERVER['HTTP_USER_AGENT']);
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $count; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $randomString .= $characters[$index];
+    }
+    return $randomString;
 }
+
+?>

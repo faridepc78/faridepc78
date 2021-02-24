@@ -4937,3 +4937,8 @@ footer[data-page=works] {
 .img-circle{
     border-radius: 50%;
 }
+
+.help-block{
+    font-size: 80%;
+    color: #dc3545;
+}

@@ -38,8 +38,9 @@ class PostController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->postRepository->store($request);
+                $post = $this->postRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->postRepository->addImage($image_id, $post->id);
             });
             DB::commit();
             newFeedback();
@@ -68,15 +69,18 @@ class PostController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $post = $this->postRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->postRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->postRepository->addImage($image_id, $post->id);
                     if ($post->image) {
                         $post->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $post->image_id]);
+                    $this->postRepository->update($request,$post->image_id, $id);
                 }
-                $this->postRepository->update($request, $id);
+
             });
             DB::commit();
             newFeedback();
@@ -92,6 +96,11 @@ class PostController extends Controller
         try {
             DB::transaction(function () use ($id) {
                 $post = $this->postRepository->findById($id);
+
+                if ($post->category && $post->category->image) {
+                    $post->category->image->delete();
+                }
+
                 if ($post->image) {
                     $post->image->delete();
                 }

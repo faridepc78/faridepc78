@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/persianDatepicker/css/persianDatepicker-default.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 
 @include('admin.layout.header')
@@ -92,7 +93,10 @@
                                 <div class="form-group">
                                     <label for="portfolio_category_id">دسته بندی نمونه کار</label>
                                     <select class="form-control  @error('portfolio_category_id') is-invalid @enderror" id="portfolio_category_id"
-                                            name="portfolio_category_id" required>
+                                            name="portfolio_category_id" data-container="body"
+                                            data-live-search="false"
+                                            data-hide-disabled="false" data-actions-box="true"
+                                            data-virtual-scroll="true" required>
                                         <option selected disabled value="">لطفا دسته بندی نمونه کار را انتخاب کنید</option>
                                         @foreach($portfolioCategory as $value)
                                             <option value="{{ $value->id }}"
@@ -111,7 +115,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">تصویر تخصص</label>
+                                    <label for="image">تصویر نمونه کار</label>
                                     <img class="img-size-64" src="{{$portfolio->image->thumb}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                           autofocus id="image" name="image">
@@ -127,9 +131,8 @@
                                     <label for="text">توضیحات نمونه کار</label>
                                     <textarea class="form-control ckeditor @error('text') is-invalid @enderror"
                                               id="text"
-                                              name="text" rows="5"
-                                              style="resize: vertical"
-                                              placeholder="لطفا توضیحات نمونه کار را وارد کنید" autocomplete="text"
+                                              name="text"
+                                              autocomplete="text"
                                               autofocus required>{{ old('text',$portfolio->text) }}</textarea>
 
                                     @error('text')
@@ -214,8 +217,11 @@
 </div>
 
 @section('js')
-    <script src="{{asset('admin_assets/plugins/persianDatepicker/js/persianDatepicker.min.js')}}"></script>
-    <script src="{{asset('admin_assets/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript"
+            src="{{asset('admin_assets/plugins/persianDatepicker/js/persianDatepicker.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin_assets/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript"
+            src="{{asset('admin_assets/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
 @endsection
 
 @include('admin.layout.footer')

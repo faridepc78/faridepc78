@@ -113,10 +113,9 @@
       <path value="$PROJECT_DIR$/vendor/hekmatinasser/verta" />
       <path value="$PROJECT_DIR$/vendor/hekmatinasser/notowo" />
       <path value="$PROJECT_DIR$/vendor/anhskohbo/no-captcha" />
-      <path value="$PROJECT_DIR$/vendor/ammont/fa-slugify" />
-      <path value="$PROJECT_DIR$/vendor/ammont/finglify" />
       <path value="$PROJECT_DIR$/vendor/pishran/persian-slug" />
       <path value="$PROJECT_DIR$/vendor/laravel-validation-rules/colour" />
+      <path value="$PROJECT_DIR$/vendor/saeedpooyanfar/zarinpal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

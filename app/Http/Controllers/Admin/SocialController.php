@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Social\CreateSocialRequest;
 use App\Http\Requests\Admin\Social\UpdateSocialRequest;
 use App\Repositories\SocialRepository;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class SocialController extends Controller
 {
@@ -32,13 +31,9 @@ class SocialController extends Controller
     public function store(CreateSocialRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
-                $this->socialRepository->store($request);
-            });
-            DB::commit();
+            $this->socialRepository->store($request);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -53,13 +48,9 @@ class SocialController extends Controller
     public function update(UpdateSocialRequest $request, $id)
     {
         try {
-            DB::transaction(function () use ($request, $id) {
-                $this->socialRepository->update($request, $id);
-            });
-            DB::commit();
+            $this->socialRepository->update($request, $id);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -68,14 +59,10 @@ class SocialController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id) {
-                $social = $this->socialRepository->findById($id);
-                $social->delete();
-            });
-            DB::commit();
+            $social = $this->socialRepository->findById($id);
+            $social->delete();
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

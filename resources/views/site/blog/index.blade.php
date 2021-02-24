@@ -75,10 +75,10 @@
                                 </p></div>
                         </a>
 
-                        <form id="frmSearch">
+                        <form id="frmSearch" action="{{route('posts.search')}}" method="get">
                             <div class="search-box">
                                 <div class="input-area">
-                                    <input type="text" class="search-input" name="txtSearch" placeholder="جستجو...">
+                                    <input type="text" class="search-input" name="keyword" placeholder="جستجو...">
                                 </div>
                                 <div class="input-operates">
                                     <div class="io-btn">
@@ -145,7 +145,7 @@
             </div>
 
             @section('load_js')
-                <script src='{{ asset('site/js/pages/blog.js') }}' type="text/javascript"></script>
+                <script src='{{ asset('site_assets/js/pages/blog.js') }}' type="text/javascript"></script>
 @endsection
 
 @include('site.layout.footer')

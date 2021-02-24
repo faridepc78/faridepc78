@@ -34,8 +34,9 @@ class PostCategoryController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->postCategoryRepository->store($request);
+                $postCategory = $this->postCategoryRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->postCategoryRepository->addImage($image_id, $postCategory->id);
             });
             DB::commit();
             newFeedback();
@@ -57,15 +58,18 @@ class PostCategoryController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $postCategory = $this->postCategoryRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->postCategoryRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->postCategoryRepository->addImage($image_id, $postCategory->id);
                     if ($postCategory->image) {
                         $postCategory->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $postCategory->image_id]);
+                    $this->postCategoryRepository->update($request, $postCategory->image_id, $id);
                 }
-                $this->postCategoryRepository->update($request, $id);
+
             });
             DB::commit();
             newFeedback();

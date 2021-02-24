@@ -33,9 +33,10 @@ class ExpertiseController extends Controller
     public function store(CreateExpertiseRequest $request)
     {
         try {
-            DB::transaction(function () use ($request){
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->expertiseRepository->store($request);
+            DB::transaction(function () use ($request) {
+                $expertise = $this->expertiseRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->expertiseRepository->addImage($image_id, $expertise->id);
             });
             DB::commit();
             newFeedback();
@@ -55,17 +56,19 @@ class ExpertiseController extends Controller
     public function update(UpdateExpertiseRequest $request, $id)
     {
         try {
-            DB::transaction(function () use ($request,$id){
+            DB::transaction(function () use ($request, $id) {
                 $expertise = $this->expertiseRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->expertiseRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->expertiseRepository->addImage($image_id, $expertise->id);
                     if ($expertise->image) {
                         $expertise->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $expertise->image_id]);
+                    $this->expertiseRepository->update($request, $expertise->image_id, $id);
                 }
-                $this->expertiseRepository->update($request, $id);
             });
             DB::commit();
             newFeedback();
@@ -79,7 +82,7 @@ class ExpertiseController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id){
+            DB::transaction(function () use ($id) {
                 $expertise = $this->expertiseRepository->findById($id);
                 if ($expertise->image) {
                     $expertise->image->delete();

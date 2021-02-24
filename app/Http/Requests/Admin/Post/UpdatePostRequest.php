@@ -14,11 +14,11 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:post,slug,'.request()->route('post'),
-            'post_category_id'=>'required|exists:post_category,id',
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:post,slug,'.request()->route('post'),
+            'post_category_id'=>'required|numeric|exists:post_category,id',
             'image' => 'mimes:jpg,png,jpeg|max:1024',
-            'text' => 'required'
+            'text' => 'required|string'
         ];
     }
 

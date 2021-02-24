@@ -4,91 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "260b4a6579e363aaa16d39d80864baac",
+    "content-hash": "1bf331174a53b59e3111b929c6d620f2",
     "packages": [
-        {
-            "name": "ammont/fa-slugify",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ammont/FaSlugify.git",
-                "reference": "be05cc615ab4bc6142372d4deab166a6f49a81b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ammont/FaSlugify/zipball/be05cc615ab4bc6142372d4deab166a6f49a81b9",
-                "reference": "be05cc615ab4bc6142372d4deab166a6f49a81b9",
-                "shasum": ""
-            },
-            "require": {
-                "ammont/finglify": "dev-master",
-                "php": ">=5.3"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ammont\\FaSlugify\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Amir Montazer",
-                    "email": "ammontazer@gmail.com"
-                }
-            ],
-            "description": "Slug generator for persian/farsi.",
-            "support": {
-                "issues": "https://github.com/ammont/FaSlugify/issues",
-                "source": "https://github.com/ammont/FaSlugify/tree/master"
-            },
-            "time": "2014-07-27T11:46:19+00:00"
-        },
-        {
-            "name": "ammont/finglify",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ammont/finglify.git",
-                "reference": "7f6c6429f1851540d2d88520b384d09cab95521a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ammont/finglify/zipball/7f6c6429f1851540d2d88520b384d09cab95521a",
-                "reference": "7f6c6429f1851540d2d88520b384d09cab95521a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ammont\\Finglify\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Amir Montazer",
-                    "email": "ammontazer@gmail.com"
-                }
-            ],
-            "description": "Translates farsi/persian to finglish/pinglish.",
-            "support": {
-                "issues": "https://github.com/ammont/finglify/issues",
-                "source": "https://github.com/ammont/finglify/tree/master"
-            },
-            "time": "2015-03-30T11:31:50+00:00"
-        },
         {
             "name": "anhskohbo/no-captcha",
             "version": "3.3.0",
@@ -2782,6 +2699,62 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "saeedpooyanfar/zarinpal",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Saeed-Pooyanfar/zarinpal-laravel.git",
+                "reference": "9fdbf56fa430351e3793da6ce311d05273312e1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Saeed-Pooyanfar/zarinpal-laravel/zipball/9fdbf56fa430351e3793da6ce311d05273312e1d",
+                "reference": "9fdbf56fa430351e3793da6ce311d05273312e1d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.2.0",
+                "php": "^7.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Zarinpal\\ZarinpalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zarinpal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saeed Pooyanfar",
+                    "email": "saeedp47@gmail.com",
+                    "homepage": "https://github.com/Saeed-Pooyanfar"
+                }
+            ],
+            "description": "Zarinpal payment for Laravel Framework (with sandbox support)",
+            "keywords": [
+                "framework",
+                "laravel",
+                "payment",
+                "zarinpal"
+            ],
+            "support": {
+                "issues": "https://github.com/Saeed-Pooyanfar/zarinpal-laravel/issues",
+                "source": "https://github.com/Saeed-Pooyanfar/zarinpal-laravel/tree/v5.0.0"
+            },
+            "time": "2021-01-27T12:14:29+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7824,9 +7797,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "ammont/fa-slugify": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\PostCategory;
-use Illuminate\Support\Str;
 
 class PostCategoryRepository
 {
@@ -12,7 +11,14 @@ class PostCategoryRepository
         return PostCategory::create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
-            'image_id' => $values->image_id
+            'image_id' => null
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return PostCategory::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 
@@ -26,12 +32,12 @@ class PostCategoryRepository
         return PostCategory::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values, $image_id, $id)
     {
         return PostCategory::query()->where('id', $id)->update([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
-            'image_id' => $values->image_id
+            'image_id' => $image_id
         ]);
     }
 

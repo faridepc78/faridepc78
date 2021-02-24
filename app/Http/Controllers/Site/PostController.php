@@ -3,11 +3,10 @@
 
 namespace App\Http\Controllers\Site;
 
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Post\CreatePostCommentRequest;
 use App\Http\Requests\Site\Post\CreateReplyPostCommentRequest;
-use App\Models\PostComment;
+use App\Models\Post;
 use App\Repositories\PostCategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\SettingRepository;
@@ -43,6 +42,16 @@ class PostController extends Controller
         $social = $this->socialRepository->all();
         return view('site.blog.index',
             compact('post', 'postCategory', 'setting', 'social'));
+    }
+
+    public function search()
+    {
+        $keyword = request()->input('keyword');
+        if (!isset($keyword)) abort(404);
+        $post = $this->postRepository->search($keyword);
+        $setting = $this->settingRepository->first();
+        $social = $this->socialRepository->all();
+        return view('site.blog.search', compact('keyword', 'post', 'setting', 'social'));
     }
 
     public function filter($slug)

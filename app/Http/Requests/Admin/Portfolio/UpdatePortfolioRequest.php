@@ -14,13 +14,13 @@ class UpdatePortfolioRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'headline' => 'required|max:255',
-            'slug' => 'required|max:255|unique:expertise,slug,'.request()->route('portfolio'),
-            'portfolio_category_id'=>'required|exists:portfolio_category,id',
+            'name' => 'required|string|max:255',
+            'headline' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:portfolio,slug,'.request()->route('portfolio'),
+            'portfolio_category_id'=>'required|numeric|exists:portfolio_category,id',
             'image' => 'mimes:jpg,png,jpeg|max:1024',
-            'text' => 'required',
-            'customer' => 'required|max:255',
+            'text' => 'required|string',
+            'customer' => 'required|string|max:255',
             'start_date' => 'required|date|date_format:Y-m-d|before:end_date',
             'end_date' => 'required|date|date_format:Y-m-d|after:start_date'
         ];
@@ -36,8 +36,8 @@ class UpdatePortfolioRequest extends FormRequest
             'image' => 'تصویر نمونه کار',
             'text' => 'توضیحات نمونه کار',
             'customer' => 'مشتری نمونه کار',
-            'start_date' => 'مشتری نمونه کار',
-            'end_date' => 'مشتری نمونه کار'
+            'start_date' => 'تاریخ شروع نمونه کار',
+            'end_date' => 'تاریخ پایان نمونه کار'
         ];
     }
 }

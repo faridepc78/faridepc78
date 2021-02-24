@@ -3,13 +3,10 @@
 namespace App\Models;
 
 use App\Services\Media\MediaFileService;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
     protected $table = 'media';
     protected $fillable = ['id', 'files', 'type', 'filename', 'created_at', 'updated_at'];

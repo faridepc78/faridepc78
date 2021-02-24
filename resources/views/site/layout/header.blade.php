@@ -22,6 +22,7 @@
     <link rel='stylesheet' href='{{ asset('site_assets/css/bootstrap.min.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/css/fonticon.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/css/fa.min.css') }}'>
+    <link rel="stylesheet" href="{{asset('site_assets/plugins/toast/css/toast.min.css')}}">
 
     @yield('load_css')
 

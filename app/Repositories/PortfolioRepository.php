@@ -14,11 +14,18 @@ class PortfolioRepository
             'headline' => $values->headline,
             'slug' => str_slug_persian($values->slug),
             'portfolio_category_id' => $values->portfolio_category_id,
-            'image_id' => $values->image_id,
+            'image_id' => null,
             'text' => $values->text,
             'customer' => $values->customer,
             'start_date' => $values->start_date,
             'end_date' => $values->end_date
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return Portfolio::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 
@@ -47,14 +54,14 @@ class PortfolioRepository
         return Portfolio::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values, $image_id, $id)
     {
         return Portfolio::query()->where('id', $id)->update([
             'name' => $values->name,
             'headline' => $values->headline,
             'slug' => str_slug_persian($values->slug),
             'portfolio_category_id' => $values->portfolio_category_id,
-            'image_id' => $values->image_id,
+            'image_id' => $image_id,
             'text' => $values->text,
             'customer' => $values->customer,
             'start_date' => $values->start_date,

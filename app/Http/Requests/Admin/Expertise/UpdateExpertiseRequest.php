@@ -14,10 +14,10 @@ class UpdateExpertiseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:expertise,slug,'.request()->route('expertise'),
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:expertise,slug,'.request()->route('expertise'),
             'image'=>'mimes:jpg,png,jpeg,|max:1024',
-            'text'=>'required'
+            'text'=>'required|string'
         ];
     }
 

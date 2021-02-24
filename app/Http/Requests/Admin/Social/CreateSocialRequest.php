@@ -15,8 +15,8 @@ class CreateSocialRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'icon' => 'required|max:255',
+            'name' => 'required|string|max:255',
+            'icon' => 'required|string|max:255',
             'link'=>'required|max:255|url',
             'color'=>['required', new Hex]
         ];

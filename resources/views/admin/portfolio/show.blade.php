@@ -16,7 +16,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('portfolio.index')}}">لیست نمونه کار ها</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('portfolio.create')}}">ویرایش نمونه کار({{$portfolio->name}})</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('portfolio.show',$portfolio->id)}}">جزئیات نمونه کار ({{$portfolio->name}})</a></li>
                     </ol>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div class="card card-primary">
 
                         <div class="card-header">
-                            <h3 class="card-title">ویرایش نمونه کار({{$portfolio->name}})</h3>
+                            <h3 class="card-title">جزئیات نمونه کار({{$portfolio->name}})</h3>
                         </div>
 
                             <div class="card-body">

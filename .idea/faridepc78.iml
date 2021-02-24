@@ -120,10 +120,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/hekmatinasser/verta" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hekmatinasser/notowo" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/anhskohbo/no-captcha" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ammont/fa-slugify" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ammont/finglify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pishran/persian-slug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-validation-rules/colour" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/saeedpooyanfar/zarinpal" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

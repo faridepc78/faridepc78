@@ -34,8 +34,9 @@ class WorkController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->workRepository->store($request);
+                $work = $this->workRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->workRepository->addImage($image_id, $work->id);
             });
             DB::commit();
             newFeedback();
@@ -57,15 +58,18 @@ class WorkController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $work = $this->workRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->workRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->workRepository->addImage($image_id, $work->id);
                     if ($work->image) {
                         $work->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $work->image_id]);
+                    $this->workRepository->update($request, $work->image_id, $id);
                 }
-                $this->workRepository->update($request, $id);
+
             });
             DB::commit();
             newFeedback();

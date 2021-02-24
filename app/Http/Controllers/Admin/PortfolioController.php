@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Portfolio\CreatePortfolioRequest;
 use App\Http\Requests\Admin\Portfolio\UpdatePortfolioRequest;
 use App\Repositories\PortfolioCategoryRepository;
 use App\Repositories\PortfolioRepository;
+use App\Repositories\PortfolioSliderRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -38,8 +39,9 @@ class PortfolioController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->portfolioRepository->store($request);
+                $portfolio = $this->portfolioRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->portfolioRepository->addImage($image_id, $portfolio->id);
             });
             DB::commit();
             newFeedback();
@@ -68,15 +70,17 @@ class PortfolioController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $portfolio = $this->portfolioRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->portfolioRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->portfolioRepository->addImage($image_id, $portfolio->id);
                     if ($portfolio->image) {
                         $portfolio->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $portfolio->image_id]);
+                    $this->portfolioRepository->update($request, $portfolio->image_id, $id);
                 }
-                $this->portfolioRepository->update($request, $id);
             });
             DB::commit();
             newFeedback();
@@ -92,6 +96,14 @@ class PortfolioController extends Controller
         try {
             DB::transaction(function () use ($id) {
                 $portfolio = $this->portfolioRepository->findById($id);
+
+                if (count($portfolio->slider)) {
+                    foreach ($portfolio->slider as $value) {
+                        if ($value->image)
+                            $value->image->delete();
+                    }
+                }
+
                 if ($portfolio->image) {
                     $portfolio->image->delete();
                 }

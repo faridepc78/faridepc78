@@ -14,8 +14,8 @@ class UpdatePortfolioCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255|unique:portfolio_category,slug,'.request()->route('portfolio_category')
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:portfolio_category,slug,'.request()->route('portfolio_category')
         ];
     }
 

@@ -59,7 +59,7 @@
                                             data-live-search="true"
                                             data-hide-disabled="false" data-actions-box="true"
                                             data-virtual-scroll="true">
-                                        <option selected disabled="disabled" value="">لطفا تخصص نمونه کار را انتخاب
+                                        <option selected disabled value="">لطفا تخصص نمونه کار را انتخاب
                                             کنید
                                         </option>
                                         @foreach ($expertise as $value)

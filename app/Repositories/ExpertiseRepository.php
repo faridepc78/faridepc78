@@ -3,24 +3,23 @@
 namespace App\Repositories;
 
 use App\Models\Expertise;
-use Illuminate\Support\Str;
 
 class ExpertiseRepository
 {
-    private $faSlugify;
-
-    /*public function __construct(FaSlugify $faSlugify)
-    {
-$this->faSlugify=$faSlugify;
-    }*/
-
     public function store($values)
     {
         return Expertise::create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
-            'image_id' => $values->image_id,
+            'image_id' => null,
             'text' => $values->text
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return Expertise::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 
@@ -34,12 +33,12 @@ $this->faSlugify=$faSlugify;
         return Expertise::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values, $image_id, $id)
     {
         return Expertise::query()->where('id', $id)->update([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
-            'image_id' => $values->image_id,
+            'image_id' => $image_id,
             'text' => $values->text
         ]);
     }

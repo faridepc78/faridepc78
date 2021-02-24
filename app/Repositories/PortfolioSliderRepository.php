@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Portfolio;
 use App\Models\PortfolioSlider;
 
 class PortfolioSliderRepository

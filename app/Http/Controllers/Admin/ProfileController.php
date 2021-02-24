@@ -29,15 +29,18 @@ class ProfileController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $user = $this->userRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->userRepository->update($request,null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->userRepository->addImage($image_id, $user->id);
                     if ($user->image) {
                         $user->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $user->image_id]);
+                    $this->userRepository->update($request,$user->image_id, $id);
                 }
-                $this->userRepository->update($request, $id);
+
                 if (!empty($request->input('password'))){
                     Auth::logout();
                 }

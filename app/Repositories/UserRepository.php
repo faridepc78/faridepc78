@@ -6,13 +6,20 @@ use App\Models\User;
 
 class UserRepository
 {
-    public function update($values, $id)
+    public function update($values, $image_id, $id)
     {
         return User::query()->where('id', $id)->update([
             'full_name' => $values->full_name,
             'email' => $values->email,
-            'image_id' => $values->image_id,
-            'password' => bcrypt(($values->password))
+            'image_id' => $image_id,
+            'password' => bcrypt($values->password)
+        ]);
+    }
+
+    public function addImage($image_id, $id)
+    {
+        return User::query()->where('id', $id)->update([
+            'image_id' => $image_id,
         ]);
     }
 

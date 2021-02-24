@@ -16,7 +16,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('post.index')}}">لیست پست ها</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post.create')}}">جزئیات پست({{$post->name}})</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post.show',$post->id)}}">جزئیات پست({{$post->name}})</a></li>
                     </ol>
                 </div>
 
@@ -84,7 +84,7 @@
                                         <div class="form-group">
                                             <label for="view">تعداد بازدید پست</label>
                                             <input readonly type="text" class="form-control"
-                                                   value="{{ number_format($post->view) }}" id="view">
+                                                   value="{{ number_format($post->view()) }}" id="view">
                                         </div>
                                     </div>
 
