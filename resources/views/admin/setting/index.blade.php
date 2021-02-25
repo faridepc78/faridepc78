@@ -41,7 +41,7 @@
                                     <th>ویرایش</th>
                                 </tr>
 
-                                @if(!empty($setting))
+                                @if($setting)
 
                                     <tr>
                                         <td><div class="alert alert-info text-center"><p>برای مشاهده جزئیات و بروزرسانی می توانید به لینک روبرو مراجعه کنید</p></div></td>

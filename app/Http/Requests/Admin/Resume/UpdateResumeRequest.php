@@ -14,8 +14,8 @@ class UpdateResumeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:resume,name,'.request()->route('resume'),
-            'customer' => 'required|max:255',
+            'name' => 'required|string|max:255|unique:resume,name,'.request()->route('resume'),
+            'customer' => 'required|string|max:255',
             'year'=>'required|numeric|digits:4'
         ];
     }

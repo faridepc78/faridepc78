@@ -8,7 +8,7 @@ class PortfolioCategoryRepository
 {
     public function store($values)
     {
-        return PortfolioCategory::create([
+        return PortfolioCategory::query()->create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
         ]);

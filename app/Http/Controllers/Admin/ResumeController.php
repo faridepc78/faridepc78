@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Resume\CreateResumeRequest;
 use App\Http\Requests\Admin\Resume\UpdateResumeRequest;
 use App\Repositories\ResumeRepository;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class ResumeController extends Controller
 {
@@ -32,14 +31,9 @@ class ResumeController extends Controller
     public function store(CreateResumeRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
-                $this->resumeRepository->store($request);
-            });
-            DB::commit();
+            $this->resumeRepository->store($request);
             newFeedback();
         } catch (Exception $exception) {
-            dd($exception);
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -54,13 +48,9 @@ class ResumeController extends Controller
     public function update(UpdateResumeRequest $request, $id)
     {
         try {
-            DB::transaction(function () use ($request, $id) {
-                $this->resumeRepository->update($request, $id);
-            });
-            DB::commit();
+            $this->resumeRepository->update($request, $id);
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();
@@ -69,14 +59,10 @@ class ResumeController extends Controller
     public function destroy($id)
     {
         try {
-            DB::transaction(function () use ($id) {
-                $resume = $this->resumeRepository->findById($id);
-                $resume->delete();
-            });
-            DB::commit();
+            $resume = $this->resumeRepository->findById($id);
+            $resume->delete();
             newFeedback();
         } catch (Exception $exception) {
-            DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
         return back();

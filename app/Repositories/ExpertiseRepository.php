@@ -8,7 +8,7 @@ class ExpertiseRepository
 {
     public function store($values)
     {
-        return Expertise::create([
+        return Expertise::query()->create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
             'image_id' => null,

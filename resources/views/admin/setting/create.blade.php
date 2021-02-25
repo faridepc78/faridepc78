@@ -165,6 +165,85 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="blog_text">توضیحات بلاگ</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('blog_text') is-invalid @enderror"
+                                              id="blog_text"
+                                              name="blog_text"
+                                              autocomplete="blog_text"
+                                              autofocus>{{ old('blog_text') }}</textarea>
+
+                                    @error('blog_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="portfolio_text">توضیحات نمونه کار ها</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('portfolio_text') is-invalid @enderror"
+                                              id="portfolio_text"
+                                              name="portfolio_text"
+                                              autocomplete="portfolio_text"
+                                              autofocus>{{ old('portfolio_text') }}</textarea>
+
+                                    @error('portfolio_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="work_text">توضیحات کار ها</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('work_text') is-invalid @enderror"
+                                              id="work_text"
+                                              name="work_text"
+                                              autocomplete="work_text"
+                                              autofocus>{{ old('work_text') }}</textarea>
+
+                                    @error('work_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telegram_text">توضیحات کانال تلگرام</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('telegram_text') is-invalid @enderror"
+                                              id="telegram_text"
+                                              name="telegram_text"
+                                              autocomplete="telegram_text"
+                                              autofocus>{{ old('telegram_text') }}</textarea>
+
+                                    @error('telegram_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telegram_channel_link">لینک توضیحات کانال تلگرام</label>
+                                    <input type="text"
+                                           class="form-control @error('telegram_channel_link') is-invalid @enderror"
+                                           value="{{ old('telegram_channel_link') }}"
+                                           id="telegram_channel_link" name="telegram_channel_link"
+                                           autocomplete="telegram_channel_link" autofocus>
+
+                                    @error('telegram_channel_link')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="about1">درباره من 1</label>
                                     <textarea class="form-control ckeditor @error('about1') is-invalid @enderror"
                                               id="about1"
@@ -190,6 +269,18 @@
                                     @error('about2')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>about2
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image">تصویر مدیر سایت (درباره من)</label>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                           autofocus id="image" name="image">
+
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>

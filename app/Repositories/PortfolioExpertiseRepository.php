@@ -11,7 +11,7 @@ class PortfolioExpertiseRepository
     {
         foreach ($values as $value) {
             if (!empty($value)) {
-                PortfolioExpertise::create([
+                PortfolioExpertise::query()->create([
                     'portfolio_id' => $portfolio_id,
                     'expertise_id' => $value
                 ]);

@@ -11,7 +11,7 @@ class PostRepository
 {
     public function store($values)
     {
-        return Post::create([
+        return Post::query()->create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
             'post_category_id' => $values->post_category_id,
@@ -81,12 +81,12 @@ class PostRepository
 
     public function storePostView($post_id)
     {
-        return PostView::create(['post_id' => $post_id, 'ip' => request()->ip()]);
+        return PostView::query()->create(['post_id' => $post_id, 'ip' => request()->ip()]);
     }
 
     public function storePostLike($post_id)
     {
-        return PostLike::create(['post_id' => $post_id, 'ip' => request()->ip()]);
+        return PostLike::query()->create(['post_id' => $post_id, 'ip' => request()->ip()]);
     }
 
     public function destroyPostLike($post_id)
@@ -96,7 +96,7 @@ class PostRepository
 
     public function storePostComment($values, $post_id)
     {
-        return PostComment::create([
+        return PostComment::query()->create([
             'post_id' => $post_id,
             'parent_id' => null,
             'user_name' => $values->user_name,
@@ -110,7 +110,7 @@ class PostRepository
 
     public function replyPostComment($values, $post_id)
     {
-        return PostComment::create([
+        return PostComment::query()->create([
             'post_id' => $post_id,
             'parent_id' => $values->post_comment_id,
             'user_name' => $values->user_name,

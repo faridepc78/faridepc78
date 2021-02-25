@@ -8,7 +8,7 @@ class ResumeRepository
 {
     public function store($values)
     {
-        return Resume::create([
+        return Resume::query()->create([
             'name' => $values->name,
             'customer' => $values->customer,
             'year' => $values->year

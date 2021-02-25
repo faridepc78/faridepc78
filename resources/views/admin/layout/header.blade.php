@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/adminlte.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/ionicons/css/ionicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/bootstrap-rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/custom-style.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/toast/css/toast.min.css')}}">

@@ -13,7 +13,7 @@ class PortfolioSliderRepository
 
     public function store($values)
     {
-        return PortfolioSlider::create([
+        return PortfolioSlider::query()->create([
             'portfolio_id' => $values->portfolio_id,
             'image_id' => $values->image_id
         ]);

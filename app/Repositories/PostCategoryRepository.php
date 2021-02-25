@@ -8,7 +8,7 @@ class PostCategoryRepository
 {
     public function store($values)
     {
-        return PostCategory::create([
+        return PostCategory::query()->create([
             'name' => $values->name,
             'slug' => str_slug_persian($values->slug),
             'image_id' => null

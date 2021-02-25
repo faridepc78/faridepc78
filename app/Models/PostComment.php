@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PostComment extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
     protected $table = 'post_comment';
     protected $fillable = ['id', 'post_id', 'parent_id', 'user_name', 'user_email', 'user_ip', 'text', 'status', 'users', 'created_at', 'updated_at'];
@@ -23,7 +20,7 @@ class PostComment extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id')->withDefault();
+        return $this->belongsTo(Post::class, 'post_id','id')->withDefault();
     }
 
     public function getGravatarAttribute()
@@ -34,11 +31,11 @@ class PostComment extends Model
 
     public function comments()
     {
-        return $this->hasMany(PostComment::class, 'parent_id');
+        return $this->hasMany(PostComment::class, 'parent_id','id');
     }
 
     public function childrenComments()
     {
-        return $this->hasMany(PostComment::class, 'parent_id')->with('comments');
+        return $this->hasMany(PostComment::class, 'parent_id','id')->with('comments');
     }
 }

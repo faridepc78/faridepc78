@@ -8,7 +8,7 @@ class PaymentRepository
 {
     public function store($values, $authority)
     {
-        return Payment::create([
+        return Payment::query()->create([
             'user_name' => $values->user_name,
             'user_mobile' => $values->user_mobile,
             'user_email' => $values->user_email,
@@ -37,5 +37,25 @@ class PaymentRepository
             'status' => Payment::INACTIVE_STATUS,
             'ref_number' => $refId
         ]);
+    }
+
+    public function all()
+    {
+        return Payment::query()->latest()->paginate();
+    }
+
+    public function success()
+    {
+        return Payment::query()->where('status', '=', Payment::ACTIVE_STATUS)->latest()->paginate();
+    }
+
+    public function fail()
+    {
+        return Payment::query()->where('status', '=', Payment::INACTIVE_STATUS)->latest()->paginate();
+    }
+
+    public function show($id)
+    {
+        return Payment::query()->findOrFail($id);
     }
 }

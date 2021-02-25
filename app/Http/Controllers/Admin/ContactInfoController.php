@@ -34,8 +34,9 @@ class ContactInfoController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
-                $this->contactInfoRepository->store($request);
+                $contactInfo = $this->contactInfoRepository->store($request);
+                $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                $this->contactInfoRepository->addImage($image_id, $contactInfo->id);
             });
             DB::commit();
             newFeedback();
@@ -57,15 +58,18 @@ class ContactInfoController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $contactInfo = $this->contactInfoRepository->findById($id);
+
                 if ($request->hasFile('image')) {
-                    $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                    $this->contactInfoRepository->update($request, null, $id);
+                    $image_id = MediaFileService::publicUpload($request->file('image'))->id;
+                    $this->contactInfoRepository->addImage($image_id, $contactInfo->id);
                     if ($contactInfo->image) {
                         $contactInfo->image->delete();
                     }
                 } else {
-                    $request->request->add(['image_id' => $contactInfo->image_id]);
+                    $this->contactInfoRepository->update($request,$contactInfo->image_id, $id);
                 }
-                $this->contactInfoRepository->update($request, $id);
+
             });
             DB::commit();
             newFeedback();

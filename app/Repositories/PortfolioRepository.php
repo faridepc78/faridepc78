@@ -3,13 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Portfolio;
-use Illuminate\Support\Str;
 
 class PortfolioRepository
 {
     public function store($values)
     {
-        return Portfolio::create([
+        return Portfolio::query()->create([
             'name' => $values->name,
             'headline' => $values->headline,
             'slug' => str_slug_persian($values->slug),

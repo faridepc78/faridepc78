@@ -2,15 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    use HasFactory;
-
-    protected $guarded = [];
-    protected $table = 'setting';
     protected $fillable = [
         'id',
         'rule',
@@ -21,10 +16,23 @@ class Setting extends Model
         'trust_reason2',
         'trust_reason3',
         'trust_reason4',
+        'blog_text',
+        'portfolio_text',
+        'work_text',
+        'telegram_text',
+        'telegram_channel_link',
+        'footer_text',
         'about1',
         'about2',
-        'footer_text',
+        'image_id',
         'created_at',
         'updated_at'
     ];
+    protected $guarded = [];
+    protected $table = 'setting';
+
+    public function image()
+    {
+        return $this->hasOne(Media::class, 'id', 'image_id')->withDefault();
+    }
 }

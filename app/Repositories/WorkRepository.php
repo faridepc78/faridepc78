@@ -8,7 +8,7 @@ class WorkRepository
 {
     public function store($values)
     {
-        return Work::create([
+        return Work::query()->create([
             'title' => $values->title,
             'text' => $values->text,
             'image_id' => null

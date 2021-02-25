@@ -12,14 +12,6 @@ class MediaFileService
     private static $dir;
     private static $isPrivate;
 
-    /*public static function privateUpload(UploadedFile $file)
-    {
-        self::$file = $file;
-        self::$dir = "private/";
-        self::$isPrivate = true;
-        return self::upload();
-    }*/
-
     public static function publicUpload(UploadedFile $file)
     {
         self::$file = $file;
@@ -37,14 +29,6 @@ class MediaFileService
             }
         }
     }
-
-    /*static function stream(Media $media){
-        foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
-            if ($media->type == $type) {
-                return $service['handler']::stream($media);
-            }
-        }
-    }*/
 
     public static function delete(Media $media)
     {

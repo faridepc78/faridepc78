@@ -8,7 +8,7 @@ class SocialRepository
 {
     public function store($values)
     {
-        return Social::create([
+        return Social::query()->create([
             'name' => $values->name,
             'icon' => $values->icon,
             'link' => $values->link,

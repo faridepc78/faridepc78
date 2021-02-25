@@ -12,12 +12,12 @@ class Expertise extends Model
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id')->withDefault();
+        return $this->belongsTo(Media::class, 'image_id','id')->withDefault();
     }
 
     public function portfolio_expertise()
     {
-        return $this->hasOne(PortfolioExpertise::class, 'expertise_id')->withDefault();
+        return $this->hasOne(PortfolioExpertise::class, 'expertise_id','id')->withDefault();
     }
 
     public function portfolio()

@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Customer\CreateCustomerRequest;
 use App\Http\Requests\Admin\Customer\UpdateCustomerRequest;
 use App\Repositories\CustomerRepository;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {

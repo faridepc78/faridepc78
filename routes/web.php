@@ -34,6 +34,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 
     Route::resource('post', 'PostController');
 
+    Route::get('payment', 'PaymentController@index')->name('payment.index');
+    Route::get('payment/success', 'PaymentController@success')->name('payment.success');
+    Route::get('payment/fail', 'PaymentController@fail')->name('payment.fail');
+    Route::get('payment/show/{id}', 'PaymentController@show')->name('payment.show');
+    Route::delete('payment/{id}', 'PaymentController@destroy')->name('payment.destroy');
+
+    Route::get('contact', 'ContactController@index')->name('contact.index');
+    Route::get('contact/read', 'ContactController@read')->name('contact.read');
+    Route::get('contact/unread', 'ContactController@unread')->name('contact.unread');
+    Route::get('contact/show/{id}', 'ContactController@show')->name('contact.show');
+    Route::delete('contact/{id}', 'ContactController@destroy')->name('contact.destroy');
+    Route::patch('contact/{id}', 'ContactController@change_status')->name('contact.change_status');
+
     Route::resource('setting', 'SettingController')->except(['show', 'destroy']);
 
     Route::resource('work', 'WorkController')->except(['show']);

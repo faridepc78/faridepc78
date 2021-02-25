@@ -61,8 +61,10 @@
                                 <div class="form-group">
                                     <label for="full_name">نام و نام خانوادگی مدیر سایت</label>
                                     <input type="text" class="form-control @error('full_name') is-invalid @enderror"
-                                           value="{{ old('full_name',$setting->full_name) }}" id="full_name" name="full_name"
-                                           placeholder="لطفا نام و نام خانوادگی مدیر سایت را وارد کنید" autocomplete="full_name" autofocus
+                                           value="{{ old('full_name',$setting->full_name) }}" id="full_name"
+                                           name="full_name"
+                                           placeholder="لطفا نام و نام خانوادگی مدیر سایت را وارد کنید"
+                                           autocomplete="full_name" autofocus
                                            required>
 
                                     @error('full_name')
@@ -111,7 +113,8 @@
                                               id="trust_reason1"
                                               name="trust_reason1"
                                               autocomplete="trust_reason1"
-                                              autofocus required>{{ old('trust_reason1',$setting->trust_reason1) }}</textarea>
+                                              autofocus
+                                              required>{{ old('trust_reason1',$setting->trust_reason1) }}</textarea>
 
                                     @error('trust_reason1')
                                     <span class="invalid-feedback" role="alert">
@@ -126,7 +129,8 @@
                                               id="trust_reason2"
                                               name="trust_reason2"
                                               autocomplete="trust_reason2"
-                                              autofocus required>{{ old('trust_reason2',$setting->trust_reason2) }}</textarea>
+                                              autofocus
+                                              required>{{ old('trust_reason2',$setting->trust_reason2) }}</textarea>
 
                                     @error('trust_reason2')
                                     <span class="invalid-feedback" role="alert">
@@ -141,7 +145,8 @@
                                               id="trust_reason3"
                                               name="trust_reason3"
                                               autocomplete="trust_reason3"
-                                              autofocus required>{{ old('trust_reason3',$setting->trust_reason3) }}</textarea>
+                                              autofocus
+                                              required>{{ old('trust_reason3',$setting->trust_reason3) }}</textarea>
 
                                     @error('trust_reason3')
                                     <span class="invalid-feedback" role="alert">
@@ -156,9 +161,89 @@
                                               id="trust_reason4"
                                               name="trust_reason4"
                                               autocomplete="trust_reason4"
-                                              autofocus required>{{ old('trust_reason4',$setting->trust_reason4) }}</textarea>
+                                              autofocus
+                                              required>{{ old('trust_reason4',$setting->trust_reason4) }}</textarea>
 
                                     @error('trust_reason4')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="blog_text">توضیحات بلاگ</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('blog_text') is-invalid @enderror"
+                                              id="blog_text"
+                                              name="blog_text"
+                                              autocomplete="blog_text"
+                                              autofocus>{{ old('blog_text',$setting->blog_text) }}</textarea>
+
+                                    @error('blog_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="portfolio_text">توضیحات نمونه کار ها</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('portfolio_text') is-invalid @enderror"
+                                              id="portfolio_text"
+                                              name="portfolio_text"
+                                              autocomplete="portfolio_text"
+                                              autofocus>{{ old('portfolio_text',$setting->portfolio_text) }}</textarea>
+
+                                    @error('portfolio_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="work_text">توضیحات کار ها</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('work_text') is-invalid @enderror"
+                                              id="work_text"
+                                              name="work_text"
+                                              autocomplete="work_text"
+                                              autofocus>{{ old('work_text',$setting->work_text) }}</textarea>
+
+                                    @error('work_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telegram_text">توضیحات کانال تلگرام</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('telegram_text') is-invalid @enderror"
+                                              id="telegram_text"
+                                              name="telegram_text"
+                                              autocomplete="telegram_text"
+                                              autofocus>{{ old('telegram_text',$setting->telegram_text) }}</textarea>
+
+                                    @error('telegram_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telegram_channel_link">لینک توضیحات کانال تلگرام</label>
+                                    <input type="text"
+                                           class="form-control @error('telegram_channel_link') is-invalid @enderror"
+                                           value="{{ old('telegram_channel_link',$setting->telegram_channel_link) }}"
+                                           id="telegram_channel_link" name="telegram_channel_link"
+                                           autocomplete="telegram_channel_link" autofocus>
+
+                                    @error('telegram_channel_link')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -196,6 +281,19 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="image">تصویر مدیر سایت (درباره من)</label>
+                                    <img class="img-size-64" src="{{$setting->image->thumb}}">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                           autofocus id="image" name="image">
+
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="footer_text">متن فوتر سایت</label>
                                     <textarea class="form-control @error('footer_text') is-invalid @enderror"
                                               rows="5"
@@ -204,7 +302,8 @@
                                               name="footer_text"
                                               autocomplete="footer_text"
                                               placeholder="لطفا متن فوتر سایت را وارد کنید"
-                                              autofocus required>{{ old('footer_text',$setting->footer_text) }}</textarea>
+                                              autofocus
+                                              required>{{ old('footer_text',$setting->footer_text) }}</textarea>
 
                                     @error('footer_text')
                                     <span class="invalid-feedback" role="alert">

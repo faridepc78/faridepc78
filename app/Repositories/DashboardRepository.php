@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Customer;
 use App\Models\Expertise;
 use App\Models\Portfolio;
 use App\Models\Post;

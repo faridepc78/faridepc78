@@ -87,6 +87,38 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item has-treeview {{ request()->routeIs(['work.index','work.create','work.edit']) ? 'menu-open' : '' }}">
+
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['work.index','work.create','work.edit']) ? 'active' : '' }}">
+                            <i class="nav-icon fa fa-tasks"></i>
+                            <p>
+                                کار ها
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('work.index') }}"
+                                   class="nav-link {{ request()->routeIs(['work.index']) ? 'active' : '' }}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>لیست کار ها</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('work.create') }}"
+                                   class="nav-link {{ request()->routeIs(['work.create']) ? 'active' : '' }}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>ایجاد کار ها</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     <li class="nav-item has-treeview {{ request()->routeIs(
     ['portfolio_category.index','portfolio_category.create','portfolio_category.edit',
     'portfolio.index','portfolio.create','portfolio.edit']
@@ -106,28 +138,32 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('portfolio_category.index') }}" class="nav-link {{ request()->routeIs('portfolio_category.index') ? 'active' : '' }}">
+                                <a href="{{ route('portfolio_category.index') }}"
+                                   class="nav-link {{ request()->routeIs('portfolio_category.index') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست دسته بندی ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('portfolio_category.create') }}" class="nav-link {{ request()->routeIs('portfolio_category.create') ? 'active' : '' }}">
+                                <a href="{{ route('portfolio_category.create') }}"
+                                   class="nav-link {{ request()->routeIs('portfolio_category.create') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد دسته بندی ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('portfolio.index') }}" class="nav-link {{ request()->routeIs('portfolio.index') ? 'active' : '' }}">
+                                <a href="{{ route('portfolio.index') }}"
+                                   class="nav-link {{ request()->routeIs('portfolio.index') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست نمونه کار ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('portfolio.create') }}" class="nav-link {{ request()->routeIs('portfolio.create') ? 'active' : '' }}">
+                                <a href="{{ route('portfolio.create') }}"
+                                   class="nav-link {{ request()->routeIs('portfolio.create') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد نمونه کار ها</p>
                                 </a>
@@ -155,28 +191,32 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('post_category.index') }}" class="nav-link {{ request()->routeIs('post_category.index') ? 'active' : '' }}">
+                                <a href="{{ route('post_category.index') }}"
+                                   class="nav-link {{ request()->routeIs('post_category.index') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست دسته بندی ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('post_category.create') }}" class="nav-link {{ request()->routeIs('post_category.create') ? 'active' : '' }}">
+                                <a href="{{ route('post_category.create') }}"
+                                   class="nav-link {{ request()->routeIs('post_category.create') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد دسته بندی ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('post.index') }}" class="nav-link" {{ request()->routeIs('post.index') ? 'active' : '' }}>
+                                <a href="{{ route('post.index') }}"
+                                   class="nav-link" {{ request()->routeIs('post.index') ? 'active' : '' }}>
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست پست ها</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('post.create') }}" class="nav-link" {{ request()->routeIs('post.create') ? 'active' : '' }}>
+                                <a href="{{ route('post.create') }}"
+                                   class="nav-link" {{ request()->routeIs('post.create') ? 'active' : '' }}>
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد پست ها</p>
                                 </a>
@@ -185,12 +225,13 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->routeIs(['work.index','work.create','work.edit']) ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['work.index','work.create','work.edit']) ? 'active' : '' }}">
-                            <i class="nav-icon fa fa-tasks"></i>
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'active' : '' }}">
+                            <i class="nav-icon fa fa-paypal"></i>
                             <p>
-                                کار ها
+                                تراکنش ها
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -198,16 +239,34 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('work.index') }}" class="nav-link {{ request()->routeIs(['work.index']) ? 'active' : '' }}">
+                                <a href="{{ route('payment.index') }}"
+                                   class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>لیست کار ها</p>
+                                    <p>لیست تراکنش ها</p>
                                 </a>
                             </li>
 
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'menu-open' : '' }}">
+
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'active' : '' }}">
+                            <i class="nav-icon fa fa-whatsapp"></i>
+                            <p>
+                                تماس ها
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+
                             <li class="nav-item">
-                                <a href="{{ route('work.create') }}" class="nav-link {{ request()->routeIs(['work.create']) ? 'active' : '' }}">
+                                <a href="{{ route('contact.index') }}"
+                                   class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>ایجاد کار ها</p>
+                                    <p>لیست تماس ها</p>
                                 </a>
                             </li>
 
@@ -216,7 +275,8 @@
 
                     <li class="nav-item has-treeview {{ request()->routeIs(['customer.index','customer.create','customer.edit']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['customer.index','customer.create','customer.edit']) ? 'active' : '' }}">
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['customer.index','customer.create','customer.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-users"></i>
                             <p>
                                 مشتریان
@@ -227,14 +287,16 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('customer.index') }}" class="nav-link {{ request()->routeIs(['customer.index']) ? 'active' : '' }}">
+                                <a href="{{ route('customer.index') }}"
+                                   class="nav-link {{ request()->routeIs(['customer.index']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست مشتریان</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('customer.create') }}" class="nav-link {{ request()->routeIs(['customer.create']) ? 'active' : '' }}">
+                                <a href="{{ route('customer.create') }}"
+                                   class="nav-link {{ request()->routeIs(['customer.create']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد مشتریان</p>
                                 </a>
@@ -245,7 +307,8 @@
 
                     <li class="nav-item has-treeview {{ request()->routeIs(['social.index','social.create','social.edit']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['social.index','social.create','social.edit']) ? 'active' : '' }}">
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['social.index','social.create','social.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-telegram"></i>
                             <p>
                                 شبکه های اجتماعی
@@ -256,14 +319,16 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('social.index') }}" class="nav-link {{ request()->routeIs(['social.index']) ? 'active' : '' }}">
+                                <a href="{{ route('social.index') }}"
+                                   class="nav-link {{ request()->routeIs(['social.index']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست شبکه های اجتماعی</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('social.create') }}" class="nav-link {{ request()->routeIs(['social.create']) ? 'active' : '' }}">
+                                <a href="{{ route('social.create') }}"
+                                   class="nav-link {{ request()->routeIs(['social.create']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد شبکه های اجتماعی</p>
                                 </a>
@@ -274,7 +339,8 @@
 
                     <li class="nav-item has-treeview {{ request()->routeIs(['contactInfo.index','contactInfo.create','contactInfo.edit']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['contactInfo.index','contactInfo.create','contactInfo.edit']) ? 'active' : '' }}">
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['contactInfo.index','contactInfo.create','contactInfo.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-phone"></i>
                             <p>
                                 راه های ارتباطی
@@ -285,14 +351,16 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('contactInfo.index') }}" class="nav-link {{ request()->routeIs(['contactInfo.index']) ? 'active' : '' }}">
+                                <a href="{{ route('contactInfo.index') }}"
+                                   class="nav-link {{ request()->routeIs(['contactInfo.index']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست راه های ارتباطی</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('contactInfo.create') }}" class="nav-link {{ request()->routeIs(['contactInfo.create']) ? 'active' : '' }}">
+                                <a href="{{ route('contactInfo.create') }}"
+                                   class="nav-link {{ request()->routeIs(['contactInfo.create']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد راه های ارتباطی</p>
                                 </a>
@@ -303,7 +371,8 @@
 
                     <li class="nav-item has-treeview {{ request()->routeIs(['resume.index','resume.create','resume.edit']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['resume.index','resume.create','resume.edit']) ? 'active' : '' }}">
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['resume.index','resume.create','resume.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-file"></i>
                             <p>
                                 پروژه های رزومه
@@ -314,14 +383,16 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('resume.index') }}" class="nav-link {{ request()->routeIs(['resume.index']) ? 'active' : '' }}">
+                                <a href="{{ route('resume.index') }}"
+                                   class="nav-link {{ request()->routeIs(['resume.index']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست پروژه های رزومه</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('resume.create') }}" class="nav-link {{ request()->routeIs(['resume.create']) ? 'active' : '' }}">
+                                <a href="{{ route('resume.create') }}"
+                                   class="nav-link {{ request()->routeIs(['resume.create']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد پروژه های رزومه</p>
                                 </a>
@@ -332,7 +403,8 @@
 
                     <li class="nav-item has-treeview {{ request()->routeIs(['setting.index','setting.create','setting.edit']) ? 'menu-open' : '' }}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs(['setting.index','setting.create','setting.edit']) ? 'active' : '' }}">
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['setting.index','setting.create','setting.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-cogs"></i>
                             <p>
                                 تنظیمات
@@ -343,14 +415,16 @@
                         <ul class="nav nav-treeview">
 
                             <li class="nav-item">
-                                <a href="{{ route('setting.index') }}" class="nav-link {{ request()->routeIs(['setting.index']) ? 'active' : '' }}">
+                                <a href="{{ route('setting.index') }}"
+                                   class="nav-link {{ request()->routeIs(['setting.index']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>نمایش تنظیمات</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('setting.create') }}" class="nav-link {{ request()->routeIs(['setting.create','setting.edit']) ? 'active' : '' }}">
+                                <a href="{{ route('setting.create') }}"
+                                   class="nav-link {{ request()->routeIs(['setting.create','setting.edit']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>مدیریت تنظیمات</p>
                                 </a>

@@ -15,7 +15,9 @@ class PortfolioExpertiseController extends Controller
     private $portfolioExpertiseRepository;
     private $expertiseRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository, PortfolioExpertiseRepository $portfolioExpertiseRepository, ExpertiseRepository $expertiseRepository)
+    public function __construct(PortfolioRepository $portfolioRepository,
+                                PortfolioExpertiseRepository $portfolioExpertiseRepository,
+                                ExpertiseRepository $expertiseRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioExpertiseRepository = $portfolioExpertiseRepository;

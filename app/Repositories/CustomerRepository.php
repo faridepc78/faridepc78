@@ -8,7 +8,7 @@ class CustomerRepository
 {
     public function store($values)
     {
-        return Customer::create([
+        return Customer::query()->create([
             'name' => $values->name,
             'from' => $values->from,
             'text' => $values->text

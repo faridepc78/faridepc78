@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Portfolio\CreatePortfolioRequest;
 use App\Http\Requests\Admin\Portfolio\UpdatePortfolioRequest;
 use App\Repositories\PortfolioCategoryRepository;
 use App\Repositories\PortfolioRepository;
-use App\Repositories\PortfolioSliderRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
 use Illuminate\Support\Facades\DB;

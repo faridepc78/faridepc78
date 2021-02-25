@@ -69,6 +69,7 @@ class ExpertiseController extends Controller
                 } else {
                     $this->expertiseRepository->update($request, $expertise->image_id, $id);
                 }
+
             });
             DB::commit();
             newFeedback();

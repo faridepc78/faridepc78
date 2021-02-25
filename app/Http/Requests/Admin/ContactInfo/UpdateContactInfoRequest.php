@@ -14,11 +14,11 @@ class UpdateContactInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'val' => 'required|max:255',
-            'link' => 'required|max:255',
+            'name' => 'required|string|max:255',
+            'val' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
             'image' => 'mimes:jpg,png,jpeg|max:1024',
-            'text' => 'required'
+            'text' => 'required|string'
         ];
     }
 

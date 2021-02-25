@@ -26,7 +26,7 @@ class Post extends Model
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id')->withDefault();
+        return $this->belongsTo(Media::class, 'image_id','id')->withDefault();
     }
 
     public function path()
@@ -36,17 +36,17 @@ class Post extends Model
 
     public function view()
     {
-        return $this->hasMany(PostView::class)->count();
+        return $this->hasMany(PostView::class,'post_id','id')->count();
     }
 
     public function like()
     {
-        return $this->hasMany(PostLike::class)->count();
+        return $this->hasMany(PostLike::class,'post_id','id')->count();
     }
 
     public function countComment()
     {
-        return $this->hasMany(PostComment::class)->count();
+        return $this->hasMany(PostComment::class,'post_id','id')->count();
     }
 
     public function isLikePostByIp()
