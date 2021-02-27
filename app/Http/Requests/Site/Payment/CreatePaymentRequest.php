@@ -11,6 +11,13 @@ class CreatePaymentRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'price' => str_replace(',', '', request('price'))
+        ]);
+    }
+
     public function rules()
     {
         return [
@@ -30,8 +37,15 @@ class CreatePaymentRequest extends FormRequest
             'user_email' => 'ایمیل',
             'user_mobile' => 'تلفن همراه',
             'title' => 'عنوان پرداخت',
-            'price' => 'مبلغ پرداختی',
             'g-recaptcha-response' => 'ریکپچا'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.required' => 'فیلد ریکپچا الزامی است',
+            'g-recaptcha-response.captcha' => 'لطفا فیلد ریکپچا را مجداد پر کنید'
         ];
     }
 }

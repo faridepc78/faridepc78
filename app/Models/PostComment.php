@@ -12,7 +12,8 @@ class PostComment extends Model
 
     const ACTIVE_STATUS = 'active';
     const INACTIVE_STATUS = 'inactive';
-    static $statuses = [self::ACTIVE_STATUS, self::INACTIVE_STATUS];
+    const PENDING_STATUS = 'pending';
+    static $statuses = [self::ACTIVE_STATUS, self::INACTIVE_STATUS, self::PENDING_STATUS];
 
     const COMMON_USER = 'user';
     const ADMIN_USER = 'admin';
@@ -20,7 +21,7 @@ class PostComment extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id','id')->withDefault();
+        return $this->belongsTo(Post::class, 'post_id', 'id')->withDefault();
     }
 
     public function getGravatarAttribute()
@@ -31,11 +32,13 @@ class PostComment extends Model
 
     public function comments()
     {
-        return $this->hasMany(PostComment::class, 'parent_id','id');
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
+            ->where('status','=',PostComment::ACTIVE_STATUS);
     }
 
     public function childrenComments()
     {
-        return $this->hasMany(PostComment::class, 'parent_id','id')->with('comments');
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
+            ->with('comments')->where('status','=',PostComment::ACTIVE_STATUS);
     }
 }

@@ -50,12 +50,13 @@ class PortfolioController extends Controller
     public function filter($slug)
     {
         $portfolio_category_id = $this->extractId($slug);
+        $portfolioCategoryInfo = $this->portfolioCategoryRepository->findById($portfolio_category_id);
         $portfolio = $this->portfolioRepository->findByCategoryId($portfolio_category_id);
         $portfolioCategory = $this->portfolioCategoryRepository->all();
         $setting = $this->settingRepository->first();
         $social = $this->socialRepository->all();
         return view('site.portfolio.index',
-            compact('portfolio_category_id', 'portfolio', 'portfolioCategory', 'setting', 'social'));
+            compact('portfolio_category_id', 'portfolioCategoryInfo','portfolio', 'portfolioCategory', 'setting', 'social'));
     }
 
     public function show($slug)

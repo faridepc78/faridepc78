@@ -14,10 +14,10 @@ class PaymentRepository
             'user_email' => $values->user_email,
             'user_ip' => request()->ip(),
             'title' => $values->title,
-            'price' => $values->price,
+            'price' => str_replace(',', '', $values->price),
             'ref_number' => $authority,
             'order_number' => make_token(10),
-            'status' => Payment::INACTIVE_STATUS
+            'status' => Payment::PENDING_STATUS
         ]);
     }
 
@@ -31,10 +31,17 @@ class PaymentRepository
         return Payment::query()->where('order_number', '=', $order_number)->firstOrFail();
     }
 
-    public function update($authority, $refId)
+    public function updateInactive($authority)
     {
         return Payment::query()->where('ref_number', '=', $authority)->update([
-            'status' => Payment::INACTIVE_STATUS,
+            'status' => Payment::INACTIVE_STATUS
+        ]);
+    }
+
+    public function updateActive($authority, $refId)
+    {
+        return Payment::query()->where('ref_number', '=', $authority)->update([
+            'status' => Payment::ACTIVE_STATUS,
             'ref_number' => $refId
         ]);
     }

@@ -21,12 +21,12 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(PostCategory::class, 'post_category_id','id')->withDefault();
+        return $this->belongsTo(PostCategory::class, 'post_category_id', 'id')->withDefault();
     }
 
     public function image()
     {
-        return $this->belongsTo(Media::class, 'image_id','id')->withDefault();
+        return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }
 
     public function path()
@@ -36,17 +36,19 @@ class Post extends Model
 
     public function view()
     {
-        return $this->hasMany(PostView::class,'post_id','id')->count();
+        return $this->hasMany(PostView::class, 'post_id', 'id')->count();
     }
 
     public function like()
     {
-        return $this->hasMany(PostLike::class,'post_id','id')->count();
+        return $this->hasMany(PostLike::class, 'post_id', 'id')->count();
     }
 
     public function countComment()
     {
-        return $this->hasMany(PostComment::class,'post_id','id')->count();
+        return $this->hasMany(PostComment::class, 'post_id', 'id')
+            ->where('status', '=', PostComment::ACTIVE_STATUS)
+            ->count();
     }
 
     public function isLikePostByIp()

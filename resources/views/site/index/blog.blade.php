@@ -4,10 +4,10 @@
             <div class="items clearfix">
                 <div class="section-header col-md-3">
                     <h3 class="title">بلاگ</h3>
-                    <div class="description">معمولاً در مورد مطالبی که برام جالب بوده و یا تخصصی و یا حتی آموزشی
-                        هست توی بلاگم مطلب می‌نویسم؛ شاید به درد کسی بخوره.
+                    <div class="description">
+                        {{$setting->	blog_text}}
                     </div>
-                    <a href="blog/" class="show-more">
+                    <a href="{{route('posts')}}" class="show-more">
                         <i class="fi fi-archive fi-lg"></i>
                         مشاهده آرشیو بلاگ </a>
                 </div>
@@ -40,11 +40,11 @@
                                     </div>
                                     <div class="if-item">
                                         <i class="fi fi-comments-1 fi-lg"></i>
-                                        5
+                                        {{$value->countComment()}}
                                     </div>
                                     <div class="if-item">
                                         <i class="fi fi-heart1 fi-lg"></i>
-                                        7
+                                        {{number_format($value->like())}}
                                     </div>
                                 </div>
                             </div>

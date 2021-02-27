@@ -5,7 +5,6 @@
 @section('load_css')
     <link rel='stylesheet' href='{{ asset('site_assets/css/sweetalert.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/plugins/validation/css/validate.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site_assets/plugins/toast/css/toast.min.css') }}'>
 @endsection
 
 @section('data_page')
@@ -39,10 +38,9 @@
             <form class="form clearfix" id="frmContact">
 
                 <div class="inputs-area col-sm-9">
-                    <div class="description"><p>اگر دانش&zwnj;ها و تخصصی&zwnj;هایی که دارم رو خوندین و می&zwnj;خواید
-                            که براتون پروژه&zwnj;ای انجام بدم و یا کمکی از دستم بر میاد، می&zwnj;تونید از طریق فرم
-                            پایینی برام ارسال کنید. اگر سختتونه خب راه&zwnj;های تماس با من رو پایین&zwnj;تر براتون
-                            گذاشتم. هر کدوم راحت&zwnj;تر بودید می&zwnj;تونید استفاده کنید.</p></div>
+                    <div class="description">
+                        {{$setting->contact_text}}
+                    </div>
 
                     <div class="inputs clearfix">
 
@@ -175,8 +173,6 @@
             <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast.min.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast-options.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/pages/contact.js?v='.uniqid()) }}'></script>
 @endsection
 

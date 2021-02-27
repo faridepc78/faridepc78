@@ -5,7 +5,6 @@
 @section('load_css')
     <link rel='stylesheet' href='{{ asset('site_assets/css/sweetalert.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/plugins/validation/css/validate.css') }}'>
-    <link rel='stylesheet' href='{{ asset('site_assets/plugins/toast/css/toast.min.css') }}'>
     <link rel='stylesheet' href='{{ asset('site_assets/css/pagination.css') }}'>
 @endsection
 
@@ -69,8 +68,6 @@
 
                     <div class="content-bottom clearfix">
 
-                        @include('site.blog.post.tags')
-
                         @include('site.blog.post.share')
 
                     </div>
@@ -86,8 +83,6 @@
             <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast.min.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/toast/js/toast-options.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/pages/show_blog.js?v='.uniqid()) }}'></script>
 @endsection
 

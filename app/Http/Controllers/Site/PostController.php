@@ -136,6 +136,26 @@ class PostController extends Controller
         }
     }
 
+    /*public function storeAdminComment(CreatePostCommentRequest $request, $post_id)
+    {
+        try {
+            $this->postRepository->storePostComment($request, $post_id);
+            return AjaxResponses::SuccessResponse();
+        } catch (Exception $exception) {
+            return AjaxResponses::FailedResponse();
+        }
+    }
+
+    public function replyAdminComment(CreateReplyPostCommentRequest $request, $post_id)
+    {
+        try {
+            $this->postRepository->replyPostComment($request, $post_id);
+            return AjaxResponses::SuccessResponse();
+        } catch (Exception $exception) {
+            return AjaxResponses::FailedResponse();
+        }
+    }*/
+
     public function extractId($slug)
     {
         return Str::before($slug, '-');

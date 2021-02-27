@@ -1,5 +1,5 @@
 @section('title')
-    <title>فرید شیشه بری | وبلاگ-جستجو</title>
+    <title>فرید شیشه بری | بلاگ-جستجو</title>
 @endsection
 
 @section('load_css')

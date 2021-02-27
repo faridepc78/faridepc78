@@ -8,7 +8,7 @@
                     هستم
                 </div>
                 <div class="c-description">{{$setting->bio}}</div>
-                <a href="pages/about-اطلاعات-کامل-درباره-امین-بهرامی،-برنامه-نویس-حرفه-ای.html"
+                <a href="{{route('about-me')}}"
                    class="about-me">اطلاعات بیشتر درباره من</a>
                 <div class="social-networks">
                     <ul>

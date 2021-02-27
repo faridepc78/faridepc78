@@ -38,7 +38,7 @@
                 </div>
                 <div class="mi-item center">
                     <div class="icon">
-                        <img src="{{asset('site_assets/img/logo.png')}}" class="img-fluid" alt="فرید شیشه بری">
+                        <img src="{{asset('site_assets/img/logo.png')}}" class="img-fluid" alt="{{$setting->full_name}}">
                     </div>
                 </div>
                 <div class="mi-item left">

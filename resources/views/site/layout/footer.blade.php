@@ -2,7 +2,7 @@
     <div class="footer-content wrapper clearfix">
         <div class="col-md-4 copyright">
             <i class="fi fi-copyright"></i>
-            کلیه حقوق سایت محفوظ می‌باشد.
+            <strong> طراح و برنامه نویس وب سایت faridepc78 : <a href="https://github.com/faridepc78">فرید شیشه بری</a></strong>
         </div>
         <div class="col-md-5 menu">
             <ul>

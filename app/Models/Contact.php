@@ -12,5 +12,6 @@ class Contact extends Model
 
     const READ_STATUS = 'read';
     const UNREAD_STATUS = 'unread';
-    static $statuses = [self::READ_STATUS, self::UNREAD_STATUS];
+    const PENDING_STATUS = 'pending';
+    static $statuses = [self::READ_STATUS, self::UNREAD_STATUS, self::PENDING_STATUS];
 }

@@ -71,6 +71,7 @@ class PaymentController extends Controller
         ];
 
         if ($request->input('Status') !== 'OK') {
+            $this->paymentRepository->updateInactive($authority);
             newFeedback('پیام', 'پرداخت توسط شما کنسل شد', 'info');
             return redirect(route('payment.result', $data->order_number));
         }
@@ -81,7 +82,7 @@ class PaymentController extends Controller
 
             if ($code === 100) {
                 $refId = $response['data']['ref_id'];
-                $this->paymentRepository->update($authority, $refId);
+                $this->paymentRepository->updateActive($authority, $refId);
                 return redirect(route('payment.result', $data->order_number));
             }
 

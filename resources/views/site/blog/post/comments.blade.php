@@ -94,19 +94,23 @@
                 <input id="post_id" name="post_id" value="{{$post->id}}" type="hidden">
             </div>
 
-            <div class="col-sm-6 input-item">
-                <input onkeyup="this.value=removeSpaces(this.value);" id="user_name" type="text"
-                       class="form-control input" placeholder="لطفا نام خود را وارد کنید *"
-                       name="user_name">
-                <label id="user_name-error" class="error" for="user_name"></label>
-            </div>
+            @guest()
 
-            <div class="col-sm-6 input-item">
-                <input onkeyup="this.value=removeSpaces(this.value);" id="user_email" type="text"
-                       class="form-control input" placeholder="لطفا ایمیل خود را وارد کنید *"
-                       name="user_email">
-                <label id="user_email-error" class="error" for="user_email"></label>
-            </div>
+                <div class="col-sm-6 input-item">
+                    <input onkeyup="this.value=removeSpaces(this.value);" id="user_name" type="text"
+                           class="form-control input" placeholder="لطفا نام خود را وارد کنید *"
+                           name="user_name">
+                    <label id="user_name-error" class="error" for="user_name"></label>
+                </div>
+
+                <div class="col-sm-6 input-item">
+                    <input onkeyup="this.value=removeSpaces(this.value);" id="user_email" type="text"
+                           class="form-control input" placeholder="لطفا ایمیل خود را وارد کنید *"
+                           name="user_email">
+                    <label id="user_email-error" class="error" for="user_email"></label>
+                </div>
+
+            @endguest
 
             <div class="col-md-12 input-item">
                             <textarea onkeyup="this.value=removeSpaces(this.value);" id="text"

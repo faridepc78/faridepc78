@@ -176,7 +176,6 @@ return [
         'available'             => 'موجود',
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
-        'province'              => 'استان',
-        'g-recaptcha-response'=>'ریکپچا'
+        'province'              => 'استان'
     ],
 ];

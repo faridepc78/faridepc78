@@ -11,5 +11,6 @@ class Payment extends Model
 
     const ACTIVE_STATUS = 'active';
     const INACTIVE_STATUS = 'inactive';
-    static $statuses = [self::ACTIVE_STATUS, self::INACTIVE_STATUS];
+    const PENDING_STATUS = 'pending';
+    static $statuses = [self::ACTIVE_STATUS, self::INACTIVE_STATUS, self::PENDING_STATUS];
 }

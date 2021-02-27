@@ -225,6 +225,30 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item has-treeview {{ request()->routeIs(['postComment.index','postComment.active','postComment.inactive','postComment.show']) ? 'menu-open' : '' }}">
+
+                        <a href="#"
+                           class="nav-link {{ request()->routeIs(['postComment.index','postComment.active','postComment.inactive','postComment.show']) ? 'active' : '' }}">
+                            <i class="nav-icon fa fa-comments"></i>
+                            <p>
+                                نظرات پست ها
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('postComment.index') }}"
+                                   class="nav-link {{ request()->routeIs(['postComment.index','postComment.active','postComment.inactive','postComment.show']) ? 'active' : '' }}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>لیست نظرات پست ها</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     <li class="nav-item has-treeview {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'menu-open' : '' }}">
 
                         <a href="#"

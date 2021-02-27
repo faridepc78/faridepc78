@@ -119,10 +119,11 @@
                                 <div class="col-md-6 input">
                                     <label for="price">مبلغ پرداختی</label>
                                     <div class="input-area">
-                                        <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value);"
+                                        <input style="direction: ltr"
+                                               onkeyup="this.value=removeSpaces(this.value);separateNum(this.value,this)"
                                                type="text"
                                                class="form-control @error('price') is-invalid @enderror"
-                                               value="{{ old('price') }}" id="price"
+                                               value="{{ str_replace(',','',old('price')) }}" id="price"
                                                name="price" autocomplete="price" autofocus maxlength="9"/>
                                         <span class="icon">
                                             <i class="fi fi-lg fi-keyboard"></i>

@@ -47,6 +47,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::delete('contact/{id}', 'ContactController@destroy')->name('contact.destroy');
     Route::patch('contact/{id}', 'ContactController@change_status')->name('contact.change_status');
 
+    Route::get('post_comment', 'PostCommentController@index')->name('postComment.index');
+    Route::get('post_comment/active', 'PostCommentController@active')->name('postComment.active');
+    Route::get('post_comment/inactive', 'PostCommentController@inactive')->name('postComment.inactive');
+    Route::get('post_comment/show/{id}', 'PostCommentController@show')->name('postComment.show');
+    Route::get('post_comment/reply/{id}', 'PostCommentController@reply')->name('postComment.reply');
+    Route::delete('post_comment/{id}', 'PostCommentController@destroy')->name('postComment.destroy');
+    Route::patch('post_comment/{id}', 'PostCommentController@change_status')->name('postComment.change_status');
+
     Route::resource('setting', 'SettingController')->except(['show', 'destroy']);
 
     Route::resource('work', 'WorkController')->except(['show']);
@@ -85,7 +93,7 @@ Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], func
     Route::get('about-me', 'PageController@about')->name('about-me');
 
     Route::get('contact-me', 'ContactController@index')->name('contact-me');
-    Route::post('contact/store', 'ContactController@store')->name('contact.store')->middleware('throttle:1,5');
+    Route::post('contact/store', 'ContactController@store')->name('contact.store')->middleware('throttle:5,1');
 
     Route::get('payment', 'PaymentController@index')->name('payment');
     Route::get('payment/result/{order_number}', 'PaymentController@result')->name('payment.result');

@@ -1,5 +1,5 @@
 @section('title')
-    <title>فرید شیشه بری | وبلاگ</title>
+    <title>فرید شیشه بری | بلاگ</title>
 @endsection
 
 @section('load_css')
@@ -63,17 +63,18 @@
                     </div>
                     <div class="col-md-9 items-container">
 
-                        <a class="telegram" href="https://t.me/ABPBlog" target="_blank">
-                            <div class="t-icon">
-                                <img src="{{asset('site_assets/img/telegram-logo.png')}}" alt="telegram channel">
-                            </div>
-                            <div class="t-content"><b>کانال تلگرام من</b>
-                                <p>
-                                    دوستانی که تمایل دارند پست هایی که توی سایت میزارم و یا اینکه اگر مورد مهمی پیش
-                                    اومد، بهشون
-                                    سریع پیام بدم، می تونن توی کانال تلگرام من عضو بشن.
-                                </p></div>
-                        </a>
+                        @if($setting->telegram_text && $setting->telegram_channel_link)
+
+                            <a class="telegram" href="{{$setting->telegram_channel_link}}" target="_blank">
+                                <div class="t-icon">
+                                    <img src="{{asset('site_assets/img/telegram-logo.png')}}" alt="telegram channel">
+                                </div>
+                                <div class="t-content"><b>کانال تلگرام من</b>
+                                    <p>{{$setting->telegram_text}}</p>
+                                </div>
+                            </a>
+
+                        @endif
 
                         <form id="frmSearch" action="{{route('posts.search')}}" method="get">
                             <div class="search-box">
@@ -119,11 +120,11 @@
                                                 </div>
                                                 <div class="if-item">
                                                     <i class="fi fi-comments-1 fi-lg"></i>
-                                                    5
+                                                    {{$value->countComment()}}
                                                 </div>
                                                 <div class="if-item">
                                                     <i class="fi fi-heart1 fi-lg"></i>
-                                                    7
+                                                    {{number_format($value->like())}}
                                                 </div>
                                             </div>
                                         </div>

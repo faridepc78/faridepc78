@@ -22,6 +22,9 @@
                         <ul class="clearfix">
                             <li><a href="{{route('index')}}">صفحه اصلی</a></li>
                             <li><a href="javascript:void(0)">نمونه کارها</a></li>
+                            @if((request()->routeIs('filterWorks')))
+                                <li><a href="javascript:void(0)">{{$portfolioCategoryInfo->name}}</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
