@@ -20,6 +20,7 @@ class SettingRepository
             'blog_text' => $values->blog_text,
             'portfolio_text' => $values->portfolio_text,
             'work_text' => $values->work_text,
+            'contact_text' => $values->contact_text,
             'telegram_text' => $values->telegram_text,
             'telegram_channel_link' => $values->telegram_channel_link,
             'about1' => $values->about1,
@@ -32,7 +33,7 @@ class SettingRepository
     public function addImage($image_id, $id)
     {
         return Setting::query()->where('id', $id)->update([
-            'image_id' => $image_id,
+            'image_id' => $image_id
         ]);
     }
 
@@ -50,6 +51,7 @@ class SettingRepository
             'blog_text' => $values->blog_text,
             'portfolio_text' => $values->portfolio_text,
             'work_text' => $values->work_text,
+            'contact_text' => $values->contact_text,
             'telegram_text' => $values->telegram_text,
             'telegram_channel_link' => $values->telegram_channel_link,
             'about1' => $values->about1,

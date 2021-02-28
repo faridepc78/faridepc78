@@ -36,7 +36,7 @@ class PortfolioCategoryController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio_category.create');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class PortfolioCategoryController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio_category.edit', $id);
     }
 
     public function destroy($id)
@@ -65,6 +65,6 @@ class PortfolioCategoryController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio_category.index');
     }
 }

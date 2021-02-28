@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Expertise\UpdateExpertiseRequest;
 use App\Repositories\ExpertiseRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 
 class ExpertiseController extends Controller
@@ -17,6 +18,7 @@ class ExpertiseController extends Controller
     public function __construct(ExpertiseRepository $expertiseRepository)
     {
         $this->expertiseRepository = $expertiseRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -44,7 +46,7 @@ class ExpertiseController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('expertise.create');
     }
 
     public function edit($id)
@@ -77,7 +79,7 @@ class ExpertiseController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('expertise.edit', $id);
     }
 
     public function destroy($id)
@@ -96,6 +98,6 @@ class ExpertiseController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('expertise.index');
     }
 }

@@ -220,6 +220,22 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="contact_text">توضیحات تماس ها</label>
+                                    <textarea rows="5" style="resize: vertical"
+                                              class="form-control @error('contact_text') is-invalid @enderror"
+                                              id="contact_text"
+                                              name="contact_text"
+                                              autocomplete="contact_text"
+                                              autofocus>{{ old('contact_text',$setting->contact_text) }}</textarea>
+
+                                    @error('contact_text')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="telegram_text">توضیحات کانال تلگرام</label>
                                     <textarea rows="5" style="resize: vertical"
                                               class="form-control @error('telegram_text') is-invalid @enderror"

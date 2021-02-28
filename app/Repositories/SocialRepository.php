@@ -18,7 +18,7 @@ class SocialRepository
 
     public function paginate()
     {
-        return Social::query()->orderBy('id', 'desc')->paginate(10);
+        return Social::query()->latest()->paginate(10);
     }
 
     public function findById($id)
@@ -38,6 +38,6 @@ class SocialRepository
 
     public function all()
     {
-        return Social::query()->orderBy('id', 'desc')->get();
+        return Social::query()->latest()->get();
     }
 }

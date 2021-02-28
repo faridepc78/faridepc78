@@ -10,13 +10,13 @@ class PortfolioCategoryRepository
     {
         return PortfolioCategory::query()->create([
             'name' => $values->name,
-            'slug' => str_slug_persian($values->slug),
+            'slug' => str_slug_persian($values->slug)
         ]);
     }
 
     public function paginate()
     {
-        return PortfolioCategory::query()->orderBy('id', 'desc')->paginate(10);
+        return PortfolioCategory::query()->latest()->paginate(10);
     }
 
     public function findById($id)

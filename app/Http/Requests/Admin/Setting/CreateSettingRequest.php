@@ -25,6 +25,7 @@ class CreateSettingRequest extends FormRequest
             'blog_text' => 'nullable|string',
             'portfolio_text' => 'nullable|string',
             'work_text' => 'nullable|string',
+            'contact_text' => 'nullable|string',
             'telegram_text' => 'nullable|string',
             'telegram_channel_link' => 'nullable|url',
             'about1' => 'required|string',
@@ -52,7 +53,7 @@ class CreateSettingRequest extends FormRequest
             'telegram_channel_link' => 'لینک کانال تلگرام',
             'about1' => 'درباره من 1',
             'about2' => 'درباره من 2',
-            'image'=>'عکس مدیر سایت (درباره من)',
+            'image' => 'عکس مدیر سایت (درباره من)',
             'footer_text' => 'متن فوتر سایت'
         ];
     }

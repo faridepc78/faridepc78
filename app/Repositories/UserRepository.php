@@ -19,7 +19,7 @@ class UserRepository
     public function addImage($image_id, $id)
     {
         return User::query()->where('id', $id)->update([
-            'image_id' => $image_id,
+            'image_id' => $image_id
         ]);
     }
 

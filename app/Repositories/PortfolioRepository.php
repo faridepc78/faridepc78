@@ -30,22 +30,22 @@ class PortfolioRepository
 
     public function paginate()
     {
-        return Portfolio::query()->orderBy('id', 'desc')->paginate(10);
+        return Portfolio::query()->latest()->paginate(10);
     }
 
     public function get12()
     {
-        return Portfolio::query()->orderBy('id', 'desc')->paginate(12);
+        return Portfolio::query()->latest()->paginate(12);
     }
 
     public function get4()
     {
-        return Portfolio::query()->orderBy('id', 'desc')->limit(4)->get();
+        return Portfolio::query()->latest()->limit(4)->get();
     }
 
     public function all()
     {
-        return Portfolio::query()->orderBy('id', 'desc')->get();
+        return Portfolio::query()->latest()->get();
     }
 
     public function findById($id)
@@ -70,6 +70,6 @@ class PortfolioRepository
 
     public function findByCategoryId($portfolio_category_id)
     {
-        return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->orderBy('id', 'desc')->paginate(12);
+        return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->latest()->paginate(12);
     }
 }

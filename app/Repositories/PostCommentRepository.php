@@ -38,7 +38,7 @@ class PostCommentRepository
     {
         $whereData = [
             ['post_id', '=', $post_id],
-            ['status', '=', 'active']
+            ['status', '=', PostComment::ACTIVE_STATUS]
         ];
         return PostComment::query()
             ->whereNull('parent_id')
@@ -49,6 +49,11 @@ class PostCommentRepository
     public function getAllPostComment()
     {
         return PostComment::query()->orderByDesc('status')->paginate(20);
+    }
+
+    public function pendingPostComment()
+    {
+        return PostComment::query()->latest()->where('status', '=', PostComment::PENDING_STATUS)->paginate(20);
     }
 
     public function activePostComment()

@@ -18,13 +18,13 @@ class WorkRepository
     public function addImage($image_id, $id)
     {
         return Work::query()->where('id', $id)->update([
-            'image_id' => $image_id,
+            'image_id' => $image_id
         ]);
     }
 
     public function get()
     {
-        return Work::query()->orderBy('id','desc')->get();
+        return Work::query()->latest()->get();
     }
 
     public function findById($id)

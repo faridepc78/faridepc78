@@ -116,6 +116,7 @@
       <path value="$PROJECT_DIR$/vendor/pishran/persian-slug" />
       <path value="$PROJECT_DIR$/vendor/laravel-validation-rules/colour" />
       <path value="$PROJECT_DIR$/vendor/saeedpooyanfar/zarinpal" />
+      <path value="" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

@@ -17,7 +17,7 @@ class ResumeRepository
 
     public function paginate()
     {
-        return Resume::query()->orderBy('id', 'desc')->paginate(10);
+        return Resume::query()->latest()->paginate(10);
     }
 
     public function findById($id)
@@ -36,6 +36,6 @@ class ResumeRepository
 
     public function all()
     {
-        return Resume::query()->orderBy('id', 'asc')->get();
+        return Resume::query()->latest()->get();
     }
 }

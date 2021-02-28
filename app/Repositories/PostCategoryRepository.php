@@ -18,13 +18,13 @@ class PostCategoryRepository
     public function addImage($image_id, $id)
     {
         return PostCategory::query()->where('id', $id)->update([
-            'image_id' => $image_id,
+            'image_id' => $image_id
         ]);
     }
 
     public function paginate()
     {
-        return PostCategory::query()->orderBy('id', 'desc')->paginate(10);
+        return PostCategory::query()->latest()->paginate(10);
     }
 
     public function findById($id)

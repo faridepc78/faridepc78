@@ -25,7 +25,7 @@ class ExpertiseRepository
 
     public function paginate()
     {
-        return Expertise::query()->orderBy('id', 'desc')->paginate(10);
+        return Expertise::query()->latest()->paginate(10);
     }
 
     public function findById($id)
@@ -50,6 +50,6 @@ class ExpertiseRepository
 
     public function get20()
     {
-        return Expertise::query()->orderBy('id', 'desc')->limit(20)->get();
+        return Expertise::query()->latest()->limit(20)->get();
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 /*START ADMIN*/
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Admin'], function () {
-
     Route::get('/', function () {
         return redirect()->route('dashboard');
     });

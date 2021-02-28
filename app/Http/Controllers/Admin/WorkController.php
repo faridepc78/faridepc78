@@ -44,7 +44,7 @@ class WorkController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('work.create');
     }
 
     public function edit($id)
@@ -77,7 +77,7 @@ class WorkController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('work.edit', $id);
     }
 
     public function destroy($id)
@@ -96,6 +96,6 @@ class WorkController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('work.index');
     }
 }

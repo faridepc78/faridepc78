@@ -48,7 +48,7 @@ class PortfolioController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.create');
     }
 
     public function show($id)
@@ -87,7 +87,7 @@ class PortfolioController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.edit', $id);
     }
 
     public function destroy($id)
@@ -114,6 +114,6 @@ class PortfolioController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.index');
     }
 }

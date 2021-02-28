@@ -48,17 +48,22 @@ class PaymentRepository
 
     public function all()
     {
-        return Payment::query()->latest()->paginate();
+        return Payment::query()->latest()->paginate(10);
+    }
+
+    public function pending()
+    {
+        return Payment::query()->where('status', '=', Payment::PENDING_STATUS)->latest()->paginate(10);
     }
 
     public function success()
     {
-        return Payment::query()->where('status', '=', Payment::ACTIVE_STATUS)->latest()->paginate();
+        return Payment::query()->where('status', '=', Payment::ACTIVE_STATUS)->latest()->paginate(10);
     }
 
     public function fail()
     {
-        return Payment::query()->where('status', '=', Payment::INACTIVE_STATUS)->latest()->paginate();
+        return Payment::query()->where('status', '=', Payment::INACTIVE_STATUS)->latest()->paginate(10);
     }
 
     public function show($id)

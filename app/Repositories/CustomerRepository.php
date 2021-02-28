@@ -17,7 +17,7 @@ class CustomerRepository
 
     public function paginate()
     {
-        return Customer::query()->orderBy('id', 'desc')->paginate(10);
+        return Customer::query()->latest()->paginate(10);
     }
 
     public function findById($id)
@@ -27,7 +27,7 @@ class CustomerRepository
 
     public function all()
     {
-        return Customer::query()->orderBy('id', 'desc')->get();
+        return Customer::query()->latest()->get();
     }
 
     public function update($values, $id)

@@ -19,35 +19,36 @@ class ContactRepository
         ]);
     }
 
-    public function paginateContact()
+    public function paginate()
     {
         return Contact::query()->latest()->paginate(10);
     }
 
-    public function readContact()
+    public function pending()
     {
-        return Contact::query()->where('status', '=', Contact::READ_STATUS)->latest()->paginate();
+        return Contact::query()->where('status', '=', Contact::PENDING_STATUS)->latest()->paginate(10);
     }
 
-    public function unreadContact()
+    public function read()
     {
-        return Contact::query()->where('status', '=', Contact::UNREAD_STATUS)->latest()->paginate();
+        return Contact::query()->where('status', '=', Contact::READ_STATUS)->latest()->paginate(10);
     }
 
-    public function pendingContact()
+    public function unread()
     {
-        return Contact::query()->where('status', '=', Contact::PENDING_STATUS)->latest()->paginate();
+        return Contact::query()->where('status', '=', Contact::UNREAD_STATUS)->latest()->paginate(10);
     }
 
-    public function showContact($id)
+    public function show($id)
     {
         return Contact::query()->findOrFail($id);
     }
 
-    public function updateContactStatus($id)
+    //todo check this function
+    /*public function updateContactStatus($id)
     {
         $contact = $this->showContact($id);
         $contact->status == Contact::READ_STATUS ? $status = Contact::UNREAD_STATUS : $status = Contact::READ_STATUS;
         return Contact::query()->where('id', '=', $id)->update(['status' => $status]);
-    }
+    }*/
 }

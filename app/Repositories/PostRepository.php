@@ -23,23 +23,23 @@ class PostRepository
     public function addImage($image_id, $id)
     {
         return Post::query()->where('id', $id)->update([
-            'image_id' => $image_id,
+            'image_id' => $image_id
         ]);
     }
 
     public function paginate()
     {
-        return Post::query()->orderBy('id', 'desc')->paginate(10);
+        return Post::query()->latest()->paginate(10);
     }
 
     public function get3()
     {
-        return Post::query()->orderBy('id', 'desc')->limit(3)->get();
+        return Post::query()->latest()->limit(3)->get();
     }
 
     public function get6()
     {
-        return Post::query()->orderBy('id', 'desc')->paginate(6);
+        return Post::query()->latest()->paginate(6);
     }
 
     public function findById($id)
@@ -60,7 +60,7 @@ class PostRepository
 
     public function findByCategoryId($post_category_id)
     {
-        return Post::query()->where('post_category_id', $post_category_id)->orderBy('id', 'desc')->paginate(12);
+        return Post::query()->where('post_category_id', $post_category_id)->latest()->paginate(12);
     }
 
     public function search($keyword)

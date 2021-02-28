@@ -25,6 +25,7 @@ class UpdateSettingRequest extends FormRequest
             'blog_text' => 'nullable|string',
             'portfolio_text' => 'nullable|string',
             'work_text' => 'nullable|string',
+            'contact_text' => 'nullable|string',
             'telegram_text' => 'nullable|string',
             'telegram_channel_link' => 'nullable|url',
             'about1' => 'required|string',
