@@ -18,7 +18,6 @@ class CreatePortfolioExpertiseRequest extends FormRequest
             'portfolio_id'=>'required|numeric|exists:portfolio,id',
             'expertise_id' => [
                 'required',
-                'numeric',
                 'array',
                 'min:1',
                 'exists:expertise,id',

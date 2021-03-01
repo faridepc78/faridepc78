@@ -15,6 +15,7 @@ class SocialController extends Controller
     public function __construct(SocialRepository $socialRepository)
     {
         $this->socialRepository = $socialRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -36,7 +37,7 @@ class SocialController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('social.create');
     }
 
     public function edit($id)
@@ -53,7 +54,7 @@ class SocialController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('social.edit', $id);
     }
 
     public function destroy($id)
@@ -65,6 +66,6 @@ class SocialController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('social.index');
     }
 }

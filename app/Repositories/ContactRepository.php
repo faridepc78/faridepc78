@@ -44,11 +44,10 @@ class ContactRepository
         return Contact::query()->findOrFail($id);
     }
 
-    //todo check this function
-    /*public function updateContactStatus($id)
+    public function updateContactStatus($id, bool $read, bool $unread)
     {
-        $contact = $this->showContact($id);
-        $contact->status == Contact::READ_STATUS ? $status = Contact::UNREAD_STATUS : $status = Contact::READ_STATUS;
+        if ($read == true && $unread == false) $status = Contact::READ_STATUS;
+        if ($read == false && $unread == true) $status = Contact::UNREAD_STATUS;
         return Contact::query()->where('id', '=', $id)->update(['status' => $status]);
-    }*/
+    }
 }

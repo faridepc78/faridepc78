@@ -15,12 +15,13 @@ class CustomerController extends Controller
     public function __construct(CustomerRepository $customerRepository)
     {
         $this->customerRepository = $customerRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
         $customer = $this->customerRepository->paginate();
-        return view('admin.customer.index',compact('customer'));
+        return view('admin.customer.index', compact('customer'));
     }
 
     public function create()
@@ -36,7 +37,7 @@ class CustomerController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('customer.create');
     }
 
     public function edit($id)
@@ -53,7 +54,7 @@ class CustomerController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('customer.edit', $id);
     }
 
     public function destroy($id)
@@ -65,6 +66,6 @@ class CustomerController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('customer.index');
     }
 }

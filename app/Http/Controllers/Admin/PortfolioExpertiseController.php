@@ -22,6 +22,7 @@ class PortfolioExpertiseController extends Controller
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioExpertiseRepository = $portfolioExpertiseRepository;
         $this->expertiseRepository = $expertiseRepository;
+        $this->middleware('auth:web');
     }
 
     public function index($id)
@@ -42,10 +43,10 @@ class PortfolioExpertiseController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.expertise.index', request()->id);
     }
 
-    public function destroy($id)
+    public function destroy($portfolio_id, $id)
     {
         try {
             $portfolioExpertise = $this->portfolioExpertiseRepository->findById($id);
@@ -54,6 +55,6 @@ class PortfolioExpertiseController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.expertise.index', $portfolio_id);
     }
 }

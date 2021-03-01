@@ -17,6 +17,7 @@ class SettingController extends Controller
     public function __construct(SettingRepository $settingRepository)
     {
         $this->settingRepository = $settingRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -50,7 +51,7 @@ class SettingController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('setting.create');
     }
 
     public function edit($id)
@@ -82,6 +83,6 @@ class SettingController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('setting.edit', $id);
     }
 }

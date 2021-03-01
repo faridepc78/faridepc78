@@ -100,8 +100,8 @@ class PortfolioTest extends TestCase
             'image' => UploadedFile::fake()->image('test.jpg'),
             'text' => $this->faker->text,
             'customer' => $this->faker->name,
-            'start_date' => $this->faker->date(),
-            'end_date' => $this->faker->date()
+            'start_date' => '1399-12-11',
+            'end_date' => '1399-12-20'
         ])->assertStatus(302)->assertRedirect(route('portfolio.edit', $portfolio->id));
         $portfolio = $portfolio->fresh();
         $this->assertEquals('test', $portfolio->name);

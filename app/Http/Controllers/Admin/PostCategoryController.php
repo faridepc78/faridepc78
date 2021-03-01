@@ -17,6 +17,7 @@ class PostCategoryController extends Controller
     public function __construct(PostCategoryRepository $postCategoryRepository)
     {
         $this->postCategoryRepository = $postCategoryRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -44,7 +45,7 @@ class PostCategoryController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post_category.create');
     }
 
     public function edit($id)
@@ -77,7 +78,7 @@ class PostCategoryController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post_category.edit', $id);
     }
 
     public function destroy($id)
@@ -96,6 +97,6 @@ class PostCategoryController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post_category.index');
     }
 }

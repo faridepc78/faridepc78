@@ -16,7 +16,9 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('portfolio.index')}}">لیست نمونه کار ها</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('portfolio.slider.index',$portfolio->id)}}">مدیریت اسلایدر نمونه کار({{$portfolio->name}})</a></li>
+                        <li class="breadcrumb-item"><a class="my-active"
+                                                       href="{{route('portfolio.slider.index',$portfolio->id)}}">مدیریت
+                                اسلایدر نمونه کار({{$portfolio->name}})</a></li>
                     </ol>
                 </div>
 
@@ -36,7 +38,8 @@
                             <h3 class="card-title">مدیریت اسلایدر نمونه کار({{$portfolio->name}})</h3>
                         </div>
 
-                        <form action="{{route('portfolio.slider.store',$portfolio->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('portfolio.slider.store',$portfolio->id)}}" method="post"
+                              enctype="multipart/form-data">
 
                             @csrf
 
@@ -91,11 +94,16 @@
 
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td><img class="img-bordered" alt="اسلایدر نمونه کار" src="{{$value->image->thumb}}"></td>
-                                            <td><a href="{{ route('portfolio.slider.destroy', [$value->id]) }}"
-                                                   onclick="destroyPortfolioSlider(event, {{ $value->id }})"><i
+                                            <td><img class="img-bordered" alt="اسلایدر نمونه کار"
+                                                     src="{{$value->image->thumb}}"></td>
+                                            <td>
+                                                <a href="{{ route('portfolio.slider.destroy', [$portfolio->id,$value->id]) }}"
+                                                   onclick="destroyPortfolioSlider(event, {{ $portfolio->id }},{{ $value->id }})"><i
                                                         class="fa fa-remove text-danger"></i></a>
-                                                <form action="{{ route('portfolio.slider.destroy', $value->id) }}" method="post" id="destroy-PortfolioSlider-{{ $value->id }}">
+                                                <form
+                                                    action="{{ route('portfolio.slider.destroy', [$portfolio->id,$value->id]) }}"
+                                                    method="post"
+                                                    id="destroy-PortfolioSlider-{{ $portfolio->id }}-{{ $value->id }}">
                                                     @csrf
                                                     @method('delete')
                                                 </form>
@@ -128,7 +136,7 @@
 @include('admin.layout.footer')
 
 <script type="text/javascript">
-    function destroyPortfolioSlider(event, id) {
+    function destroyPortfolioSlider(event, portfolio_id, id) {
         event.preventDefault();
         Swal.fire({
             title: 'آیا از حذف اطمینان دارید ؟',
@@ -140,7 +148,7 @@
             cancelButtonText: 'خیر'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById(`destroy-PortfolioSlider-${id}`).submit()
+                document.getElementById(`destroy-PortfolioSlider-${portfolio_id}-${id}`).submit()
             }
         })
     }

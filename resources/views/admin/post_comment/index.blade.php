@@ -34,6 +34,7 @@
                         <div class="card-header">
                             <h3 class="card-title">لیست نظرات پست ها</h3>
                             <br>
+                            <a href="{{route('postComment.pending')}}" class="btn btn-warning">در حال برسی</a>
                             <a href="{{route('postComment.active')}}" class="btn btn-success">تایید شده</a>
                             <a href="{{route('postComment.inactive')}}" class="btn btn-danger">تایید نشده</a>
                         </div>
@@ -45,13 +46,14 @@
                                     <th>ردیف</th>
                                     <th>اطلاعات کاربر</th>
                                     <th>پست نظر</th>
-                                    <th>والد</th>
+                                    <th>تعداد زیر نظرات</th>
                                     <th>متن</th>
                                     <th>وضعیت</th>
-                                    <th>تاریخ نظر</th>
+                                   {{-- <th>تاریخ نظر</th>--}}
+                                    <th>زیر نظرات</th>
                                     <th>جزئیات</th>
-                                    <th>تغییر وضعیت</th>
-                                    <th>حذف</th>
+                             {{--       <th>تغییر وضعیت</th>
+                                    <th>حذف</th>--}}
                                 </tr>
 
                                 @if(count($postComment))
@@ -67,26 +69,41 @@
                                                 </a>
                                             </td>
                                             <td>{{$item->post->name}}</td>
+
                                             <td>@if($item->parent_id==null)<i class="fa fa-check text-success"></i>@else<i
                                                     class="fa fa-remove text-danger"></i> @endif</td>
+
                                             <td>
                                                 <a href="javascript:void(0)" data-toggle="modal"
                                                    data-target="#postCommentText{{$item->id}}">
                                                     <i class="fa fa-eye text-success"></i>
                                                 </a>
                                             </td>
-                                            <td class="alert @if($item->status==\App\Models\postComment::ACTIVE_STATUS) alert-success @else alert-danger @endif">
-                                                @if($item->status==\App\Models\postComment::ACTIVE_STATUS)
+
+                                            <td class="alert @if($item->status==\App\Models\PostComment::ACTIVE_STATUS)
+                                                alert-success @elseif($item->status==\App\Models\PostComment::INACTIVE_STATUS) alert-danger @else alert-warning @endif">
+                                                @if($item->status==\App\Models\PostComment::ACTIVE_STATUS)
                                                     تایید شده
-                                                @else
+                                                @elseif($item->status==\App\Models\PostComment::INACTIVE_STATUS)
                                                     تایید نشده
+                                                @else
+                                                    در حال برسی
                                                 @endif
                                             </td>
-                                            <td>{{\Hekmatinasser\Verta\Verta::createTimestamp($item->created_at)->format('y/n/j - H:i:s')}}</td>
+
+                                            <td>
+                                                {{ $item->countChildrenComments() }}
+                                            </td>
+
+                                            {{--<td>{{\Hekmatinasser\Verta\Verta::createTimestamp($item->created_at)->format('y/n/j - H:i:s')}}</td>--}}
+
+                                            <td><a href="{{route('postComment.reply',$item->id)}}" target="_blank"><i
+                                                        class="fa fa-comments text-success"></i></a></td>
+
                                             <td><a href="{{route('postComment.show',$item->id)}}" target="_blank"><i
                                                         class="fa fa-info-circle text-dark"></i></a></td>
 
-                                            <td>
+                                            {{--<td>
                                                 <a href="{{ route('postComment.change_status', $item->id) }}"
                                                    onclick="changePostCommentStatus(event, {{ $item->id }})"><i
                                                         class="fa fa-edit text-primary"></i></a>
@@ -96,7 +113,7 @@
                                                     @csrf
                                                     @method('patch')
                                                 </form>
-                                            </td>
+                                            </td>--}}
 
                                             <td><a href="{{ route('postComment.destroy', $item->id) }}"
                                                    onclick="destroyPostComment(event, {{ $item->id }})"><i

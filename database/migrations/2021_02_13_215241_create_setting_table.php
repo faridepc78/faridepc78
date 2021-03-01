@@ -23,11 +23,23 @@ class CreateSettingTable extends Migration
             $table->text('trust_reason2');
             $table->text('trust_reason3');
             $table->text('trust_reason4');
+            $table->text('blog_text')->nullable();
+            $table->text('portfolio_text')->nullable();
+            $table->text('work_text')->nullable();
+            $table->text('contact_text')->nullable();
+            $table->text('telegram_text')->nullable();
+            $table->text('telegram_channel_link')->nullable();
             $table->text('footer_text');
             $table->longText('about1');
             $table->longText('about2');
-            $table->unsignedBigInteger('logo')->nullable();
+            $table->unsignedBigInteger('image_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('image_id')
+                ->references('id')
+                ->on('media')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

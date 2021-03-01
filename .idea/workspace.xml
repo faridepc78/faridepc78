@@ -2,40 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/Feature/ExpertiseTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpertiseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpertiseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactInfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactInfoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioCategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResumeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResumeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SocialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SocialController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/WorkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/WorkController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/CreateSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/CreateSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/UpdateSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/UpdateSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ContactInfoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ContactInfoRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PortfolioSlider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PortfolioSlider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PostComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PostComment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/ContactRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ContactRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CustomerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CustomerRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ExpertiseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ExpertiseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PortfolioCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PortfolioCategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PortfolioRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PortfolioRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PortfolioSliderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PortfolioSliderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PostCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostCategoryRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/PostCommentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostCommentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ResumeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ResumeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/SettingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SettingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/SocialRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/SocialRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/WorkRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/WorkRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_000010_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_000010_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194332_create_portfolio_slider_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194332_create_portfolio_slider_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194359_create_portfolio_expertise_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194359_create_portfolio_expertise_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_13_215241_create_setting_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_13_215241_create_setting_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/expertise/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/expertise/management.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/post_comment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post_comment/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +62,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/routes/web.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Feature/ContactTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
@@ -191,8 +203,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/post_comment" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -209,25 +224,25 @@
       <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\PortfolioSlider" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.PortfolioTest.test_admin_can_store_portfolio">
-    <configuration name="ExpertiseTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Admin\ExpertiseTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ExpertiseTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.ContactTest">
+    <configuration name="ContactTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ContactTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ContactTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="ExpertiseTest.test_admin_can_store_expertise" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Admin\ExpertiseTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ExpertiseTest.php" method="test_admin_can_store_expertise" scope="Method" />
+    <configuration name="ContactTest.test_admin_can_update_read_status_contact" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ContactTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ContactTest.php" method="test_admin_can_update_read_status_contact" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PortfolioTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PortfolioTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" scope="Class" />
+    <configuration name="ContactTest.test_admin_can_update_unread_status_contact" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ContactTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ContactTest.php" method="test_admin_can_update_unread_status_contact" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PortfolioTest.test_admin_can_store_portfolio" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PortfolioTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" method="test_admin_can_store_portfolio" scope="Method" />
+    <configuration name="ContactTest.test_user_can_not_update_read_status_contact" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ContactTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ContactTest.php" method="test_user_can_not_update_read_status_contact" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PortfolioTest.test_admin_can_update_portfolio" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PortfolioTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" method="test_admin_can_update_portfolio" scope="Method" />
+    <configuration name="ContactTest.test_user_can_not_update_unread_status_contact" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ContactTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ContactTest.php" method="test_user_can_not_update_unread_status_contact" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -236,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.PortfolioTest.test_admin_can_store_portfolio" />
-        <item itemvalue="PHPUnit.PortfolioTest.test_admin_can_update_portfolio" />
-        <item itemvalue="PHPUnit.PortfolioTest" />
-        <item itemvalue="PHPUnit.ExpertiseTest.test_admin_can_store_expertise" />
-        <item itemvalue="PHPUnit.ExpertiseTest" />
+        <item itemvalue="PHPUnit.ContactTest" />
+        <item itemvalue="PHPUnit.ContactTest.test_user_can_not_update_unread_status_contact" />
+        <item itemvalue="PHPUnit.ContactTest.test_admin_can_update_read_status_contact" />
+        <item itemvalue="PHPUnit.ContactTest.test_admin_can_update_unread_status_contact" />
+        <item itemvalue="PHPUnit.ContactTest.test_user_can_not_update_read_status_contact" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +308,8 @@
       <workItem from="1614406078092" duration="646000" />
       <workItem from="1614411864600" duration="31618000" />
       <workItem from="1614487402223" duration="30573000" />
+      <workItem from="1614572184563" duration="37458000" />
+      <workItem from="1614621071102" duration="14014000" />
     </task>
     <servers />
   </component>

@@ -30,7 +30,9 @@ class PostComment extends Model
         return "http://www.gravatar.com/avatar/$hash?d=mm";
     }
 
-    public function comments()
+    /*START SITE*/
+
+    /*public function comments()
     {
         return $this->hasMany(PostComment::class, 'parent_id', 'id')
             ->where('status','=',PostComment::ACTIVE_STATUS);
@@ -40,5 +42,27 @@ class PostComment extends Model
     {
         return $this->hasMany(PostComment::class, 'parent_id', 'id')
             ->with('comments')->where('status','=',PostComment::ACTIVE_STATUS);
+    }*/
+
+    /*END SITE*/
+
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id', 'id');
+    }
+
+    public function childrenComments()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')->with('comments');
+    }
+
+    public function countChildrenComments()
+    {
+        //return $this->load('childrenComments')->count();
+        $sum = 0;
+        foreach ($this->comments as $child) {
+            $sum += $child->countChildrenComments();
+        }
+        return $this->childrenComments->where('status','=',PostComment::ACTIVE_STATUS)->count() + $sum;
     }
 }

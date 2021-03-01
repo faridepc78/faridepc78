@@ -23,30 +23,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 
     Route::get('portfolio/{id}/slider', 'PortfolioSliderController@index')->name('portfolio.slider.index');
     Route::post('portfolio/{id}/slider', 'PortfolioSliderController@store')->name('portfolio.slider.store');
-    Route::delete('portfolio/{id}/slider', 'PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
+    Route::delete('portfolio/{portfolio_id}/slider/{id}', 'PortfolioSliderController@destroy')->name('portfolio.slider.destroy');
 
     Route::get('portfolio/{id}/expertise', 'PortfolioExpertiseController@index')->name('portfolio.expertise.index');
     Route::post('portfolio/{id}/expertise', 'PortfolioExpertiseController@store')->name('portfolio.expertise.store');
-    Route::delete('portfolio/{id}/expertise', 'PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
+    Route::delete('portfolio/{portfolio_id}/expertise/{id}', 'PortfolioExpertiseController@destroy')->name('portfolio.expertise.destroy');
 
     Route::resource('post_category', 'PostCategoryController')->except(['show']);
 
     Route::resource('post', 'PostController');
 
     Route::get('payment', 'PaymentController@index')->name('payment.index');
+    Route::get('payment/pending', 'PaymentController@pending')->name('payment.pending');
     Route::get('payment/success', 'PaymentController@success')->name('payment.success');
     Route::get('payment/fail', 'PaymentController@fail')->name('payment.fail');
     Route::get('payment/show/{id}', 'PaymentController@show')->name('payment.show');
     Route::delete('payment/{id}', 'PaymentController@destroy')->name('payment.destroy');
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
+    Route::get('contact/pending', 'ContactController@pending')->name('contact.pending');
     Route::get('contact/read', 'ContactController@read')->name('contact.read');
     Route::get('contact/unread', 'ContactController@unread')->name('contact.unread');
     Route::get('contact/show/{id}', 'ContactController@show')->name('contact.show');
     Route::delete('contact/{id}', 'ContactController@destroy')->name('contact.destroy');
-    Route::patch('contact/{id}', 'ContactController@change_status')->name('contact.change_status');
+    Route::patch('contact/read/{id}', 'ContactController@read_status')->name('contact.read_status');
+    Route::patch('contact/unread/{id}', 'ContactController@unread_status')->name('contact.unread_status');
 
     Route::get('post_comment', 'PostCommentController@index')->name('postComment.index');
+    Route::get('post_comment/pending', 'PostCommentController@pending')->name('postComment.pending');
     Route::get('post_comment/active', 'PostCommentController@active')->name('postComment.active');
     Route::get('post_comment/inactive', 'PostCommentController@inactive')->name('postComment.inactive');
     Route::get('post_comment/show/{id}', 'PostCommentController@show')->name('postComment.show');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Post\CreatePostRequest;
 use App\Http\Requests\Admin\Post\UpdatePostRequest;
 use App\Http\Requests\Admin\PostCategory\CreatePostCategoryRequest;
 use App\Repositories\PostCategoryRepository;
@@ -20,6 +21,7 @@ class PostController extends Controller
     {
         $this->postCategoryRepository = $postCategoryRepository;
         $this->postRepository = $postRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -34,7 +36,7 @@ class PostController extends Controller
         return view('admin.post.create', compact('postCategory'));
     }
 
-    public function store(CreatePostCategoryRequest $request)
+    public function store(CreatePostRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -48,7 +50,7 @@ class PostController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post.create');
     }
 
     public function show($id)
@@ -78,7 +80,7 @@ class PostController extends Controller
                         $post->image->delete();
                     }
                 } else {
-                    $this->postRepository->update($request,$post->image_id, $id);
+                    $this->postRepository->update($request, $post->image_id, $id);
                 }
 
             });
@@ -88,7 +90,7 @@ class PostController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post.edit', $id);
     }
 
     public function destroy($id)
@@ -112,6 +114,6 @@ class PostController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('post.index');
     }
 }

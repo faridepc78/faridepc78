@@ -33,8 +33,9 @@
                         <div class="card-header">
                             <h3 class="card-title">لیست تراکنش ها</h3>
                             <br>
-                            <a href="{{route('payment.success')}}" class="btn btn-success">پرداخت شده</a>
+                            <a href="{{route('payment.pending')}}" class="btn btn-warning">پرداخت معلق</a>
                             <a href="{{route('payment.fail')}}" class="btn btn-danger">پرداخت نشده</a>
+                            <a href="{{route('payment.success')}}" class="btn btn-success">پرداخت شده</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">
@@ -60,11 +61,14 @@
                                             <td>{{$item->user_name}}</td>
                                             <td>{{$item->title}}</td>
                                             <td>{{number_format($item->price)}}</td>
-                                            <td class="alert @if($item->status==\App\Models\Payment::ACTIVE_STATUS) alert-success @else alert-danger @endif">
+                                            <td class="alert @if($item->status==\App\Models\Payment::ACTIVE_STATUS)
+                                                alert-success @elseif($item->status==\App\Models\Payment::INACTIVE_STATUS) alert-danger @else alert-warning @endif">
                                                 @if($item->status==\App\Models\Payment::ACTIVE_STATUS)
                                                     پرداخت شده
-                                                @else
+                                                @elseif($item->status==\App\Models\Payment::INACTIVE_STATUS)
                                                     پرداخت نشده
+                                                @else
+                                                    پرداخت معلق
                                                 @endif
                                             </td>
                                             <td>{{\Hekmatinasser\Verta\Verta::createTimestamp($item->created_at)->format('y/n/j - H:i:s')}}</td>

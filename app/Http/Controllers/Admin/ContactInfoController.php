@@ -17,12 +17,13 @@ class ContactInfoController extends Controller
     public function __construct(ContactInfoRepository $contactInfoRepository)
     {
         $this->contactInfoRepository = $contactInfoRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
         $contactInfo = $this->contactInfoRepository->paginate();
-        return view('admin.contact_info.index',compact('contactInfo'));
+        return view('admin.contact_info.index', compact('contactInfo'));
     }
 
     public function create()
@@ -44,7 +45,7 @@ class ContactInfoController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('contactInfo.create');
     }
 
     public function edit($id)
@@ -67,7 +68,7 @@ class ContactInfoController extends Controller
                         $contactInfo->image->delete();
                     }
                 } else {
-                    $this->contactInfoRepository->update($request,$contactInfo->image_id, $id);
+                    $this->contactInfoRepository->update($request, $contactInfo->image_id, $id);
                 }
 
             });
@@ -77,7 +78,7 @@ class ContactInfoController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('contactInfo.edit', $id);
     }
 
     public function destroy($id)
@@ -96,6 +97,6 @@ class ContactInfoController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('contactInfo.index');
     }
 }

@@ -12,6 +12,7 @@ class DashboardController extends Controller
     public function __construct(DashboardRepository $dashboardRepository)
     {
         $this->dashboardRepository = $dashboardRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()

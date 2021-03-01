@@ -14,7 +14,7 @@ class PaymentRepository
             'user_email' => $values->user_email,
             'user_ip' => request()->ip(),
             'title' => $values->title,
-            'price' => str_replace(',', '', $values->price),
+            'price' => $values->price,
             'ref_number' => $authority,
             'order_number' => make_token(10),
             'status' => Payment::PENDING_STATUS

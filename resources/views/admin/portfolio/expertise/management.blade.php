@@ -42,7 +42,8 @@
                             <h3 class="card-title">مدیریت تخصص های نمونه کار({{$portfolio->name}})</h3>
                         </div>
 
-                        <form id="create_PortfolioExpertise" action="{{route('portfolio.expertise.store',$portfolio->id)}}" method="post">
+                        <form id="create_PortfolioExpertise"
+                              action="{{route('portfolio.expertise.store',$portfolio->id)}}" method="post">
 
                             @csrf
 
@@ -68,9 +69,9 @@
                                                 selected disabled value=""
                                                 @else
                                                 value="{{$value->id}}"
-                                                    @if (old("expertise_id"))
-                                                        {{ (in_array($value->id, old("expertise_id")) ? "selected":"") }}
-                                                    @endif
+                                            @if (old("expertise_id"))
+                                                {{ (in_array($value->id, old("expertise_id")) ? "selected":"") }}
+                                                @endif
                                                 @endif
                                             >
                                                 {{$value->name }}
@@ -133,11 +134,14 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$value->name}}</td>
-                                            <td><a href="{{ route('portfolio.expertise.destroy', [$value->portfolio_expertise->id]) }}"
-                                                   onclick="destroyPortfolioExpertise(event, {{ $value->portfolio_expertise->id }})"><i
+                                            <td>
+                                                <a href="{{ route('portfolio.expertise.destroy', [$portfolio->id,$value->portfolio_expertise->id]) }}"
+                                                   onclick="destroyPortfolioExpertise(event,{{ $portfolio->id }}, {{ $value->portfolio_expertise->id }})"><i
                                                         class="fa fa-remove text-danger"></i></a>
-                                                <form action="{{ route('portfolio.expertise.destroy', $value->portfolio_expertise->id) }}"
-                                                      method="post" id="destroy-PortfolioExpertise-{{ $value->portfolio_expertise->id }}">
+                                                <form
+                                                    action="{{ route('portfolio.expertise.destroy', [$portfolio->id,$value->portfolio_expertise->id]) }}"
+                                                    method="post"
+                                                    id="destroy-PortfolioExpertise-{{ $portfolio->id }}-{{ $value->portfolio_expertise->id }}">
                                                     @csrf
                                                     @method('delete')
                                                 </form>
@@ -190,7 +194,7 @@
         }
     });
 
-    function destroyPortfolioExpertise(event, id) {
+    function destroyPortfolioExpertise(event, portfolio_id, id) {
         event.preventDefault();
         Swal.fire({
             title: 'آیا از حذف اطمینان دارید ؟',
@@ -202,7 +206,7 @@
             cancelButtonText: 'خیر'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById(`destroy-PortfolioExpertise-${id}`).submit()
+                document.getElementById(`destroy-PortfolioExpertise-${portfolio_id}-${id}`).submit()
             }
         })
     }

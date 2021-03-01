@@ -30,7 +30,7 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="card card-primary">
+                    <div class="card card-info">
 
                         <div class="card-header">
                             <h3 class="card-title">جزئیات تماس({{$contact->user_name}})</h3>
@@ -83,8 +83,11 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="status">وضعیت تماس</label>
-                                    <input readonly type="text" class="form-control"
-                                           value="{{ $contact->status==\App\Models\Contact::READ_STATUS ? 'خوانده شده' : 'خوانده نشده'  }}"
+                                    <input readonly type="text"     class="form-control alert @if($contact->status==\App\Models\Contact::READ_STATUS) alert-success @elseif($contact->status==\App\Models\Contact::UNREAD_STATUS) alert-danger @else alert-warning @endif"
+                                           value="@if($contact->status==\App\Models\Contact::READ_STATUS)خوانده شده
+@elseif($contact->status==\App\Models\Contact::UNREAD_STATUS)خوانده نشده
+@elseمعلق
+@endif"
                                            id="status">
                                 </div>
 

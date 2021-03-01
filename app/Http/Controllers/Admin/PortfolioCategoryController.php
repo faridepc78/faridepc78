@@ -15,6 +15,7 @@ class PortfolioCategoryController extends Controller
     public function __construct(PortfolioCategoryRepository $portfolioCategoryRepository)
     {
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()

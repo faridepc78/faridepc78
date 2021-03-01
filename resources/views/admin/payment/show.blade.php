@@ -16,7 +16,8 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('payment.index')}}">لیست تراکنش ها</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('payment.show',$payment->id)}}">جزئیات تراکنش({{$payment->title}})</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('payment.show',$payment->id)}}">جزئیات
+                                تراکنش({{$payment->title}})</a></li>
                     </ol>
                 </div>
 
@@ -29,7 +30,7 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="card card-{{$payment->status==\App\Models\Payment::ACTIVE_STATUS ? 'success' : 'danger'}}">
+                    <div class="card card-info">
 
                         <div class="card-header">
                             <h3 class="card-title">جزئیات تراکنش({{$payment->title}})</h3>
@@ -90,7 +91,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="ref_number">کد پیگیری بانک</label>
                                     <input readonly type="text" class="form-control"
-                                           value="{{ $payment->status==\App\Models\Payment::ACTIVE_STATUS ? $payment->ref_number : 'ندارد'  }}" id="ref_number">
+                                           value="{{ $payment->status==\App\Models\Payment::ACTIVE_STATUS ? $payment->ref_number : 'ندارد'  }}"
+                                           id="ref_number">
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -105,14 +107,19 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="status">وضعیت تراکنش</label>
-                                    <input readonly type="text" class="form-control"
-                                           value="{{ $payment->status==\App\Models\Payment::ACTIVE_STATUS ? 'پرداخت شده' : 'پرداخت نشده'  }}" id="status">
+                                    <input readonly type="text"
+                                           class="form-control alert @if($payment->status==\App\Models\Payment::ACTIVE_STATUS) alert-success @elseif($payment->status==\App\Models\Payment::INACTIVE_STATUS) alert-danger @else alert-warning @endif"
+                                           value="@if($payment->status==\App\Models\Payment::ACTIVE_STATUS)پرداخت شده
+@elseif($payment->status==\App\Models\Payment::INACTIVE_STATUS)پرداخت نشده
+@elseپرداخت معلق
+@endif" id="status">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="created_at">تاریخ تراکنش</label>
                                     <input readonly type="text" class="form-control"
-                                           value="{{\Hekmatinasser\Verta\Verta::createTimestamp($payment->created_at)->format('y/n/j - H:i:s')}}" id="created_at">
+                                           value="{{\Hekmatinasser\Verta\Verta::createTimestamp($payment->created_at)->format('y/n/j - H:i:s')}}"
+                                           id="created_at">
                                 </div>
 
                             </div>

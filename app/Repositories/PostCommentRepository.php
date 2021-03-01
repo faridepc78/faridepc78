@@ -48,22 +48,46 @@ class PostCommentRepository
 
     public function getAllPostComment()
     {
-        return PostComment::query()->orderByDesc('status')->paginate(20);
+        return PostComment::query()
+            ->orderByDesc('status')
+            ->where('parent_id', '=', null)
+            ->paginate(20);
     }
 
     public function pendingPostComment()
     {
-        return PostComment::query()->latest()->where('status', '=', PostComment::PENDING_STATUS)->paginate(20);
+        $data = [
+            'parent_id' => null,
+            'status' => PostComment::PENDING_STATUS
+        ];
+        return PostComment::query()
+            ->latest()
+            ->where($data)
+            ->paginate(20);
     }
 
     public function activePostComment()
     {
-        return PostComment::query()->latest()->where('status', '=', PostComment::ACTIVE_STATUS)->paginate(20);
+        $data = [
+            'parent_id' => null,
+            'status' => PostComment::ACTIVE_STATUS
+        ];
+        return PostComment::query()
+            ->latest()
+            ->where($data)
+            ->paginate(20);
     }
 
     public function inactivePostComment()
     {
-        return PostComment::query()->latest()->where('status', '=', PostComment::INACTIVE_STATUS)->paginate(20);
+        $data = [
+            'parent_id' => null,
+            'status' => PostComment::INACTIVE_STATUS
+        ];
+        return PostComment::query()
+            ->latest()
+            ->where($data)
+            ->paginate(20);
     }
 
     public function showPostComment($id)

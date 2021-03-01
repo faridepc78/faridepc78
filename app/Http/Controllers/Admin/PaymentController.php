@@ -13,11 +13,18 @@ class PaymentController extends Controller
     public function __construct(PaymentRepository $paymentRepository)
     {
         $this->paymentRepository = $paymentRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
         $payment = $this->paymentRepository->all();
+        return view('admin.payment.index', compact('payment'));
+    }
+
+    public function pending()
+    {
+        $payment = $this->paymentRepository->pending();
         return view('admin.payment.index', compact('payment'));
     }
 
@@ -48,6 +55,6 @@ class PaymentController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('payment.index');
     }
 }

@@ -15,12 +15,13 @@ class ResumeController extends Controller
     public function __construct(ResumeRepository $resumeRepository)
     {
         $this->resumeRepository = $resumeRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
         $resume = $this->resumeRepository->paginate();
-        return view('admin.resume.index',compact('resume'));
+        return view('admin.resume.index', compact('resume'));
     }
 
     public function create()
@@ -36,7 +37,7 @@ class ResumeController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('resume.create');
     }
 
     public function edit($id)
@@ -53,7 +54,7 @@ class ResumeController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('resume.edit', $id);
     }
 
     public function destroy($id)
@@ -65,6 +66,6 @@ class ResumeController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('resume.index');
     }
 }

@@ -21,7 +21,7 @@ class CreatePortfolioSliderTable extends Migration
 
             $table->foreign('portfolio_id')
                 ->references('id')
-                ->on('media')
+                ->on('portfolio')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 

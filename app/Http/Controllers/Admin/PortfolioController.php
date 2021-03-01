@@ -20,6 +20,7 @@ class PortfolioController extends Controller
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()

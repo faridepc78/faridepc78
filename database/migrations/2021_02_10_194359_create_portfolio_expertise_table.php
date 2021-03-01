@@ -21,7 +21,7 @@ class CreatePortfolioExpertiseTable extends Migration
 
             $table->foreign('portfolio_id')
                 ->references('id')
-                ->on('expertise')
+                ->on('portfolio')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 

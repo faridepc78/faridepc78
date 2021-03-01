@@ -12,11 +12,11 @@ class PortfolioSlider extends Model
 
     public function portfolio()
     {
-        return $this->belongsTo(Portfolio::class,'portfolio_id','id')->withDefault();
+        return $this->belongsTo(Portfolio::class, 'portfolio_id', 'id')->withDefault();
     }
 
     public function image()
     {
-        return $this->belongsTo(Media::class,'image_id','id')->withDefault();
+        return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }
 }

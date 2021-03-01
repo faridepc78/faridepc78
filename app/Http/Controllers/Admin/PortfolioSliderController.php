@@ -8,6 +8,7 @@ use App\Repositories\PortfolioRepository;
 use App\Repositories\PortfolioSliderRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PortfolioSliderController extends Controller
@@ -19,6 +20,7 @@ class PortfolioSliderController extends Controller
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioSliderRepository = $portfolioSliderRepository;
+        $this->middleware('auth:web');
     }
 
     public function index($id)
@@ -40,10 +42,10 @@ class PortfolioSliderController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.slider.index', request()->id);
     }
 
-    public function destroy($id)
+    public function destroy($portfolio_id, $id)
     {
         try {
             DB::transaction(function () use ($id) {
@@ -59,6 +61,6 @@ class PortfolioSliderController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('portfolio.slider.index', $portfolio_id);
     }
 }

@@ -17,6 +17,7 @@ class ProfileController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
@@ -51,6 +52,6 @@ class ProfileController extends Controller
             DB::rollBack();
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        return redirect()->route('profile');
     }
 }

@@ -17,6 +17,7 @@ class WorkController extends Controller
     public function __construct(WorkRepository $workRepository)
     {
         $this->workRepository = $workRepository;
+        $this->middleware('auth:web');
     }
 
     public function index()
