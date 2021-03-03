@@ -1,6 +1,6 @@
 <div class="comments-area" id="comments">
     <div class="comments">
-        <div class="comments-title">نظرات دیگران ({{number_format($post->countComment())}})</div>
+        <div class="comments-title">نظرات دیگران ({{number_format($post->countActiveComment())}})</div>
 
         <div class="comments-items">
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PostComment\CreatePostCommentRequest;
+use App\Http\Requests\Admin\PostComment\CreateReplyPostCommentRequest;
+use App\Models\PostComment;
 use App\Repositories\PostCommentRepository;
 use App\Repositories\PostRepository;
 use Exception;
@@ -21,26 +24,36 @@ class PostCommentController extends Controller
 
     public function index()
     {
-        $postComment = $this->postCommentRepository->getAllPostComment();
-        return view('admin.post_comment.index', compact('postComment'));
+        $post = $this->postRepository->showPostSortByPendingComment();
+        return view('admin.post_comment.list', compact('post'));
     }
 
-    public function pending()
+    public function showComment($id)
     {
-        $postComment = $this->postCommentRepository->pendingPostComment();
-        return view('admin.post_comment.index', compact('postComment'));
+        $post = $this->postRepository->findById($id);
+        $postComment = $this->postCommentRepository->getAllPostCommentByPostId($id);
+        return view('admin.post_comment.index', compact('post', 'postComment'));
     }
 
-    public function active()
+    public function pending($id)
     {
-        $postComment = $this->postCommentRepository->activePostComment();
-        return view('admin.post_comment.index', compact('postComment'));
+        $post = $this->postRepository->findById($id);
+        $postComment = $this->postCommentRepository->pendingPostComment($id);
+        return view('admin.post_comment.index', compact('post', 'postComment'));
     }
 
-    public function inactive()
+    public function active($id)
     {
-        $postComment = $this->postCommentRepository->inactivePostComment();
-        return view('admin.post_comment.index', compact('postComment'));
+        $post = $this->postRepository->findById($id);
+        $postComment = $this->postCommentRepository->activePostComment($id);
+        return view('admin.post_comment.index', compact('post', 'postComment'));
+    }
+
+    public function inactive($id)
+    {
+        $post = $this->postRepository->findById($id);
+        $postComment = $this->postCommentRepository->inactivePostComment($id);
+        return view('admin.post_comment.index', compact('post', 'postComment'));
     }
 
     public function show($id)
@@ -49,7 +62,39 @@ class PostCommentController extends Controller
         return view('admin.post_comment.show', compact('postComment'));
     }
 
-    public function destroy($id)
+    public function reply($id)
+    {
+        $postComment = $this->postCommentRepository->showPostComment($id);
+        return view('admin.post_comment.reply', compact('postComment'));
+    }
+
+    public function active_status($parent_id, $id)
+    {
+        try {
+            $postComment = $this->postCommentRepository->showPostComment($id);
+            if ($postComment->status == PostComment::ACTIVE_STATUS) return false;
+            $this->postCommentRepository->updatePostCommentStatus($postComment->id, true, false);
+            newFeedback();
+        } catch (Exception $exception) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+        }
+        return redirect()->route('postComment.reply', $parent_id);
+    }
+
+    public function inactive_status($parent_id, $id)
+    {
+        try {
+            $postComment = $this->postCommentRepository->showPostComment($id);
+            if ($postComment->status == PostComment::INACTIVE_STATUS) return false;
+            $this->postCommentRepository->updatePostCommentStatus($postComment->id, false, true);
+            newFeedback();
+        } catch (Exception $exception) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+        }
+        return redirect()->route('postComment.reply', $parent_id);
+    }
+
+    public function destroy($parent_id, $id)
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($id);
@@ -58,24 +103,35 @@ class PostCommentController extends Controller
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
+        $check = $this->postCommentRepository->existIdInTable($parent_id);
+        if ($check) {
+            return redirect()->route('postComment.reply', $parent_id);
+        } else {
+            return redirect()->route('postComment.showComment', $postComment->post_id);
+        }
     }
 
-    /*public function change_status($id)
+    public function admin_comment($parent_id, CreatePostCommentRequest $request)
     {
         try {
-            $postComment = $this->postCommentRepository->showPostComment($id);
-            $this->postCommentRepository->updateContactStatus($postComment->id);
+            $postComment = $this->postCommentRepository->showPostComment($parent_id);
+            $this->postCommentRepository->storePostComment($request, $postComment->post_id);
             newFeedback();
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
         }
-        return back();
-    }*/
+        return redirect()->route('postComment.showComment', $postComment->post_id);
+    }
 
-    public function reply($id)
+    public function admin_reply($parent_id, $id, CreateReplyPostCommentRequest $request)
     {
-        $postComment = $this->postCommentRepository->showPostComment($id);
-        return view('admin.post_comment.reply', compact('postComment'));
+        try {
+            $postComment = $this->postCommentRepository->showPostComment($id);
+            $this->postCommentRepository->replyPostComment($request, $postComment->post_id);
+            newFeedback();
+        } catch (Exception $exception) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+        }
+        return redirect()->route('postComment.reply', $parent_id);
     }
 }

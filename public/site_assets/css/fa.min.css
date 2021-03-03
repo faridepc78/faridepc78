@@ -15,6 +15,20 @@
 @font-face {
     font-family: iransans;
     font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/iransans/woff/IRANSansWeb(FaNum)_Light.woff") format("woff")
+}
+
+@font-face {
+    font-family: iransans;
+    font-style: normal;
+    font-weight: 200;
+    src: url("../fonts/iransans/woff/IRANSansWeb(FaNum)_UltraLight.woff") format("woff")
+}
+
+@font-face {
+    font-family: iransans;
+    font-style: normal;
     font-weight: 400;
     src: url("../fonts/iransans/woff/IRANSansWeb(FaNum).woff") format("woff")
 }
@@ -114,6 +128,7 @@ body {
     margin-top: 20px;
     font-size: 15px;
     padding: 10px 10px 10px 5px;
+    display: block;
     width: 100%;
     background: 0 0;
     border: none;
@@ -2594,7 +2609,7 @@ body {
 
 .page-content.show-blog .comments-area .send-comment .form .input-item .input {
     border-radius: 0;
- /*   border: 1px solid #CCCCCC;*/
+    border: 1px solid #e9e9e9;
     outline: none;
     box-shadow: none;
     height: 41.6px;
@@ -4932,13 +4947,4 @@ footer[data-page=blog], footer[data-page=notes], footer[data-page=expertise], fo
 
 footer[data-page=works] {
     background: #fdfdfd
-}
-
-.img-circle{
-    border-radius: 50%;
-}
-
-.help-block{
-    font-size: 80%;
-    color: #dc3545;
 }

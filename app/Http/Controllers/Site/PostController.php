@@ -8,7 +8,10 @@ use App\Http\Requests\Site\Post\CreatePostCommentRequest;
 use App\Http\Requests\Site\Post\CreateReplyPostCommentRequest;
 use App\Models\Post;
 use App\Repositories\PostCategoryRepository;
+use App\Repositories\PostCommentRepository;
+use App\Repositories\PostLikeRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\PostViewRepository;
 use App\Repositories\SettingRepository;
 use App\Repositories\SocialRepository;
 use App\Responses\AjaxResponses;
@@ -19,16 +22,25 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     private $postRepository;
+    private $postViewRepository;
+    private $postLikeRepository;
+    private $postCommentRepository;
     private $postCategoryRepository;
     private $settingRepository;
     private $socialRepository;
 
     public function __construct(PostRepository $postRepository,
+                                PostViewRepository $postViewRepository,
+                                PostLikeRepository $postLikeRepository,
+                                PostCommentRepository $postCommentRepository,
                                 PostCategoryRepository $postCategoryRepository,
                                 SettingRepository $settingRepository,
                                 SocialRepository $socialRepository)
     {
         $this->postRepository = $postRepository;
+        $this->postViewRepository = $postViewRepository;
+        $this->postLikeRepository = $postLikeRepository;
+        $this->postCommentRepository = $postCommentRepository;
         $this->postCategoryRepository = $postCategoryRepository;
         $this->settingRepository = $settingRepository;
         $this->socialRepository = $socialRepository;
@@ -68,14 +80,14 @@ class PostController extends Controller
     public function show($slug)
     {
         $post_id = $this->extractId($slug);
-        $post_view = $this->postRepository->isRegisterIpForPostView($post_id);
+        $post_view = $this->postViewRepository->isRegisterIpForPostView($post_id);
         if ($post_view != true) {
-            $this->postRepository->storePostView($post_id);
+            $this->postViewRepository->storePostView($post_id);
         }
         $post = $this->postRepository->findById($post_id);
         $setting = $this->settingRepository->first();
         $social = $this->socialRepository->all();
-        $comments = $this->postRepository->getParentComment($post_id);
+        $comments = $this->postCommentRepository->getParentComment($post_id);
         return view('site.blog.post.index',
             compact('post', 'setting', 'social', 'comments'));
     }
@@ -84,11 +96,11 @@ class PostController extends Controller
     {
         try {
             DB::transaction(function () use ($id) {
-                $post_like = $this->postRepository->isRegisterIpForPostLike($id);
+                $post_like = $this->postLikeRepository->isRegisterIpForPostLike($id);
                 if ($post_like != true) {
-                    $this->postRepository->storePostLike($id);
+                    $this->postLikeRepository->storePostLike($id);
                 } else {
-                    $this->postRepository->destroyPostLike($id);
+                    $this->postLikeRepository->destroyPostLike($id);
                 }
             });
             DB::commit();
@@ -103,9 +115,9 @@ class PostController extends Controller
     {
         try {
             DB::transaction(function () use ($id) {
-                $post_like = $this->postRepository->isRegisterIpForPostLike($id);
+                $post_like = $this->postLikeRepository->isRegisterIpForPostLike($id);
                 if ($post_like != false) {
-                    $this->postRepository->destroyPostLike($id);
+                    $this->postLikeRepository->destroyPostLike($id);
                 }
             });
             DB::commit();
@@ -119,7 +131,7 @@ class PostController extends Controller
     public function storeComment(CreatePostCommentRequest $request, $post_id)
     {
         try {
-            $this->postRepository->storePostComment($request, $post_id);
+            $this->postCommentRepository->storePostComment($request, $post_id);
             return AjaxResponses::SuccessResponse();
         } catch (Exception $exception) {
             return AjaxResponses::FailedResponse();
@@ -129,7 +141,7 @@ class PostController extends Controller
     public function replyComment(CreateReplyPostCommentRequest $request, $post_id)
     {
         try {
-            $this->postRepository->replyPostComment($request, $post_id);
+            $this->postCommentRepository->replyPostComment($request, $post_id);
             return AjaxResponses::SuccessResponse();
         } catch (Exception $exception) {
             return AjaxResponses::FailedResponse();

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\PostComment;
 use App\Models\PostLike;
 use App\Models\PostView;
+use Illuminate\Support\Facades\DB;
 
 class PostRepository
 {
@@ -30,6 +31,11 @@ class PostRepository
     public function paginate()
     {
         return Post::query()->latest()->paginate(10);
+    }
+
+    public function showPostSortByPendingComment()
+    {
+        return Post::query()->withCount('comment')->orderBy('comment_count', 'desc')->paginate(10);
     }
 
     public function get3()

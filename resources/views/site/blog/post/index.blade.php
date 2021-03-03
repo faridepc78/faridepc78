@@ -47,7 +47,7 @@
                             <div class="d-comments">
                                 <div class="d-content">
                                     <i class="fi fi-comments fi-lg"></i>
-                                    <span class="value">8</span>
+                                    <span class="value">{{$post->countActiveComment()}}</span>
                                 </div>
                             </div>
                             <div class="d-likes" data-id="{{$post->id}}" data-like-count="{{$post->like()}}" data-link="{{$post->isLikePostByIp() ? route('dislikePost',$post->id) : route('likePost',$post->id)}}">

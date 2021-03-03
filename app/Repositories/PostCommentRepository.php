@@ -46,19 +46,25 @@ class PostCommentRepository
             ->where($whereData)->paginate(10);
     }
 
-    public function getAllPostComment()
-    {
-        return PostComment::query()
-            ->orderByDesc('status')
-            ->where('parent_id', '=', null)
-            ->paginate(20);
-    }
-
-    public function pendingPostComment()
+    public function getAllPostCommentByPostId($id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $data = [
             'parent_id' => null,
-            'status' => PostComment::PENDING_STATUS
+            'post_id' => $id
+        ];
+        return PostComment::query()
+            ->withCount('comments')
+            ->orderBy('comments_count', 'desc')
+            ->where($data)
+            ->paginate(20);
+    }
+
+    public function pendingPostComment($id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    {
+        $data = [
+            'parent_id' => null,
+            'status' => PostComment::PENDING_STATUS,
+            'post_id' => $id
         ];
         return PostComment::query()
             ->latest()
@@ -66,11 +72,12 @@ class PostCommentRepository
             ->paginate(20);
     }
 
-    public function activePostComment()
+    public function activePostComment($id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $data = [
             'parent_id' => null,
-            'status' => PostComment::ACTIVE_STATUS
+            'status' => PostComment::ACTIVE_STATUS,
+            'post_id' => $id
         ];
         return PostComment::query()
             ->latest()
@@ -78,11 +85,12 @@ class PostCommentRepository
             ->paginate(20);
     }
 
-    public function inactivePostComment()
+    public function inactivePostComment($id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $data = [
             'parent_id' => null,
-            'status' => PostComment::INACTIVE_STATUS
+            'status' => PostComment::INACTIVE_STATUS,
+            'post_id' => $id
         ];
         return PostComment::query()
             ->latest()
@@ -93,5 +101,17 @@ class PostCommentRepository
     public function showPostComment($id)
     {
         return PostComment::query()->findOrFail($id);
+    }
+
+    public function existIdInTable($id)
+    {
+        return PostComment::query()->where('parent_id', $id)->exists();
+    }
+
+    public function updatePostCommentStatus($id, bool $read, bool $unread)
+    {
+        if ($read == true && $unread == false) $status = PostComment::ACTIVE_STATUS;
+        if ($read == false && $unread == true) $status = PostComment::INACTIVE_STATUS;
+        return PostComment::query()->where('id', '=', $id)->update(['status' => $status]);
     }
 }

@@ -2,45 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreatePostCommentRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreateReplyPostCommentRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin_assets/dist/css/fonticon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin_assets/dist/fonts/fonticon/fonticon.v2.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin_assets/dist/js/comment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/post_comment/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactInfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactInfoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioExpertiseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PortfolioSliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResumeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResumeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SocialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SocialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/WorkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/WorkController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PortfolioSlider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PortfolioSlider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/PostComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PostComment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ContactRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ContactRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/PostCommentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostCommentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_000010_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_000010_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194332_create_portfolio_slider_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194332_create_portfolio_slider_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194359_create_portfolio_expertise_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194359_create_portfolio_expertise_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_13_215241_create_setting_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_13_215241_create_setting_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/expertise/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/expertise/management.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/portfolio/slider/management.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PostRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/dist/css/comment.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/dist/css/comment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/post_comment/child-comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post_comment/child-comments.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/post_comment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post_comment/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/post_comment/reply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post_comment/reply.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/blog/post/comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/post/comments.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/blog/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/post/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +184,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/post_comment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -211,11 +195,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Admin\PostComment" />
+      <recent name="C:\xampp\htdocs\faridepc78\public\admin_assets\dist\fonts" />
+      <recent name="C:\xampp\htdocs\faridepc78\public\admin_assets\dist\css" />
+      <recent name="C:\xampp\htdocs\faridepc78\public\admin_assets\dist\js" />
       <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\post_comment" />
-      <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\Admin\Contact" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\admin\contact" />
-      <recent name="C:\xampp\htdocs\faridepc78\resources\views\site\layout" />
-      <recent name="C:\xampp\htdocs\faridepc78\app\Services\Zarinpal" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\faridepc78\tests\Feature" />
@@ -310,6 +294,12 @@
       <workItem from="1614487402223" duration="30573000" />
       <workItem from="1614572184563" duration="37458000" />
       <workItem from="1614621071102" duration="14014000" />
+      <workItem from="1614658974888" duration="6996000" />
+      <workItem from="1614670021028" duration="25000" />
+      <workItem from="1614687844348" duration="15425000" />
+      <workItem from="1614745671974" duration="111000" />
+      <workItem from="1614774849523" duration="5151000" />
+      <workItem from="1614789215920" duration="17822000" />
     </task>
     <servers />
   </component>

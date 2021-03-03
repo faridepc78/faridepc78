@@ -50,13 +50,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::patch('contact/unread/{id}', 'ContactController@unread_status')->name('contact.unread_status');
 
     Route::get('post_comment', 'PostCommentController@index')->name('postComment.index');
-    Route::get('post_comment/pending', 'PostCommentController@pending')->name('postComment.pending');
-    Route::get('post_comment/active', 'PostCommentController@active')->name('postComment.active');
-    Route::get('post_comment/inactive', 'PostCommentController@inactive')->name('postComment.inactive');
+    Route::get('post_comment/{id}/showComment', 'PostCommentController@showComment')->name('postComment.showComment');
+    Route::get('post_comment/{id}/pending', 'PostCommentController@pending')->name('postComment.pending');
+    Route::get('post_comment/{id}/active', 'PostCommentController@active')->name('postComment.active');
+    Route::get('post_comment/{id}/inactive', 'PostCommentController@inactive')->name('postComment.inactive');
     Route::get('post_comment/show/{id}', 'PostCommentController@show')->name('postComment.show');
     Route::get('post_comment/reply/{id}', 'PostCommentController@reply')->name('postComment.reply');
-    Route::delete('post_comment/{id}', 'PostCommentController@destroy')->name('postComment.destroy');
-    Route::patch('post_comment/{id}', 'PostCommentController@change_status')->name('postComment.change_status');
+    Route::delete('post_comment/{parent_id}/{id}', 'PostCommentController@destroy')->name('postComment.destroy');
+    Route::patch('post_comment/{parent_id}/active/{id}', 'PostCommentController@active_status')->name('postComment.active_status');
+    Route::patch('post_comment/{parent_id}/inactive/{id}', 'PostCommentController@inactive_status')->name('postComment.inactive_status');
+    Route::post('post_comment/{parent_id}/admin_comment', 'PostCommentController@admin_comment')->name('postComment.admin_comment');
+    Route::post('post_comment/{parent_id}/admin_reply/{id}', 'PostCommentController@admin_reply')->name('postComment.admin_reply');
 
     Route::resource('setting', 'SettingController')->except(['show', 'destroy']);
 

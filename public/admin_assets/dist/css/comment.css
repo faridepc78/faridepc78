@@ -1,24 +1,3 @@
-.page-content.show-blog .sb-header .header-bottom .details .d-comments, .page-content.show-blog .sb-header .header-bottom .details .d-likes {
-    display: table-cell
-}
-
-.page-content.show-blog .sb-header .header-bottom .details .d-comments .d-content, .page-content.show-blog .sb-header .header-bottom .details .d-likes .d-content {
-    cursor: pointer
-}
-
-.page-content.show-blog .sb-header .header-bottom .details .d-comments .d-content .fi, .page-content.show-blog .sb-header .header-bottom .details .d-likes .d-content .fi {
-    font-size: 20px;
-    margin-left: 3px
-}
-
-.page-content.show-blog .sb-header .header-bottom .details .d-comments {
-    padding-left: 15px
-}
-
-.page-content.show-blog .sb-header .header-bottom .details .d-comments .d-content .fi {
-    color: #0291fd
-}
-
 .page-content.show-blog .comments-area .comments .comments-title {
     font-weight: 700;
     font-size: 14px;
@@ -123,6 +102,21 @@
     background: #e9e9e9;
     color: #101010;
     border: none
+}
+
+@keyframes whenTargetComment {
+    1% {
+        background-color: inherit;
+        color: inherit
+    }
+    50% {
+        background-color: #f68e56;
+        color: #fff
+    }
+    100% {
+        background-color: inherit;
+        color: inherit
+    }
 }
 
 .page-content.show-blog .comments-area .comments .comments-items .item:target > .content-area > .ca-content {

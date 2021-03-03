@@ -120,7 +120,7 @@
                                                 </div>
                                                 <div class="if-item">
                                                     <i class="fi fi-comments-1 fi-lg"></i>
-                                                    {{$value->countComment()}}
+                                                    {{$value->countActiveComment()}}
                                                 </div>
                                                 <div class="if-item">
                                                     <i class="fi fi-heart1 fi-lg"></i>
