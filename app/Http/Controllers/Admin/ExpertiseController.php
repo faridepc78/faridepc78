@@ -8,7 +8,6 @@ use App\Http\Requests\Admin\Expertise\UpdateExpertiseRequest;
 use App\Repositories\ExpertiseRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 
 class ExpertiseController extends Controller
@@ -32,7 +31,7 @@ class ExpertiseController extends Controller
         return view('admin.expertise.create');
     }
 
-    public function store(CreateExpertiseRequest $request)
+    public function store(CreateExpertiseRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -55,7 +54,7 @@ class ExpertiseController extends Controller
         return view('admin.expertise.edit', compact('expertise'));
     }
 
-    public function update(UpdateExpertiseRequest $request, $id)
+    public function update(UpdateExpertiseRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -82,7 +81,7 @@ class ExpertiseController extends Controller
         return redirect()->route('expertise.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {

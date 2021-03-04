@@ -21,19 +21,19 @@ class PortfolioRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return Portfolio::query()->where('id', $id)->update([
             'image_id' => $image_id,
         ]);
     }
 
-    public function paginate()
+    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Portfolio::query()->latest()->paginate(10);
     }
 
-    public function get12()
+    public function get12(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Portfolio::query()->latest()->paginate(12);
     }
@@ -53,7 +53,7 @@ class PortfolioRepository
         return Portfolio::query()->findOrFail($id);
     }
 
-    public function update($values, $image_id, $id)
+    public function update($values, $image_id, $id): int
     {
         return Portfolio::query()->where('id', $id)->update([
             'name' => $values->name,
@@ -68,7 +68,7 @@ class PortfolioRepository
         ]);
     }
 
-    public function findByCategoryId($portfolio_category_id)
+    public function findByCategoryId($portfolio_category_id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Portfolio::query()->where('portfolio_category_id', $portfolio_category_id)->latest()->paginate(12);
     }

@@ -18,9 +18,4 @@ class DefaultFileService
             }
         }
     }
-
-    public static function getFilename()
-    {
-        return (static::$media->is_private ? 'private/' : 'public/'). static::$media->files['zip'];
-    }
 }

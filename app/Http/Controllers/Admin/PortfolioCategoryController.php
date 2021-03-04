@@ -29,7 +29,7 @@ class PortfolioCategoryController extends Controller
         return view('admin.portfolio_category.create');
     }
 
-    public function store(CreatePortfolioCategoryRequest $request)
+    public function store(CreatePortfolioCategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->portfolioCategoryRepository->store($request);
@@ -46,7 +46,7 @@ class PortfolioCategoryController extends Controller
         return view('admin.portfolio_category.edit', compact('portfolio_category'));
     }
 
-    public function update(UpdatePortfolioCategoryRequest $request, $id)
+    public function update(UpdatePortfolioCategoryRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->portfolioCategoryRepository->update($request, $id);
@@ -57,7 +57,7 @@ class PortfolioCategoryController extends Controller
         return redirect()->route('portfolio_category.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $portfolio_category = $this->portfolioCategoryRepository->findById($id);

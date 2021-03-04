@@ -9,6 +9,12 @@
 
 @include('admin.layout.header')
 
+<style rel="stylesheet" type="text/css">
+    label.error {
+        width: 100%;
+    }
+</style>
+
 @include('admin.layout.sidebar')
 
 <div class="content-wrapper">
@@ -41,7 +47,8 @@
                             <h3 class="card-title">ایجاد نمونه کار ها</h3>
                         </div>
 
-                        <form action="{{route('portfolio.store')}}" method="post" enctype="multipart/form-data">
+                        <form id="create_portfolio_form" action="{{route('portfolio.store')}}" method="post"
+                              enctype="multipart/form-data">
 
                             @csrf
 
@@ -49,10 +56,10 @@
 
                                 <div class="form-group">
                                     <label for="name">نام نمونه کار</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام نمونه کار را وارد کنید" autocomplete="name" autofocus
-                                           required>
+                                           placeholder="لطفا نام نمونه کار را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -63,11 +70,11 @@
 
                                 <div class="form-group">
                                     <label for="headline">تیتر نمونه کار</label>
-                                    <input type="text" class="form-control @error('headline') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('headline') is-invalid @enderror"
                                            value="{{ old('headline') }}" id="headline" name="headline"
                                            placeholder="لطفا تیتر نمونه کار را وارد کنید" autocomplete="headline"
-                                           autofocus
-                                           required>
+                                           autofocus>
 
                                     @error('headline')
                                     <span class="invalid-feedback" role="alert">
@@ -78,10 +85,11 @@
 
                                 <div class="form-group">
                                     <label for="slug">اسلاگ نمونه کار</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug') }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ نمونه کار را وارد کنید" autocomplete="slug" autofocus
-                                           required>
+                                           placeholder="لطفا اسلاگ نمونه کار را وارد کنید" autocomplete="slug"
+                                           autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -92,12 +100,13 @@
 
                                 <div class="form-group">
                                     <label for="portfolio_category_id">دسته بندی نمونه کار</label>
-                                    <select class="form-control selectpicker  @error('portfolio_category_id') is-invalid @enderror"
-                                            id="portfolio_category_id"
-                                            name="portfolio_category_id" data-container="body"
-                                            data-live-search="false"
-                                            data-hide-disabled="false" data-actions-box="true"
-                                            data-virtual-scroll="true" required>
+                                    <select
+                                        class="form-control selectpicker  @error('portfolio_category_id') is-invalid @enderror"
+                                        id="portfolio_category_id"
+                                        name="portfolio_category_id" data-container="body"
+                                        data-live-search="false"
+                                        data-hide-disabled="false" data-actions-box="true"
+                                        data-virtual-scroll="true">
                                         <option selected disabled value="">لطفا دسته بندی نمونه کار را انتخاب کنید
                                         </option>
                                         @foreach($portfolioCategory as $value)
@@ -119,7 +128,7 @@
                                 <div class="form-group">
                                     <label for="image">تصویر نمونه کار</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           autofocus id="image" name="image" required>
+                                           autofocus id="image" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -134,7 +143,7 @@
                                               id="text"
                                               name="text"
                                               autocomplete="text"
-                                              autofocus required>{{ old('text') }}</textarea>
+                                              autofocus>{{ old('text') }}</textarea>
 
                                     @error('text')
                                     <span class="invalid-feedback" role="alert">
@@ -145,10 +154,11 @@
 
                                 <div class="form-group">
                                     <label for="customer">مشتری نمونه کار</label>
-                                    <input type="text" class="form-control @error('customer') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('customer') is-invalid @enderror"
                                            value="{{ old('customer') }}" id="customer" name="customer"
                                            placeholder="لطفا مشتری نمونه کار را وارد کنید" autocomplete="customer"
-                                           autofocus required>
+                                           autofocus>
 
                                     @error('customer')
                                     <span class="invalid-feedback" role="alert">
@@ -229,6 +239,110 @@
 @include('admin.layout.footer')
 
 <script type="text/javascript">
-    $("#start_date").persianDatepicker({formatDate: "YYYY-0M-0D"});
-    $("#end_date").persianDatepicker({formatDate: "YYYY-0M-0D"});
+
+    $(document).ready(function () {
+
+        $('.selectpicker').on('change', function () {
+            $(this).valid();
+        });
+
+        $("#start_date").persianDatepicker({formatDate: "YYYY-0M-0D"});
+        $("#end_date").persianDatepicker({formatDate: "YYYY-0M-0D"});
+
+        var text_field = 'text';
+        var text_error = 'لطفا توضیحات نمونه کار را وارد کنید';
+
+        $('#create_portfolio_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                headline: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                portfolio_category_id: {
+                    required: true
+                },
+
+                image: {
+                    required: true
+                },
+
+                customer: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                start_date: {
+                    required: true
+                },
+
+                end_date: {
+                    required: true
+                }
+
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام نمونه کار را وارد کنید"
+                },
+
+                headline: {
+                    required: "لطفا تیتر نمونه کار را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ نمونه کار را وارد کنید"
+                },
+
+                portfolio_category_id: {
+                    required: "لطفا دسته بندی نمونه کار را وارد کنید"
+                },
+
+                image: {
+                    required: "لطفا تصویر  نمونه کار را وارد کنید"
+                },
+
+                customer: {
+                    required: "لطفا مشتری  نمونه کار را وارد کنید"
+                },
+
+                start_date: {
+                    required: "لطفا تاریخ شروع نمونه کار را انتخاب کنید"
+                },
+
+                end_date: {
+                    required: "لطفا تاریخ پایان نمونه کار را انتخاب کنید"
+                }
+            }, submitHandler: function (form) {
+                if (validateCkeditor(text_field, text_error) == true) {
+                    form.submit();
+                }
+            }
+
+        });
+
+    });
+
 </script>

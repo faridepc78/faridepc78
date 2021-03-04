@@ -46,7 +46,7 @@ class PaymentController extends Controller
         return view('admin.payment.show', compact('payment'));
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $payment = $this->paymentRepository->show($id);

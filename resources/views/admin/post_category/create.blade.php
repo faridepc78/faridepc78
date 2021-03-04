@@ -37,18 +37,18 @@
                             <h3 class="card-title">ایجاد دسته بندی پست ها</h3>
                         </div>
 
-                        <form action="{{route('post_category.store')}}" method="post" enctype="multipart/form-data">
+                        <form id="create_postCategory_form" action="{{route('post_category.store')}}" method="post" enctype="multipart/form-data">
 
                             @csrf
 
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">نام دسته بندی نمونه کار</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <label for="name">نام دسته بندی پست</label>
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام دسته بندی نمونه کار را وارد کنید" autocomplete="name"
-                                           autofocus required>
+                                           placeholder="لطفا نام دسته بندی پست را وارد کنید" autocomplete="name"
+                                           autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,11 +58,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="slug">اسلاگ دسته بندی نمونه کار</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <label for="slug">اسلاگ دسته بندی پست</label>
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug') }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ دسته بندی نمونه کار را وارد کنید" autocomplete="slug"
-                                           autofocus required>
+                                           placeholder="لطفا اسلاگ دسته بندی پست را وارد کنید" autocomplete="slug"
+                                           autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label for="image">تصویر دسته بندی پست</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           autofocus id="image" name="image" required>
+                                           autofocus id="image" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -99,3 +99,52 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#create_postCategory_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                image: {
+                    required: true
+                }
+
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام دسته بندی پست را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ دسته بندی پست را وارد کنید"
+                },
+
+                image: {
+                    required: "لطفا تصویر دسته بندی پست را وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

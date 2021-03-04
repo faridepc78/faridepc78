@@ -22,7 +22,7 @@
                         <li class="breadcrumb-item"><a href="{{route('portfolio.index')}}">لیست نمونه کار ها</a></li>
                         <li class="breadcrumb-item"><a class="my-active"
                                                        href="{{route('portfolio.expertise.index',$portfolio->id)}}">مدیریت
-                                تخصص های نمونه کار({{$portfolio->name}})</a></li>
+                                تخصص های نمونه کار ({{$portfolio->name}})</a></li>
                     </ol>
                 </div>
 
@@ -39,7 +39,7 @@
                     <div class="card card-primary">
 
                         <div class="card-header">
-                            <h3 class="card-title">مدیریت تخصص های نمونه کار({{$portfolio->name}})</h3>
+                            <h3 class="card-title">مدیریت تخصص های نمونه کار ({{$portfolio->name}})</h3>
                         </div>
 
                         <form id="create_PortfolioExpertise"
@@ -48,8 +48,6 @@
                             @csrf
 
                             <div class="card-body">
-
-                                <input type="hidden" name="portfolio_id" value="{{$portfolio->id}}">
 
                                 <div class="form-group">
                                     <label for="expertise_id">تخصص نمونه کار</label>
@@ -103,19 +101,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">لیست تخصص های نمونه کار({{$portfolio->name}})</h3>
-
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
-                                           placeholder="جستجو">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <h3 class="card-title">لیست تخصص های نمونه کار ({{$portfolio->name}})</h3>
                         </div>
 
                         <div class="card-body table-responsive p-0">

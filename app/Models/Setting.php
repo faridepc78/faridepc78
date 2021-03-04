@@ -31,7 +31,7 @@ class Setting extends Model
     protected $guarded = [];
     protected $table = 'setting';
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Media::class, 'id', 'image_id')->withDefault();
     }

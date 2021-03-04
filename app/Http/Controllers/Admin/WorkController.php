@@ -31,7 +31,7 @@ class WorkController extends Controller
         return view('admin.work.create');
     }
 
-    public function store(CreateWorkRequest $request)
+    public function store(CreateWorkRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +54,7 @@ class WorkController extends Controller
         return view('admin.work.edit', compact('work'));
     }
 
-    public function update(UpdateWorkRequest $request, $id)
+    public function update(UpdateWorkRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +81,7 @@ class WorkController extends Controller
         return redirect()->route('work.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {

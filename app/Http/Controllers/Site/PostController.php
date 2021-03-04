@@ -92,7 +92,7 @@ class PostController extends Controller
             compact('post', 'setting', 'social', 'comments'));
     }
 
-    public function like($id)
+    public function like($id): \Illuminate\Http\JsonResponse
     {
         try {
             DB::transaction(function () use ($id) {
@@ -111,7 +111,7 @@ class PostController extends Controller
         }
     }
 
-    public function dislike($id)
+    public function dislike($id): \Illuminate\Http\JsonResponse
     {
         try {
             DB::transaction(function () use ($id) {
@@ -128,7 +128,7 @@ class PostController extends Controller
         }
     }
 
-    public function storeComment(CreatePostCommentRequest $request, $post_id)
+    public function storeComment(CreatePostCommentRequest $request, $post_id): \Illuminate\Http\JsonResponse
     {
         try {
             $this->postCommentRepository->storePostComment($request, $post_id);
@@ -138,7 +138,7 @@ class PostController extends Controller
         }
     }
 
-    public function replyComment(CreateReplyPostCommentRequest $request, $post_id)
+    public function replyComment(CreateReplyPostCommentRequest $request, $post_id): \Illuminate\Http\JsonResponse
     {
         try {
             $this->postCommentRepository->replyPostComment($request, $post_id);
@@ -168,7 +168,7 @@ class PostController extends Controller
         }
     }*/
 
-    public function extractId($slug)
+    public function extractId($slug): string
     {
         return Str::before($slug, '-');
     }

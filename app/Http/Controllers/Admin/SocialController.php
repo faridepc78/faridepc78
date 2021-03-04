@@ -29,7 +29,7 @@ class SocialController extends Controller
         return view('admin.social.create');
     }
 
-    public function store(CreateSocialRequest $request)
+    public function store(CreateSocialRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->socialRepository->store($request);
@@ -46,7 +46,7 @@ class SocialController extends Controller
         return view('admin.social.edit', compact('social'));
     }
 
-    public function update(UpdateSocialRequest $request, $id)
+    public function update(UpdateSocialRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->socialRepository->update($request, $id);
@@ -57,7 +57,7 @@ class SocialController extends Controller
         return redirect()->route('social.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $social = $this->socialRepository->findById($id);

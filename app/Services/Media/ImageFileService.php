@@ -15,18 +15,13 @@ class ImageFileService extends DefaultFileService implements FileServiceContract
         return self::resize($filename, $file->getClientOriginalExtension());
     }
 
-    private static function resize($filename, $extension)
+    private static function resize($filename, $extension): array
     {
         $imgs['original'] =  $filename . '.' . $extension;
         return $imgs;
     }
 
-    public static function getFilename()
-    {
-        return static::$media->files['original'];
-    }
-
-    public static function thumb(Media $media)
+    public static function thumb(Media $media): string
     {
         return "/storage/" . $media->files['original'];
     }

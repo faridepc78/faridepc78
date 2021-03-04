@@ -29,7 +29,7 @@ class CustomerController extends Controller
         return view('admin.customer.create');
     }
 
-    public function store(CreateCustomerRequest $request)
+    public function store(CreateCustomerRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->customerRepository->store($request);
@@ -46,7 +46,7 @@ class CustomerController extends Controller
         return view('admin.customer.edit', compact('customer'));
     }
 
-    public function update(UpdateCustomerRequest $request, $id)
+    public function update(UpdateCustomerRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->customerRepository->update($request, $id);
@@ -57,7 +57,7 @@ class CustomerController extends Controller
         return redirect()->route('customer.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $customer = $this->customerRepository->findById($id);

@@ -35,7 +35,7 @@
                             <h3 class="card-title">ایجاد دسته بندی نمونه کارها</h3>
                         </div>
 
-                        <form action="{{route('portfolio_category.store')}}" method="post">
+                        <form id="create_portfolioCategory_form" action="{{route('portfolio_category.store')}}" method="post">
 
                             @csrf
 
@@ -43,9 +43,9 @@
 
                                 <div class="form-group">
                                     <label for="name">نام دسته بندی نمونه کار</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام دسته بندی نمونه کار را وارد کنید" autocomplete="name" autofocus required>
+                                           placeholder="لطفا نام دسته بندی نمونه کار را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -56,9 +56,9 @@
 
                                 <div class="form-group">
                                     <label for="slug">اسلاگ دسته بندی نمونه کار</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug') }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ دسته بندی نمونه کار را وارد کنید" autocomplete="slug" autofocus required>
+                                           placeholder="لطفا اسلاگ دسته بندی نمونه کار را وارد کنید" autocomplete="slug" autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -83,3 +83,44 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#create_portfolioCategory_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                }
+
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام دسته بندی نمونه کار را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ دسته بندی نمونه کار را وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

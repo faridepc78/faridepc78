@@ -62,7 +62,7 @@
                                                 </a>
                                             </td>
                                             <td><img class="img-size-64" src="{{$expertise->image->thumb}}"></td>
-                                            <td><a href="{{route('expertise.edit',$expertise->id)}}"><i
+                                            <td><a target="_blank" href="{{route('expertise.edit',$expertise->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('expertise.destroy', $expertise->id) }}"
                                                    onclick="destroyExpertise(event, {{ $expertise->id }})"><i

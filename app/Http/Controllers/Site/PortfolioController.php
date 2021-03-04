@@ -71,7 +71,7 @@ class PortfolioController extends Controller
             compact('portfolio', 'portfolioSlider', 'portfolioExpertise', 'setting', 'social'));
     }
 
-    public function extractId($slug)
+    public function extractId($slug): string
     {
         return Str::before($slug, '-');
     }

@@ -94,7 +94,7 @@ class PostCommentController extends Controller
         return redirect()->route('postComment.reply', $parent_id);
     }
 
-    public function destroy($parent_id, $id)
+    public function destroy($parent_id, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($id);
@@ -111,7 +111,7 @@ class PostCommentController extends Controller
         }
     }
 
-    public function admin_comment($parent_id, CreatePostCommentRequest $request)
+    public function admin_comment($parent_id, CreatePostCommentRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($parent_id);
@@ -123,7 +123,7 @@ class PostCommentController extends Controller
         return redirect()->route('postComment.showComment', $postComment->post_id);
     }
 
-    public function admin_reply($parent_id, $id, CreateReplyPostCommentRequest $request)
+    public function admin_reply($parent_id, $id, CreateReplyPostCommentRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($id);

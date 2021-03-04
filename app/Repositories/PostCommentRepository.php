@@ -34,7 +34,7 @@ class PostCommentRepository
         ]);
     }
 
-    public function getParentComment($post_id)
+    public function getParentComment($post_id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $whereData = [
             ['post_id', '=', $post_id],
@@ -103,12 +103,12 @@ class PostCommentRepository
         return PostComment::query()->findOrFail($id);
     }
 
-    public function existIdInTable($id)
+    public function existIdInTable($id): bool
     {
         return PostComment::query()->where('parent_id', $id)->exists();
     }
 
-    public function updatePostCommentStatus($id, bool $read, bool $unread)
+    public function updatePostCommentStatus($id, bool $read, bool $unread): int
     {
         if ($read == true && $unread == false) $status = PostComment::ACTIVE_STATUS;
         if ($read == false && $unread == true) $status = PostComment::INACTIVE_STATUS;

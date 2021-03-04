@@ -31,14 +31,14 @@ class PaymentRepository
         return Payment::query()->where('order_number', '=', $order_number)->firstOrFail();
     }
 
-    public function updateInactive($authority)
+    public function updateInactive($authority): int
     {
         return Payment::query()->where('ref_number', '=', $authority)->update([
             'status' => Payment::INACTIVE_STATUS
         ]);
     }
 
-    public function updateActive($authority, $refId)
+    public function updateActive($authority, $refId): int
     {
         return Payment::query()->where('ref_number', '=', $authority)->update([
             'status' => Payment::ACTIVE_STATUS,
@@ -46,22 +46,22 @@ class PaymentRepository
         ]);
     }
 
-    public function all()
+    public function all(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Payment::query()->latest()->paginate(10);
     }
 
-    public function pending()
+    public function pending(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Payment::query()->where('status', '=', Payment::PENDING_STATUS)->latest()->paginate(10);
     }
 
-    public function success()
+    public function success(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Payment::query()->where('status', '=', Payment::ACTIVE_STATUS)->latest()->paginate(10);
     }
 
-    public function fail()
+    public function fail(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Payment::query()->where('status', '=', Payment::INACTIVE_STATUS)->latest()->paginate(10);
     }

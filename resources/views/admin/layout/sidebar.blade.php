@@ -208,7 +208,7 @@
 
                             <li class="nav-item">
                                 <a href="{{ route('post.index') }}"
-                                   class="nav-link" {{ request()->routeIs('post.index') ? 'active' : '' }}>
+                                   class="nav-link {{ request()->routeIs('post.index') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست پست ها</p>
                                 </a>
@@ -216,7 +216,7 @@
 
                             <li class="nav-item">
                                 <a href="{{ route('post.create') }}"
-                                   class="nav-link" {{ request()->routeIs('post.create') ? 'active' : '' }}>
+                                   class="nav-link {{ request()->routeIs('post.create') ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>ایجاد پست ها</p>
                                 </a>

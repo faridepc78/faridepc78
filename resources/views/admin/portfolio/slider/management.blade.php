@@ -18,7 +18,7 @@
                         <li class="breadcrumb-item"><a href="{{route('portfolio.index')}}">لیست نمونه کار ها</a></li>
                         <li class="breadcrumb-item"><a class="my-active"
                                                        href="{{route('portfolio.slider.index',$portfolio->id)}}">مدیریت
-                                اسلایدر نمونه کار({{$portfolio->name}})</a></li>
+                                اسلایدر نمونه کار ({{$portfolio->name}})</a></li>
                     </ol>
                 </div>
 
@@ -35,23 +35,21 @@
                     <div class="card card-primary">
 
                         <div class="card-header">
-                            <h3 class="card-title">مدیریت اسلایدر نمونه کار({{$portfolio->name}})</h3>
+                            <h3 class="card-title">مدیریت اسلایدر نمونه کار ({{$portfolio->name}})</h3>
                         </div>
 
-                        <form action="{{route('portfolio.slider.store',$portfolio->id)}}" method="post"
+                        <form id="management_portfolioSlider_form" action="{{route('portfolio.slider.store',$portfolio->id)}}" method="post"
                               enctype="multipart/form-data">
 
                             @csrf
 
                             <div class="card-body">
 
-                                <input type="hidden" name="portfolio_id" value="{{$portfolio->id}}">
-
                                 <div class="form-group">
                                     <label for="image">اسلایدر نمونه کار</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                            value="{{ old('image') }}" autofocus
-                                           id="image" name="image" required>
+                                           id="image" name="image">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -152,4 +150,28 @@
             }
         })
     }
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#management_portfolioSlider_form').validate({
+
+            rules: {
+                image: {
+                    required: true
+                }
+            },
+
+            messages: {
+                image: {
+                    required: "لطفا تصویر  نمونه کار را وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
 </script>

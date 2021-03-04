@@ -17,8 +17,8 @@ class CreateExpertiseRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:expertise,slug',
-            'image'=>'required|mimes:jpg,png,jpeg|max:1024',
-            'text'=>'required|string'
+            'image' => 'required|mimes:jpg,png,jpeg|max:1024',
+            'text' => 'required|string'
         ];
     }
 
@@ -27,8 +27,8 @@ class CreateExpertiseRequest extends FormRequest
         return [
             'name' => 'نام تخصص',
             'slug' => 'اسلاگ تخصص',
-            'image'=>'تصویر تخصص',
-            'text'=>'توضیحات تخصص'
+            'image' => 'تصویر تخصص',
+            'text' => 'توضیحات تخصص'
         ];
     }
 }

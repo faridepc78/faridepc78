@@ -30,14 +30,14 @@ class SettingRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return Setting::query()->where('id', $id)->update([
             'image_id' => $image_id
         ]);
     }
 
-    public function update($values, $image_id, $id)
+    public function update($values, $image_id, $id): int
     {
         return Setting::query()->where('id', $id)->update([
             'rule' => $values->rule,

@@ -15,7 +15,7 @@ class PostCategoryRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return PostCategory::query()->where('id', $id)->update([
             'image_id' => $image_id

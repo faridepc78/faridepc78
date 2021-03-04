@@ -15,7 +15,7 @@ class CustomerRepository
         ]);
     }
 
-    public function paginate()
+    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Customer::query()->latest()->paginate(10);
     }
@@ -30,7 +30,7 @@ class CustomerRepository
         return Customer::query()->latest()->get();
     }
 
-    public function update($values, $id)
+    public function update($values, $id): int
     {
         return Customer::query()->where('id', $id)->update([
             'name' => $values->name,

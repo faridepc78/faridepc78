@@ -57,11 +57,11 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->category->name}}</td>
-                                            <td><img class="img-size-64" src="{{$item->image->thumb}}"></td>
+                                            <td><img class="img-size-64" src="{{$item->image->thumb}}" alt="portfolio"></td>
                                             <td><a href="{{route('portfolio.show',$item->id)}}" target="_blank"><i class="fa fa-info-circle text-dark"></i></a></td>
                                             <td><a href="{{route('portfolio.slider.index',$item->id)}}" target="_blank"><i class="fa fa-image text-warning"></i></a></td>
                                             <td><a href="{{route('portfolio.expertise.index',$item->id)}}" target="_blank"><i class="fa fa-database text-success"></i></a></td>
-                                            <td><a href="{{route('portfolio.edit',$item->id)}}"><i
+                                            <td><a target="_blank" href="{{route('portfolio.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('portfolio.destroy', $item->id) }}"
                                                    onclick="destroyPortfolio(event, {{ $item->id }})"><i

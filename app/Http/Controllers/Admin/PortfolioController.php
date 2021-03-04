@@ -35,7 +35,7 @@ class PortfolioController extends Controller
         return view('admin.portfolio.create', compact('portfolioCategory'));
     }
 
-    public function store(CreatePortfolioRequest $request)
+    public function store(CreatePortfolioRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -65,7 +65,7 @@ class PortfolioController extends Controller
         return view('admin.portfolio.edit', compact('portfolio', 'portfolioCategory'));
     }
 
-    public function update(UpdatePortfolioRequest $request, $id)
+    public function update(UpdatePortfolioRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -91,7 +91,7 @@ class PortfolioController extends Controller
         return redirect()->route('portfolio.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {

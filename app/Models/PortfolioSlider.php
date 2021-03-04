@@ -10,12 +10,12 @@ class PortfolioSlider extends Model
     protected $table = 'portfolio_slider';
     protected $fillable = ['id', 'portfolio_id', 'image_id', 'created_at', 'updated_at'];
 
-    public function portfolio()
+    public function portfolio(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Portfolio::class, 'portfolio_id', 'id')->withDefault();
     }
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }

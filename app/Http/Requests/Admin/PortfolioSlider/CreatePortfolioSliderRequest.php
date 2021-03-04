@@ -11,6 +11,13 @@ class CreatePortfolioSliderRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation()
+    {
+        return $this->merge([
+            'portfolio_id'=>request()->id
+        ]);
+    }
+
     public function rules()
     {
         return [

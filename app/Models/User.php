@@ -27,7 +27,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }

@@ -38,7 +38,7 @@
                             <h3 class="card-title">ویرایش دسته بندی پست ({{$postCategory->name}})</h3>
                         </div>
 
-                        <form action="{{route('post_category.update',$postCategory->id)}}" method="post"
+                        <form id="edit_postCategory_form" action="{{route('post_category.update',$postCategory->id)}}" method="post"
                               enctype="multipart/form-data">
 
                             @csrf
@@ -48,10 +48,10 @@
 
                                 <div class="form-group">
                                     <label for="name">نام دسته بندی پست</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name',$postCategory->name) }}" id="name" name="name"
                                            placeholder="لطفا نام دسته بندی پست را وارد کنید" autocomplete="name"
-                                           autofocus required>
+                                           autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -62,10 +62,10 @@
 
                                 <div class="form-group">
                                     <label for="slug">اسلاگ دسته بندی پست</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug',$postCategory->slug) }}" id="slug" name="slug"
                                            placeholder="لطفا اسلاگ دسته بندی پست را وارد کنید" autocomplete="slug"
-                                           autofocus required>
+                                           autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -103,3 +103,43 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#edit_postCategory_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                }
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام دسته بندی پست را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ دسته بندی پست را وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

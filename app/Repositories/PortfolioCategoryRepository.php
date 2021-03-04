@@ -14,7 +14,7 @@ class PortfolioCategoryRepository
         ]);
     }
 
-    public function paginate()
+    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return PortfolioCategory::query()->latest()->paginate(10);
     }
@@ -24,7 +24,7 @@ class PortfolioCategoryRepository
         return PortfolioCategory::query()->findOrFail($id);
     }
 
-    public function update($values, $id)
+    public function update($values, $id): int
     {
         return PortfolioCategory::query()->where('id', $id)->update([
             'name' => $values->name,

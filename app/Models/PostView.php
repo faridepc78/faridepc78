@@ -10,7 +10,7 @@ class PostView extends Model
     protected $table = 'post_view';
     protected $fillable = ['id', 'post_id', 'ip', 'created_at', 'updated_at'];
 
-    public function post()
+    public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_id','id')->withDefault();
     }

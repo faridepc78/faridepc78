@@ -29,7 +29,7 @@ class PortfolioSliderController extends Controller
         return view('admin.portfolio.slider.management', compact('portfolio'));
     }
 
-    public function store(CreatePortfolioSliderRequest $request)
+    public function store(CreatePortfolioSliderRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -45,7 +45,7 @@ class PortfolioSliderController extends Controller
         return redirect()->route('portfolio.slider.index', request()->id);
     }
 
-    public function destroy($portfolio_id, $id)
+    public function destroy($portfolio_id, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {

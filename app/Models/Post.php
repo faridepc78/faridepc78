@@ -19,7 +19,7 @@ class Post extends Model
         'updated_at'
     ];
 
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(PostCategory::class, 'post_category_id', 'id')->withDefault();
     }
@@ -44,7 +44,7 @@ class Post extends Model
         return $this->hasMany(PostLike::class, 'post_id', 'id')->count();
     }
 
-    public function comment()
+    public function comment(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PostComment::class, 'post_id', 'id');
     }

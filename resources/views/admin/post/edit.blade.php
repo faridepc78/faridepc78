@@ -2,6 +2,10 @@
     <title>پنل مدیریت فرید شیشه بری | پست ها</title>
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+@endsection
+
 @include('admin.layout.header')
 
 @include('admin.layout.sidebar')
@@ -35,7 +39,7 @@
                             <h3 class="card-title">ویرایش پست ({{$post->name}})</h3>
                         </div>
 
-                        <form action="{{route('post.update',$post->id)}}" method="post" enctype="multipart/form-data">
+                        <form id="edit_post_form" action="{{route('post.update',$post->id)}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')
@@ -44,10 +48,9 @@
 
                                 <div class="form-group">
                                     <label for="name">نام پست</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name',$post->name) }}" id="name" name="name"
-                                           placeholder="لطفا نام پست را وارد کنید" autocomplete="name" autofocus
-                                           required>
+                                           placeholder="لطفا نام پست را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,10 +61,9 @@
 
                                 <div class="form-group">
                                     <label for="slug">اسلاگ پست</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug',$post->slug) }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ پست را وارد کنید" autocomplete="slug" autofocus
-                                           required>
+                                           placeholder="لطفا اسلاگ پست را وارد کنید" autocomplete="slug" autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -72,8 +74,11 @@
 
                                 <div class="form-group">
                                     <label for="post_category_id">دسته بندی پست</label>
-                                    <select class="form-control  @error('post_category_id') is-invalid @enderror" id="post_category_id"
-                                            name="post_category_id" required>
+                                    <select class="form-control selectpicker  @error('post_category_id') is-invalid @enderror" id="post_category_id"
+                                            name="post_category_id" data-container="body"
+                                            data-live-search="false"
+                                            data-hide-disabled="false" data-actions-box="true"
+                                            data-virtual-scroll="true">
                                         <option selected disabled value="">لطفا دسته بندی پست را انتخاب کنید</option>
                                         @foreach($postCategory as $value)
                                             <option value="{{ $value->id }}"
@@ -109,7 +114,7 @@
                                     <textarea class="form-control ckeditor @error('text') is-invalid @enderror"
                                               id="text"
                                               name="text" autocomplete="text"
-                                              autofocus required>{{ old('text',$post->text) }}</textarea>
+                                              autofocus>{{ old('text',$post->text) }}</textarea>
 
                                     @error('text')
                                     <span class="invalid-feedback" role="alert">
@@ -135,6 +140,67 @@
 
 @section('js')
     <script src="{{asset('admin_assets/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript"
+            src="{{asset('admin_assets/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
 @endsection
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.selectpicker').on('change', function () {
+            $(this).valid();
+        });
+
+        var text_field = 'text';
+        var text_error = 'لطفا توضیحات پست را وارد کنید';
+
+        $('#edit_post_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                post_category_id:{
+                    required: true
+                }
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام پست را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ پست را وارد کنید"
+                },
+
+                post_category_id:{
+                    required: "لطفا دسته بندی پست را انتخاب کنید"
+                }
+            }, submitHandler: function (form) {
+                if (validateCkeditor(text_field,text_error) == true) {
+                    form.submit();
+                }
+            }
+
+        });
+
+    });
+
+</script>

@@ -40,7 +40,7 @@ class ExpertiseController extends Controller
         return view('site.expertise.post.index', compact('expertise', 'social', 'setting'));
     }
 
-    public function extractId($slug)
+    public function extractId($slug): string
     {
         return Str::before($slug, '-');
     }

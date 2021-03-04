@@ -35,7 +35,7 @@
                             <h3 class="card-title">ویرایش تخصص ({{$expertise->name}})</h3>
                         </div>
 
-                        <form action="{{route('expertise.update',$expertise->id)}}" method="post" enctype="multipart/form-data">
+                        <form id="edit_expertise_form" action="{{route('expertise.update',$expertise->id)}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')
@@ -44,9 +44,9 @@
 
                                 <div class="form-group">
                                     <label for="name">نام تخصص</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name',$expertise->name) }}" id="name" name="name"
-                                           placeholder="لطفا نام تخصص را وارد کنید" autocomplete="name" autofocus required>
+                                           placeholder="لطفا نام تخصص را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -57,9 +57,9 @@
 
                                 <div class="form-group">
                                     <label for="slug">اسلاگ تخصص</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('slug') is-invalid @enderror"
                                            value="{{ old('slug',$expertise->slug) }}" id="slug" name="slug"
-                                           placeholder="لطفا اسلاگ تخصص را وارد کنید" autocomplete="slug" autofocus required>
+                                           placeholder="لطفا اسلاگ تخصص را وارد کنید" autocomplete="slug" autofocus>
 
                                     @error('slug')
                                     <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                                     <textarea class="form-control ckeditor @error('text') is-invalid @enderror" id="text"
                                               name="text"
                                               placeholder="لطفا توضیحات تخصص را وارد کنید" autocomplete="text"
-                                              autofocus required>{{ old('text',$expertise->text) }}</textarea>
+                                              autofocus>{{ old('text',$expertise->text) }}</textarea>
 
                                     @error('text')
                                     <span class="invalid-feedback" role="alert">
@@ -115,3 +115,51 @@
 @endsection
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var text_field = 'text';
+        var text_error = 'لطفا توضیحات تخصص را وارد کنید';
+
+        $('#edit_expertise_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                slug: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                }
+
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام تخصص را وارد کنید"
+                },
+
+                slug: {
+                    required: "لطفا اسلاگ تخصص را وارد کنید"
+                }
+            }, submitHandler: function (form) {
+                if (validateCkeditor(text_field,text_error) == true) {
+                    form.submit();
+                }
+            }
+
+        });
+
+    });
+
+</script>

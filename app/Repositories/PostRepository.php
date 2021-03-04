@@ -21,19 +21,19 @@ class PostRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return Post::query()->where('id', $id)->update([
             'image_id' => $image_id
         ]);
     }
 
-    public function paginate()
+    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Post::query()->latest()->paginate(10);
     }
 
-    public function showPostSortByPendingComment()
+    public function showPostSortByPendingComment(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Post::query()->withCount('comment')->orderBy('comment_count', 'desc')->paginate(10);
     }
@@ -43,7 +43,7 @@ class PostRepository
         return Post::query()->latest()->limit(3)->get();
     }
 
-    public function get6()
+    public function get6(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Post::query()->latest()->paginate(6);
     }
@@ -53,7 +53,7 @@ class PostRepository
         return Post::query()->findOrFail($id);
     }
 
-    public function update($values, $image_id, $id)
+    public function update($values, $image_id, $id): int
     {
         return Post::query()->where('id', $id)->update([
             'name' => $values->name,
@@ -64,12 +64,12 @@ class PostRepository
         ]);
     }
 
-    public function findByCategoryId($post_category_id)
+    public function findByCategoryId($post_category_id): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Post::query()->where('post_category_id', $post_category_id)->latest()->paginate(12);
     }
 
-    public function search($keyword)
+    public function search($keyword): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Post::query()
             ->whereHas('category', function ($query) use ($keyword) {

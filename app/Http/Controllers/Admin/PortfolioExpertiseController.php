@@ -33,7 +33,7 @@ class PortfolioExpertiseController extends Controller
         return view('admin.portfolio.expertise.management', compact('portfolio', 'expertise', 'portfolioExpertise'));
     }
 
-    public function store(CreatePortfolioExpertiseRequest $request)
+    public function store(CreatePortfolioExpertiseRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $portfolio_id = $request->input('portfolio_id');
@@ -46,7 +46,7 @@ class PortfolioExpertiseController extends Controller
         return redirect()->route('portfolio.expertise.index', request()->id);
     }
 
-    public function destroy($portfolio_id, $id)
+    public function destroy($portfolio_id, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $portfolioExpertise = $this->portfolioExpertiseRepository->findById($id);

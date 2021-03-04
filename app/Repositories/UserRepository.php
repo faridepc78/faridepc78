@@ -6,7 +6,7 @@ use App\Models\User;
 
 class UserRepository
 {
-    public function update($values, $image_id, $id)
+    public function update($values, $image_id, $id): int
     {
         return User::query()->where('id', $id)->update([
             'full_name' => $values->full_name,
@@ -16,7 +16,7 @@ class UserRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return User::query()->where('id', $id)->update([
             'image_id' => $image_id

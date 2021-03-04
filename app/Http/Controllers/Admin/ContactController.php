@@ -47,7 +47,7 @@ class ContactController extends Controller
         return view('admin.contact.show', compact('contact'));
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $contact = $this->contactRepository->show($id);

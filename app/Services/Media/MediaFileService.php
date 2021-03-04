@@ -12,7 +12,7 @@ class MediaFileService
     private static $dir;
     private static $isPrivate;
 
-    public static function publicUpload(UploadedFile $file)
+    public static function publicUpload(UploadedFile $file): Media
     {
         self::$file = $file;
         self::$dir = 'public/';
@@ -20,7 +20,7 @@ class MediaFileService
         return self::upload();
     }
 
-    private static function upload()
+    private static function upload(): Media
     {
         $extension = self::normalizeExtension(self::$file);
         foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
@@ -44,7 +44,7 @@ class MediaFileService
         return strtolower($file->getClientOriginalExtension());
     }
 
-    private static function filenameGenerator()
+    private static function filenameGenerator(): string
     {
         return uniqid();
     }
@@ -59,7 +59,7 @@ class MediaFileService
         return $media;
     }
 
-    public static function thumb(Media $media)
+    public static function thumb(Media $media): string
     {
         foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
             if ($media->type == $type) {
@@ -70,7 +70,7 @@ class MediaFileService
         }
     }
 
-    public static function getExtensions()
+    public static function getExtensions(): string
     {
         $extensions = [];
         foreach (config('mediaFile.MediaTypeServices') as  $service) {

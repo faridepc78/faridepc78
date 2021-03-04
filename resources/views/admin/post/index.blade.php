@@ -55,9 +55,9 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->category->name}}</td>
-                                            <td><img class="img-size-64" src="{{$item->image->thumb}}"></td>
+                                            <td><img class="img-size-64" src="{{$item->image->thumb}}" alt="{{ $item->image->thumb }}"></td>
                                             <td><a href="{{route('post.show',$item->id)}}" target="_blank"><i class="fa fa-info-circle text-dark"></i></a></td>
-                                            <td><a href="{{route('post.edit',$item->id)}}"><i
+                                            <td><a target="_blank" href="{{route('post.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('post.destroy', $item->id) }}"
                                                    onclick="destroyPost(event, {{ $item->id }})"><i

@@ -34,7 +34,7 @@ class PaymentController extends Controller
         return view('site.payment.index', compact('social', 'setting'));
     }
 
-    public function request(CreatePaymentRequest $request, Zarinpal $zarinpal)
+    public function request(CreatePaymentRequest $request, Zarinpal $zarinpal): \Illuminate\Http\RedirectResponse
     {
         $payment = [
             'callback_url' => route('payment.verify'),

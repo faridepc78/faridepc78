@@ -31,12 +31,12 @@ class DashboardRepository
         return Resume::query()->count();
     }
 
-    public function countPendingPostComment()
+    public function countPendingPostComment(): int
     {
         return PostComment::query()->where('status', '=', PostComment::PENDING_STATUS)->count();
     }
 
-    public function countUnreadContact()
+    public function countUnreadContact(): int
     {
         return Contact::query()->where('status','=',Contact::UNREAD_STATUS)->count();
     }

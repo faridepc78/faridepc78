@@ -15,7 +15,7 @@ class WorkRepository
         ]);
     }
 
-    public function addImage($image_id, $id)
+    public function addImage($image_id, $id): int
     {
         return Work::query()->where('id', $id)->update([
             'image_id' => $image_id
@@ -32,7 +32,7 @@ class WorkRepository
         return Work::query()->findOrFail($id);
     }
 
-    public function update($values,$image_id, $id)
+    public function update($values,$image_id, $id): int
     {
         return Work::query()->where('id', $id)->update([
             'title' => $values->title,

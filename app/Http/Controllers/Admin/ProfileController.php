@@ -25,7 +25,7 @@ class ProfileController extends Controller
         return view('admin.profile.management');
     }
 
-    public function update(UpdateProfileRequest $request, $id)
+    public function update(UpdateProfileRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {

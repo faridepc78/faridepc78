@@ -23,27 +23,27 @@ class Portfolio extends Model
         'updated_at'
     ];
 
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(PortfolioCategory::class, 'portfolio_category_id', 'id')->withDefault();
     }
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }
 
-    public function slider()
+    public function slider(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PortfolioSlider::class, 'portfolio_id', 'id');
     }
 
-    public function expertise()
+    public function expertise(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Expertise::class, 'portfolio_expertise', 'portfolio_id', 'expertise_id');
     }
 
-    public function path()
+    public function path(): string
     {
         return route('singleWork', $this->id . '-' . $this->slug);
     }

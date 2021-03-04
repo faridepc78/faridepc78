@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Site\Post;
 
 use App\Models\PostComment;
-use App\Repositories\PostRepository;
+use App\Repositories\PostCommentRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateReplyPostCommentRequest extends FormRequest
@@ -15,8 +15,8 @@ class CreateReplyPostCommentRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $PostRepository = new  PostRepository;
-        $showPostComment = $PostRepository->showPostComment(request()->post_comment_id);
+        $PostCommentRepository = new  PostCommentRepository();
+        $showPostComment = $PostCommentRepository->showPostComment(request()->post_comment_id);
         $parent_status = $showPostComment->status;
         if (auth()->user()) {
             $user_name = auth()->user()->full_name;

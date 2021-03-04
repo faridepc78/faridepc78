@@ -19,22 +19,22 @@ class ContactRepository
         ]);
     }
 
-    public function paginate()
+    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Contact::query()->latest()->paginate(10);
     }
 
-    public function pending()
+    public function pending(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Contact::query()->where('status', '=', Contact::PENDING_STATUS)->latest()->paginate(10);
     }
 
-    public function read()
+    public function read(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Contact::query()->where('status', '=', Contact::READ_STATUS)->latest()->paginate(10);
     }
 
-    public function unread()
+    public function unread(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Contact::query()->where('status', '=', Contact::UNREAD_STATUS)->latest()->paginate(10);
     }
@@ -44,7 +44,7 @@ class ContactRepository
         return Contact::query()->findOrFail($id);
     }
 
-    public function updateContactStatus($id, bool $read, bool $unread)
+    public function updateContactStatus($id, bool $read, bool $unread): int
     {
         if ($read == true && $unread == false) $status = Contact::READ_STATUS;
         if ($read == false && $unread == true) $status = Contact::UNREAD_STATUS;

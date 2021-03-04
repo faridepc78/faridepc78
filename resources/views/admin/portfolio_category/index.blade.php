@@ -52,7 +52,7 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$value->name}}</td>
                                             <td>{{$value->slug}}</td>
-                                            <td><a href="{{route('portfolio_category.edit',$value->id)}}"><i
+                                            <td><a target="_blank" href="{{route('portfolio_category.edit',$value->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('portfolio_category.destroy', $value->id) }}"
                                                    onclick="destroyPortfolioCategory(event, {{ $value->id }})"><i

@@ -29,7 +29,7 @@ class ResumeController extends Controller
         return view('admin.resume.create');
     }
 
-    public function store(CreateResumeRequest $request)
+    public function store(CreateResumeRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->resumeRepository->store($request);
@@ -46,7 +46,7 @@ class ResumeController extends Controller
         return view('admin.resume.edit', compact('resume'));
     }
 
-    public function update(UpdateResumeRequest $request, $id)
+    public function update(UpdateResumeRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->resumeRepository->update($request, $id);
@@ -57,7 +57,7 @@ class ResumeController extends Controller
         return redirect()->route('resume.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             $resume = $this->resumeRepository->findById($id);

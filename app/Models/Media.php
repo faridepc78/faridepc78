@@ -25,7 +25,7 @@ class Media extends Model
         });
     }
 
-    public function getThumbAttribute()
+    public function getThumbAttribute(): string
     {
         return MediaFileService::thumb($this);
     }

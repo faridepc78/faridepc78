@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/bootstrap-rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/dist/css/custom-style.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/toast/css/toast.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_assets/plugins/validation/css/validate.css')}}">
     <link rel="icon" href="{{ asset('admin_assets/dist/img/favicon.ico') }}" type="image/x-icon">
 
     @yield('css')

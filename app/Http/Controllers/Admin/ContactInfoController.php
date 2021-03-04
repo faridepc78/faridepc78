@@ -31,7 +31,7 @@ class ContactInfoController extends Controller
         return view('admin.contact_info.create');
     }
 
-    public function store(CreateContactInfoRequest $request)
+    public function store(CreateContactInfoRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +54,7 @@ class ContactInfoController extends Controller
         return view('admin.contact_info.edit', compact('contactInfo'));
     }
 
-    public function update(UpdateContactInfoRequest $request, $id)
+    public function update(UpdateContactInfoRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +81,7 @@ class ContactInfoController extends Controller
         return redirect()->route('contactInfo.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {

@@ -35,7 +35,7 @@
                             <h3 class="card-title">ویرایش کار ({{$work->title}})</h3>
                         </div>
 
-                        <form action="{{route('work.update',$work->id)}}" method="post" enctype="multipart/form-data">
+                        <form id="edit_work_form" action="{{route('work.update',$work->id)}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')
@@ -44,10 +44,9 @@
 
                                 <div class="form-group">
                                     <label for="title">عنوان کار</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('title') is-invalid @enderror"
                                            value="{{ old('title',$work->title) }}" id="title" name="title"
-                                           placeholder="لطفا عنوان کار را وارد کنید" autocomplete="title" autofocus
-                                           required>
+                                           placeholder="لطفا عنوان کار را وارد کنید" autocomplete="title" autofocus>
 
                                     @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -58,9 +57,9 @@
 
                                 <div class="form-group">
                                     <label for="text">توضیحات کار</label>
-                                    <textarea style="resize: vertical" rows="5" class="form-control ckeditor @error('text') is-invalid @enderror"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" style="resize: vertical" rows="5" class="form-control @error('text') is-invalid @enderror"
                                               id="text" name="text" autocomplete="text"
-                                              autofocus required>{{ old('text',$work->text) }}</textarea>
+                                              autofocus>{{ old('text',$work->text) }}</textarea>
 
                                     @error('text')
                                     <span class="invalid-feedback" role="alert">
@@ -98,3 +97,44 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#edit_work_form').validate({
+
+            rules: {
+
+                title: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                text: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                }
+
+            },
+
+            messages: {
+
+                title: {
+                    required: "لطفا نام کار را وارد کنید"
+                },
+
+                text: {
+                    required: "لطفا توضیحات کار را وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

@@ -31,7 +31,7 @@ class PostCategoryController extends Controller
         return view('admin.post_category.create');
     }
 
-    public function store(CreatePostCategoryRequest $request)
+    public function store(CreatePostCategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +54,7 @@ class PostCategoryController extends Controller
         return view('admin.post_category.edit', compact('postCategory'));
     }
 
-    public function update(UpdatePortfolioCategoryRequest $request, $id)
+    public function update(UpdatePortfolioCategoryRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +81,7 @@ class PostCategoryController extends Controller
         return redirect()->route('post_category.edit', $id);
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         try {
             DB::transaction(function () use ($id) {
