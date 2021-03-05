@@ -8,12 +8,12 @@ use Illuminate\Validation\Rule;
 
 class CreatePostCommentRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function prepareForValidation()
+    public function prepareForValidation(): CreatePostCommentRequest
     {
         if (auth()->user()) {
             $user_name = auth()->user()->full_name;
@@ -34,7 +34,7 @@ class CreatePostCommentRequest extends FormRequest
         ]);
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'post_id' => 'required|numeric|exists:post,id',
@@ -47,7 +47,7 @@ class CreatePostCommentRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'post_id' => 'آیدی پست',

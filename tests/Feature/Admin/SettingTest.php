@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\Setting;
 use App\Models\User;
@@ -14,21 +14,6 @@ class SettingTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
-
-    /*START CHECK INDEX*/
-
-    public function test_admin_can_see_setting_index()
-    {
-        $this->actAsAdmin();
-        $this->get(route('setting.index'))->assertOk();
-    }
-
-    public function test_user_can_not_see_setting_index()
-    {
-        $this->get(route('setting.index'))->assertStatus(302)->assertRedirect(route('login'));
-    }
-
-    /*END CHECK INDEX*/
 
     /*START CHECK CREATE*/
 

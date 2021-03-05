@@ -425,10 +425,10 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->routeIs(['setting.index','setting.create','setting.edit']) ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->routeIs(['setting.create','setting.edit']) ? 'menu-open' : '' }}">
 
                         <a href="#"
-                           class="nav-link {{ request()->routeIs(['setting.index','setting.create','setting.edit']) ? 'active' : '' }}">
+                           class="nav-link {{ request()->routeIs(['setting.create','setting.edit']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-cogs"></i>
                             <p>
                                 تنظیمات
@@ -437,14 +437,6 @@
                         </a>
 
                         <ul class="nav nav-treeview">
-
-                            <li class="nav-item">
-                                <a href="{{ route('setting.index') }}"
-                                   class="nav-link {{ request()->routeIs(['setting.index']) ? 'active' : '' }}">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>نمایش تنظیمات</p>
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a href="{{ route('setting.create') }}"

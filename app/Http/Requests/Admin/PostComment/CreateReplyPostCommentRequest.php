@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateReplyPostCommentRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -34,7 +34,7 @@ class CreateReplyPostCommentRequest extends FormRequest
         ]);
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'post_comment_id' => 'required|numeric|exists:post_comment,id',
@@ -42,7 +42,7 @@ class CreateReplyPostCommentRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'post_comment_id' => 'آیدی کامنت',

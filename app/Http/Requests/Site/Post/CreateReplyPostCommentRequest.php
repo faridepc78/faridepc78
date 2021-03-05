@@ -8,12 +8,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateReplyPostCommentRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function prepareForValidation()
+    public function prepareForValidation(): CreateReplyPostCommentRequest
     {
         $PostCommentRepository = new  PostCommentRepository();
         $showPostComment = $PostCommentRepository->showPostComment(request()->post_comment_id);

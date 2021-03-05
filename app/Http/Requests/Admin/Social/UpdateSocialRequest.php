@@ -7,12 +7,12 @@ use LVR\Colour\Hex;
 
 class UpdateSocialRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
@@ -22,7 +22,7 @@ class UpdateSocialRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'name' => 'نام شبکه اجتماعی',

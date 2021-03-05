@@ -34,7 +34,8 @@
                             <h3 class="card-title">پروفایل</h3>
                         </div>
 
-                        <form action="{{route('profile.update',auth()->user()->id)}}" method="post" enctype="multipart/form-data">
+                        <form id="management_profile_form" action="{{route('profile.update',auth()->user()->id)}}"
+                              method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')
@@ -43,12 +44,12 @@
 
                                 <div class="form-group">
                                     <label for="full_name">نام و نام خانوادگی</label>
-                                    <input type="text" class="form-control @error('full_name') is-invalid @enderror"
-                                           value="{{ old('name',auth()->user()->full_name) }}" id="full_name"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('full_name') is-invalid @enderror"
+                                           value="{{ old('full_name',auth()->user()->full_name) }}" id="full_name"
                                            name="full_name"
                                            placeholder="لطفا نام و نام خانوادگی را وارد کنید"
-                                           autocomplete="full_name" autofocus
-                                           required>
+                                           autocomplete="full_name" autofocus>
 
                                     @error('full_name')
                                     <span class="invalid-feedback" role="alert">
@@ -59,11 +60,11 @@
 
                                 <div class="form-group">
                                     <label for="email">ایمیل</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                           value="{{ old('name',auth()->user()->email) }}" id="email" name="email"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" style="direction: ltr"
+                                           type="text" class="form-control @error('email') is-invalid @enderror"
+                                           value="{{ old('email',auth()->user()->email) }}" id="email" name="email"
                                            placeholder="لطفا ایمیل را وارد کنید" autocomplete="email"
-                                           autofocus
-                                           required>
+                                           autofocus>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -74,7 +75,8 @@
 
                                 <div class="form-group">
                                     <label for="image">تصویر پروفایل</label>
-                                    <img class="img-size-64" src="{{auth()->user()->image->thumb}}">
+                                    <img class="img-size-64" src="{{auth()->user()->image->thumb}}"
+                                         alt="{{ auth()->user()->image->thumb }}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                            autofocus id="image" name="image">
 
@@ -87,7 +89,8 @@
 
                                 <div class="form-group">
                                     <label for="password">رمز عبور</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="password"
+                                           class="form-control @error('password') is-invalid @enderror"
                                            id="password" name="password"
                                            placeholder="لطفا رمز عبور را وارد کنید" autocomplete="new-password">
 
@@ -99,9 +102,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password-confirm">تکرار رمز عبور</label>
-                                    <input type="password" class="form-control"
-                                           id="password-confirm" name="password_confirmation"
+                                    <label for="password_confirmation">تکرار رمز عبور</label>
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="password"
+                                           class="form-control"
+                                           id="password_confirmation" name="password_confirmation"
                                            placeholder="لطفا رمز عبور را تکرار وارد کنید" autocomplete="new-password">
                                 </div>
 
@@ -120,4 +124,72 @@
     </section>
 </div>
 
+@section('js')
+    <script type="text/javascript" src="{{asset('admin_assets/plugins/validation/js/methods.js')}}"></script>
+@endsection
+
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        changeStyleType($('#email'));
+        changeStyleType($('#password'));
+        changeStyleType($('#password_confirmation'));
+
+        $('#management_profile_form').validate({
+
+            rules: {
+
+                full_name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                email: {
+                    required: true,
+                    checkEmail: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    },
+                },
+
+                password: {
+                    minlength: 8
+                },
+
+                password_confirmation: {
+                    minlength: 8,
+                    equalTo: "#password"
+                }
+            },
+
+            messages: {
+
+                full_name: {
+                    required: "لطفا نام و نام خانوادگی را وارد کنید"
+                },
+
+                email: {
+                    required: "لطفا ایمیل خود را وارد کنید",
+                    checkEmail: "لطفا ایمیل خود را صحیح وارد کنید"
+                },
+
+                password: {
+                    minlength: "لطفا رمز عبور حداقل 8 رقم وارد کنید"
+                },
+
+                password_confirmation: {
+                    minlength: "لطفا رمز عبور را مجداد وارد کنید",
+                    equalTo: "لطفا رمز عبور را مجداد وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

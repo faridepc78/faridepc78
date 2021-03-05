@@ -4,13 +4,25 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+
     <testsuites>
+
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
+
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./tests/Feature/Admin</directory>
         </testsuite>
+
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature/Auth</directory>
+        </testsuite>
+
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature/Site</directory>
+        </testsuite>
+
     </testsuites>
 
     <coverage processUncoveredFiles="true">

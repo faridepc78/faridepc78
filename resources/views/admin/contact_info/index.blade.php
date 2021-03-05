@@ -62,8 +62,8 @@
                                                     <i class="fa fa-eye text-success"></i>
                                                 </a>
                                             </td>
-                                            <td><img class="img-size-64" src="{{$item->image->thumb}}"></td>
-                                            <td><a href="{{route('contactInfo.edit',$item->id)}}"><i
+                                            <td><img class="img-size-64" src="{{$item->image->thumb}}" alt="{{$item->image->thumb}}"></td>
+                                            <td><a target="_blank" href="{{route('contactInfo.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('contactInfo.destroy', $item->id) }}"
                                                    onclick="destroyContactInfo(event, {{ $item->id }})"><i

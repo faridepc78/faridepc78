@@ -16,7 +16,8 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('resume.index')}}">لیست پروژه های رزومه</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('resume.create')}}">ایجاد پروژه های رزومه</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('resume.create')}}">ایجاد پروژه
+                                های رزومه</a></li>
                     </ol>
                 </div>
 
@@ -35,7 +36,7 @@
                             <h3 class="card-title">ایجاد پروژه های رزومه</h3>
                         </div>
 
-                        <form action="{{route('resume.store')}}" method="post">
+                        <form id="create_resume_form" action="{{route('resume.store')}}" method="post">
 
                             @csrf
 
@@ -43,10 +44,11 @@
 
                                 <div class="form-group">
                                     <label for="name">نام پروژه رزومه</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}" id="name" name="name"
-                                           placeholder="لطفا نام پروژه رزومه را وارد کنید" autocomplete="name" autofocus
-                                           required>
+                                           placeholder="لطفا نام پروژه رزومه را وارد کنید" autocomplete="name"
+                                           autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -57,10 +59,11 @@
 
                                 <div class="form-group">
                                     <label for="customer">مشتری پروژه رزومه</label>
-                                    <input type="text" class="form-control @error('customer') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('customer') is-invalid @enderror"
                                            value="{{ old('customer') }}" id="customer" name="customer"
-                                           placeholder="لطفا مشتری پروژه رزومه را وارد کنید" autocomplete="customer" autofocus
-                                           required>
+                                           placeholder="لطفا مشتری پروژه رزومه را وارد کنید" autocomplete="customer"
+                                           autofocus>
 
                                     @error('customer')
                                     <span class="invalid-feedback" role="alert">
@@ -71,10 +74,11 @@
 
                                 <div class="form-group">
                                     <label for="year">سال تولید پروژه رزومه</label>
-                                    <input type="number" class="form-control @error('year') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
+                                           class="form-control @error('year') is-invalid @enderror"
                                            value="{{ old('year') }}" id="year" name="year"
-                                           placeholder="لطفا سال تولید پروژه رزومه را وارد کنید" autocomplete="year" autofocus
-                                           required>
+                                           placeholder="لطفا سال تولید پروژه رزومه را وارد کنید" autocomplete="year"
+                                           autofocus>
 
                                     @error('year')
                                     <span class="invalid-feedback" role="alert">
@@ -99,3 +103,62 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        changeStyleType($('#year'));
+
+        $('#create_resume_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                customer: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                year: {
+                    required: true,
+                    digits: true,
+                    maxlength: 4,
+                    minlength: 4,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                }
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام پروژه رزومه را وارد کنید"
+                },
+
+                customer: {
+                    required: "لطفا مشتری پروژه رزومه را وارد کنید"
+                },
+
+                year: {
+                    required: "لطفا سال تولید پروژه رزومه را وارد کنید",
+                    digits: "لطفا سال تولید پروژه رزومه را صحیح وارد کنید",
+                    maxlength: "لطفا سال تولید پروژه رزومه را 4 رقمی وارد کنید",
+                    minlength: "لطفا سال تولید پروژه رزومه را 4 رقمی وارد کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

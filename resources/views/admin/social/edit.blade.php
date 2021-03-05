@@ -35,7 +35,7 @@
                             <h3 class="card-title">ویرایش شبکه اجتماعی ({{$social->name}})</h3>
                         </div>
 
-                        <form action="{{route('social.update',$social->id)}}" method="post" enctype="multipart/form-data">
+                        <form id="edit_social_form" action="{{route('social.update',$social->id)}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')
@@ -44,10 +44,9 @@
 
                                 <div class="form-group">
                                     <label for="name">نام شبکه اجتماعی</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                           value="{{ old('name',$social->name) }}" id="title" name="name"
-                                           placeholder="لطفا نام شبکه اجتماعی را وارد کنید" autocomplete="name" autofocus
-                                           required>
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
+                                           value="{{ old('name',$social->name) }}" id="name" name="name"
+                                           placeholder="لطفا نام شبکه اجتماعی را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,10 +57,9 @@
 
                                 <div class="form-group">
                                     <label for="icon">آیکون شبکه اجتماعی</label>
-                                    <input type="text" class="form-control @error('icon') is-invalid @enderror"
+                                    <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('icon') is-invalid @enderror"
                                            value="{{ old('icon',$social->icon) }}" id="icon" name="icon"
-                                           placeholder="لطفا آیکون شبکه اجتماعی را وارد کنید" autocomplete="icon" autofocus
-                                           required>
+                                           placeholder="لطفا آیکون شبکه اجتماعی را وارد کنید" autocomplete="icon" autofocus>
 
                                     @error('icon')
                                     <span class="invalid-feedback" role="alert">
@@ -72,10 +70,9 @@
 
                                 <div class="form-group">
                                     <label for="link">لینک شبکه اجتماعی</label>
-                                    <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                    <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('link') is-invalid @enderror"
                                            value="{{ old('link',$social->link) }}" id="link" name="link"
-                                           placeholder="لطفا لینک شبکه اجتماعی را وارد کنید" autocomplete="link" autofocus
-                                           required>
+                                           placeholder="لطفا لینک شبکه اجتماعی را وارد کنید" autocomplete="link" autofocus>
 
                                     @error('link')
                                     <span class="invalid-feedback" role="alert">
@@ -86,11 +83,10 @@
 
                                 <div class="form-group">
                                     <label for="color">رنگ آیکون شبکه اجتماعی</label>
-                                    <input data-jscolor="{}" type="text" class="form-control @error('color') is-invalid @enderror"
+                                    <input style="direction: ltr" onkeyup="this.value=removeSpaces(this.value)" data-jscolor="{}" type="text" class="form-control @error('color') is-invalid @enderror"
                                            value="{{ old('color',$social->color) }}" id="color" name="color"
                                            placeholder="لطفا رنگ آیکون شبکه اجتماعی را وارد کنید" autocomplete="color"
-                                           autofocus
-                                           required>
+                                           autofocus>
 
                                     @error('color')
                                     <span class="invalid-feedback" role="alert">
@@ -116,6 +112,75 @@
 
 @section('js')
     <script type="text/javascript" src="{{asset('admin_assets/plugins/jscolor/jscolor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin_assets/plugins/validation/js/methods.js')}}"></script>
 @endsection
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        changeStyleType($('#icon'));
+        changeStyleType($('#link'));
+        changeStyleType($('#color'));
+
+        $('#edit_social_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                icon: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                link: {
+                    required: true,
+                    checkUrl: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                color: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                }
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام شبکه اجتماعی را وارد کنید"
+                },
+
+                icon: {
+                    required: "لطفا آیکون شبکه اجتماعی را وارد کنید"
+                },
+
+                link: {
+                    required: "لطفا لینک شبکه اجتماعی را انتخاب کنید",
+                    checkUrl: "لطفا لینک شبکه اجتماعی را صحیح وارد کنید"
+                },
+
+                color: {
+                    required: "لطفا رنگ آیکون شبکه اجتماعی را انتخاب کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>

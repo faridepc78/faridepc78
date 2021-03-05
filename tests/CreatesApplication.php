@@ -17,6 +17,12 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
+        $app['validator']->extend('captcha', function()
+        {
+            fwrite(STDOUT, print_r('Bypassing captcha validation and returning explicit true!', TRUE));
+            return true;
+        });
+
         return $app;
     }
 }

@@ -15,7 +15,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('setting.index')}}">نمایش تنظیمات</a></li>
                         <li class="breadcrumb-item"><a class="my-active" href="{{route('setting.create')}}">مدیریت
                                 تنظیمات</a></li>
                     </ol>

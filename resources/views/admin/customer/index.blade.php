@@ -59,7 +59,7 @@
                                                     <i class="fa fa-eye text-success"></i>
                                                 </a>
                                             </td>
-                                            <td><a href="{{route('customer.edit',$item->id)}}"><i
+                                            <td><a target="_blank" href="{{route('customer.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('customer.destroy', $item->id) }}"
                                                    onclick="destroyCustomer(event, {{ $item->id }})"><i

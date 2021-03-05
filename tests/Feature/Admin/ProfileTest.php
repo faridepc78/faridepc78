@@ -1,12 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
@@ -55,7 +54,7 @@ class ProfileTest extends TestCase
 
     private function actAsAdmin()
     {
-        return $this->createAdminData();
+        $this->createAdminData();
         auth()->check();
     }
 }

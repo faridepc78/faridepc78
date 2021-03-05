@@ -1,9 +1,7 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
-use App\Models\Portfolio;
-use App\Models\PortfolioCategory;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\User;

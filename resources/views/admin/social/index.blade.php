@@ -56,7 +56,7 @@
                                             <td>{{$item->icon}}</td>
                                             <td style="background-color: {{$item->color}}"></td>
                                             <td>{{$item->link}}</td>
-                                            <td><a href="{{route('social.edit',$item->id)}}"><i
+                                            <td><a target="_blank" href="{{route('social.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('social.destroy', $item->id) }}"
                                                    onclick="destroySocial(event, {{ $item->id }})"><i

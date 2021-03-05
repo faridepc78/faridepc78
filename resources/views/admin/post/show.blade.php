@@ -16,7 +16,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
                         <li class="breadcrumb-item"><a href="{{route('post.index')}}">لیست پست ها</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post.show',$post->id)}}">جزئیات پست({{$post->name}})</a></li>
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('post.show',$post->id)}}">جزئیات پست ({{$post->name}})</a></li>
                     </ol>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div class="card card-info">
 
                         <div class="card-header">
-                            <h3 class="card-title">جزئیات پست({{$post->name}})</h3>
+                            <h3 class="card-title">جزئیات پست ({{$post->name}})</h3>
                         </div>
 
                             <div class="card-body">

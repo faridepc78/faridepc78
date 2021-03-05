@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePaymentRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -18,7 +18,7 @@ class CreatePaymentRequest extends FormRequest
         ]);
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'user_name' => 'required|string|max:255',
@@ -30,7 +30,7 @@ class CreatePaymentRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'user_name' => 'نام',
@@ -41,7 +41,7 @@ class CreatePaymentRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'g-recaptcha-response.required' => 'فیلد ریکپچا الزامی است',

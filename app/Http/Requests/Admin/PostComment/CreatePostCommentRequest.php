@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePostCommentRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -30,14 +30,14 @@ class CreatePostCommentRequest extends FormRequest
         ]);
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'text' => 'required|string'
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'text' => 'پیام'

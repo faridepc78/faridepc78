@@ -4,7 +4,6 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Expertise;
 use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;

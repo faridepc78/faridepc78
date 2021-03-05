@@ -54,7 +54,7 @@
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->customer}}</td>
                                             <td>{{$item->year}}</td>
-                                            <td><a href="{{route('resume.edit',$item->id)}}"><i
+                                            <td><a target="_blank" href="{{route('resume.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('resume.destroy', $item->id) }}"
                                                    onclick="destroyResume(event, {{ $item->id }})"><i

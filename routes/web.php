@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::post('post_comment/{parent_id}/admin_comment', 'PostCommentController@admin_comment')->name('postComment.admin_comment');
     Route::post('post_comment/{parent_id}/admin_reply/{id}', 'PostCommentController@admin_reply')->name('postComment.admin_reply');
 
-    Route::resource('setting', 'SettingController')->except(['show', 'destroy']);
+    Route::resource('setting', 'SettingController')->except(['index', 'show', 'destroy']);
 
     Route::resource('work', 'WorkController')->except(['show']);
 

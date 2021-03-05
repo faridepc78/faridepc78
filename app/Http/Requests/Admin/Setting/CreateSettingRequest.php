@@ -6,12 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateSettingRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'rule' => 'required|string',
@@ -35,7 +35,7 @@ class CreateSettingRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'rule' => 'قوانین و مقررات سایت',

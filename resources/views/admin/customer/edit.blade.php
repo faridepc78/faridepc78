@@ -35,7 +35,7 @@
                             <h3 class="card-title">ویرایش مشتری ({{$customer->name}})</h3>
                         </div>
 
-                        <form action="{{route('customer.update',$customer->id)}}" method="post">
+                        <form id="edit_customer_form" action="{{route('customer.update',$customer->id)}}" method="post">
 
                             @csrf
                             @method('patch')
@@ -43,11 +43,10 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="name">نام راه ارتباطی</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    <label for="name">نام مشتری</label>
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('name') is-invalid @enderror"
                                            value="{{ old('name',$customer->name) }}" id="name" name="name"
-                                           placeholder="لطفا نام راه ارتباطی را وارد کنید" autocomplete="name" autofocus
-                                           required>
+                                           placeholder="لطفا نام مشتری را وارد کنید" autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -58,10 +57,9 @@
 
                                 <div class="form-group">
                                     <label for="from">سمت مشتری</label>
-                                    <input type="text" class="form-control @error('from') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('from') is-invalid @enderror"
                                            value="{{ old('from',$customer->from) }}" id="from" name="from"
-                                           placeholder="لطفا سمت مشتری را وارد کنید" autocomplete="from" autofocus
-                                           required>
+                                           placeholder="لطفا سمت مشتری را وارد کنید" autocomplete="from" autofocus>
 
                                     @error('from')
                                     <span class="invalid-feedback" role="alert">
@@ -72,10 +70,9 @@
 
                                 <div class="form-group">
                                     <label for="text">نظر مشتری</label>
-                                    <textarea style="resize: vertical" rows="5" type="text" class="form-control @error('text') is-invalid @enderror"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" style="resize: vertical" rows="5" type="text" class="form-control @error('text') is-invalid @enderror"
                                               id="text" name="text"
-                                              placeholder="لطفا نظر مشتری را وارد کنید" autocomplete="text" autofocus
-                                              required>{{ old('text',$customer->text) }}</textarea>
+                                              placeholder="لطفا نظر مشتری را وارد کنید" autocomplete="text" autofocus>{{ old('text',$customer->text) }}</textarea>
 
                                     @error('text')
                                     <span class="invalid-feedback" role="alert">
@@ -100,3 +97,55 @@
 </div>
 
 @include('admin.layout.footer')
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#edit_customer_form').validate({
+
+            rules: {
+
+                name: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                from: {
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                },
+
+                text:{
+                    required: true,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
+                }
+            },
+
+            messages: {
+
+                name: {
+                    required: "لطفا نام مشتری را وارد کنید"
+                },
+
+                from: {
+                    required: "لطفا سمت مشتری را وارد کنید"
+                },
+
+                text:{
+                    required: "لطفا نظر مشتری را انتخاب کنید"
+                }
+            }
+
+        });
+
+    });
+
+</script>
+

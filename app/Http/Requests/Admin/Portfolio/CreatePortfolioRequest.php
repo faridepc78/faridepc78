@@ -6,12 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePortfolioRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
@@ -26,7 +26,7 @@ class CreatePortfolioRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'name' => 'نام نمونه کار',

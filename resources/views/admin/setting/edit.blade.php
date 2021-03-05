@@ -15,8 +15,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('setting.index')}}">نمایش تنظیمات</a></li>
-                        <li class="breadcrumb-item"><a class="my-active" href="{{route('setting.edit',$setting->id)}}">ویرایش
+                        <li class="breadcrumb-item"><a class="my-active" href="{{route('setting.edit',$setting->id)}}">مدیریت
                                 تنظیمات</a></li>
                     </ol>
                 </div>
@@ -36,7 +35,7 @@
                             <h3 class="card-title">مدیریت تنظیمات</h3>
                         </div>
 
-                        <form action="{{route('setting.update',$setting)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('setting.update',$setting->id)}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('patch')

@@ -20,12 +20,6 @@ class SettingController extends Controller
         $this->middleware('auth:web');
     }
 
-    public function index()
-    {
-        $setting = $this->settingRepository->first();
-        return view('admin.setting.index', compact('setting'));
-    }
-
     public function create()
     {
         $setting = $this->settingRepository->first();
