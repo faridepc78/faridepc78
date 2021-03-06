@@ -33,7 +33,7 @@
             <div class="wrapper">
                 <div class="p-content">
                     <div class="text-area">
-                        {!! $setting->about1 !!}
+                        {!! @$setting->about1 !!}
 
                         <div class="social-networks">
                             <ul>
@@ -63,9 +63,9 @@
                 <div class="text clearfix">
                     <div class="me-area">
                         &ensp;
-                        <img src="{{$setting->image->thumb}}" class="img-fluid me" alt="{{$setting->full_name}}">
+                        <img src="{{@$setting->image->thumb}}" class="img-fluid me" alt="{{@$setting->full_name}}">
                     </div>
-                    {!! $setting->about2 !!}
+                    {!! @$setting->about2 !!}
                     <div class="table-container">
                         <div class="table-responsive">
                             <table class="table">

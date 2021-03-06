@@ -249,10 +249,10 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.pending','payment.show']) ? 'menu-open' : '' }}">
 
                         <a href="#"
-                           class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'active' : '' }}">
+                           class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.pending','payment.show']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-paypal"></i>
                             <p>
                                 تراکنش ها
@@ -264,7 +264,7 @@
 
                             <li class="nav-item">
                                 <a href="{{ route('payment.index') }}"
-                                   class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.show']) ? 'active' : '' }}">
+                                   class="nav-link {{ request()->routeIs(['payment.index','payment.success','payment.fail','payment.pending','payment.show']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست تراکنش ها</p>
                                 </a>
@@ -273,10 +273,10 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.pending','contact.show']) ? 'menu-open' : '' }}">
 
                         <a href="#"
-                           class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'active' : '' }}">
+                           class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.pending','contact.show']) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-whatsapp"></i>
                             <p>
                                 تماس ها
@@ -288,7 +288,7 @@
 
                             <li class="nav-item">
                                 <a href="{{ route('contact.index') }}"
-                                   class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.show']) ? 'active' : '' }}">
+                                   class="nav-link {{ request()->routeIs(['contact.index','contact.read','contact.unread','contact.pending','contact.show']) ? 'active' : '' }}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست تماس ها</p>
                                 </a>

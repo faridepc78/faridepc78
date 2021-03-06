@@ -4,10 +4,10 @@
             <div class="wrapper-970">
                 <div class="c-title">
                     من
-                    <div class="name">&lt;{{$setting->full_name}}/&gt;</div>
+                    <div class="name">&lt;{{@$setting->full_name}}/&gt;</div>
                     هستم
                 </div>
-                <div class="c-description">{{$setting->bio}}</div>
+                <div class="c-description">{{@$setting->bio}}</div>
                 <a href="{{route('about-me')}}"
                    class="about-me">اطلاعات بیشتر درباره من</a>
                 <div class="social-networks">

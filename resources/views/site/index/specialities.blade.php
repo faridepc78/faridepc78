@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="specialities-description">
-                {{$setting->footer_text}}
+                {{@$setting->footer_text}}
             </div>
         </div>
     </div>

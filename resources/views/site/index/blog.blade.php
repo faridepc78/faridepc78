@@ -5,7 +5,7 @@
                 <div class="section-header col-md-3">
                     <h3 class="title">بلاگ</h3>
                     <div class="description">
-                        {{$setting->	blog_text}}
+                        {{@$setting->	blog_text}}
                     </div>
                     <a href="{{route('posts')}}" class="show-more">
                         <i class="fi fi-archive fi-lg"></i>

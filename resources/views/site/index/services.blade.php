@@ -6,7 +6,7 @@
     <div class="wrapper">
         <h2 class="title">چه کارهایی می‌تونم بکنم؟</h2>
         <div class="description">
-            {{$setting->work_text}}
+            {{@$setting->work_text}}
         </div>
 
         <div class="items clearfix">

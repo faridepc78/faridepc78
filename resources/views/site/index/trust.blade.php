@@ -6,12 +6,12 @@
     <div class="wrapper">
         <h2 class="title">دلیل <span class="bold">اعتماد</span> به من چیه؟</h2>
         <div class="description">
-            {!! $setting->trust !!}
+            {!! @$setting->trust !!}
         </div>
         <div class="section-content">
             <div class="item top">
                 <div class="i-description">
-                    {!! $setting->trust_reason1 !!}
+                    {!! @$setting->trust_reason1 !!}
                 </div>
                 <div class="i-icon">
                     <i class="fi fi-trust"></i>
@@ -24,7 +24,7 @@
                 <div class="mi-item right">
                     <div class="details">
                         <div class="i-description">
-                            {!! $setting->trust_reason2 !!}
+                            {!! @$setting->trust_reason2 !!}
                         </div>
                     </div>
                     <div class="icon-area">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="mi-item center">
                     <div class="icon">
-                        <img src="{{asset('site_assets/img/logo.png')}}" class="img-fluid" alt="{{$setting->full_name}}">
+                        <img src="{{asset('site_assets/img/logo.png')}}" class="img-fluid" alt="{{@$setting->full_name}}">
                     </div>
                 </div>
                 <div class="mi-item left">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="details">
                         <div class="i-description">
-                            {!! $setting->trust_reason3 !!}
+                            {!! @$setting->trust_reason3 !!}
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <i class="fi fi-clock"></i>
                 </div>
                 <div class="i-description">
-                    {!! $setting->trust_reason4 !!}
+                    {!! @$setting->trust_reason4 !!}
                 </div>
             </div>
         </div>

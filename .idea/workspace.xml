@@ -2,82 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/View/Composers/AdminHeaderComposer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/View/Composers/SiteComposer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/ContactInfo/CreateContactInfoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/ContactInfo/CreateContactInfoRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/ContactInfo/UpdateContactInfoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/ContactInfo/UpdateContactInfoRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/CreateCustomerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/CreateCustomerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/UpdateCustomerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/UpdateCustomerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Expertise/CreateExpertiseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Expertise/CreateExpertiseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Expertise/UpdateExpertiseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Expertise/UpdateExpertiseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Portfolio/CreatePortfolioRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Portfolio/CreatePortfolioRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Portfolio/UpdatePortfolioRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Portfolio/UpdatePortfolioRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioCategory/CreatePortfolioCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioCategory/CreatePortfolioCategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioCategory/UpdatePortfolioCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioCategory/UpdatePortfolioCategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioExpertise/CreatePortfolioExpertiseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioSlider/CreatePortfolioSliderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PortfolioSlider/CreatePortfolioSliderRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Post/CreatePostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Post/CreatePostRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Post/UpdatePostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Post/UpdatePostRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategory/CreatePostCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategory/CreatePostCategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategory/UpdatePostCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategory/UpdatePostCategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreatePostCommentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreatePostCommentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreateReplyPostCommentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostComment/CreateReplyPostCommentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Profile/UpdateProfileRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Profile/UpdateProfileRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Resume/CreateResumeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Resume/CreateResumeRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Resume/UpdateResumeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Resume/UpdateResumeRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/CreateSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/CreateSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/UpdateSettingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Setting/UpdateSettingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Social/CreateSocialRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Social/CreateSocialRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Social/UpdateSocialRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Social/UpdateSocialRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Work/CreateWorkRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Work/CreateWorkRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Work/UpdateWorkRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Work/UpdateWorkRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/ExpertiseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/ExpertiseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PortfolioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Site/Contact/CreateContactRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Contact/CreateContactRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Site/Payment/CreatePaymentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Payment/CreatePaymentRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Site/Post/CreatePostCommentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Post/CreatePostCommentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Site/Post/CreateReplyPostCommentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Site/Post/CreateReplyPostCommentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/dist/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/dist/js/public.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/plugins/bootstrap/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/plugins/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/plugins/bootstrap/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/plugins/bootstrap/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/plugins/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/plugins/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/plugins/jquery/jquery.slim.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/plugins/jquery/jquery.slim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact_info/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact_info/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact_info/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact_info/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact_info/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact_info/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PostComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PostComment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/DashboardRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/DashboardRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194331_create_portfolio_category_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194329_create_portfolio_category_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_10_194430_create_portfolio_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_10_194330_create_portfolio_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/sql/faridepc78.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_assets/css/fa.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/management.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/management.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/resume/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/resume/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/resume/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/resume/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/resume/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/resume/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/social/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/social/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/social/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/social/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/social/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/social/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/work/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/work/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/work/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/work/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/about/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/about/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/blog/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/contact/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/contact/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/blog.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/main-header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/main-header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/portfolio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/portfolio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/services.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/specialities.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/specialities.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/index/trust.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/index/trust.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/terms/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/terms/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ContactInfoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/ContactInfoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ContactTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/ContactTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/CustomerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/CustomerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/DashboardTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/DashboardTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExpertiseTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/ExpertiseTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PaymentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PaymentTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioCategoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PortfolioCategoryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioExpertiseTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PortfolioExpertiseTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioSliderTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PortfolioSliderTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PortfolioTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PortfolioTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PostCategoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PostCategoryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PostTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/PostTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/ProfileTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ResumeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/ResumeTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SettingTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/SettingTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SocialTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/SocialTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/WorkTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Admin/WorkTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/AboutMeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/AboutMeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/ContactMeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/ContactMeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/ExpertiseTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/ExpertiseTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/IndexTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/IndexTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/PortfolioTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/PortfolioTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Site/TermsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Site/TermsTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,11 +77,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/Site/PostController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/routes/web.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/Feature/Admin/ContactTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Feature/Site/ContactMeTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Http/Requests/Site/Contact/CreateContactRequest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/admin/payment/index.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Repositories/PostLikeRepository.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Feature/Site/PostTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
@@ -262,25 +243,25 @@
       <recent name="C:\xampp\htdocs\faridepc78\app\Http\Requests\PortfolioSlider" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.PostTest.test_user_can_see_single_post_page">
-    <configuration name="PostTest.test_admin_can_see_filter_posts_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Site\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" method="test_admin_can_see_filter_posts_page" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.AboutMeTest">
+    <configuration name="AboutMeTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Site\AboutMeTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/AboutMeTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="PostTest.test_admin_can_see_single_post_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Site\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" method="test_admin_can_see_single_post_page" scope="Method" />
+    <configuration name="PaymentTest.test_admin_can_request_payment_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Site\PaymentTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" method="test_admin_can_request_payment_page" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PostTest.test_user_can_see_filter_posts_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Site\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" method="test_user_can_see_filter_posts_page" scope="Method" />
+    <configuration name="PaymentTest.test_admin_can_see_payment_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Site\PaymentTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" method="test_admin_can_see_payment_page" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PostTest.test_user_can_see_search_posts_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Site\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" method="test_user_can_see_search_posts_page" scope="Method" />
+    <configuration name="PaymentTest.test_user_can_request_payment_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Site\PaymentTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" method="test_user_can_request_payment_page" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PostTest.test_user_can_see_single_post_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Site\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PostTest.php" method="test_user_can_see_single_post_page" scope="Method" />
+    <configuration name="PaymentTest.test_user_can_see_payment_page" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Site\PaymentTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/Site/PaymentTest.php" method="test_user_can_see_payment_page" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -289,11 +270,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.PostTest.test_user_can_see_single_post_page" />
-        <item itemvalue="PHPUnit.PostTest.test_admin_can_see_single_post_page" />
-        <item itemvalue="PHPUnit.PostTest.test_user_can_see_filter_posts_page" />
-        <item itemvalue="PHPUnit.PostTest.test_admin_can_see_filter_posts_page" />
-        <item itemvalue="PHPUnit.PostTest.test_user_can_see_search_posts_page" />
+        <item itemvalue="PHPUnit.AboutMeTest" />
+        <item itemvalue="PHPUnit.PaymentTest.test_user_can_request_payment_page" />
+        <item itemvalue="PHPUnit.PaymentTest.test_admin_can_request_payment_page" />
+        <item itemvalue="PHPUnit.PaymentTest.test_user_can_see_payment_page" />
+        <item itemvalue="PHPUnit.PaymentTest.test_admin_can_see_payment_page" />
       </list>
     </recent_temporary>
   </component>
@@ -357,7 +338,9 @@
       <workItem from="1614832883036" duration="3229000" />
       <workItem from="1614839757793" duration="36000" />
       <workItem from="1614848996756" duration="21872000" />
-      <workItem from="1614936982324" duration="30601000" />
+      <workItem from="1614936982324" duration="31250000" />
+      <workItem from="1615008590266" duration="9581000" />
+      <workItem from="1615038555793" duration="21939000" />
     </task>
     <servers />
   </component>

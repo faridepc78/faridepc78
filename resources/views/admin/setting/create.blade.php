@@ -58,7 +58,7 @@
 
                                 <div class="form-group">
                                     <label for="full_name">نام و نام خانوادگی مدیر سایت</label>
-                                    <input type="text" class="form-control @error('full_name') is-invalid @enderror"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text" class="form-control @error('full_name') is-invalid @enderror"
                                            value="{{ old('full_name') }}" id="full_name" name="full_name"
                                            placeholder="لطفا نام و نام خانوادگی مدیر سایت را وارد کنید" autocomplete="full_name" autofocus
                                            required>
@@ -72,7 +72,7 @@
 
                                 <div class="form-group">
                                     <label for="bio">بیو مدیر سایت</label>
-                                    <textarea class="form-control @error('bio') is-invalid @enderror"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" class="form-control @error('bio') is-invalid @enderror"
                                               rows="5"
                                               style="resize: vertical"
                                               id="bio"
@@ -165,7 +165,7 @@
 
                                 <div class="form-group">
                                     <label for="blog_text">توضیحات بلاگ</label>
-                                    <textarea rows="5" style="resize: vertical"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" rows="5" style="resize: vertical"
                                               class="form-control @error('blog_text') is-invalid @enderror"
                                               id="blog_text"
                                               name="blog_text"
@@ -181,7 +181,7 @@
 
                                 <div class="form-group">
                                     <label for="portfolio_text">توضیحات نمونه کار ها</label>
-                                    <textarea rows="5" style="resize: vertical"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" rows="5" style="resize: vertical"
                                               class="form-control @error('portfolio_text') is-invalid @enderror"
                                               id="portfolio_text"
                                               name="portfolio_text"
@@ -197,7 +197,7 @@
 
                                 <div class="form-group">
                                     <label for="work_text">توضیحات کار ها</label>
-                                    <textarea rows="5" style="resize: vertical"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" rows="5" style="resize: vertical"
                                               class="form-control @error('work_text') is-invalid @enderror"
                                               id="work_text"
                                               name="work_text"
@@ -213,7 +213,7 @@
 
                                 <div class="form-group">
                                     <label for="contact_text">توضیحات تماس ها</label>
-                                    <textarea rows="5" style="resize: vertical"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" rows="5" style="resize: vertical"
                                               class="form-control @error('contact_text') is-invalid @enderror"
                                               id="contact_text"
                                               name="contact_text"
@@ -229,7 +229,7 @@
 
                                 <div class="form-group">
                                     <label for="telegram_text">توضیحات کانال تلگرام</label>
-                                    <textarea rows="5" style="resize: vertical"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" rows="5" style="resize: vertical"
                                               class="form-control @error('telegram_text') is-invalid @enderror"
                                               id="telegram_text"
                                               name="telegram_text"
@@ -245,7 +245,7 @@
 
                                 <div class="form-group">
                                     <label for="telegram_channel_link">لینک توضیحات کانال تلگرام</label>
-                                    <input type="text"
+                                    <input onkeyup="this.value=removeSpaces(this.value)" type="text"
                                            class="form-control @error('telegram_channel_link') is-invalid @enderror"
                                            value="{{ old('telegram_channel_link') }}"
                                            id="telegram_channel_link" name="telegram_channel_link"
@@ -302,7 +302,7 @@
 
                                 <div class="form-group">
                                     <label for="footer_text">متن فوتر سایت</label>
-                                    <textarea class="form-control @error('footer_text') is-invalid @enderror"
+                                    <textarea onkeyup="this.value=removeSpaces(this.value)" class="form-control @error('footer_text') is-invalid @enderror"
                                               rows="5"
                                               style="resize: vertical"
                                               id="footer_text"
@@ -335,6 +335,7 @@
 
 @section('js')
     <script type="text/javascript" src="{{asset('admin_assets/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin_assets/dist/js/public.js')}}"></script>
 @endsection
 
 @include('admin.layout.footer')

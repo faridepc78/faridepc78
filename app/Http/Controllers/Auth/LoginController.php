@@ -34,7 +34,12 @@ class LoginController extends Controller
             $this->username() => 'required',
             'password' => 'required',
             'g-recaptcha-response' => 'required|captcha',
-        ]);
+        ],
+            [
+                'g-recaptcha-response.required' => 'فیلد ریکپچا الزامی است',
+                'g-recaptcha-response.captcha' => 'لطفا فیلد ریکپچا را مجداد پر کنید'
+            ]
+        );
     }
 
     public function showLoginForm()

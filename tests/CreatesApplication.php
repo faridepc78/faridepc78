@@ -19,7 +19,7 @@ trait CreatesApplication
 
         $app['validator']->extend('captcha', function()
         {
-            fwrite(STDOUT, print_r('Bypassing captcha validation and returning explicit true!', TRUE));
+            //fwrite(STDOUT, print_r('Bypassing captcha validation and returning explicit true!', TRUE));
             return true;
         });
 

@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Payment\CreatePaymentRequest;
 use App\Repositories\PaymentRepository;
-use App\Repositories\SettingRepository;
-use App\Repositories\SocialRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Zarinpal\Zarinpal;
@@ -14,24 +12,16 @@ use Zarinpal\Zarinpal;
 
 class PaymentController extends Controller
 {
-    private $socialRepository;
-    private $settingRepository;
     private $paymentRepository;
 
-    public function __construct(SocialRepository $socialRepository,
-                                SettingRepository $settingRepository,
-                                PaymentRepository $paymentRepository)
+    public function __construct(PaymentRepository $paymentRepository)
     {
-        $this->socialRepository = $socialRepository;
-        $this->settingRepository = $settingRepository;
         $this->paymentRepository = $paymentRepository;
     }
 
     public function index()
     {
-        $social = $this->socialRepository->all();
-        $setting = $this->settingRepository->first();
-        return view('site.payment.index', compact('social', 'setting'));
+        return view('site.payment.index');
     }
 
     public function request(CreatePaymentRequest $request, Zarinpal $zarinpal): \Illuminate\Http\RedirectResponse
@@ -55,7 +45,7 @@ class PaymentController extends Controller
 
         } catch (Exception $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
-            return back();
+            return redirect()->route('payment');
         }
     }
 
@@ -94,8 +84,6 @@ class PaymentController extends Controller
     public function result($order_number)
     {
         $data = $this->paymentRepository->getPaymentByOrderNumber($order_number);
-        $social = $this->socialRepository->all();
-        $setting = $this->settingRepository->first();
-        return view('site.payment.result', compact('data', 'social', 'setting'));
+        return view('site.payment.result', compact('data'));
     }
 }

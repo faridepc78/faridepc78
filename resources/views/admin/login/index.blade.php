@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +27,7 @@
                 @csrf
 
                 <div class="input-group mb-3">
-                    <input id="email" type="email" placeholder="ایمیل را وارد کنید"
+                    <input required id="email" type="email" placeholder="ایمیل را وارد کنید"
                            class="form-control @error('email') is-invalid @enderror" name="email"
                            value="{{ old('email') }}" autocomplete="email" autofocus>
                     <div class="input-group-append">
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <input id="password" type="password" placeholder="رمز عبور را وارد کنید"
+                    <input required id="password" type="password" placeholder="رمز عبور را وارد کنید"
                            class="form-control @error('password') is-invalid @enderror" name="password"
                            autocomplete="current-password">
                     <div class="input-group-append">

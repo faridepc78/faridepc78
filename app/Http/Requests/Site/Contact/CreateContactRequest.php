@@ -19,7 +19,7 @@ class CreateContactRequest extends FormRequest
             'user_mobile' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
             'know' => 'required|string|max:255',
             'text' => 'required|string',
-            'recaptcha_token' => 'required|captcha',
+            'recaptcha_token' => 'required|captcha'
         ];
     }
 

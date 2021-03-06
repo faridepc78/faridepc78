@@ -12,16 +12,12 @@ class AboutMeTest extends TestCase
 
     public function test_admin_can_see_about_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('about-me'))->assertOk();
     }
 
     public function test_user_can_see_about_page()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('about-me'))->assertOk();
     }
 

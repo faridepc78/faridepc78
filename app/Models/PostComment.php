@@ -34,22 +34,6 @@ class PostComment extends Model
         return "http://www.gravatar.com/avatar/$hash?d=mm";
     }
 
-    /*START SITE*/
-
-    /*public function comments()
-    {
-        return $this->hasMany(PostComment::class, 'parent_id', 'id')
-            ->where('status','=',PostComment::ACTIVE_STATUS);
-    }
-
-    public function childrenComments()
-    {
-        return $this->hasMany(PostComment::class, 'parent_id', 'id')
-            ->with('comments')->where('status','=',PostComment::ACTIVE_STATUS);
-    }*/
-
-    /*END SITE*/
-
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PostComment::class, 'parent_id', 'id');
@@ -97,12 +81,12 @@ class PostComment extends Model
         return $this->childrenComments->where('status', '=', PostComment::PENDING_STATUS)->count() + $sum;
     }
 
-    public function role()
+    public function role(): string
     {
         return $this->users == PostComment::ADMIN_USER ? 'Admin' : 'User';
     }
 
-    public function status()
+    public function status(): string
     {
         if ($this->status == PostComment::ACTIVE_STATUS)
             return $data = '<button class="btn btn-success">فعال</button>';

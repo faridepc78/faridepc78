@@ -7,7 +7,7 @@
         <div class="wrapper">
             <h2 class="title">آخرین نمونه کارها</h2>
             <div class="description">
-                {{$setting->portfolio_text}}
+                {{@$setting->portfolio_text}}
             </div>
             <div class="items clearfix">
 

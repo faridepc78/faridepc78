@@ -158,12 +158,18 @@
                 },
 
                 password: {
-                    minlength: 8
+                    minlength: 8,
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
                 },
 
                 password_confirmation: {
                     minlength: 8,
-                    equalTo: "#password"
+                    equalTo: "#password",
+                    normalizer: function (value) {
+                        return $.trim(value);
+                    }
                 }
             },
 

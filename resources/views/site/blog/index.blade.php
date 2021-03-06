@@ -63,14 +63,14 @@
                     </div>
                     <div class="col-md-9 items-container">
 
-                        @if($setting->telegram_text && $setting->telegram_channel_link)
+                        @if(@$setting->telegram_text && @$setting->telegram_channel_link)
 
-                            <a class="telegram" href="{{$setting->telegram_channel_link}}" target="_blank">
+                            <a class="telegram" href="{{@$setting->telegram_channel_link}}" target="_blank">
                                 <div class="t-icon">
                                     <img src="{{asset('site_assets/img/telegram-logo.png')}}" alt="telegram channel">
                                 </div>
                                 <div class="t-content"><b>کانال تلگرام من</b>
-                                    <p>{{$setting->telegram_text}}</p>
+                                    <p>{{@$setting->telegram_text}}</p>
                                 </div>
                             </a>
 

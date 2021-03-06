@@ -57,7 +57,7 @@
 
         <div class="logo-area">
             <div class="logo">
-                <img src="{{ asset('site_assets/img/logo.png') }}" class="img-fluid" alt="{{$setting->full_name}}">
+                <img src="{{ asset('site_assets/img/logo.png') }}" class="img-fluid" alt="{{@$setting->full_name}}">
             </div>
         </div>
 
@@ -87,10 +87,10 @@
                     <div class="logo-area">
                         <div class="logo">
                             <img src="{{ asset('site_assets/img/logo.png') }}" class="img-fluid"
-                                 alt="{{$setting->full_name}}">
+                                 alt="{{@$setting->full_name}}">
                         </div>
                     </div>
-                    <h1 class="site-owner">{{$setting->full_name}}</h1>
+                    <h1 class="site-owner">{{@$setting->full_name}}</h1>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menu"
                         aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">

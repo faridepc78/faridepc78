@@ -39,7 +39,7 @@
 
                 <div class="inputs-area col-sm-9">
                     <div class="description">
-                        {{$setting->contact_text}}
+                        {{@$setting->contact_text}}
                     </div>
 
                     <div class="inputs clearfix">

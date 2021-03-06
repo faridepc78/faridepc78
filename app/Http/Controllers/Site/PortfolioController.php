@@ -9,8 +9,7 @@ use App\Repositories\PortfolioCategoryRepository;
 use App\Repositories\PortfolioExpertiseRepository;
 use App\Repositories\PortfolioRepository;
 use App\Repositories\PortfolioSliderRepository;
-use App\Repositories\SettingRepository;
-use App\Repositories\SocialRepository;
+use Exception;
 use Illuminate\Support\Str;
 
 class PortfolioController extends Controller
@@ -19,32 +18,23 @@ class PortfolioController extends Controller
     private $portfolioCategoryRepository;
     private $portfolioSliderRepository;
     private $portfolioExpertiseRepository;
-    private $settingRepository;
-    private $socialRepository;
 
     public function __construct(PortfolioRepository $portfolioRepository,
                                 PortfolioCategoryRepository $portfolioCategoryRepository,
                                 PortfolioSliderRepository $portfolioSliderRepository,
-                                PortfolioExpertiseRepository $portfolioExpertiseRepository,
-                                SettingRepository $settingRepository,
-                                SocialRepository $socialRepository)
+                                PortfolioExpertiseRepository $portfolioExpertiseRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
         $this->portfolioSliderRepository = $portfolioSliderRepository;
         $this->portfolioExpertiseRepository = $portfolioExpertiseRepository;
-        $this->settingRepository = $settingRepository;
-        $this->socialRepository = $socialRepository;
     }
 
     public function index()
     {
         $portfolio = $this->portfolioRepository->get12();
         $portfolioCategory = $this->portfolioCategoryRepository->all();
-        $setting = $this->settingRepository->first();
-        $social = $this->socialRepository->all();
-        return view('site.portfolio.index',
-            compact('portfolio', 'portfolioCategory', 'setting', 'social'));
+        return view('site.portfolio.index', compact('portfolio', 'portfolioCategory'));
     }
 
     public function filter($slug)
@@ -53,10 +43,8 @@ class PortfolioController extends Controller
         $portfolioCategoryInfo = $this->portfolioCategoryRepository->findById($portfolio_category_id);
         $portfolio = $this->portfolioRepository->findByCategoryId($portfolio_category_id);
         $portfolioCategory = $this->portfolioCategoryRepository->all();
-        $setting = $this->settingRepository->first();
-        $social = $this->socialRepository->all();
         return view('site.portfolio.index',
-            compact('portfolio_category_id', 'portfolioCategoryInfo','portfolio', 'portfolioCategory', 'setting', 'social'));
+            compact('portfolio_category_id', 'portfolioCategoryInfo', 'portfolio', 'portfolioCategory'));
     }
 
     public function show($slug)
@@ -65,10 +53,8 @@ class PortfolioController extends Controller
         $portfolio = $this->portfolioRepository->findById($portfolio_id);
         $portfolioSlider = $this->portfolioSliderRepository->findByPortfolioId($portfolio_id);
         $portfolioExpertise = $this->portfolioExpertiseRepository->findByPortfolioId($portfolio_id);
-        $setting = $this->settingRepository->first();
-        $social = $this->socialRepository->all();
         return view('site.portfolio.work.index',
-            compact('portfolio', 'portfolioSlider', 'portfolioExpertise', 'setting', 'social'));
+            compact('portfolio', 'portfolioSlider', 'portfolioExpertise'));
     }
 
     public function extractId($slug): string

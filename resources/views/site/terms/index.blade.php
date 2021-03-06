@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="pb-content">
-                    <p>{!! $setting->rule !!}</p>
+                    <p>{!! @$setting->rule !!}</p>
                 </div>
             </div>
         </div>

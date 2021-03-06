@@ -57,7 +57,7 @@
 
                                 <div class="form-group">
                                     <label for="text">توضیحات کار</label>
-                                    <textarea onkeyup="this.value=removeSpaces(this.value)" style="resize: vertical" rows="5" class="form-control @error('text') is-invalid @enderror"
+                                    <textarea placeholder="لطفا توضیحات کار را وارد کنید" onkeyup="this.value=removeSpaces(this.value)" style="resize: vertical" rows="5" class="form-control @error('text') is-invalid @enderror"
                                               id="text" name="text" autocomplete="text"
                                               autofocus>{{ old('text',$work->text) }}</textarea>
 

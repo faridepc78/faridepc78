@@ -17,50 +17,38 @@ class PortfolioTest extends TestCase
 
     public function test_admin_can_see_works_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('works'))->assertOk();
     }
 
     public function test_user_can_see_works_page()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('works'))->assertOk();
     }
 
     public function test_admin_can_see_filter_works_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
         $portfolio = $this->createPortfolio();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('filterWorks', $portfolio->id . '-' . $portfolio->slug))->assertOk();
     }
 
     public function test_user_can_see_filter_works_page()
     {
-        $this->withoutExceptionHandling();
         $portfolio = $this->createPortfolio();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('filterWorks', $portfolio->id . '-' . $portfolio->slug))->assertOk();
     }
 
     public function test_admin_can_see_single_work_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
         $portfolio = $this->createPortfolio();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('singleWork', $portfolio->id . '-' . $portfolio->slug))->assertOk();
     }
 
     public function test_user_can_see_single_work_page()
     {
-        $this->withoutExceptionHandling();
         $portfolio = $this->createPortfolio();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('singleWork', $portfolio->id . '-' . $portfolio->slug))->assertOk();
     }
 

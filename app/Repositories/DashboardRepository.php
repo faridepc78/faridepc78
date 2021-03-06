@@ -31,13 +31,13 @@ class DashboardRepository
         return Resume::query()->count();
     }
 
-    public function countPendingPostComment(): int
+    public function countAllPendingPostComment(): int
     {
         return PostComment::query()->where('status', '=', PostComment::PENDING_STATUS)->count();
     }
 
-    public function countUnreadContact(): int
+    public function countAllPendingContact(): int
     {
-        return Contact::query()->where('status','=',Contact::UNREAD_STATUS)->count();
+        return Contact::query()->where('status','=',Contact::PENDING_STATUS)->count();
     }
 }

@@ -16,33 +16,25 @@ class ExpertiseTest extends TestCase
 
     public function test_admin_can_see_expertise_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('expertise'))->assertOk();
     }
 
     public function test_user_can_see_expertise_page()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('expertise'))->assertOk();
     }
 
     public function test_admin_can_see_single_expertise_page()
     {
-        $this->withoutExceptionHandling();
         $this->actAsAdmin();
         $expertise = $this->createExpertise();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('singleExpertise', $expertise->id . '-' . $expertise->slug))->assertOk();
     }
 
     public function test_user_can_see_single_expertise_page()
     {
-        $this->withoutExceptionHandling();
         $expertise = $this->createExpertise();
-        $this->expectException('Facade\Ignition\Exceptions\ViewException');
         $this->get(route('singleExpertise', $expertise->id . '-' . $expertise->slug))->assertOk();
     }
 

@@ -43,7 +43,7 @@ class CreatePostCommentRequest extends FormRequest
             'text' => 'required|string',
             'status' => ['required', Rule::in(PostComment::$statuses)],
             'users' => ['required', Rule::in(PostComment::$users)],
-            'recaptcha_token' => 'required|captcha',
+            'recaptcha_token' => 'required|captcha'
         ];
     }
 
