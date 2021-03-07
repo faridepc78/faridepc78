@@ -60,6 +60,24 @@ function reCAPTCHAValidation() {
     }
 }
 
+function changeStyleType(id) {
+
+    id.keyup(function () {
+        var id_value = id.val().length;
+
+        if (id_value != 0) {
+            id.css('direction','ltr');
+        } else {
+            id.css('direction','rtl');
+        }
+    });
+
+}
+
+function removeSpaces(string) {
+    return string.trimStart();
+}
+
 
 function separateNum(value, input) {
     /* seprate number input 3 number */

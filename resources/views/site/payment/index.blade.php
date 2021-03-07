@@ -117,7 +117,7 @@
                                 </div>
 
                                 <div class="col-md-6 input">
-                                    <label for="price">مبلغ پرداختی</label>
+                                    <label for="price">مبلغ پرداختی (تومان)</label>
                                     <div class="input-area">
                                         <input style="direction: ltr"
                                                onkeyup="this.value=removeSpaces(this.value);separateNum(this.value,this)"

@@ -1,5 +1,5 @@
 <div class="answer">
-    <div class="item" data-type="{{$item->users}}" data-id="{{$item->id}}" id="comment{{$item->id}}">
+    <div class="item" data-type="{{$item->role()}}" data-id="{{$item->id}}" id="comment{{$item->id}}">
         <div class="avatar-area">
             <img class="img-circle"
                 src="{{$item->gravatar}}"
@@ -32,8 +32,8 @@
     </div>
 </div>
 
-@if (count($item->comments))
-        @foreach ($item->comments as $item)
+@if (count($item->ActiveComments))
+        @foreach ($item->ActiveComments as $item)
             @include('site.blog.post.child-comments', ['item' => $item])
         @endforeach
 @endif

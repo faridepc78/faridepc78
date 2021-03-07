@@ -90,6 +90,26 @@
 
                                 </div>
 
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="view">تعداد لایک پست</label>
+                                            <input readonly type="text" class="form-control"
+                                                   value="{{ number_format($post->like()) }}" id="view">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="view">تعداد نظرات پست</label>
+                                            <input readonly type="text" class="form-control"
+                                                   value="{{ number_format($post->countActiveComment()) }}" id="view">
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
 
                     </div>

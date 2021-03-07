@@ -21,7 +21,12 @@
                     <div class="breadcrumbs">
                         <ul class="clearfix">
                             <li><a href="{{route('index')}}">صفحه اصلی</a></li>
-                            <li><a href="javascript:void(0)">بلاگ</a></li>
+                            @if((request()->routeIs('filterPosts')))
+                                <li><a href="{{route('posts')}}">بلاگ</a></li>
+                                <li><a href="javascript:void(0)">{{$postCategoryInfo->name}}</a></li>
+                            @else
+                                <li><a href="javascript:void(0)">بلاگ</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

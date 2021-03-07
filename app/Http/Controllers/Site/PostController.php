@@ -54,20 +54,21 @@ class PostController extends Controller
     public function filter($slug)
     {
         $post_category_id = $this->extractId($slug);
+        $postCategoryInfo = $this->postCategoryRepository->findById($post_category_id);
         $post = $this->postRepository->findByCategoryId($post_category_id);
         $postCategory = $this->postCategoryRepository->all();
         return view('site.blog.index',
-            compact('post_category_id', 'post', 'postCategory'));
+            compact('post_category_id', 'post', 'postCategoryInfo', 'postCategory'));
     }
 
     public function show($slug)
     {
         $post_id = $this->extractId($slug);
+        $post = $this->postRepository->findById($post_id);
         $post_view = $this->postViewRepository->isRegisterIpForPostView($post_id);
         if ($post_view != true) {
             $this->postViewRepository->storePostView($post_id);
         }
-        $post = $this->postRepository->findById($post_id);
         $comments = $this->postCommentRepository->getParentComment($post_id);
         return view('site.blog.post.index',
             compact('post', 'comments'));

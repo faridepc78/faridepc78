@@ -21,9 +21,11 @@
                     <div class="breadcrumbs">
                         <ul class="clearfix">
                             <li><a href="{{route('index')}}">صفحه اصلی</a></li>
-                            <li><a href="javascript:void(0)">نمونه کارها</a></li>
                             @if((request()->routeIs('filterWorks')))
+                                <li><a href="{{route('works')}}">نمونه کارها</a></li>
                                 <li><a href="javascript:void(0)">{{$portfolioCategoryInfo->name}}</a></li>
+                            @else
+                                <li><a href="javascript:void(0)">نمونه کارها</a></li>
                             @endif
                         </ul>
                     </div>

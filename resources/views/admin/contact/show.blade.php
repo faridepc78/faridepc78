@@ -86,7 +86,7 @@
                                     <input readonly type="text"     class="form-control alert @if($contact->status==\App\Models\Contact::READ_STATUS) alert-success @elseif($contact->status==\App\Models\Contact::UNREAD_STATUS) alert-danger @else alert-warning @endif"
                                            value="@if($contact->status==\App\Models\Contact::READ_STATUS)خوانده شده
 @elseif($contact->status==\App\Models\Contact::UNREAD_STATUS)خوانده نشده
-@elseمعلق
+@else در حال برسی
 @endif"
                                            id="status">
                                 </div>

@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+    function clearData(){
+        $('#user_name').val('');
+        $('#user_email').val('');
+        $('#user_mobile').val('');
+        $('#know').val('');
+        $('#text').val('');
+        grecaptcha.reset();
+    }
+
     $("#frmContact").validate({
 
         rules: {
@@ -111,6 +120,7 @@ $(document).ready(function () {
                                         'به زودی توسط مدیر سایت برسی و پاسخ داده می شود', type: 'success'
                                 }, function () {
                                     setTimeout(function () {
+                                        clearData();
                                         document.location.reload();
                                     }, 1000);
                                 });

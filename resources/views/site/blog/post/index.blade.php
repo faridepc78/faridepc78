@@ -50,7 +50,8 @@
                                     <span class="value">{{$post->countActiveComment()}}</span>
                                 </div>
                             </div>
-                            <div class="d-likes" data-id="{{$post->id}}" data-like-count="{{$post->like()}}" data-link="{{$post->isLikePostByIp() ? route('dislikePost',$post->id) : route('likePost',$post->id)}}">
+                            <div class="d-likes" data-id="{{$post->id}}" data-like-count="{{$post->like()}}"
+                                 data-link="{{$post->isLikePostByIp() ? route('dislikePost',$post->id) : route('likePost',$post->id)}}">
                                 <div class="d-content">
                                     <i id="like_icon" class="fi fi-heart fi-lg"
                                        style="color: {{$post->isLikePostByIp($post->id) ? 'red' : '#9E9E9E'}}"></i>
@@ -81,9 +82,16 @@
         @section('load_js')
             <script src="https://www.google.com/recaptcha/api.js?explicit&hl=fa" async defer></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/sweetalert.min.js') }}'></script>
-            <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
+            <script type="text/javascript"
+                    src='{{ asset('site_assets/plugins/validation/js/jquery.validate.min.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/plugins/validation/js/methods.js') }}'></script>
             <script type="text/javascript" src='{{ asset('site_assets/js/pages/show_blog.js?v='.uniqid()) }}'></script>
-@endsection
+        @endsection
 
-@include('site.layout.footer')
+        @include('site.layout.footer')
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                changeStyleType($('#user_email'));
+            });
+        </script>

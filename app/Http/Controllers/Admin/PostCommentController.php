@@ -56,12 +56,6 @@ class PostCommentController extends Controller
         return view('admin.post_comment.index', compact('post', 'postComment'));
     }
 
-    public function show($id)
-    {
-        $postComment = $this->postCommentRepository->showPostComment($id);
-        return view('admin.post_comment.show', compact('postComment'));
-    }
-
     public function reply($id)
     {
         $postComment = $this->postCommentRepository->showPostComment($id);

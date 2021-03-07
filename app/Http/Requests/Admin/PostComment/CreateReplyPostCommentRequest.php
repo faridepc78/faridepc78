@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Admin\PostComment;
 
 use App\Models\PostComment;
-use App\Repositories\PostCommentRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateReplyPostCommentRequest extends FormRequest
@@ -15,14 +14,11 @@ class CreateReplyPostCommentRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $PostCommentRepository = new  PostCommentRepository();
-        $showPostComment = $PostCommentRepository->showPostComment(request()->post_comment_id);
-        $parent_status = $showPostComment->status;
         if (auth()->user()) {
             $user_name = auth()->user()->full_name;
             $user_email = auth()->user()->email;
             $users = PostComment::ADMIN_USER;
-            $parent_status == PostComment::ACTIVE_STATUS ? $status = PostComment::ACTIVE_STATUS : $status = PostComment::PENDING_STATUS;
+            $status = PostComment::ACTIVE_STATUS;
         } else {
             return false;
         }

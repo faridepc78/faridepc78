@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    function clearData(){
+        $('#user_name').val('');
+        $('#user_email').val('');
+        $('#text').val('');
+        grecaptcha.reset();
+    }
+
     $(".share-dialog li").each(function ($index, $item) {
         var $color = $($item).attr("data-color");
         $($item).css("background", $color);
@@ -121,6 +128,7 @@ $(document).ready(function () {
                                         'بعدا که توسط مدیر سایت تایید شد می توانید نظر خود را ببینید', type: 'success'
                                 }, function () {
                                     setTimeout(function () {
+                                        clearData();
                                         document.location.reload();
                                     }, 1000);
                                 });
@@ -190,11 +198,9 @@ $(document).ready(function () {
                         parent.find(".value").html(String(count - 1));
                     }
                 } else {
-                    grecaptcha.reset();
                     swal({title: 'خطا', text: result.message, type: 'error'});
                 }
             }, error: function (response) {
-                grecaptcha.reset();
                 if (response.status === '429') {
                     swal({
                         title: 'هشدار', text: 'تعداد دفعات درخواست زیاد بوده است' +

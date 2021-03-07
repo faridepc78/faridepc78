@@ -28,7 +28,7 @@
                     @foreach($social as $value)
 
                         <li data-color="{{$value->color}}">
-                            <a href="{{$value->link}}"><i class="fi fi-lg {{$value->icon}}" title="{{$value->name}}"></i></a>
+                            <a target="_blank" href="{{$value->link}}"><i class="fi fi-lg {{$value->icon}}" title="{{$value->name}}"></i></a>
                         </li>
 
                     @endforeach

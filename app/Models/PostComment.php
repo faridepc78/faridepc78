@@ -44,6 +44,18 @@ class PostComment extends Model
         return $this->hasMany(PostComment::class, 'parent_id', 'id')->with('comments');
     }
 
+    public function ActiveComments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
+            ->where('status', '=', PostComment::ACTIVE_STATUS);
+    }
+
+    public function ActiveChildrenComments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostComment::class, 'parent_id', 'id')
+            ->where('status', '=', PostComment::ACTIVE_STATUS)->with('ActiveComments');
+    }
+
     public function countAllChildrenComments(): int
     {
         $sum = 0;

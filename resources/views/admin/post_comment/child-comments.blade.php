@@ -105,12 +105,10 @@
                                 href="{{route('postComment.reply',$postComment->id)}}#comment{{$item->parent_id}}">#{{$item->parent_id}}</a>
                         </div>
                     </div>
-                    @if($item->users==\App\Models\PostComment::COMMON_USER)
                         <div class="reply" data-id="{{$item->id}}" data-name="{{$item->user_name}}">
                             <i class="fi fi-reply fi-lg"></i>
                             پاسخ
                         </div>
-                    @endif
                 </div>
             </div>
         </div>

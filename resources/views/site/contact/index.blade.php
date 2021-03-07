@@ -177,3 +177,9 @@
 @endsection
 
 @include('site.layout.footer')
+        <script type="text/javascript">
+            $(document).ready(function () {
+                changeStyleType($('#user_email'));
+                changeStyleType($('#user_mobile'));
+            });
+        </script>

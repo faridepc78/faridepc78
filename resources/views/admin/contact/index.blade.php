@@ -33,7 +33,7 @@
                         <div class="card-header">
                             <h3 class="card-title">لیست تماس ها</h3>
                             <br>
-                            <a href="{{route('contact.pending')}}" class="btn btn-warning">معلق</a>
+                            <a href="{{route('contact.pending')}}" class="btn btn-warning">در حال برسی</a>
                             <a href="{{route('contact.read')}}" class="btn btn-success">خوانده شده</a>
                             <a href="{{route('contact.unread')}}" class="btn btn-danger">خوانده نشده</a>
                         </div>
@@ -46,7 +46,7 @@
                                     <th>اطلاعات کاربر</th>
                                     <th>متن</th>
                                     <th>وضعیت</th>
-                                    <th>تاریخ تماس</th>
+                                    <th>تاریخ</th>
                                     <th>جزئیات</th>
                                     <th>تغییر وضعیت</th>
                                     <th>حذف</th>
@@ -77,7 +77,7 @@
                                                 @elseif($item->status==\App\Models\Contact::UNREAD_STATUS)
                                                     خوانده نشده
                                                 @else
-                                                    معلق
+                                                    در حال برسی
                                                 @endif
                                             </td>
                                             <td>{{\Hekmatinasser\Verta\Verta::createTimestamp($item->created_at)->format('y/n/j - H:i:s')}}</td>
@@ -177,24 +177,24 @@
                                                     <div class="modal-body">
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
-                                                                <label for="user_name">نام کاربر :</label>
+                                                                <label for="user_name">نام :</label>
                                                                 <input class="form-control" id="user_name" type="text"
                                                                        readonly value="{{$item->user_name}}">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="user_email">ایمیل کاربر :</label>
+                                                                <label for="user_email">ایمیل :</label>
                                                                 <input class="form-control text-left" id="user_email"
                                                                        type="text" readonly
                                                                        value="{{$item->user_email}}">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="user_mobile">تلفن همراه کاربر :</label>
+                                                                <label for="user_mobile">تلفن همراه :</label>
                                                                 <input class="form-control text-left" id="user_mobile"
                                                                        type="text" readonly
                                                                        value="{{$item->user_mobile}}">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="user_ip">آی پی کاربر :</label>
+                                                                <label for="user_ip">آی پی :</label>
                                                                 <input class="form-control text-left" id="user_ip"
                                                                        type="text" readonly value="{{$item->user_ip}}">
                                                             </div>

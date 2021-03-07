@@ -54,7 +54,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::get('post_comment/{id}/pending', 'PostCommentController@pending')->name('postComment.pending');
     Route::get('post_comment/{id}/active', 'PostCommentController@active')->name('postComment.active');
     Route::get('post_comment/{id}/inactive', 'PostCommentController@inactive')->name('postComment.inactive');
-    Route::get('post_comment/show/{id}', 'PostCommentController@show')->name('postComment.show');
     Route::get('post_comment/reply/{id}', 'PostCommentController@reply')->name('postComment.reply');
     Route::delete('post_comment/{parent_id}/{id}', 'PostCommentController@destroy')->name('postComment.destroy');
     Route::patch('post_comment/{parent_id}/active/{id}', 'PostCommentController@active_status')->name('postComment.active_status');
