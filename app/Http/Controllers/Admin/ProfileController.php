@@ -41,6 +41,10 @@ class ProfileController extends Controller
                     $this->userRepository->update($request, $user->image_id, $id);
                 }
 
+                if (!empty($request->get('password'))) {
+                    $this->userRepository->updatePassword($request->get('password'), Auth::id());
+                }
+
                 if (!empty($request->input('password'))) {
                     Auth::logout();
                 }

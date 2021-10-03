@@ -13,8 +13,16 @@ class UserRepository
             ->update([
                 'full_name' => $values['full_name'],
                 'email' => $values['email'],
-                'image_id' => $image_id,
-                'password' => bcrypt($values['password'])
+                'image_id' => $image_id
+            ]);
+    }
+
+    public function updatePassword($password, $id)
+    {
+        return User::query()
+            ->where('id', '=', $id)
+            ->update([
+                'password' => bcrypt($password)
             ]);
     }
 

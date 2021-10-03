@@ -449,6 +449,19 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item">
+
+                        <a href="{{route('logout')}}"
+                           class="nav-link">
+                            <i class="nav-icon fa fa-close"></i>
+                            <p>
+                                خروج
+                                <i class="fa right"></i>
+                            </p>
+                        </a>
+
+                    </li>
+
                 </ul>
             </nav>
 
