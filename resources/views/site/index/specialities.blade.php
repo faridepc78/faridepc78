@@ -12,7 +12,7 @@
                         <div class="item col-xs-12 col-sm-6 col-md-3">
                             <div class="i-content">
                                 <a href="{{$item->path()}}">
-                                    <img src="{{$item->image->thumb}}" alt="{{$item->name}}">
+                                    <img src="{{$item->image->original}}" alt="{{$item->name}}">
                                     {{$item->name}} </a>
                             </div>
                         </div>

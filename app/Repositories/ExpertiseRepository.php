@@ -8,39 +8,47 @@ class ExpertiseRepository
 {
     public function store($values)
     {
-        return Expertise::query()->create([
-            'name' => $values->name,
-            'slug' => str_slug_persian($values->slug),
-            'image_id' => null,
-            'text' => $values->text
-        ]);
+        return Expertise::query()
+            ->create([
+                'name' => $values['name'],
+                'slug' => str_slug_persian($values['slug']),
+                'image_id' => null,
+                'text' => $values['text']
+            ]);
     }
 
-    public function addImage($image_id, $id): int
+    public function addImage($image_id, $id)
     {
-        return Expertise::query()->where('id', $id)->update([
-            'image_id' => $image_id,
-        ]);
+        return Expertise::query()
+            ->where('id', $id)
+            ->update([
+                'image_id' => $image_id,
+            ]);
     }
 
-    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function paginate()
     {
-        return Expertise::query()->latest()->paginate(10);
+        return Expertise::query()
+            ->latest()
+            ->paginate(10);
     }
 
     public function findById($id)
     {
-        return Expertise::query()->findOrFail($id);
+        return Expertise::query()
+            ->findOrFail($id);
     }
 
-    public function update($values, $image_id, $id): int
+    public function update($values, $image_id, $id)
     {
-        return Expertise::query()->where('id', $id)->update([
-            'name' => $values->name,
-            'slug' => str_slug_persian($values->slug),
-            'image_id' => $image_id,
-            'text' => $values->text
-        ]);
+        return Expertise::query()
+            ->where('id', $id)
+            ->update([
+                'name' => $values['name'],
+                'slug' => str_slug_persian($values['slug']),
+                'image_id' => $image_id,
+                'text' => $values['text']
+            ]);
     }
 
     public function all()
@@ -50,6 +58,9 @@ class ExpertiseRepository
 
     public function get20()
     {
-        return Expertise::query()->latest()->limit(20)->get();
+        return Expertise::query()
+            ->latest()
+            ->limit(20)
+            ->get();
     }
 }

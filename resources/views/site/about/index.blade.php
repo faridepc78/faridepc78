@@ -63,7 +63,7 @@
                 <div class="text clearfix">
                     <div class="me-area">
                         &ensp;
-                        <img src="{{@$setting->image->thumb}}" class="img-fluid me" alt="{{@$setting->full_name}}">
+                        <img src="{{@$setting->image->original}}" class="img-fluid me" alt="{{@$setting->full_name}}">
                     </div>
                     {!! @$setting->about2 !!}
                     <div class="table-container">

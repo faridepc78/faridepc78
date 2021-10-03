@@ -113,7 +113,7 @@
 
                                 <div class="form-group">
                                     <label for="image">تصویر نمونه کار</label>
-                                    <img class="img-size-64" src="{{$portfolio->image->thumb}}">
+                                    <img class="img-size-64" src="{{$portfolio->image->original}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                           autofocus id="image" name="image">
 

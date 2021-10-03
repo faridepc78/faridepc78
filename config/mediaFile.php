@@ -1,11 +1,14 @@
 <?php
+
+use App\Services\Media\ImageFileService;
+
 return [
     "MediaTypeServices" => [
         "image" => [
             "extensions" => [
                 "png", "jpg", "jpeg"
             ],
-            "handler" => \App\Services\Media\ImageFileService::class
+            "handler" => ImageFileService::class
         ]
     ]
 ];

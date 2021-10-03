@@ -6,17 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class PortfolioExpertise extends Model
 {
-    protected $guarded = [];
     protected $table = 'portfolio_expertise';
-    protected $fillable = ['id', 'portfolio_id', 'expertise_id', 'created_at', 'updated_at'];
 
-    public function portfolio(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $fillable =
+        [
+            'portfolio_id',
+            'expertise_id'
+        ];
+
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    public function portfolio()
     {
-        return $this->belongsTo(Portfolio::class, 'portfolio_id','id')->withDefault();
+        return $this->belongsTo(Portfolio::class, 'portfolio_id', 'id')->withDefault();
     }
 
-    public function expertise(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function expertise()
     {
-        return $this->belongsTo(Expertise::class, 'expertise_id','id')->withDefault();
+        return $this->belongsTo(Expertise::class, 'expertise_id', 'id')->withDefault();
     }
 }

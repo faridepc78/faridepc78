@@ -67,7 +67,7 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="image">تصویر پست</label>
-                                        <img class="img-fluid" src="{{$post->image->thumb}}" alt="تصویر پست">
+                                        <img class="img-fluid" src="{{$post->image->original}}" alt="تصویر پست">
                                     </div>
 
                                 </div>

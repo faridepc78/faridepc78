@@ -7,22 +7,22 @@ use LVR\Colour\Hex;
 
 class UpdateSocialRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'icon' => 'required|string|max:255',
-            'link'=>'required|max:255|url',
-            'color'=>['required', new Hex]
+            'name' => ['required', 'string', 'max:255'],
+            'icon' => ['required', 'string', 'max:255'],
+            'link' => ['required', 'string', 'max:255', 'url'],
+            'color' => ['required', new Hex]
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام شبکه اجتماعی',

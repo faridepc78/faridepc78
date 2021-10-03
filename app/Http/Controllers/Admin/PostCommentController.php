@@ -15,11 +15,11 @@ class PostCommentController extends Controller
     private $postRepository;
     private $postCommentRepository;
 
-    public function __construct(PostRepository $postRepository, PostCommentRepository $postCommentRepository)
+    public function __construct(PostRepository        $postRepository,
+                                PostCommentRepository $postCommentRepository)
     {
         $this->postRepository = $postRepository;
         $this->postCommentRepository = $postCommentRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -88,7 +88,7 @@ class PostCommentController extends Controller
         return redirect()->route('postComment.reply', $parent_id);
     }
 
-    public function destroy($parent_id, $id): \Illuminate\Http\RedirectResponse
+    public function destroy($parent_id, $id)
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($id);
@@ -105,7 +105,7 @@ class PostCommentController extends Controller
         }
     }
 
-    public function admin_comment($parent_id, CreatePostCommentRequest $request): \Illuminate\Http\RedirectResponse
+    public function admin_comment($parent_id, CreatePostCommentRequest $request)
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($parent_id);
@@ -117,7 +117,7 @@ class PostCommentController extends Controller
         return redirect()->route('postComment.showComment', $postComment->post_id);
     }
 
-    public function admin_reply($parent_id, $id, CreateReplyPostCommentRequest $request): \Illuminate\Http\RedirectResponse
+    public function admin_reply($parent_id, $id, CreateReplyPostCommentRequest $request)
     {
         try {
             $postComment = $this->postCommentRepository->showPostComment($id);

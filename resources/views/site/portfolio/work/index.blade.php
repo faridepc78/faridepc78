@@ -41,7 +41,7 @@
 
                             <div class="item">
                                 <div class="i-content">
-                                    <img src="{{$value->image->thumb}}" class="img-fluid"
+                                    <img src="{{$value->image->original}}" class="img-fluid"
                                          alt="{{$value->name}}">
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                         <div class="i-content">
                                             <div class="logo-area">
                                                 <div class="logo">
-                                                    <img src="{{$value->image->thumb}}" alt="{{$value->name}}">
+                                                    <img src="{{$value->image->original}}" alt="{{$value->name}}">
                                                 </div>
                                             </div>
                                             <div class="details-area">

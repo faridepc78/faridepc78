@@ -6,24 +6,24 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateContactRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'user_name' => 'required|string|max:255',
-            'user_email' => 'required|string|max:255|email',
-            'user_mobile' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
-            'know' => 'required|string|max:255',
-            'text' => 'required|string',
-            'recaptcha_token' => 'required|captcha'
+            'user_name' => ['required', 'string', 'max:255'],
+            'user_email' => ['required', 'string', 'max:255', 'email'],
+            'user_mobile' => ['required', 'regex:/(09)[0-9]{9}/', 'digits:11', 'numeric'],
+            'know' => ['required', 'string', 'max:255'],
+            'text' => ['required', 'string'],
+            'recaptcha_token' => ['required', 'captcha']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'user_name' => 'نام',

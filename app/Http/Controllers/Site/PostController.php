@@ -23,10 +23,10 @@ class PostController extends Controller
     private $postCommentRepository;
     private $postCategoryRepository;
 
-    public function __construct(PostRepository $postRepository,
-                                PostViewRepository $postViewRepository,
-                                PostLikeRepository $postLikeRepository,
-                                PostCommentRepository $postCommentRepository,
+    public function __construct(PostRepository         $postRepository,
+                                PostViewRepository     $postViewRepository,
+                                PostLikeRepository     $postLikeRepository,
+                                PostCommentRepository  $postCommentRepository,
                                 PostCategoryRepository $postCategoryRepository)
     {
         $this->postRepository = $postRepository;
@@ -58,7 +58,8 @@ class PostController extends Controller
         $post = $this->postRepository->findByCategoryId($post_category_id);
         $postCategory = $this->postCategoryRepository->all();
         return view('site.blog.index',
-            compact('post_category_id', 'post', 'postCategoryInfo', 'postCategory'));
+            compact('post_category_id', 'post',
+                'postCategoryInfo', 'postCategory'));
     }
 
     public function show($slug)
@@ -74,7 +75,7 @@ class PostController extends Controller
             compact('post', 'comments'));
     }
 
-    public function like($id): \Illuminate\Http\JsonResponse
+    public function like($id)
     {
         try {
             $post_like = $this->postLikeRepository->isRegisterIpForPostLike($id);
@@ -89,7 +90,7 @@ class PostController extends Controller
         }
     }
 
-    public function dislike($id): \Illuminate\Http\JsonResponse
+    public function dislike($id)
     {
         try {
             $post_like = $this->postLikeRepository->isRegisterIpForPostLike($id);
@@ -102,7 +103,7 @@ class PostController extends Controller
         }
     }
 
-    public function storeComment(CreatePostCommentRequest $request, $post_id): \Illuminate\Http\JsonResponse
+    public function storeComment(CreatePostCommentRequest $request, $post_id)
     {
         try {
             $this->postCommentRepository->storePostComment($request, $post_id);
@@ -112,7 +113,7 @@ class PostController extends Controller
         }
     }
 
-    public function replyComment(CreateReplyPostCommentRequest $request, $post_id): \Illuminate\Http\JsonResponse
+    public function replyComment(CreateReplyPostCommentRequest $request, $post_id)
     {
         try {
             $this->postCommentRepository->replyPostComment($request, $post_id);

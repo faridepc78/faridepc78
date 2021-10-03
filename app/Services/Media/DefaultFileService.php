@@ -1,20 +1,25 @@
 <?php
 
+
 namespace App\Services\Media;
 
-use Illuminate\Support\Facades\Storage;
 
-class DefaultFileService
+abstract class DefaultFileService
 {
     public static $media;
 
     public static function delete($media)
     {
         foreach ($media->files as $file) {
-            if ($media->is_private) {
-                Storage::delete('private\\' . $file);
+            $key = 'uploads';
+            if (empty($media->private_folder)) {
+                unlink($key . '/' . $file);
             } else {
-                Storage::delete('public\\' . $file);
+                unlink($key . '/' . $file);
+                $full_path = $key . '/' . $media->public_folder . '/' . $media->private_folder;
+                if (is_dir_empty($full_path)) {
+                    rmdir($full_path);
+                }
             }
         }
     }

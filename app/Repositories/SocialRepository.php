@@ -8,36 +8,44 @@ class SocialRepository
 {
     public function store($values)
     {
-        return Social::query()->create([
-            'name' => $values->name,
-            'icon' => $values->icon,
-            'link' => $values->link,
-            'color'=>$values->color
-        ]);
+        return Social::query()
+            ->create([
+                'name' => $values['name'],
+                'icon' => $values['icon'],
+                'link' => $values['link'],
+                'color' => $values['color']
+            ]);
     }
 
-    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function paginate()
     {
-        return Social::query()->latest()->paginate(10);
+        return Social::query()
+            ->latest()
+            ->paginate(10);
     }
 
     public function findById($id)
     {
-        return Social::query()->findOrFail($id);
+        return Social::query()
+            ->findOrFail($id);
     }
 
-    public function update($values, $id): int
+    public function update($values, $id)
     {
-        return Social::query()->where('id', $id)->update([
-            'name' => $values->name,
-            'icon' => $values->icon,
-            'link' => $values->link,
-            'color'=>$values->color
-        ]);
+        return Social::query()
+            ->where('id', $id)
+            ->update([
+                'name' => $values['name'],
+                'icon' => $values['icon'],
+                'link' => $values['link'],
+                'color' => $values['color']
+            ]);
     }
 
     public function all()
     {
-        return Social::query()->latest()->get();
+        return Social::query()
+            ->latest()
+            ->get();
     }
 }

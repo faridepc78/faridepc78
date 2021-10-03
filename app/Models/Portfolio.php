@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    protected $guarded = [];
     protected $table = 'portfolio';
+
     protected $fillable = [
-        'id',
         'name',
         'headline',
         'slug',
@@ -18,32 +17,37 @@ class Portfolio extends Model
         'text',
         'customer',
         'start_date',
-        'end_date',
-        'created_at',
-        'updated_at'
+        'end_date'
     ];
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    public function category()
     {
         return $this->belongsTo(PortfolioCategory::class, 'portfolio_category_id', 'id')->withDefault();
     }
 
-    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function image()
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }
 
-    public function slider(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function slider()
     {
         return $this->hasMany(PortfolioSlider::class, 'portfolio_id', 'id');
     }
 
-    public function expertise(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function expertise()
     {
         return $this->belongsToMany(Expertise::class, 'portfolio_expertise', 'portfolio_id', 'expertise_id');
     }
 
-    public function path(): string
+    public function path()
     {
         return route('singleWork', $this->id . '-' . $this->slug);
     }

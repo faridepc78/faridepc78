@@ -1,28 +1,32 @@
 <?php
 
+
 namespace App\Services\Media;
 
-use App\Contracts\FileServiceContract;
+
 use App\Models\Media;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class ImageFileService extends DefaultFileService implements FileServiceContract
 {
-    public static function upload(UploadedFile $file,$filename, $dir) :array
+    public static function upload(UploadedFile $file, $filename, $dir, $public_folder, $private_folder): array
     {
-        Storage::putFileAs( $dir , $file, $filename . '.' . $file->getClientOriginalExtension());
-        return self::resize($filename, $file->getClientOriginalExtension());
+        $path = $public_folder . '/' . $private_folder . '/';
+        $full_path = $dir . $public_folder . '/' . $private_folder . '/';
+        $file->move(public_path($full_path), $filename . '.' . $file->getClientOriginalExtension());
+        $original_path = $path . $filename . '.' . $file->getClientOriginalExtension();
+        return self::originalUpload($original_path);
     }
 
-    private static function resize($filename, $extension): array
+    private static function originalUpload($path)
     {
-        $imgs['original'] =  $filename . '.' . $extension;
-        return $imgs;
+        $img['original'] = $path;
+        return $img;
     }
 
-    public static function thumb(Media $media): string
+    public static function original(Media $media)
     {
-        return "/storage/" . $media->files['original'];
+        return '/uploads/' . $media->files['original'];
     }
 }
+

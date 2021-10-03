@@ -8,7 +8,6 @@ use App\Repositories\PortfolioRepository;
 use App\Repositories\PortfolioSliderRepository;
 use App\Services\Media\MediaFileService;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PortfolioSliderController extends Controller
@@ -16,11 +15,11 @@ class PortfolioSliderController extends Controller
     private $portfolioRepository;
     private $portfolioSliderRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository, PortfolioSliderRepository $portfolioSliderRepository)
+    public function __construct(PortfolioRepository       $portfolioRepository,
+                                PortfolioSliderRepository $portfolioSliderRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioSliderRepository = $portfolioSliderRepository;
-        $this->middleware('auth:web');
     }
 
     public function index($id)
@@ -29,11 +28,12 @@ class PortfolioSliderController extends Controller
         return view('admin.portfolio.slider.management', compact('portfolio'));
     }
 
-    public function store(CreatePortfolioSliderRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreatePortfolioSliderRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
-                $request->request->add(['image_id' => MediaFileService::publicUpload($request->file('image'))->id]);
+                $request->request->add(['image_id' =>
+                    MediaFileService::publicUpload($request->file('image'))->id]);
                 $this->portfolioSliderRepository->store($request);
             });
             DB::commit();
@@ -45,7 +45,7 @@ class PortfolioSliderController extends Controller
         return redirect()->route('portfolio.slider.index', request()->id);
     }
 
-    public function destroy($portfolio_id, $id): \Illuminate\Http\RedirectResponse
+    public function destroy($portfolio_id, $id)
     {
         try {
             DB::transaction(function () use ($id) {

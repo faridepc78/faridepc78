@@ -6,22 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProfileRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|max:255|email|string',
-            'image' => 'mimes:jpg,png,jpeg|max:1024',
-            'password' => 'sometimes|min:8|confirmed|nullable',
+            'full_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255', 'email'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'full_name' => 'نام و نام خانوادگی',

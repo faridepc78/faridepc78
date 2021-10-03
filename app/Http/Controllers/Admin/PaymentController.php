@@ -13,7 +13,6 @@ class PaymentController extends Controller
     public function __construct(PaymentRepository $paymentRepository)
     {
         $this->paymentRepository = $paymentRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -46,7 +45,7 @@ class PaymentController extends Controller
         return view('admin.payment.show', compact('payment'));
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             $payment = $this->paymentRepository->show($id);

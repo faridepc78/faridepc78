@@ -8,7 +8,6 @@ use App\Repositories\ExpertiseRepository;
 use App\Repositories\PortfolioRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\WorkRepository;
-use Exception;
 
 class IndexController extends Controller
 {
@@ -19,10 +18,10 @@ class IndexController extends Controller
     private $customerRepository;
 
     public function __construct(ExpertiseRepository $expertiseRepository,
-                                WorkRepository $workRepository,
+                                WorkRepository      $workRepository,
                                 PortfolioRepository $portfolioRepository,
-                                PostRepository $postRepository,
-                                CustomerRepository $customerRepository)
+                                PostRepository      $postRepository,
+                                CustomerRepository  $customerRepository)
     {
         $this->expertiseRepository = $expertiseRepository;
         $this->workRepository = $workRepository;
@@ -38,6 +37,8 @@ class IndexController extends Controller
         $portfolio = $this->portfolioRepository->get4();
         $post = $this->postRepository->get3();
         $customer = $this->customerRepository->all();
-        return view('site.index.index', compact('expertise', 'work', 'portfolio', 'post', 'customer'));
+        return view('site.index.index', compact('expertise',
+            'work', 'portfolio',
+            'post', 'customer'));
     }
 }

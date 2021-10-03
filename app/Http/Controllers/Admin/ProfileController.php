@@ -17,7 +17,6 @@ class ProfileController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -25,24 +24,24 @@ class ProfileController extends Controller
         return view('admin.profile.management');
     }
 
-    public function update(UpdateProfileRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateProfileRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
                 $user = $this->userRepository->findById($id);
 
                 if ($request->hasFile('image')) {
-                    $this->userRepository->update($request,null, $id);
+                    $this->userRepository->update($request, null, $id);
                     $image_id = MediaFileService::publicUpload($request->file('image'))->id;
                     $this->userRepository->addImage($image_id, $user->id);
                     if ($user->image) {
                         $user->image->delete();
                     }
                 } else {
-                    $this->userRepository->update($request,$user->image_id, $id);
+                    $this->userRepository->update($request, $user->image_id, $id);
                 }
 
-                if (!empty($request->input('password'))){
+                if (!empty($request->input('password'))) {
                     Auth::logout();
                 }
             });

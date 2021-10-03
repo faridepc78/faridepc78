@@ -11,33 +11,41 @@ use App\Models\Resume;
 
 class DashboardRepository
 {
-    public function countExpertise(): int
+    public function countExpertise()
     {
-        return Expertise::query()->count();
+        return Expertise::query()
+            ->count();
     }
 
-    public function countPortfolio(): int
+    public function countPortfolio()
     {
-        return Portfolio::query()->count();
+        return Portfolio::query()
+            ->count();
     }
 
-    public function countPost(): int
+    public function countPost()
     {
-        return Post::query()->count();
+        return Post::query()
+            ->count();
     }
 
-    public function countResume(): int
+    public function countResume()
     {
-        return Resume::query()->count();
+        return Resume::query()
+            ->count();
     }
 
-    public function countAllPendingPostComment(): int
+    public function countAllPendingPostComment()
     {
-        return PostComment::query()->where('status', '=', PostComment::PENDING_STATUS)->count();
+        return PostComment::query()
+            ->where('status', '=', PostComment::PENDING_STATUS)
+            ->count();
     }
 
-    public function countAllPendingContact(): int
+    public function countAllPendingContact()
     {
-        return Contact::query()->where('status','=',Contact::PENDING_STATUS)->count();
+        return Contact::query()
+            ->where('status', '=', Contact::PENDING_STATUS)
+            ->count();
     }
 }

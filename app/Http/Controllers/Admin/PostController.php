@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\CreatePostRequest;
 use App\Http\Requests\Admin\Post\UpdatePostRequest;
-use App\Http\Requests\Admin\PostCategory\CreatePostCategoryRequest;
 use App\Repositories\PostCategoryRepository;
 use App\Repositories\PostRepository;
 use App\Services\Media\MediaFileService;
@@ -17,11 +16,11 @@ class PostController extends Controller
     private $postCategoryRepository;
     private $postRepository;
 
-    public function __construct(PostCategoryRepository $postCategoryRepository, PostRepository $postRepository)
+    public function __construct(PostCategoryRepository $postCategoryRepository,
+                                PostRepository         $postRepository)
     {
         $this->postCategoryRepository = $postCategoryRepository;
         $this->postRepository = $postRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -36,7 +35,7 @@ class PostController extends Controller
         return view('admin.post.create', compact('postCategory'));
     }
 
-    public function store(CreatePostRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreatePostRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -66,7 +65,7 @@ class PostController extends Controller
         return view('admin.post.edit', compact('post', 'postCategory'));
     }
 
-    public function update(UpdatePostRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdatePostRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -93,7 +92,7 @@ class PostController extends Controller
         return redirect()->route('post.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {

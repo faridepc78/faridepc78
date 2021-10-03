@@ -1,8 +1,9 @@
 <?php
 
+
 namespace App\Services\Media;
 
-use App\Contracts\FileServiceContract;
+
 use App\Models\Media;
 use Illuminate\Http\UploadedFile;
 
@@ -10,17 +11,20 @@ class MediaFileService
 {
     private static $file;
     private static $dir;
-    private static $isPrivate;
+    private static $public_folder;
+    private static $private_folder;
 
-    public static function publicUpload(UploadedFile $file): Media
+    public static function publicUpload(UploadedFile $file, string $public_folder = null,
+                                        string       $private_folder = null)
     {
         self::$file = $file;
-        self::$dir = 'public/';
-        self::$isPrivate = false;
+        self::$dir = 'uploads/';
+        self::$public_folder = $public_folder;
+        self::$private_folder = $private_folder;
         return self::upload();
     }
 
-    private static function upload(): Media
+    private static function upload()
     {
         $extension = self::normalizeExtension(self::$file);
         foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
@@ -44,7 +48,7 @@ class MediaFileService
         return strtolower($file->getClientOriginalExtension());
     }
 
-    private static function filenameGenerator(): string
+    private static function filenameGenerator()
     {
         return uniqid();
     }
@@ -52,33 +56,22 @@ class MediaFileService
     private static function uploadByHandler(FileServiceContract $service, $key): Media
     {
         $media = new Media();
-        $media->files = $service::upload(self::$file, self::filenameGenerator(), self::$dir);
+        $media->files = $service::upload(self::$file, self::filenameGenerator(), self::$dir,
+            self::$public_folder, self::$private_folder);
         $media->type = $key;
         $media->filename = self::$file->getClientOriginalName();
+        $media->public_folder = self::$public_folder;
+        $media->private_folder = self::$private_folder;
         $media->save();
         return $media;
     }
 
-    public static function thumb(Media $media): string
+    public static function original(Media $media)
     {
         foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
             if ($media->type == $type) {
-                return $service['handler']::thumb($media);
-            }else{
-                return '/site_assets/img/customer_comment/no_pic.png';
+                return $service['handler']::original($media);
             }
         }
-    }
-
-    public static function getExtensions(): string
-    {
-        $extensions = [];
-        foreach (config('mediaFile.MediaTypeServices') as  $service) {
-            foreach ($service['extensions'] as $extension) {
-                $extensions[] = $extension;
-            }
-        }
-
-        return implode(',', $extensions);
     }
 }

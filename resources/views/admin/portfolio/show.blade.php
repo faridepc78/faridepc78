@@ -77,7 +77,7 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="image">تصویر نمونه کار</label>
-                                        <img class="img-fluid" src="{{$portfolio->image->thumb}}" alt="تصویر نمونه کار">
+                                        <img class="img-fluid" src="{{$portfolio->image->original}}" alt="تصویر نمونه کار">
                                     </div>
 
                                     <div class="form-group col-md-6">

@@ -9,26 +9,32 @@ class User extends Authenticatable
 {
     use HasFactory;
 
-    protected $guarded = [];
     protected $table = 'users';
+
     protected $fillable = [
-        'id',
         'full_name',
         'email',
         'image_id',
         'password',
-        'remember_token',
-        'created_at',
-        'updated_at'
+        'remember_token'
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
 
-    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function image()
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
+    }
+
+    public function getProfileAttribute()
+    {
+        return empty($this->image->files)
+            ? asset('common/images/profile.png')
+            : "/uploads/" . $this->image->files['original'];
     }
 }

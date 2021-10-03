@@ -6,36 +6,36 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSettingRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'rule' => 'required|string',
-            'full_name' => 'required|string|max:255',
-            'bio' => 'required|string|max:255',
-            'trust' => 'required|string',
-            'trust_reason1' => 'required|string',
-            'trust_reason2' => 'required|string',
-            'trust_reason3' => 'required|string',
-            'trust_reason4' => 'required|string',
-            'blog_text' => 'nullable|string',
-            'portfolio_text' => 'nullable|string',
-            'work_text' => 'nullable|string',
-            'contact_text' => 'nullable|string',
-            'telegram_text' => 'nullable|string',
-            'telegram_channel_link' => 'nullable|url',
-            'about1' => 'required|string',
-            'about2' => 'required|string',
-            'image' => 'nullable|mimes:jpg,png,jpeg|max:1024',
-            'footer_text' => 'required|string'
+            'rule' => ['required', 'string'],
+            'full_name' => ['required', 'string', 'max:255'],
+            'bio' => ['required', 'string', 'max:255'],
+            'trust' => ['required', 'string'],
+            'trust_reason1' => ['required', 'string'],
+            'trust_reason2' => ['required', 'string'],
+            'trust_reason3' => ['required', 'string'],
+            'trust_reason4' => ['required', 'string'],
+            'blog_text' => ['nullable', 'string'],
+            'portfolio_text' => ['nullable', 'string'],
+            'work_text' => ['nullable', 'string'],
+            'contact_text' => ['nullable', 'string'],
+            'telegram_text' => ['nullable', 'string'],
+            'telegram_channel_link' => ['nullable', 'url'],
+            'about1' => ['required', 'string'],
+            'about2' => ['required', 'string'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'footer_text' => ['required', 'string']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'rule' => 'قوانین و مقررات سایت',
@@ -53,7 +53,7 @@ class UpdateSettingRequest extends FormRequest
             'telegram_channel_link' => 'لینک کانال تلگرام',
             'about1' => 'درباره من 1',
             'about2' => 'درباره من 2',
-            'image'=>'عکس مدیر سایت (درباره من)',
+            'image' => 'عکس مدیر سایت (درباره من)',
             'footer_text' => 'متن فوتر سایت'
         ];
     }

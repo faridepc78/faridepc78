@@ -19,7 +19,7 @@
                         <div class="item col-sm-6 col-md-3" data-link-type="Internal">
                             <div class="i-content">
                                 <div class="item-header">
-                                    <img src="{{$value->image->thumb}}" class="img-fluid"
+                                    <img src="{{$value->image->original}}" class="img-fluid"
                                          alt="{{$value->name}}">
                                     <div class="date">
                                         <i class="fi fi-calendar"></i>

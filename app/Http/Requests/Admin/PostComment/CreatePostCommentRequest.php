@@ -4,17 +4,18 @@ namespace App\Http\Requests\Admin\PostComment;
 
 use App\Models\PostComment;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreatePostCommentRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
     public function prepareForValidation()
     {
-        if (auth()->user()) {
+        if (Auth::check()) {
             $user_name = auth()->user()->full_name;
             $user_email = auth()->user()->email;
             $users = PostComment::ADMIN_USER;
@@ -30,14 +31,14 @@ class CreatePostCommentRequest extends FormRequest
         ]);
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'text' => 'required|string'
+            'text' => ['required', 'string']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'text' => 'پیام'

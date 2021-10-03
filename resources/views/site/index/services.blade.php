@@ -18,7 +18,7 @@
                     <div class="item col-md-4">
                         <div class="i-content">
                             <div class="icon">
-                                <img src="{{$value->image->thumb}}" class="img-fluid" alt="{{$value->title}}">
+                                <img src="{{$value->image->original}}" class="img-fluid" alt="{{$value->title}}">
                             </div>
                             <h3 class="i-title">{{$value->title}}</h3>
                             <div class="i-description">{{$value->text}}</div>

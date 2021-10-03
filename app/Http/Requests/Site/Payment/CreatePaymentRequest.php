@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePaymentRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -18,19 +18,19 @@ class CreatePaymentRequest extends FormRequest
         ]);
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'user_name' => 'required|string|max:255',
-            'user_email' => 'required|string|max:255|email',
-            'user_mobile' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
-            'title' => 'required|string|max:255',
-            'price' => 'required|numeric|min:1000|max:999999999',
-            'g-recaptcha-response' => 'required|captcha'
+            'user_name' => ['required', 'string', 'max:255'],
+            'user_email' => ['required', 'string', 'max:255', 'email'],
+            'user_mobile' => ['required', 'regex:/(09)[0-9]{9}/', 'digits:11', 'numeric'],
+            'title' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:1000', 'max:50000000'],
+            'g-recaptcha-response' => ['required', 'captcha']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'user_name' => 'نام',
@@ -41,7 +41,7 @@ class CreatePaymentRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
             'g-recaptcha-response.required' => 'فیلد ریکپچا الزامی است',

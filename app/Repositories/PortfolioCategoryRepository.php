@@ -8,28 +8,34 @@ class PortfolioCategoryRepository
 {
     public function store($values)
     {
-        return PortfolioCategory::query()->create([
-            'name' => $values->name,
-            'slug' => str_slug_persian($values->slug)
-        ]);
+        return PortfolioCategory::query()
+            ->create([
+                'name' => $values['name'],
+                'slug' => str_slug_persian($values['slug'])
+            ]);
     }
 
-    public function paginate(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function paginate()
     {
-        return PortfolioCategory::query()->latest()->paginate(10);
+        return PortfolioCategory::query()
+            ->latest()
+            ->paginate(10);
     }
 
     public function findById($id)
     {
-        return PortfolioCategory::query()->findOrFail($id);
+        return PortfolioCategory::query()
+            ->findOrFail($id);
     }
 
-    public function update($values, $id): int
+    public function update($values, $id)
     {
-        return PortfolioCategory::query()->where('id', $id)->update([
-            'name' => $values->name,
-            'slug' => str_slug_persian($values->slug),
-        ]);
+        return PortfolioCategory::query()
+            ->where('id', $id)
+            ->update([
+                'name' => $values['name'],
+                'slug' => str_slug_persian($values['slug']),
+            ]);
     }
 
     public function all()

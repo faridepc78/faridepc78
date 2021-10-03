@@ -6,23 +6,23 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePostRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:post,slug',
-            'post_category_id' => 'required|numeric|exists:post_category,id',
-            'image' => 'required|mimes:jpg,png,jpeg|max:1024',
-            'text' => 'required|string'
+            'name' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', 'unique:post,slug'],
+            'post_category_id' => ['required', 'exists:post_category,id'],
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'text' => ['required', 'string']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام پست',

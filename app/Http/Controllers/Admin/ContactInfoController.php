@@ -17,7 +17,6 @@ class ContactInfoController extends Controller
     public function __construct(ContactInfoRepository $contactInfoRepository)
     {
         $this->contactInfoRepository = $contactInfoRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -31,7 +30,7 @@ class ContactInfoController extends Controller
         return view('admin.contact_info.create');
     }
 
-    public function store(CreateContactInfoRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateContactInfoRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +53,7 @@ class ContactInfoController extends Controller
         return view('admin.contact_info.edit', compact('contactInfo'));
     }
 
-    public function update(UpdateContactInfoRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateContactInfoRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +80,7 @@ class ContactInfoController extends Controller
         return redirect()->route('contactInfo.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {

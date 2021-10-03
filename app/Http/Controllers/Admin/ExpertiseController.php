@@ -17,7 +17,6 @@ class ExpertiseController extends Controller
     public function __construct(ExpertiseRepository $expertiseRepository)
     {
         $this->expertiseRepository = $expertiseRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -54,7 +53,7 @@ class ExpertiseController extends Controller
         return view('admin.expertise.edit', compact('expertise'));
     }
 
-    public function update(UpdateExpertiseRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateExpertiseRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +80,7 @@ class ExpertiseController extends Controller
         return redirect()->route('expertise.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {

@@ -17,7 +17,7 @@ class ContactController extends Controller
     private $contactRepository;
 
     public function __construct(ContactInfoRepository $contactInfoRepository,
-                                ContactRepository $contactRepository)
+                                ContactRepository     $contactRepository)
     {
         $this->contactInfoRepository = $contactInfoRepository;
         $this->contactRepository = $contactRepository;
@@ -29,7 +29,7 @@ class ContactController extends Controller
         return view('site.contact.index', compact('contactInfo'));
     }
 
-    public function store(CreateContactRequest $request): \Illuminate\Http\JsonResponse
+    public function store(CreateContactRequest $request)
     {
         try {
             $this->contactRepository->storeContact($request);

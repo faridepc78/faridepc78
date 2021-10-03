@@ -38,7 +38,6 @@ $(function () {
             price: {
                 required: true,
                 number: true,
-                maxlength: 11,
                 normalizer: function (value) {
                     return $.trim(value);
                 },

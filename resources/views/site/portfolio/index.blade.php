@@ -66,7 +66,7 @@
                                 <div class="i-content">
                                     <div class="image">
                                         <a href="{{$item->path()}}">
-                                            <img src="{{$item->image->thumb}}" alt="{{$item->name}}">
+                                            <img src="{{$item->image->original}}" alt="{{$item->name}}">
                                             <div class="cover">
                                                 <div class="icon">
                                                     <i class="fi fi-search"></i>

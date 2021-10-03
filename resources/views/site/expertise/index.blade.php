@@ -36,7 +36,7 @@
                             <a href="{{$item->path()}}" class="i-content">
                                 <div class="i-body">
                                     <div class="i-pic">
-                                        <img src="{{$item->image->thumb}}" alt="{{$item->name}}">
+                                        <img src="{{$item->image->original}}" alt="{{$item->name}}">
                                     </div>
                                     <div class="ic-content">
                                         <h3 class="title">{{$item->name}}</h3>

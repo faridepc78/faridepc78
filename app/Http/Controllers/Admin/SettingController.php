@@ -17,7 +17,6 @@ class SettingController extends Controller
     public function __construct(SettingRepository $settingRepository)
     {
         $this->settingRepository = $settingRepository;
-        $this->middleware('auth:web');
     }
 
     public function create()
@@ -27,7 +26,7 @@ class SettingController extends Controller
         return view('admin.setting.create');
     }
 
-    public function store(CreateSettingRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateSettingRequest $request)
     {
         $setting = $this->settingRepository->first();
         if (!empty($setting)) return redirect()->route('setting.edit', $setting->id);
@@ -54,7 +53,7 @@ class SettingController extends Controller
         return view('admin.setting.edit', compact('setting'));
     }
 
-    public function update(UpdateSettingRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateSettingRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {

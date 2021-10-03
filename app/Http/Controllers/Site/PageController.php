@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ResumeRepository;
-use Exception;
 
 class PageController extends Controller
 {

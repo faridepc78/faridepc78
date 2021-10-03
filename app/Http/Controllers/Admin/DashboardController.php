@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\DashboardRepository;
-use Exception;
 
 class DashboardController extends Controller
 {
@@ -13,7 +12,6 @@ class DashboardController extends Controller
     public function __construct(DashboardRepository $dashboardRepository)
     {
         $this->dashboardRepository = $dashboardRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()

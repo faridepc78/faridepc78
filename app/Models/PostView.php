@@ -6,12 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostView extends Model
 {
-    protected $guarded = [];
     protected $table = 'post_view';
-    protected $fillable = ['id', 'post_id', 'ip', 'created_at', 'updated_at'];
 
-    public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $fillable =
+        [
+            'post_id',
+            'ip'
+        ];
+
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id','id')->withDefault();
+        return $this->belongsTo(Post::class, 'post_id', 'id')->withDefault();
     }
 }

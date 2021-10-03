@@ -59,7 +59,7 @@
                                                     <i class="fa fa-eye text-success"></i>
                                                 </a>
                                             </td>
-                                            <td><img class="img-size-64" src="{{$item->image->thumb}}" alt="تصویر کار"></td>
+                                            <td><img class="img-size-64" src="{{$item->image->original}}" alt="تصویر کار"></td>
                                             <td><a target="_blank" href="{{route('work.edit',$item->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('work.destroy', $item->id) }}"

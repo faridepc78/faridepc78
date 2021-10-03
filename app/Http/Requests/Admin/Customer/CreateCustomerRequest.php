@@ -6,21 +6,21 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCustomerRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'from' => 'required|string|max:255',
-            'text' => 'required|string'
+            'name' => ['required', 'string', 'max:255'],
+            'from' => ['required', 'string', 'max:255'],
+            'text' => ['required', 'string']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام مشتری',

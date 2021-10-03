@@ -1,10 +1,13 @@
 .toast-title {
-    font-weight: 700
+    font-weight: 700;
+    font-size: 14px;
+    text-align: right;
 }
 
 .toast-message {
     -ms-word-wrap: break-word;
-    word-wrap: break-word
+    word-wrap: break-word;
+    text-align: right;
 }
 
 .toast-message a, .toast-message label {
@@ -108,7 +111,8 @@ button.toast-close-button {
 #toast-container * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box
+    box-sizing: border-box;
+    direction: rtl;
 }
 
 #toast-container > div {
@@ -165,8 +169,7 @@ button.toast-close-button {
 }
 
 #toast-container.toast-bottom-center > div, #toast-container.toast-top-center > div {
-    /*I change from 400px to 300px*/
-    width: 300px;
+    width: 400px;
     margin-left: auto;
     margin-right: auto
 }

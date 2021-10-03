@@ -17,7 +17,6 @@ class WorkController extends Controller
     public function __construct(WorkRepository $workRepository)
     {
         $this->workRepository = $workRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -31,7 +30,7 @@ class WorkController extends Controller
         return view('admin.work.create');
     }
 
-    public function store(CreateWorkRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateWorkRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +53,7 @@ class WorkController extends Controller
         return view('admin.work.edit', compact('work'));
     }
 
-    public function update(UpdateWorkRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateWorkRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +80,7 @@ class WorkController extends Controller
         return redirect()->route('work.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {

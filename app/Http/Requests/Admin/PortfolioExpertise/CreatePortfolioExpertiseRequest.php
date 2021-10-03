@@ -7,38 +7,40 @@ use Illuminate\Validation\Rule;
 
 class CreatePortfolioExpertiseRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function prepareForValidation(): CreatePortfolioExpertiseRequest
+    public function prepareForValidation()
     {
         return $this->merge([
-            'portfolio_id'=>request()->id
+            'portfolio_id' => request()->id
         ]);
     }
 
-    public function rules(): array
+    public function rules()
     {
+        $id = $this->request->get('portfolio_id');
+
         return [
-            'portfolio_id'=>'required|numeric|exists:portfolio,id',
+            'portfolio_id' => ['required', 'exists:portfolio,id'],
             'expertise_id' => [
                 'required',
                 'array',
                 'min:1',
                 'exists:expertise,id',
                 Rule::unique('portfolio_expertise')
-                    ->where('portfolio_id',$this->request->get('portfolio_id'))
-                    ->where('expertise_id',$this->request->get('expertise_id'))
+                    ->where('portfolio_id', $id)
+                    ->where('expertise_id', $id)
             ]
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
-            'portfolio_id'=>'آیدی نمونه کار',
+            'portfolio_id' => 'آیدی نمونه کار',
             'expertise_id' => 'تخصص نمونه کار'
         ];
     }

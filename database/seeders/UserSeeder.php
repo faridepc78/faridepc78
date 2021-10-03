@@ -12,6 +12,6 @@ class UserSeeder extends Seeder
         if (User::query()->count()) {
             User::query()->truncate();
         }
-        \App\Models\User::factory()->create();
+        User::factory()->create();
     }
 }

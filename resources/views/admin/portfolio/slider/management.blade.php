@@ -93,7 +93,7 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td><img class="img-bordered" alt="اسلایدر نمونه کار"
-                                                     src="{{$value->image->thumb}}"></td>
+                                                     src="{{$value->image->original}}"></td>
                                             <td>
                                                 <a href="{{ route('portfolio.slider.destroy', [$portfolio->id,$value->id]) }}"
                                                    onclick="destroyPortfolioSlider(event, {{ $portfolio->id }},{{ $value->id }})"><i

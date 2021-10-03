@@ -124,7 +124,7 @@
                                                type="text"
                                                class="form-control @error('price') is-invalid @enderror"
                                                value="{{ str_replace(',','',old('price')) }}" id="price"
-                                               name="price" autocomplete="price" autofocus maxlength="9"/>
+                                               name="price" autocomplete="price" autofocus maxlength="10"/>
                                         <span class="icon">
                                             <i class="fi fi-lg fi-keyboard"></i>
                                         </span>

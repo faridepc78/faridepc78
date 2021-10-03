@@ -6,21 +6,23 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePostCategoryRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
+        $id = request()->route('post_category');
+
         return [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:post_category,slug,'.request()->route('post_category'),
-            'image' => 'mimes:jpg,png,jpeg|max:1024'
+            'name' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', 'unique:post_category,slug,' . $id],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام دسته بندی پست',

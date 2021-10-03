@@ -6,21 +6,23 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateResumeRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
+        $id = request()->route('resume');
+
         return [
-            'name' => 'required|string|max:255|unique:resume,name,'.request()->route('resume'),
-            'customer' => 'required|string|max:255',
-            'year'=>'required|numeric|digits:4'
+            'name' => ['required', 'string', 'max:255', 'unique:resume,name,' . $id],
+            'customer' => ['required', 'string', 'max:255'],
+            'year' => ['required', 'numeric', 'digits:4']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام پروژه رزومه',

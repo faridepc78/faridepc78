@@ -15,7 +15,6 @@ class SocialController extends Controller
     public function __construct(SocialRepository $socialRepository)
     {
         $this->socialRepository = $socialRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -29,7 +28,7 @@ class SocialController extends Controller
         return view('admin.social.create');
     }
 
-    public function store(CreateSocialRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateSocialRequest $request)
     {
         try {
             $this->socialRepository->store($request);
@@ -46,7 +45,7 @@ class SocialController extends Controller
         return view('admin.social.edit', compact('social'));
     }
 
-    public function update(UpdateSocialRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateSocialRequest $request, $id)
     {
         try {
             $this->socialRepository->update($request, $id);
@@ -57,7 +56,7 @@ class SocialController extends Controller
         return redirect()->route('social.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             $social = $this->socialRepository->findById($id);

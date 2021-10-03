@@ -7,12 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-    protected $guarded = [];
     protected $table = 'media';
-    protected $fillable = ['id', 'files', 'type', 'filename', 'created_at', 'updated_at'];
+
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    protected $fillable =
+        [
+            'files',
+            'type',
+            'filename',
+            'public_folder',
+            'private_folder'
+        ];
 
     const IMAGE = 'image';
-    static $types = [self::IMAGE];
+    static $types =
+        [
+            self::IMAGE
+        ];
 
     protected $casts = [
         'files' => 'json'
@@ -25,8 +42,8 @@ class Media extends Model
         });
     }
 
-    public function getThumbAttribute(): string
+    public function getOriginalAttribute()
     {
-        return MediaFileService::thumb($this);
+        return MediaFileService::original($this);
     }
 }

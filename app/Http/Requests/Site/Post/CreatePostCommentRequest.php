@@ -4,18 +4,19 @@ namespace App\Http\Requests\Site\Post;
 
 use App\Models\PostComment;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class CreatePostCommentRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    public function prepareForValidation(): CreatePostCommentRequest
+    public function prepareForValidation()
     {
-        if (auth()->user()) {
+        if (Auth::check()) {
             $user_name = auth()->user()->full_name;
             $user_email = auth()->user()->email;
             $users = PostComment::ADMIN_USER;
@@ -34,20 +35,20 @@ class CreatePostCommentRequest extends FormRequest
         ]);
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'post_id' => 'required|numeric|exists:post,id',
-            'user_name' => 'required|string|max:255',
-            'user_email' => 'required|string|max:255|email',
-            'text' => 'required|string',
+            'post_id' => ['required', 'exists:post,id'],
+            'user_name' => ['required', 'string', 'max:255'],
+            'user_email' => ['required', 'string', 'max:255', 'email'],
+            'text' => ['required', 'string'],
             'status' => ['required', Rule::in(PostComment::$statuses)],
             'users' => ['required', Rule::in(PostComment::$users)],
-            'recaptcha_token' => 'required|captcha'
+            'recaptcha_token' => ['required', 'captcha']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'post_id' => 'آیدی پست',

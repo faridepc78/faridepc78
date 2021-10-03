@@ -96,7 +96,7 @@
 
                                 <div class="form-group">
                                     <label for="image">تصویر راه ارتباطی</label>
-                                    <img class="img-size-64" src="{{$contactInfo->image->thumb}}" alt="{{$contactInfo->image->thumb}}">
+                                    <img class="img-size-64" src="{{$contactInfo->image->original}}" alt="{{$contactInfo->image->original}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                            value="{{ old('image') }}" autofocus
                                            id="image" name="image">

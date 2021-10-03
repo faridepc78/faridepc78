@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ExpertiseRepository;
-use Exception;
 use Illuminate\Support\Str;
 
 class ExpertiseController extends Controller

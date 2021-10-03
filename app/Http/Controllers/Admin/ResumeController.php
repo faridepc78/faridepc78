@@ -15,7 +15,6 @@ class ResumeController extends Controller
     public function __construct(ResumeRepository $resumeRepository)
     {
         $this->resumeRepository = $resumeRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -29,7 +28,7 @@ class ResumeController extends Controller
         return view('admin.resume.create');
     }
 
-    public function store(CreateResumeRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateResumeRequest $request)
     {
         try {
             $this->resumeRepository->store($request);
@@ -46,7 +45,7 @@ class ResumeController extends Controller
         return view('admin.resume.edit', compact('resume'));
     }
 
-    public function update(UpdateResumeRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateResumeRequest $request, $id)
     {
         try {
             $this->resumeRepository->update($request, $id);
@@ -57,7 +56,7 @@ class ResumeController extends Controller
         return redirect()->route('resume.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             $resume = $this->resumeRepository->findById($id);

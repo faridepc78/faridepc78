@@ -5,20 +5,21 @@ namespace App\Http\Requests\Site\Post;
 use App\Models\PostComment;
 use App\Repositories\PostCommentRepository;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateReplyPostCommentRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    public function prepareForValidation(): CreateReplyPostCommentRequest
+    public function prepareForValidation()
     {
         $PostCommentRepository = new  PostCommentRepository();
         $showPostComment = $PostCommentRepository->showPostComment(request()->post_comment_id);
         $parent_status = $showPostComment->status;
-        if (auth()->user()) {
+        if (Auth::check()) {
             $user_name = auth()->user()->full_name;
             $user_email = auth()->user()->email;
             $users = PostComment::ADMIN_USER;
@@ -40,12 +41,12 @@ class CreateReplyPostCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_comment_id' => 'required|numeric|exists:post_comment,id',
-            'post_id' => 'required|numeric|exists:post,id',
-            'user_name' => 'required|string|max:255',
-            'user_email' => 'required|string|max:255|email',
-            'text' => 'required|string',
-            'recaptcha_token' => 'required|captcha',
+            'post_comment_id' => ['required', 'exists:post_comment,id'],
+            'post_id' => ['required', 'exists:post,id'],
+            'user_name' => ['required', 'string', 'max:255'],
+            'user_email' => ['required', 'string', 'max:255', 'email'],
+            'text' => ['required', 'string'],
+            'recaptcha_token' => ['required', 'captcha'],
         ];
     }
 

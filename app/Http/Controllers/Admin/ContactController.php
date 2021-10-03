@@ -14,7 +14,6 @@ class ContactController extends Controller
     public function __construct(ContactRepository $contactRepository)
     {
         $this->contactRepository = $contactRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -47,7 +46,7 @@ class ContactController extends Controller
         return view('admin.contact.show', compact('contact'));
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             $contact = $this->contactRepository->show($id);

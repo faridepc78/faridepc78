@@ -19,9 +19,9 @@ class PortfolioController extends Controller
     private $portfolioSliderRepository;
     private $portfolioExpertiseRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository,
-                                PortfolioCategoryRepository $portfolioCategoryRepository,
-                                PortfolioSliderRepository $portfolioSliderRepository,
+    public function __construct(PortfolioRepository          $portfolioRepository,
+                                PortfolioCategoryRepository  $portfolioCategoryRepository,
+                                PortfolioSliderRepository    $portfolioSliderRepository,
                                 PortfolioExpertiseRepository $portfolioExpertiseRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
@@ -34,7 +34,8 @@ class PortfolioController extends Controller
     {
         $portfolio = $this->portfolioRepository->get12();
         $portfolioCategory = $this->portfolioCategoryRepository->all();
-        return view('site.portfolio.index', compact('portfolio', 'portfolioCategory'));
+        return view('site.portfolio.index', compact('portfolio',
+            'portfolioCategory'));
     }
 
     public function filter($slug)
@@ -44,7 +45,9 @@ class PortfolioController extends Controller
         $portfolio = $this->portfolioRepository->findByCategoryId($portfolio_category_id);
         $portfolioCategory = $this->portfolioCategoryRepository->all();
         return view('site.portfolio.index',
-            compact('portfolio_category_id', 'portfolioCategoryInfo', 'portfolio', 'portfolioCategory'));
+            compact('portfolio_category_id',
+                'portfolioCategoryInfo', 'portfolio',
+                'portfolioCategory'));
     }
 
     public function show($slug)
@@ -54,7 +57,8 @@ class PortfolioController extends Controller
         $portfolioSlider = $this->portfolioSliderRepository->findByPortfolioId($portfolio_id);
         $portfolioExpertise = $this->portfolioExpertiseRepository->findByPortfolioId($portfolio_id);
         return view('site.portfolio.work.index',
-            compact('portfolio', 'portfolioSlider', 'portfolioExpertise'));
+            compact('portfolio', 'portfolioSlider',
+                'portfolioExpertise'));
     }
 
     public function extractId($slug): string

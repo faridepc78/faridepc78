@@ -6,23 +6,23 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateContactInfoRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'val' => 'required|string|max:255',
-            'link' => 'required|string|max:255',
-            'image' => 'required|mimes:jpg,png,jpeg|max:1024',
-            'text' => 'required|string'
+            'name' => ['required', 'string', 'max:255'],
+            'val' => ['required', 'string', 'max:255'],
+            'link' => ['required', 'string', 'max:255', 'url'],
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'text' => ['required', 'string']
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
             'name' => 'نام راه ارتباطی',

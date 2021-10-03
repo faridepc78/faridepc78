@@ -17,7 +17,6 @@ class PostCategoryController extends Controller
     public function __construct(PostCategoryRepository $postCategoryRepository)
     {
         $this->postCategoryRepository = $postCategoryRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -31,7 +30,7 @@ class PostCategoryController extends Controller
         return view('admin.post_category.create');
     }
 
-    public function store(CreatePostCategoryRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreatePostCategoryRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -54,7 +53,7 @@ class PostCategoryController extends Controller
         return view('admin.post_category.edit', compact('postCategory'));
     }
 
-    public function update(UpdatePortfolioCategoryRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdatePortfolioCategoryRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -81,7 +80,7 @@ class PostCategoryController extends Controller
         return redirect()->route('post_category.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {

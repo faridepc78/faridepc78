@@ -53,7 +53,7 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$value->name}}</td>
                                             <td>{{$value->slug}}</td>
-                                            <td><img class="img-size-64" src="{{$value->image->thumb}}" alt="تصویر دسته بندی پست"></td>
+                                            <td><img class="img-size-64" src="{{$value->image->original}}" alt="تصویر دسته بندی پست"></td>
                                             <td><a target="_blank" href="{{route('post_category.edit',$value->id)}}"><i
                                                         class="fa fa-edit text-primary"></i></a></td>
                                             <td><a href="{{ route('post_category.destroy', $value->id) }}"

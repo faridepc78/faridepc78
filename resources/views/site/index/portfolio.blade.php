@@ -18,7 +18,7 @@
                         <div class="item col-xs-12 col-sm-4 col-md-3">
                             <div class="i-content">
                                 <div class="i-header">
-                                    <img src="{{$value->image->thumb}}" alt="{{$value->name}}" class="img-fluid">
+                                    <img src="{{$value->image->original}}" alt="{{$value->name}}" class="img-fluid">
                                 </div>
                                 <div class="ic-content">
                                     <div class="ic-title">

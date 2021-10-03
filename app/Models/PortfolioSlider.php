@@ -6,16 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class PortfolioSlider extends Model
 {
-    protected $guarded = [];
     protected $table = 'portfolio_slider';
-    protected $fillable = ['id', 'portfolio_id', 'image_id', 'created_at', 'updated_at'];
 
-    public function portfolio(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    protected $fillable =
+        [
+            'portfolio_id',
+            'image_id'
+        ];
+
+    public function portfolio()
     {
         return $this->belongsTo(Portfolio::class, 'portfolio_id', 'id')->withDefault();
     }
 
-    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function image()
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }

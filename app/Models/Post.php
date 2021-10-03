@@ -6,25 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $guarded = [];
     protected $table = 'post';
+
     protected $fillable = [
-        'id',
         'name',
         'slug',
         'post_category_id',
         'image_id',
-        'text',
-        'created_at',
-        'updated_at'
+        'text'
     ];
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    protected $guarded =
+        [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
+
+    public function category()
     {
         return $this->belongsTo(PostCategory::class, 'post_category_id', 'id')->withDefault();
     }
 
-    public function image(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function image()
     {
         return $this->belongsTo(Media::class, 'image_id', 'id')->withDefault();
     }

@@ -46,13 +46,13 @@
 
                                             @if(isset($post_category_id) && $data->id==$post_category_id)
                                                 <li class="active">
-                                                    <img src="{{$data->image->thumb}}" alt="{{$data->name}}">
+                                                    <img src="{{$data->image->original}}" alt="{{$data->name}}">
                                                     <a href="{{$data->path()}}">{{$data->name}}</a>
                                                     <div class="count">{{$data->countPostByCategoryId($data->id)}}</div>
                                                 </li>
                                             @else
                                                 <li>
-                                                    <img src="{{$data->image->thumb}}" alt="{{$data->name}}">
+                                                    <img src="{{$data->image->original}}" alt="{{$data->name}}">
                                                     <a href="{{$data->path()}}">{{$data->name}}</a>
                                                     <div class="count">{{$data->countPostByCategoryId($data->id)}}</div>
                                                 </li>
@@ -104,7 +104,7 @@
                                     <div class="item col-xs-12 col-md-4 col-sm-6" data-link-type="Internal">
                                         <div class="i-content">
                                             <div class="item-header">
-                                                <img src="{{$value->image->thumb}}" class="img-fluid"
+                                                <img src="{{$value->image->original}}" class="img-fluid"
                                                      alt="{{$value->name}}">
                                                 <div class="date">
                                                     <i class="fi fi-calendar"></i>

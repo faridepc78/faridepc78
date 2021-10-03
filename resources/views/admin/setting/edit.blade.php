@@ -297,7 +297,7 @@
 
                                 <div class="form-group">
                                     <label for="image">تصویر مدیر سایت (درباره من)</label>
-                                    <img class="img-size-64" src="{{$setting->image->thumb}}" alt="{{$setting->image->thumb}}">
+                                    <img class="img-size-64" src="{{$setting->image->original}}" alt="{{$setting->image->original}}">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                            autofocus id="image" name="image">
 

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 /*START ADMIN*/
 
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'App\Http\Controllers\Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'throttle:50,1'], 'namespace' => 'App\Http\Controllers\Admin'], function () {
     Route::get('/', function () {
         return redirect()->route('dashboard');
     });
@@ -91,7 +91,7 @@ Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'App\Http
 
 /*START SITE*/
 
-Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\Site'], function () {
+Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'App\Http\Controllers\Site'], function () {
     Route::get('', 'IndexController@index')->name('index');
 
     Route::get('terms', 'PageController@terms')->name('terms');

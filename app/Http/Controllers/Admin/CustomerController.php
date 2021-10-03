@@ -15,7 +15,6 @@ class CustomerController extends Controller
     public function __construct(CustomerRepository $customerRepository)
     {
         $this->customerRepository = $customerRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -29,7 +28,7 @@ class CustomerController extends Controller
         return view('admin.customer.create');
     }
 
-    public function store(CreateCustomerRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateCustomerRequest $request)
     {
         try {
             $this->customerRepository->store($request);
@@ -46,7 +45,7 @@ class CustomerController extends Controller
         return view('admin.customer.edit', compact('customer'));
     }
 
-    public function update(UpdateCustomerRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateCustomerRequest $request, $id)
     {
         try {
             $this->customerRepository->update($request, $id);
@@ -57,7 +56,7 @@ class CustomerController extends Controller
         return redirect()->route('customer.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             $customer = $this->customerRepository->findById($id);

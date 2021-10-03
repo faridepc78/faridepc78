@@ -24,11 +24,11 @@ class PaymentController extends Controller
         return view('site.payment.index');
     }
 
-    public function request(CreatePaymentRequest $request, Zarinpal $zarinpal): \Illuminate\Http\RedirectResponse
+    public function request(CreatePaymentRequest $request, Zarinpal $zarinpal)
     {
         $payment = [
             'callback_url' => route('payment.verify'),
-            'amount' => $request->price,
+            'amount' => $request->price . '0',
             'description' => $request->title,
             'email' => $request->user_email,
             'mobile' => $request->user_mobile
@@ -57,7 +57,7 @@ class PaymentController extends Controller
 
         $payment = [
             'authority' => $request->input('Authority'),
-            'amount' => $data->price
+            'amount' => $data->price . '0'
         ];
 
         if ($request->input('Status') !== 'OK') {

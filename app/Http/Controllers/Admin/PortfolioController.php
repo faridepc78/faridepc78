@@ -16,11 +16,11 @@ class PortfolioController extends Controller
     private $portfolioRepository;
     private $portfolioCategoryRepository;
 
-    public function __construct(PortfolioRepository $portfolioRepository, PortfolioCategoryRepository $portfolioCategoryRepository)
+    public function __construct(PortfolioRepository         $portfolioRepository,
+                                PortfolioCategoryRepository $portfolioCategoryRepository)
     {
         $this->portfolioRepository = $portfolioRepository;
         $this->portfolioCategoryRepository = $portfolioCategoryRepository;
-        $this->middleware('auth:web');
     }
 
     public function index()
@@ -35,7 +35,7 @@ class PortfolioController extends Controller
         return view('admin.portfolio.create', compact('portfolioCategory'));
     }
 
-    public function store(CreatePortfolioRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(CreatePortfolioRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
@@ -65,7 +65,7 @@ class PortfolioController extends Controller
         return view('admin.portfolio.edit', compact('portfolio', 'portfolioCategory'));
     }
 
-    public function update(UpdatePortfolioRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdatePortfolioRequest $request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
@@ -91,7 +91,7 @@ class PortfolioController extends Controller
         return redirect()->route('portfolio.edit', $id);
     }
 
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy($id)
     {
         try {
             DB::transaction(function () use ($id) {
