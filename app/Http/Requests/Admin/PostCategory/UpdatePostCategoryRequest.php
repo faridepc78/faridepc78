@@ -18,7 +18,7 @@ class UpdatePostCategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:post_category,slug,' . $id],
-            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024']
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:5120']
         ];
     }
 

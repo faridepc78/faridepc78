@@ -18,7 +18,7 @@ class CreatePortfolioRequest extends FormRequest
             'headline' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:portfolio,slug'],
             'portfolio_category_id' => ['required', 'exists:portfolio_category,id'],
-            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5120'],
             'text' => ['required', 'string'],
             'customer' => ['required', 'string', 'max:255'],
             'start_date' => ['required', 'date', 'date_format:Y-m-d', 'before:end_date'],

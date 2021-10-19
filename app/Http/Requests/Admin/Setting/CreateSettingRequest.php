@@ -30,7 +30,7 @@ class CreateSettingRequest extends FormRequest
             'telegram_channel_link' => ['nullable', 'url'],
             'about1' => ['required', 'string'],
             'about2' => ['required', 'string'],
-            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:5120'],
             'footer_text' => ['required', 'string']
         ];
     }

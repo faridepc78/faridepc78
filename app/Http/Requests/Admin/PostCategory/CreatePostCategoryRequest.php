@@ -16,7 +16,7 @@ class CreatePostCategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:post_category,slug'],
-            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024']
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5120']
         ];
     }
 

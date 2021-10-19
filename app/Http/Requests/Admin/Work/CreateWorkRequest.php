@@ -16,7 +16,7 @@ class CreateWorkRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'text' => ['required', 'string'],
-            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024']
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5120']
         ];
     }
 

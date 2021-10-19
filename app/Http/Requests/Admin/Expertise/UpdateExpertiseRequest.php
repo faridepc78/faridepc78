@@ -18,7 +18,7 @@ class UpdateExpertiseRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:expertise,slug,' . $id],
-            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:5120'],
             'text' => ['required', 'string']
         ];
     }

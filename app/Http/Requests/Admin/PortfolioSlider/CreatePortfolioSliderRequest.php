@@ -22,7 +22,7 @@ class CreatePortfolioSliderRequest extends FormRequest
     {
         return [
             'portfolio_id' => ['required', 'exists:portfolio,id'],
-            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024']
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5120']
         ];
     }
 

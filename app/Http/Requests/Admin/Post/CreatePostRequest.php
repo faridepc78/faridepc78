@@ -17,7 +17,7 @@ class CreatePostRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:post,slug'],
             'post_category_id' => ['required', 'exists:post_category,id'],
-            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5120'],
             'text' => ['required', 'string']
         ];
     }

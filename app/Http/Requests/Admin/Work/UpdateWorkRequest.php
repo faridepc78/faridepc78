@@ -16,7 +16,7 @@ class UpdateWorkRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'text' => ['required', 'string'],
-            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024']
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:5120']
         ];
     }
 

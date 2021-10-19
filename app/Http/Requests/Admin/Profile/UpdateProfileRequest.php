@@ -16,7 +16,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'email'],
-            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:5120'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed']
         ];
     }
