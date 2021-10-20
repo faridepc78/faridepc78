@@ -39,6 +39,13 @@
         <div class="menu right-menu">
 
             <ul class="clearfix">
+
+                @auth()
+                    <li>
+                        <a target="_blank" href="{{route('dashboard')}}">پنل مدیریت</a>
+                    </li>
+                @endauth
+
                 <li class="{{ request()->routeIs('index') ? 'active' : '' }}">
                     <a href="{{route('index')}}">صفحه اصلی</a>
                 </li>
