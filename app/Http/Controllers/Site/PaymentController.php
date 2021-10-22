@@ -7,7 +7,11 @@ use App\Http\Requests\Site\Payment\CreatePaymentRequest;
 use App\Repositories\PaymentRepository;
 use Exception;
 use Illuminate\Http\Request;
-use Zarinpal\Zarinpal;
+use Shetabit\Multipay\Exceptions\InvalidPaymentException;
+use Shetabit\Multipay\Exceptions\PurchaseFailedException;
+use Shetabit\Multipay\Invoice;
+use Shetabit\Payment\Facade\Payment;
+use SoapFault;
 
 
 class PaymentController extends Controller
@@ -24,66 +28,74 @@ class PaymentController extends Controller
         return view('site.payment.index');
     }
 
-    public function request(CreatePaymentRequest $request, Zarinpal $zarinpal)
+    public function request(CreatePaymentRequest $request)
     {
-        $payment = [
-            'callback_url' => route('payment.verify'),
-            'amount' => $request->price . '0',
-            'description' => $request->title,
-            'email' => $request->user_email,
-            'mobile' => $request->user_mobile
-        ];
-
         try {
-            $response = $zarinpal->request($payment);
-            $code = $response['data']['code'];
-            if ($code === 100) {
-                $authority = $response['data']['authority'];
-                $this->paymentRepository->store($request, $authority);
-                return $zarinpal->redirect($authority);
-            }
+            $invoice = new Invoice();
 
-        } catch (Exception $exception) {
+            config()->set('payment.drivers.zarinpal.description', $request->title);
+
+            $invoice->amount(intval($request->price));
+            $payment_id = randomNumbers(10);
+
+            $payment = Payment::callbackUrl(route('payment.verify'));
+
+            $payment->purchase($invoice, function ($driver, $transactionId) use ($request, $payment_id) {
+                $this->paymentRepository->store($request, $transactionId, $payment_id);
+            });
+
+            return $payment->pay()->render();
+        } catch (Exception | PurchaseFailedException | SoapFault $exception) {
             newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
-            return redirect()->route('payment');
+            return redirect()->back();
         }
     }
 
-    public function verify(Request $request, Zarinpal $zarinpal)
+    public function verify(Request $request)
     {
-        $authority = $request->input('Authority');
+        if ($request->missing('Authority')) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+            return redirect()->route('index');
+        }
 
-        $data = $this->paymentRepository->getPaymentByAuthority($authority);
+        $transaction = $this->paymentRepository->getPaymentByAuthority($request->Authority);
+        if (empty($transaction)) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+            return redirect(route('payment.result', $transaction->order_number));
+        }
 
-        $payment = [
-            'authority' => $request->input('Authority'),
-            'amount' => $data->price . '0'
-        ];
-
-        if ($request->input('Status') !== 'OK') {
-            $this->paymentRepository->updateInactive($authority);
-            newFeedback('پیام', 'پرداخت توسط شما کنسل شد', 'info');
-            return redirect(route('payment.result', $data->order_number));
+        if ($transaction->status <> \App\Models\Payment::PENDING_STATUS) {
+            newFeedback('شکست', 'عملیات با شکست مواجه شد', 'error');
+            return redirect(route('payment.result', $transaction->order_number));
         }
 
         try {
-            $response = $zarinpal->verify($payment);
-            $code = $response['data']['code'];
-
-            if ($code === 100) {
-                $refId = $response['data']['ref_id'];
-                $this->paymentRepository->updateActive($authority, $refId);
-                return redirect(route('payment.result', $data->order_number));
+            if ($request->Status !== 'OK') {
+                $this->paymentRepository->updateStatus($request->Authority, \App\Models\Payment::INACTIVE_STATUS);
+                newFeedback('پیام', 'پرداخت توسط شما کنسل شد', 'info');
+                return redirect(route('payment.result', $transaction->order_number));
             }
 
-        } catch (Exception $exception) {
-            return redirect(route('payment.result', $data->order_number));
+            Payment::amount($transaction->price)
+                ->transactionId($transaction->ref_number)
+                ->verify();
+
+            $transaction->status = \App\Models\Payment::ACTIVE_STATUS;
+            $transaction->save();
+            $this->paymentRepository->updateStatus($request->Authority, \App\Models\Payment::ACTIVE_STATUS);
+
+            return redirect(route('payment.result', $transaction->order_number));
+
+        } catch (Exception | InvalidPaymentException $e) {
+            $transaction->status = \App\Models\Payment::INACTIVE_STATUS;
+            $transaction->save();
+            return redirect(route('payment.result', $transaction->order_number));
         }
     }
 
     public function result($order_number)
     {
-        $data = $this->paymentRepository->getPaymentByOrderNumber($order_number);
+        $data = $this->paymentRepository->getPaymentOrderNumber($order_number);
         return view('site.payment.result', compact('data'));
     }
 }

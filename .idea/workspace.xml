@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="update media requests size">
+    <list default="true" id="a9f86952-7cb6-4503-99cb-11bb1ea912c1" name="Default Changelist" comment="security admin panel &amp;&amp; https">
+      <change beforePath="$PROJECT_DIR$/.idea/faridepc78.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/faridepc78.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PaymentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,8 +159,9 @@
       <path value="$PROJECT_DIR$/vendor/anhskohbo/no-captcha" />
       <path value="$PROJECT_DIR$/vendor/pishran/persian-slug" />
       <path value="$PROJECT_DIR$/vendor/laravel-validation-rules/colour" />
-      <path value="$PROJECT_DIR$/vendor/saeedpooyanfar/zarinpal" />
       <path value="" />
+      <path value="$PROJECT_DIR$/vendor/shetabit/payment" />
+      <path value="$PROJECT_DIR$/vendor/shetabit/multipay" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ndWGhhwsPlJebXx4dKTjtl3qk8" />

@@ -19,7 +19,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "pishran/persian-slug": "^1.1",
-        "saeedpooyanfar/zarinpal": "^5.0"
+        "shetabit/payment": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

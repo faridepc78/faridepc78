@@ -6,7 +6,7 @@ use App\Models\Payment;
 
 class PaymentRepository
 {
-    public function store($values, $authority)
+    public function store($values, $ref_number, $order_number)
     {
         return Payment::query()
             ->create([
@@ -16,8 +16,8 @@ class PaymentRepository
                 'user_ip' => request()->ip(),
                 'title' => $values['title'],
                 'price' => $values['price'],
-                'ref_number' => $authority,
-                'order_number' => make_token(10),
+                'ref_number' => $ref_number,
+                'order_number' => $order_number,
                 'status' => Payment::PENDING_STATUS
             ]);
     }
@@ -29,31 +29,23 @@ class PaymentRepository
             ->firstOrFail();
     }
 
-    public function getPaymentByOrderNumber($order_number)
+    public function getPaymentOrderNumber($order_number)
     {
         return Payment::query()
             ->where('order_number', '=', $order_number)
             ->firstOrFail();
     }
 
-    public function updateInactive($authority)
+    public function updateStatus($authority, $status)
     {
         return Payment::query()
             ->where('ref_number', '=', $authority)
             ->update([
-                'status' => Payment::INACTIVE_STATUS
+                'status' => $status
             ]);
     }
 
-    public function updateActive($authority, $refId)
-    {
-        return Payment::query()
-            ->where('ref_number', '=', $authority)
-            ->update([
-                'status' => Payment::ACTIVE_STATUS,
-                'ref_number' => $refId
-            ]);
-    }
+    /*Admin Panel*/
 
     public function all()
     {
