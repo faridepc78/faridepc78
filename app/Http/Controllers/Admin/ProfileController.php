@@ -44,10 +44,6 @@ class ProfileController extends Controller
                 if (!empty($request->get('password'))) {
                     $this->userRepository->updatePassword($request->get('password'), Auth::id());
                 }
-
-                if (!empty($request->input('password'))) {
-                    Auth::logout();
-                }
             });
             DB::commit();
             newFeedback();
